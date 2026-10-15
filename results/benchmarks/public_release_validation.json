@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-16",
+  "environment": "Clean CPU-only Windows Python 3.11 virtual environment",
+  "tests": {
+    "passed": 98,
+    "skipped": 6,
+    "warnings": 6
+  },
+  "skips": "Private EEG fixtures, optional audit checkout, CUDA module absent",
+  "quickstart": {
+    "trace_parity": true,
+    "boundary_indices": [
+      20,
+      40,
+      60
+    ]
+  },
+  "manifest_first_run": "success",
+  "manifest_second_run": "skipped",
+  "private_arrays_in_git": 0,
+  "core_modules_unchanged": 24
+}
