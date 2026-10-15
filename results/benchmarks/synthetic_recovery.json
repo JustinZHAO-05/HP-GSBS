@@ -1,0 +1,121 @@
+[
+  {
+    "seed": 12,
+    "noise_sd": 0.05,
+    "truth": [
+      20,
+      40,
+      60
+    ],
+    "predicted": [
+      20,
+      40
+    ],
+    "exact_recall": 0.6666666666666666,
+    "exact_precision": 1.0,
+    "optimal_k": 3,
+    "reference_parity": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 7.958078640513122e-13,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": true,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    }
+  },
+  {
+    "seed": 12,
+    "noise_sd": 2.0,
+    "truth": [
+      20,
+      40,
+      60
+    ],
+    "predicted": [
+      42
+    ],
+    "exact_recall": 0.0,
+    "exact_precision": 0.0,
+    "optimal_k": 2,
+    "reference_parity": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 7.105427357601002e-15,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": true,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    }
+  },
+  {
+    "seed": 19,
+    "noise_sd": 0.05,
+    "truth": [
+      20,
+      40,
+      60
+    ],
+    "predicted": [
+      20,
+      40,
+      60
+    ],
+    "exact_recall": 1.0,
+    "exact_precision": 1.0,
+    "optimal_k": 4,
+    "reference_parity": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 1.5120349416974932e-11,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": true,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    }
+  },
+  {
+    "seed": 19,
+    "noise_sd": 2.0,
+    "truth": [
+      20,
+      40,
+      60
+    ],
+    "predicted": [
+      3,
+      7,
+      20,
+      41,
+      58
+    ],
+    "exact_recall": 0.3333333333333333,
+    "exact_precision": 0.2,
+    "optimal_k": 6,
+    "reference_parity": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 1.9539925233402755e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": true,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    }
+  }
+]

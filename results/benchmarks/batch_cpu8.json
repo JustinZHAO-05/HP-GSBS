@@ -1,0 +1,98 @@
+[
+  {
+    "batch_size": 8,
+    "repeat": 0,
+    "workers": 8,
+    "backend": "cpu-fast",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.4462737949999962,
+    "fits_per_minute": 1075.5729002640724,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": null,
+    "gpu_peak_reserved_bytes": null
+  },
+  {
+    "batch_size": 8,
+    "repeat": 1,
+    "workers": 8,
+    "backend": "cpu-fast",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.4742909850000103,
+    "fits_per_minute": 1012.0369460532537,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": null,
+    "gpu_peak_reserved_bytes": null
+  },
+  {
+    "batch_size": 8,
+    "repeat": 2,
+    "workers": 8,
+    "backend": "cpu-fast",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.4689149220000104,
+    "fits_per_minute": 1023.6398491067627,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": null,
+    "gpu_peak_reserved_bytes": null
+  },
+  {
+    "batch_size": 32,
+    "repeat": 0,
+    "workers": 8,
+    "backend": "cpu-fast",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 1.0061733199999878,
+    "fits_per_minute": 1908.2199476329022,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": null,
+    "gpu_peak_reserved_bytes": null
+  },
+  {
+    "batch_size": 32,
+    "repeat": 1,
+    "workers": 8,
+    "backend": "cpu-fast",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 1.0204637260000027,
+    "fits_per_minute": 1881.4975496737989,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": null,
+    "gpu_peak_reserved_bytes": null
+  },
+  {
+    "batch_size": 32,
+    "repeat": 2,
+    "workers": 8,
+    "backend": "cpu-fast",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.9176418750000153,
+    "fits_per_minute": 2092.3195119010543,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": null,
+    "gpu_peak_reserved_bytes": null
+  }
+]

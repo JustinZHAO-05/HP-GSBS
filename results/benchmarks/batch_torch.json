@@ -1,0 +1,290 @@
+[
+  {
+    "batch_size": 1,
+    "repeat": 0,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.09246313399999906,
+    "fits_per_minute": 648.9072715186207,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 23830528,
+    "gpu_peak_reserved_bytes": 44040192
+  },
+  {
+    "batch_size": 1,
+    "repeat": 1,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.08303902000000107,
+    "fits_per_minute": 722.5518798270888,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 23830528,
+    "gpu_peak_reserved_bytes": 44040192
+  },
+  {
+    "batch_size": 1,
+    "repeat": 2,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.09644657799999834,
+    "fits_per_minute": 622.1060533635629,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 23830528,
+    "gpu_peak_reserved_bytes": 44040192
+  },
+  {
+    "batch_size": 2,
+    "repeat": 0,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.1688481020000019,
+    "fits_per_minute": 710.6979502795872,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 37297152,
+    "gpu_peak_reserved_bytes": 65011712
+  },
+  {
+    "batch_size": 2,
+    "repeat": 1,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.13877244199999694,
+    "fits_per_minute": 864.7250006597321,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 37297152,
+    "gpu_peak_reserved_bytes": 65011712
+  },
+  {
+    "batch_size": 2,
+    "repeat": 2,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.1519320240000006,
+    "fits_per_minute": 789.8269031155638,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 37297152,
+    "gpu_peak_reserved_bytes": 65011712
+  },
+  {
+    "batch_size": 4,
+    "repeat": 0,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.22169345100000015,
+    "fits_per_minute": 1082.5759575550107,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 64201728,
+    "gpu_peak_reserved_bytes": 88080384
+  },
+  {
+    "batch_size": 4,
+    "repeat": 1,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.2005115900000014,
+    "fits_per_minute": 1196.9382916967459,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 64201728,
+    "gpu_peak_reserved_bytes": 88080384
+  },
+  {
+    "batch_size": 4,
+    "repeat": 2,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.20519443599999931,
+    "fits_per_minute": 1169.6223575964839,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 64201728,
+    "gpu_peak_reserved_bytes": 88080384
+  },
+  {
+    "batch_size": 8,
+    "repeat": 0,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.4146666639999985,
+    "fits_per_minute": 1157.556277540559,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 118021632,
+    "gpu_peak_reserved_bytes": 163577856
+  },
+  {
+    "batch_size": 8,
+    "repeat": 1,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.3901311300000003,
+    "fits_per_minute": 1230.3555473771078,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 118021632,
+    "gpu_peak_reserved_bytes": 163577856
+  },
+  {
+    "batch_size": 8,
+    "repeat": 2,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.4354970680000001,
+    "fits_per_minute": 1102.188821165611,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 118021632,
+    "gpu_peak_reserved_bytes": 163577856
+  },
+  {
+    "batch_size": 16,
+    "repeat": 0,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.9475140820000014,
+    "fits_per_minute": 1013.1775540197181,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 225613312,
+    "gpu_peak_reserved_bytes": 385875968
+  },
+  {
+    "batch_size": 16,
+    "repeat": 1,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.8481256879999997,
+    "fits_per_minute": 1131.907703755343,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 225613312,
+    "gpu_peak_reserved_bytes": 385875968
+  },
+  {
+    "batch_size": 16,
+    "repeat": 2,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.8090684669999995,
+    "fits_per_minute": 1186.5497657567225,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 225613312,
+    "gpu_peak_reserved_bytes": 385875968
+  },
+  {
+    "batch_size": 32,
+    "repeat": 0,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 1.6719780990000004,
+    "fits_per_minute": 1148.340400599948,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 444761088,
+    "gpu_peak_reserved_bytes": 805306368
+  },
+  {
+    "batch_size": 32,
+    "repeat": 1,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 1.8757295929999955,
+    "fits_per_minute": 1023.6016999279728,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 444761088,
+    "gpu_peak_reserved_bytes": 805306368
+  },
+  {
+    "batch_size": 32,
+    "repeat": 2,
+    "workers": 1,
+    "backend": "torch-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 1.6839699180000025,
+    "fits_per_minute": 1140.1628850236962,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 444761088,
+    "gpu_peak_reserved_bytes": 805306368
+  }
+]

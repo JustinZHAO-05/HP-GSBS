@@ -1,0 +1,898 @@
+[
+  {
+    "id": "0",
+    "backend": "torch-cuda",
+    "dtype": "float64",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": true,
+    "max_t_error": 2.433608869978343e-13,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": true,
+    "metadata": {
+      "backend": "torch-cuda",
+      "precision": "float64",
+      "input_shape": [
+        1336,
+        64
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 131,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 0.8723375650000023,
+        "candidate_s": 1.2574753919999324,
+        "tdistance_s": 0.39187487199995985,
+        "finetune_s": 3.3922099779999755,
+        "gpu_precompute_s": 0.7597737529999975,
+        "transfer_s": 0.1125567990000036,
+        "gpu_peak_allocated_bytes": 147905536,
+        "gpu_peak_reserved_bytes": 161480704
+      },
+      "search_s": 5.051536462999998,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "fp64-validated-domain",
+      "elapsed_s": 9.068254202999995,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 147905536,
+      "gpu_peak_reserved_bytes": 161480704
+    }
+  },
+  {
+    "id": "0",
+    "backend": "torch-cuda",
+    "dtype": "float32",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": false,
+    "max_t_error": 4.679899311810232e-05,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": false,
+    "metadata": {
+      "backend": "torch-cuda",
+      "precision": "float32",
+      "input_shape": [
+        1336,
+        64
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 131,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 0.1796865119999893,
+        "candidate_s": 2.3480321220000206,
+        "tdistance_s": 0.41424290000009023,
+        "finetune_s": 3.505206630999993,
+        "gpu_precompute_s": 0.10658496700000342,
+        "transfer_s": 0.07309415299999955,
+        "gpu_peak_allocated_bytes": 147905536,
+        "gpu_peak_reserved_bytes": 161480704
+      },
+      "search_s": 6.2787437870000105,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "experimental-fp32",
+      "elapsed_s": 6.462229776000001,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 147905536,
+      "gpu_peak_reserved_bytes": 161480704
+    }
+  },
+  {
+    "id": "0",
+    "backend": "triton-cuda",
+    "dtype": "float64",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": true,
+    "max_t_error": 2.433608869978343e-13,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": true,
+    "metadata": {
+      "backend": "triton-cuda",
+      "precision": "float64",
+      "input_shape": [
+        1336,
+        64
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 131,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 1.4345740549999988,
+        "candidate_s": 0.9821022189999695,
+        "tdistance_s": 0.39054197500010446,
+        "finetune_s": 3.36219592999997,
+        "gpu_precompute_s": 1.390389325000001,
+        "transfer_s": 0.04417806600001484,
+        "gpu_peak_allocated_bytes": 147905536,
+        "gpu_peak_reserved_bytes": 161480704
+      },
+      "search_s": 4.745615924000006,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "fp64-validated-domain",
+      "elapsed_s": 6.181839644999997,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 147905536,
+      "gpu_peak_reserved_bytes": 161480704
+    }
+  },
+  {
+    "id": "0",
+    "backend": "triton-cuda",
+    "dtype": "float32",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": false,
+    "max_t_error": 4.679899311810232e-05,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": false,
+    "metadata": {
+      "backend": "triton-cuda",
+      "precision": "float32",
+      "input_shape": [
+        1336,
+        64
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 131,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 0.6018121550000046,
+        "candidate_s": 1.0228642670001449,
+        "tdistance_s": 0.3998075299998618,
+        "finetune_s": 3.3484090940000044,
+        "gpu_precompute_s": 0.5937324470000078,
+        "transfer_s": 0.008072241000007807,
+        "gpu_peak_allocated_bytes": 147905536,
+        "gpu_peak_reserved_bytes": 161480704
+      },
+      "search_s": 4.784120978000004,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "experimental-fp32",
+      "elapsed_s": 5.387871078999993,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 147905536,
+      "gpu_peak_reserved_bytes": 161480704
+    }
+  },
+  {
+    "id": "1",
+    "backend": "torch-cuda",
+    "dtype": "float64",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": true,
+    "max_t_error": 3.126388037344441e-13,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": true,
+    "metadata": {
+      "backend": "torch-cuda",
+      "precision": "float64",
+      "input_shape": [
+        1857,
+        32
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 121,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 0.5687017390000051,
+        "candidate_s": 1.2189160209999415,
+        "tdistance_s": 0.27701335300000096,
+        "finetune_s": 2.3777300290000483,
+        "gpu_precompute_s": 0.4208975840000022,
+        "transfer_s": 0.14779634000001352,
+        "gpu_peak_allocated_bytes": 264266752,
+        "gpu_peak_reserved_bytes": 425721856
+      },
+      "search_s": 3.883576813000005,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "fp64-validated-domain",
+      "elapsed_s": 4.454423195999993,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 264266752,
+      "gpu_peak_reserved_bytes": 425721856
+    }
+  },
+  {
+    "id": "1",
+    "backend": "torch-cuda",
+    "dtype": "float32",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": false,
+    "max_t_error": 0.00010996149009301348,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": false,
+    "metadata": {
+      "backend": "torch-cuda",
+      "precision": "float32",
+      "input_shape": [
+        1857,
+        32
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 121,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 0.1740672249999875,
+        "candidate_s": 1.2366427180000272,
+        "tdistance_s": 0.2938065829998777,
+        "finetune_s": 2.426001711000012,
+        "gpu_precompute_s": 0.10451193900000533,
+        "transfer_s": 0.06954751399999282,
+        "gpu_peak_allocated_bytes": 264266752,
+        "gpu_peak_reserved_bytes": 425721856
+      },
+      "search_s": 3.9661743789999946,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "experimental-fp32",
+      "elapsed_s": 4.141575064000008,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 264266752,
+      "gpu_peak_reserved_bytes": 425721856
+    }
+  },
+  {
+    "id": "1",
+    "backend": "triton-cuda",
+    "dtype": "float64",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": true,
+    "max_t_error": 3.126388037344441e-13,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": true,
+    "metadata": {
+      "backend": "triton-cuda",
+      "precision": "float64",
+      "input_shape": [
+        1857,
+        32
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 121,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 0.9472048459999911,
+        "candidate_s": 1.251887889000045,
+        "tdistance_s": 0.28540819099991666,
+        "finetune_s": 2.529482338999941,
+        "gpu_precompute_s": 0.8211579970000003,
+        "transfer_s": 0.12603971800000124,
+        "gpu_peak_allocated_bytes": 264266752,
+        "gpu_peak_reserved_bytes": 425721856
+      },
+      "search_s": 4.0780146129999935,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "fp64-validated-domain",
+      "elapsed_s": 5.026600904999995,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 264266752,
+      "gpu_peak_reserved_bytes": 425721856
+    }
+  },
+  {
+    "id": "1",
+    "backend": "triton-cuda",
+    "dtype": "float32",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": false,
+    "max_t_error": 0.00010996149009301348,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": false,
+    "metadata": {
+      "backend": "triton-cuda",
+      "precision": "float32",
+      "input_shape": [
+        1857,
+        32
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 121,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 0.5866408910000018,
+        "candidate_s": 1.1752641679999982,
+        "tdistance_s": 0.2854477560000106,
+        "finetune_s": 2.3758696540000415,
+        "gpu_precompute_s": 0.5753772109999886,
+        "transfer_s": 0.011256235000004722,
+        "gpu_peak_allocated_bytes": 264266752,
+        "gpu_peak_reserved_bytes": 425721856
+      },
+      "search_s": 3.8467127360000006,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "experimental-fp32",
+      "elapsed_s": 4.435054960000002,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 264266752,
+      "gpu_peak_reserved_bytes": 425721856
+    }
+  },
+  {
+    "id": "2",
+    "backend": "torch-cuda",
+    "dtype": "float64",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": true,
+    "max_t_error": 2.7711166694643907e-13,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": true,
+    "metadata": {
+      "backend": "torch-cuda",
+      "precision": "float64",
+      "input_shape": [
+        1754,
+        64
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 172,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 0.33639232299999833,
+        "candidate_s": 1.6094925969999707,
+        "tdistance_s": 0.5197453470000539,
+        "finetune_s": 4.548613374000055,
+        "gpu_precompute_s": 0.32027585199999464,
+        "transfer_s": 0.016109099999980003,
+        "gpu_peak_allocated_bytes": 264266752,
+        "gpu_peak_reserved_bytes": 427819008
+      },
+      "search_s": 6.6905222030000004,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "fp64-validated-domain",
+      "elapsed_s": 7.030337829000004,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 264266752,
+      "gpu_peak_reserved_bytes": 427819008
+    }
+  },
+  {
+    "id": "2",
+    "backend": "torch-cuda",
+    "dtype": "float32",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": false,
+    "max_t_error": 0.00035395164384510736,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": false,
+    "metadata": {
+      "backend": "torch-cuda",
+      "precision": "float32",
+      "input_shape": [
+        1754,
+        64
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 172,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 0.32451811600000724,
+        "candidate_s": 1.5722876920001028,
+        "tdistance_s": 0.5125556959999784,
+        "finetune_s": 4.703097119000049,
+        "gpu_precompute_s": 0.27290151299999366,
+        "transfer_s": 0.05160895400001664,
+        "gpu_peak_allocated_bytes": 264266752,
+        "gpu_peak_reserved_bytes": 427819008
+      },
+      "search_s": 6.800853160000003,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "experimental-fp32",
+      "elapsed_s": 7.126974908999998,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 264266752,
+      "gpu_peak_reserved_bytes": 427819008
+    }
+  },
+  {
+    "id": "2",
+    "backend": "triton-cuda",
+    "dtype": "float64",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": true,
+    "max_t_error": 2.7711166694643907e-13,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": true,
+    "metadata": {
+      "backend": "triton-cuda",
+      "precision": "float64",
+      "input_shape": [
+        1754,
+        64
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 172,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 0.8092496780000005,
+        "candidate_s": 1.7509901499999785,
+        "tdistance_s": 0.5290693780002442,
+        "finetune_s": 4.873496594000031,
+        "gpu_precompute_s": 0.6540887250000083,
+        "transfer_s": 0.15515401700000098,
+        "gpu_peak_allocated_bytes": 264266752,
+        "gpu_peak_reserved_bytes": 427819008
+      },
+      "search_s": 7.1716656659999956,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "fp64-validated-domain",
+      "elapsed_s": 7.983204390000012,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 264266752,
+      "gpu_peak_reserved_bytes": 427819008
+    }
+  },
+  {
+    "id": "2",
+    "backend": "triton-cuda",
+    "dtype": "float32",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": false,
+    "max_t_error": 0.00035395164384510736,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": false,
+    "metadata": {
+      "backend": "triton-cuda",
+      "precision": "float32",
+      "input_shape": [
+        1754,
+        64
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 172,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 0.5833282339999926,
+        "candidate_s": 1.659572591999904,
+        "tdistance_s": 0.5276558920002117,
+        "finetune_s": 4.832230949000234,
+        "gpu_precompute_s": 0.5696269919999963,
+        "transfer_s": 0.013695720000015399,
+        "gpu_peak_allocated_bytes": 264266752,
+        "gpu_peak_reserved_bytes": 427819008
+      },
+      "search_s": 7.035554724999997,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "experimental-fp32",
+      "elapsed_s": 7.639698973999998,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 264266752,
+      "gpu_peak_reserved_bytes": 427819008
+    }
+  },
+  {
+    "id": "3",
+    "backend": "torch-cuda",
+    "dtype": "float64",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": true,
+    "max_t_error": 1.8474111129762605e-13,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": true,
+    "metadata": {
+      "backend": "torch-cuda",
+      "precision": "float64",
+      "input_shape": [
+        1374,
+        64
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 135,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 0.3940084170000091,
+        "candidate_s": 0.8677964039997903,
+        "tdistance_s": 0.3582271859999935,
+        "finetune_s": 3.0382661369999653,
+        "gpu_precompute_s": 0.3832249529999956,
+        "transfer_s": 0.010776574999994182,
+        "gpu_peak_allocated_bytes": 264266752,
+        "gpu_peak_reserved_bytes": 427819008
+      },
+      "search_s": 4.273398251999993,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "fp64-validated-domain",
+      "elapsed_s": 4.669349650999976,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 264266752,
+      "gpu_peak_reserved_bytes": 427819008
+    }
+  },
+  {
+    "id": "3",
+    "backend": "torch-cuda",
+    "dtype": "float32",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": false,
+    "max_t_error": 4.021369584350509e-05,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": false,
+    "metadata": {
+      "backend": "torch-cuda",
+      "precision": "float32",
+      "input_shape": [
+        1374,
+        64
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 135,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 0.07007946499999207,
+        "candidate_s": 0.8818820420001998,
+        "tdistance_s": 0.3478354179999883,
+        "finetune_s": 3.0029779420001717,
+        "gpu_precompute_s": 0.05372289000001729,
+        "transfer_s": 0.016349055000006274,
+        "gpu_peak_allocated_bytes": 264266752,
+        "gpu_peak_reserved_bytes": 427819008
+      },
+      "search_s": 4.241865380000007,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "experimental-fp32",
+      "elapsed_s": 4.313425816000006,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 264266752,
+      "gpu_peak_reserved_bytes": 427819008
+    }
+  },
+  {
+    "id": "3",
+    "backend": "triton-cuda",
+    "dtype": "float64",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": true,
+    "max_t_error": 1.8474111129762605e-13,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": true,
+    "metadata": {
+      "backend": "triton-cuda",
+      "precision": "float64",
+      "input_shape": [
+        1374,
+        64
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 135,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 0.5833410500000014,
+        "candidate_s": 0.875059181999859,
+        "tdistance_s": 0.34463812599989296,
+        "finetune_s": 3.080854273000142,
+        "gpu_precompute_s": 0.573290400000019,
+        "transfer_s": 0.010043940000002749,
+        "gpu_peak_allocated_bytes": 264266752,
+        "gpu_peak_reserved_bytes": 427819008
+      },
+      "search_s": 4.309789964000004,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "fp64-validated-domain",
+      "elapsed_s": 4.8950805710000225,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 264266752,
+      "gpu_peak_reserved_bytes": 427819008
+    }
+  },
+  {
+    "id": "3",
+    "backend": "triton-cuda",
+    "dtype": "float32",
+    "bounds_equal": true,
+    "nstates_equal": true,
+    "first_divergence": null,
+    "tdists_close": false,
+    "max_t_error": 4.021369584350509e-05,
+    "patterns_close": true,
+    "strengths_close": true,
+    "trace_compared": true,
+    "passed": false,
+    "metadata": {
+      "backend": "triton-cuda",
+      "precision": "float32",
+      "input_shape": [
+        1374,
+        64
+      ],
+      "status": "success",
+      "algorithm": {
+        "kmax": 135,
+        "statewise_detection": true,
+        "finetune": 1,
+        "finetune_order": true,
+        "blocksize": 50,
+        "dmin": 5
+      },
+      "upstream": {
+        "version": "0.0.6",
+        "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+      },
+      "timings": {
+        "precompute_s": 0.48446864500002107,
+        "candidate_s": 0.8391985020000448,
+        "tdistance_s": 0.36668852499994387,
+        "finetune_s": 3.1053506489999734,
+        "gpu_precompute_s": 0.4758097300000088,
+        "transfer_s": 0.008652433999998266,
+        "gpu_peak_allocated_bytes": 264266752,
+        "gpu_peak_reserved_bytes": 427819008
+      },
+      "search_s": 4.322539605000003,
+      "candidate_fallbacks": 0,
+      "tdistance_fallbacks": 0,
+      "compatibility": "experimental-fp32",
+      "elapsed_s": 4.808743402000005,
+      "batch_size": 1,
+      "batch_index": 0,
+      "execution": "batched CUDA precompute; independent sequential CPU controllers",
+      "tf32": false,
+      "gpu_peak_allocated_bytes": 264266752,
+      "gpu_peak_reserved_bytes": 427819008
+    }
+  }
+]

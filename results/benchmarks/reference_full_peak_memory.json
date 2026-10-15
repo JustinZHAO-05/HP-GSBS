@@ -1,0 +1,7 @@
+{
+  "pid": 39284,
+  "sampled_rss_bytes": 138539008,
+  "os_lifetime_peak_working_set_bytes": 156725248,
+  "samples": 45837,
+  "note": "Attached during run; Windows lifetime peak includes earlier allocations; 25 ms polling, may miss last interval before exit"
+}

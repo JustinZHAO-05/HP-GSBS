@@ -1,0 +1,146 @@
+[
+  {
+    "batch_size": 1,
+    "repeat": 0,
+    "workers": 1,
+    "backend": "cpu-fast",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.14255159799999717,
+    "fits_per_minute": 420.9002272987581,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": null,
+    "gpu_peak_reserved_bytes": null
+  },
+  {
+    "batch_size": 1,
+    "repeat": 1,
+    "workers": 1,
+    "backend": "cpu-fast",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.13748982500000295,
+    "fits_per_minute": 436.395929662422,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": null,
+    "gpu_peak_reserved_bytes": null
+  },
+  {
+    "batch_size": 1,
+    "repeat": 2,
+    "workers": 1,
+    "backend": "cpu-fast",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.1413038680000085,
+    "fits_per_minute": 424.6168264834505,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": null,
+    "gpu_peak_reserved_bytes": null
+  },
+  {
+    "batch_size": 8,
+    "repeat": 0,
+    "workers": 1,
+    "backend": "cpu-fast",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 1.0884860200000048,
+    "fits_per_minute": 440.9794808388976,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": null,
+    "gpu_peak_reserved_bytes": null
+  },
+  {
+    "batch_size": 8,
+    "repeat": 1,
+    "workers": 1,
+    "backend": "cpu-fast",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.9349597880000005,
+    "fits_per_minute": 513.391063616524,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": null,
+    "gpu_peak_reserved_bytes": null
+  },
+  {
+    "batch_size": 8,
+    "repeat": 2,
+    "workers": 1,
+    "backend": "cpu-fast",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.9350333449999937,
+    "fits_per_minute": 513.3506762798959,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": null,
+    "gpu_peak_reserved_bytes": null
+  },
+  {
+    "batch_size": 32,
+    "repeat": 0,
+    "workers": 1,
+    "backend": "cpu-fast",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 3.774379779,
+    "fits_per_minute": 508.6928482084791,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": null,
+    "gpu_peak_reserved_bytes": null
+  },
+  {
+    "batch_size": 32,
+    "repeat": 1,
+    "workers": 1,
+    "backend": "cpu-fast",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 3.8581297399999954,
+    "fits_per_minute": 497.6504496709855,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": null,
+    "gpu_peak_reserved_bytes": null
+  },
+  {
+    "batch_size": 32,
+    "repeat": 2,
+    "workers": 1,
+    "backend": "cpu-fast",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 3.7673433140000014,
+    "fits_per_minute": 509.64296056188925,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": null,
+    "gpu_peak_reserved_bytes": null
+  }
+]

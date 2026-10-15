@@ -1,0 +1,290 @@
+[
+  {
+    "batch_size": 1,
+    "repeat": 0,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.09371684800000679,
+    "fits_per_minute": 640.2263977123479,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 20442112,
+    "gpu_peak_reserved_bytes": 44040192
+  },
+  {
+    "batch_size": 1,
+    "repeat": 1,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.07446196899999791,
+    "fits_per_minute": 805.7804649243386,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 20442112,
+    "gpu_peak_reserved_bytes": 44040192
+  },
+  {
+    "batch_size": 1,
+    "repeat": 2,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.07644776200000081,
+    "fits_per_minute": 784.8496598239118,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 20442112,
+    "gpu_peak_reserved_bytes": 44040192
+  },
+  {
+    "batch_size": 2,
+    "repeat": 0,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.13153127400000386,
+    "fits_per_minute": 912.3305534164938,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 30536192,
+    "gpu_peak_reserved_bytes": 44040192
+  },
+  {
+    "batch_size": 2,
+    "repeat": 1,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.11433224900000027,
+    "fits_per_minute": 1049.572636325904,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 30536192,
+    "gpu_peak_reserved_bytes": 44040192
+  },
+  {
+    "batch_size": 2,
+    "repeat": 2,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.11405658599999668,
+    "fits_per_minute": 1052.1093450930005,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 30536192,
+    "gpu_peak_reserved_bytes": 44040192
+  },
+  {
+    "batch_size": 4,
+    "repeat": 0,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.19951986600000282,
+    "fits_per_minute": 1202.8877365023723,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 50702336,
+    "gpu_peak_reserved_bytes": 85983232
+  },
+  {
+    "batch_size": 4,
+    "repeat": 1,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.21645675000000608,
+    "fits_per_minute": 1108.766531882204,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 50702336,
+    "gpu_peak_reserved_bytes": 85983232
+  },
+  {
+    "batch_size": 4,
+    "repeat": 2,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.2343575169999994,
+    "fits_per_minute": 1024.0763900907887,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 50702336,
+    "gpu_peak_reserved_bytes": 85983232
+  },
+  {
+    "batch_size": 8,
+    "repeat": 0,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.4597013519999962,
+    "fits_per_minute": 1044.1561633693084,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 91053056,
+    "gpu_peak_reserved_bytes": 132120576
+  },
+  {
+    "batch_size": 8,
+    "repeat": 1,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.4268823190000006,
+    "fits_per_minute": 1124.4316727018138,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 91053056,
+    "gpu_peak_reserved_bytes": 132120576
+  },
+  {
+    "batch_size": 8,
+    "repeat": 2,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.5159401129999992,
+    "fits_per_minute": 930.3405335339777,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 91053056,
+    "gpu_peak_reserved_bytes": 132120576
+  },
+  {
+    "batch_size": 16,
+    "repeat": 0,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.9422718690000025,
+    "fits_per_minute": 1018.8142420284835,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 171752960,
+    "gpu_peak_reserved_bytes": 299892736
+  },
+  {
+    "batch_size": 16,
+    "repeat": 1,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 0.9045836469999955,
+    "fits_per_minute": 1061.2617232069028,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 171752960,
+    "gpu_peak_reserved_bytes": 299892736
+  },
+  {
+    "batch_size": 16,
+    "repeat": 2,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 1.021094105000003,
+    "fits_per_minute": 940.1679975422021,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 171752960,
+    "gpu_peak_reserved_bytes": 299892736
+  },
+  {
+    "batch_size": 32,
+    "repeat": 0,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 1.8179120049999966,
+    "fits_per_minute": 1056.1567307544149,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 335994368,
+    "gpu_peak_reserved_bytes": 614465536
+  },
+  {
+    "batch_size": 32,
+    "repeat": 1,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 1.9501257590000023,
+    "fits_per_minute": 984.5518890969112,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 335994368,
+    "gpu_peak_reserved_bytes": 614465536
+  },
+  {
+    "batch_size": 32,
+    "repeat": 2,
+    "workers": 1,
+    "backend": "triton-cuda",
+    "shape": [
+      450,
+      16
+    ],
+    "kmax": 20,
+    "wall_s": 1.9085653759999985,
+    "fits_per_minute": 1005.9912142092645,
+    "bounds_equal": true,
+    "gpu_peak_allocated_bytes": 335994368,
+    "gpu_peak_reserved_bytes": 614465536
+  }
+]

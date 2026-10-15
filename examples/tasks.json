@@ -1,0 +1,16 @@
+[
+  {
+    "id": "synthetic-example",
+    "path": "examples/generated/input.npy",
+    "config": {
+      "kmax": 12,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "mode": "throughput"
+    }
+  }
+]

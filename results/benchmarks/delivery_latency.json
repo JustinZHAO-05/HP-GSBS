@@ -1,0 +1,3182 @@
+[
+  {
+    "workload": "Small",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 1.9539925233402755e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "reference",
+    "precision": "float64",
+    "shape": [
+      450,
+      16
+    ],
+    "algorithm": {
+      "kmax": 20,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 45.805049346999965,
+    "steady_median_s": 48.03541359400003,
+    "fits_per_minute": 1.2490784508930393,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 45.805049346999965,
+        "cpu_peak_rss_bytes": 201285632,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "elapsed_s": 45.781229463000045,
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified"
+      },
+      {
+        "iteration": 1,
+        "wall_s": 48.307682004000014,
+        "cpu_peak_rss_bytes": 200765440,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "elapsed_s": 48.291350444000045,
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified"
+      },
+      {
+        "iteration": 2,
+        "wall_s": 48.03541359400003,
+        "cpu_peak_rss_bytes": 201003008,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "elapsed_s": 48.019369641000026,
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified"
+      },
+      {
+        "iteration": 3,
+        "wall_s": 46.622490466000045,
+        "cpu_peak_rss_bytes": 201035776,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "elapsed_s": 46.60675600600007,
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified"
+      }
+    ]
+  },
+  {
+    "workload": "Small",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 0.0,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "cpu-fast",
+    "precision": "float64",
+    "shape": [
+      450,
+      16
+    ],
+    "algorithm": {
+      "kmax": 20,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 0.18057739799996853,
+    "steady_median_s": 0.16854822299990246,
+    "fits_per_minute": 355.98120782344125,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 0.18057739799996853,
+        "cpu_peak_rss_bytes": 208453632,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.09503427399999964,
+          "candidate_s": 0.032633262999979706,
+          "tdistance_s": 0.008412361999944551,
+          "finetune_s": 0.024972628000114128
+        },
+        "search_s": 0.06903611099994578,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.16457867999997688
+      },
+      {
+        "iteration": 1,
+        "wall_s": 0.16854822299990246,
+        "cpu_peak_rss_bytes": 208486400,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.08404272899997522,
+          "candidate_s": 0.030349522000165052,
+          "tdistance_s": 0.008046731999684198,
+          "finetune_s": 0.02613774100007049
+        },
+        "search_s": 0.06772238799999286,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.15229283099995428
+      },
+      {
+        "iteration": 2,
+        "wall_s": 0.1692793019999499,
+        "cpu_peak_rss_bytes": 208519168,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.08989570200003527,
+          "candidate_s": 0.024324974000137445,
+          "tdistance_s": 0.008911851000107163,
+          "finetune_s": 0.027016780999929324
+        },
+        "search_s": 0.0635120229999302,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.15439124299996365
+      },
+      {
+        "iteration": 3,
+        "wall_s": 0.16573596000000634,
+        "cpu_peak_rss_bytes": 208654336,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.08976306500005649,
+          "candidate_s": 0.02700911499994163,
+          "tdistance_s": 0.007971210999812683,
+          "finetune_s": 0.02355310500001906
+        },
+        "search_s": 0.06171672800007855,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.15215270500004863
+      }
+    ]
+  },
+  {
+    "workload": "Small",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 1.5987211554602254e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "torch-cuda",
+    "precision": "float64",
+    "shape": [
+      450,
+      16
+    ],
+    "algorithm": {
+      "kmax": 20,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 1.1798471680000375,
+    "steady_median_s": 0.10958037399996101,
+    "fits_per_minute": 547.5433036943399,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 1.1798471680000375,
+        "cpu_peak_rss_bytes": 1150382080,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.0780934329999354,
+          "candidate_s": 0.02537091000010605,
+          "tdistance_s": 0.007763852000039151,
+          "finetune_s": 0.025672743999507475,
+          "gpu_precompute_s": 1.0417595590000701,
+          "transfer_s": 0.036329064999904404,
+          "gpu_peak_allocated_bytes": 23830528,
+          "gpu_peak_reserved_bytes": 44040192
+        },
+        "search_s": 0.0618121479999445,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 1.1417158579999978,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 23830528,
+        "gpu_peak_reserved_bytes": 44040192
+      },
+      {
+        "iteration": 1,
+        "wall_s": 0.10958037399996101,
+        "cpu_peak_rss_bytes": 1154969600,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.02062878999993245,
+          "candidate_s": 0.024776699000199187,
+          "tdistance_s": 0.00828592799996386,
+          "finetune_s": 0.02453060099992399,
+          "gpu_precompute_s": 0.010866145000022698,
+          "transfer_s": 0.009759324000015113,
+          "gpu_peak_allocated_bytes": 23830528,
+          "gpu_peak_reserved_bytes": 44040192
+        },
+        "search_s": 0.060138062999953945,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.08172111799990489,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 23830528,
+        "gpu_peak_reserved_bytes": 44040192
+      },
+      {
+        "iteration": 2,
+        "wall_s": 0.11723096799994437,
+        "cpu_peak_rss_bytes": 1156673536,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.01790740499995991,
+          "candidate_s": 0.027062270000214994,
+          "tdistance_s": 0.008953382000299825,
+          "finetune_s": 0.030711909999922682,
+          "gpu_precompute_s": 0.013264550999906533,
+          "transfer_s": 0.004638859000010598,
+          "gpu_peak_allocated_bytes": 23830528,
+          "gpu_peak_reserved_bytes": 44040192
+        },
+        "search_s": 0.06932860699998855,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.08901732300000731,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 23830528,
+        "gpu_peak_reserved_bytes": 44040192
+      },
+      {
+        "iteration": 3,
+        "wall_s": 0.10877957700006391,
+        "cpu_peak_rss_bytes": 1156673536,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.023136257000032856,
+          "candidate_s": 0.02259380000020883,
+          "tdistance_s": 0.00726321699971777,
+          "finetune_s": 0.02209473599998546,
+          "gpu_precompute_s": 0.02040451599998505,
+          "transfer_s": 0.0027276820001134183,
+          "gpu_peak_allocated_bytes": 23830528,
+          "gpu_peak_reserved_bytes": 44040192
+        },
+        "search_s": 0.05453480200003469,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.07927827399998932,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 23830528,
+        "gpu_peak_reserved_bytes": 44040192
+      }
+    ]
+  },
+  {
+    "workload": "Small",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 1.5987211554602254e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "triton-cuda",
+    "precision": "float64",
+    "shape": [
+      450,
+      16
+    ],
+    "algorithm": {
+      "kmax": 20,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 2.07586449300004,
+    "steady_median_s": 0.09821517800003221,
+    "fits_per_minute": 610.9035407946858,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 2.07586449300004,
+        "cpu_peak_rss_bytes": 1247227904,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.989179560000025,
+          "candidate_s": 0.0247326520001252,
+          "tdistance_s": 0.007157169999914004,
+          "finetune_s": 0.02048073999992539,
+          "gpu_precompute_s": 1.9832630799999151,
+          "transfer_s": 0.005912726000019575,
+          "gpu_peak_allocated_bytes": 20442112,
+          "gpu_peak_reserved_bytes": 44040192
+        },
+        "search_s": 0.05541308099998332,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.045664196999951,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 20442112,
+        "gpu_peak_reserved_bytes": 44040192
+      },
+      {
+        "iteration": 1,
+        "wall_s": 0.11386863899997479,
+        "cpu_peak_rss_bytes": 1250766848,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.00992277099999228,
+          "candidate_s": 0.03194057200016687,
+          "tdistance_s": 0.008043900999837206,
+          "finetune_s": 0.029117901000063284,
+          "gpu_precompute_s": 0.0037580339999294665,
+          "transfer_s": 0.0061609369998905095,
+          "gpu_peak_allocated_bytes": 20442112,
+          "gpu_peak_reserved_bytes": 44040192
+        },
+        "search_s": 0.07192505300008634,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.0839688160000378,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 20442112,
+        "gpu_peak_reserved_bytes": 44040192
+      },
+      {
+        "iteration": 2,
+        "wall_s": 0.09821517800003221,
+        "cpu_peak_rss_bytes": 1252470784,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.006875765000017964,
+          "candidate_s": 0.027869866999594706,
+          "tdistance_s": 0.007613600999775372,
+          "finetune_s": 0.023957742999982656,
+          "gpu_precompute_s": 0.002850143000046046,
+          "transfer_s": 0.004022180999868397,
+          "gpu_peak_allocated_bytes": 20442112,
+          "gpu_peak_reserved_bytes": 44040192
+        },
+        "search_s": 0.06248652800002219,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.07052258299995628,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 20442112,
+        "gpu_peak_reserved_bytes": 44040192
+      },
+      {
+        "iteration": 3,
+        "wall_s": 0.09744011000009323,
+        "cpu_peak_rss_bytes": 1254174720,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.006888876000061828,
+          "candidate_s": 0.026618831000064347,
+          "tdistance_s": 0.00766208499953791,
+          "finetune_s": 0.024070543000107136,
+          "gpu_precompute_s": 0.0030262280000670216,
+          "transfer_s": 0.003859045000012884,
+          "gpu_peak_allocated_bytes": 20442112,
+          "gpu_peak_reserved_bytes": 44040192
+        },
+        "search_s": 0.06139878600004067,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.06946171499998854,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 20442112,
+        "gpu_peak_reserved_bytes": 44040192
+      }
+    ]
+  },
+  {
+    "workload": "Medium",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 0.0,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "cpu-fast",
+    "precision": "float64",
+    "shape": [
+      900,
+      32
+    ],
+    "algorithm": {
+      "kmax": 30,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 0.6372141709999823,
+    "steady_median_s": 0.5098248019999119,
+    "fits_per_minute": 117.68748747537467,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 0.6372141709999823,
+        "cpu_peak_rss_bytes": 1305849856,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.4032165309999982,
+          "candidate_s": 0.09954011000013452,
+          "tdistance_s": 0.023497610000390523,
+          "finetune_s": 0.0728839659999494
+        },
+        "search_s": 0.19909839800004647,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.6038136560000567
+      },
+      {
+        "iteration": 1,
+        "wall_s": 0.5464469590000363,
+        "cpu_peak_rss_bytes": 1305849856,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.35680855900000097,
+          "candidate_s": 0.07900514999994357,
+          "tdistance_s": 0.015800463999880776,
+          "finetune_s": 0.05569061300025169
+        },
+        "search_s": 0.1531792730000916,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.5111822710000524
+      },
+      {
+        "iteration": 2,
+        "wall_s": 0.5098248019999119,
+        "cpu_peak_rss_bytes": 1305849856,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.3254450240000324,
+          "candidate_s": 0.07550079100053608,
+          "tdistance_s": 0.016173955000454043,
+          "finetune_s": 0.0544955369997524
+        },
+        "search_s": 0.1493248859999312,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.4756988840000531
+      },
+      {
+        "iteration": 3,
+        "wall_s": 0.48106134299996484,
+        "cpu_peak_rss_bytes": 1305866240,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.31007135200002267,
+          "candidate_s": 0.0745523069998626,
+          "tdistance_s": 0.014997178000044187,
+          "finetune_s": 0.0467302300000938
+        },
+        "search_s": 0.13893041599999378,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.4497541860000638
+      }
+    ]
+  },
+  {
+    "workload": "Medium",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 3.197442310920451e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "torch-cuda",
+    "precision": "float64",
+    "shape": [
+      900,
+      32
+    ],
+    "algorithm": {
+      "kmax": 30,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 0.271867719999932,
+    "steady_median_s": 0.24463096700003462,
+    "fits_per_minute": 245.267394949191,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 0.271867719999932,
+        "cpu_peak_rss_bytes": 1287028736,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.07481365800003914,
+          "candidate_s": 0.08585150799979147,
+          "tdistance_s": 0.018421959000193056,
+          "finetune_s": 0.05876433899970834,
+          "gpu_precompute_s": 0.035150104999956966,
+          "transfer_s": 0.03965937499992833,
+          "gpu_peak_allocated_bytes": 69605888,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.16558625699997265,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.2418095819999735,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 69605888,
+        "gpu_peak_reserved_bytes": 88080384
+      },
+      {
+        "iteration": 1,
+        "wall_s": 0.24463096700003462,
+        "cpu_peak_rss_bytes": 1287028736,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.046621692000030635,
+          "candidate_s": 0.08498439699997107,
+          "tdistance_s": 0.018064408999975967,
+          "finetune_s": 0.06260005100023136,
+          "gpu_precompute_s": 0.03587323700003253,
+          "transfer_s": 0.010743406999949912,
+          "gpu_peak_allocated_bytes": 69605888,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.16924829300000965,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.2181070850000424,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 69605888,
+        "gpu_peak_reserved_bytes": 88080384
+      },
+      {
+        "iteration": 2,
+        "wall_s": 0.24653047499998593,
+        "cpu_peak_rss_bytes": 1287159808,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.04136845900006847,
+          "candidate_s": 0.08174294600019039,
+          "tdistance_s": 0.01821776399981445,
+          "finetune_s": 0.0673658890001434,
+          "gpu_precompute_s": 0.030756769999925382,
+          "transfer_s": 0.010606761000076403,
+          "gpu_peak_allocated_bytes": 69605888,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.17081637700005103,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.21409396300009575,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 69605888,
+        "gpu_peak_reserved_bytes": 88080384
+      },
+      {
+        "iteration": 3,
+        "wall_s": 0.23842215499996655,
+        "cpu_peak_rss_bytes": 1287159808,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.04333818300005987,
+          "candidate_s": 0.0803946050000377,
+          "tdistance_s": 0.0186033879997467,
+          "finetune_s": 0.062201479000350446,
+          "gpu_precompute_s": 0.03281984200009447,
+          "transfer_s": 0.01051451899991207,
+          "gpu_peak_allocated_bytes": 69605888,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.1644544789999145,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.2096299810000346,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 69605888,
+        "gpu_peak_reserved_bytes": 88080384
+      }
+    ]
+  },
+  {
+    "workload": "Medium",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 3.197442310920451e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "triton-cuda",
+    "precision": "float64",
+    "shape": [
+      900,
+      32
+    ],
+    "algorithm": {
+      "kmax": 30,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 0.5559060809999892,
+    "steady_median_s": 0.29987034099997345,
+    "fits_per_minute": 200.08647670829612,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 0.5559060809999892,
+        "cpu_peak_rss_bytes": 1287352320,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.35148276300003545,
+          "candidate_s": 0.07852900599993973,
+          "tdistance_s": 0.019911173999844323,
+          "finetune_s": 0.0701302779997377,
+          "gpu_precompute_s": 0.3404263319999927,
+          "transfer_s": 0.01105190499993114,
+          "gpu_peak_allocated_bytes": 56134144,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.17160028499995406,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.5250362340000265,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 56134144,
+        "gpu_peak_reserved_bytes": 88080384
+      },
+      {
+        "iteration": 1,
+        "wall_s": 0.3425000419999833,
+        "cpu_peak_rss_bytes": 1287352320,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.12338844399994287,
+          "candidate_s": 0.0951282030002858,
+          "tdistance_s": 0.020166237000012188,
+          "finetune_s": 0.06919135199984794,
+          "gpu_precompute_s": 0.1001003489999448,
+          "transfer_s": 0.023282277000021168,
+          "gpu_peak_allocated_bytes": 56134144,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.1876810649999925,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.31285202100002607,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 56134144,
+        "gpu_peak_reserved_bytes": 88080384
+      },
+      {
+        "iteration": 2,
+        "wall_s": 0.29987034099997345,
+        "cpu_peak_rss_bytes": 1287352320,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.07658041000001958,
+          "candidate_s": 0.08770411499995134,
+          "tdistance_s": 0.02087071199946422,
+          "finetune_s": 0.07967156900019745,
+          "gpu_precompute_s": 0.06536019999998643,
+          "transfer_s": 0.011216346000082922,
+          "gpu_peak_allocated_bytes": 56134144,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.19122803900006602,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.2694085550000409,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 56134144,
+        "gpu_peak_reserved_bytes": 88080384
+      },
+      {
+        "iteration": 3,
+        "wall_s": 0.25578544400002556,
+        "cpu_peak_rss_bytes": 1287352320,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.062432472999944366,
+          "candidate_s": 0.08273879500018211,
+          "tdistance_s": 0.017140150999694015,
+          "finetune_s": 0.05914288799988299,
+          "gpu_precompute_s": 0.05084427300005245,
+          "transfer_s": 0.011582967999970606,
+          "gpu_peak_allocated_bytes": 56134144,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.16217315500000495,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.2265000049999344,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 56134144,
+        "gpu_peak_reserved_bytes": 88080384
+      }
+    ]
+  },
+  {
+    "workload": "Large",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 0.0,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "cpu-fast",
+    "precision": "float64",
+    "shape": [
+      1500,
+      64
+    ],
+    "algorithm": {
+      "kmax": 40,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 1.5947068770000214,
+    "steady_median_s": 1.6042442909999863,
+    "fits_per_minute": 37.40078760860026,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 1.5947068770000214,
+        "cpu_peak_rss_bytes": 1422303232,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.1300509180000518,
+          "candidate_s": 0.27373657399994045,
+          "tdistance_s": 0.036117328000045745,
+          "finetune_s": 0.11527812599956633
+        },
+        "search_s": 0.4283698209999329,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 1.5593982330000244
+      },
+      {
+        "iteration": 1,
+        "wall_s": 1.6388951000000134,
+        "cpu_peak_rss_bytes": 1422409728,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.1829975329999343,
+          "candidate_s": 0.260865539999827,
+          "tdistance_s": 0.0325733240002819,
+          "finetune_s": 0.12063145199999781
+        },
+        "search_s": 0.41831959000001007,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 1.6026475109999865
+      },
+      {
+        "iteration": 2,
+        "wall_s": 1.4971236799999588,
+        "cpu_peak_rss_bytes": 1422417920,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.0532175250000364,
+          "candidate_s": 0.2596726139995553,
+          "tdistance_s": 0.031569086000217794,
+          "finetune_s": 0.11311932999979035
+        },
+        "search_s": 0.40759234600000127,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 1.462465007999981
+      },
+      {
+        "iteration": 3,
+        "wall_s": 1.6042442909999863,
+        "cpu_peak_rss_bytes": 1422540800,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.1815668939999568,
+          "candidate_s": 0.2407561239995175,
+          "tdistance_s": 0.03105483599983927,
+          "finetune_s": 0.1113698110000314
+        },
+        "search_s": 0.38622580899993864,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 1.5687487139999803
+      }
+    ]
+  },
+  {
+    "workload": "Large",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 5.5067062021407764e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "torch-cuda",
+    "precision": "float64",
+    "shape": [
+      1500,
+      64
+    ],
+    "algorithm": {
+      "kmax": 40,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 0.8401761239999814,
+    "steady_median_s": 0.481645675999971,
+    "fits_per_minute": 124.57290284072562,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 0.8401761239999814,
+        "cpu_peak_rss_bytes": 1368649728,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.3610717509999404,
+          "candidate_s": 0.28478156400001353,
+          "tdistance_s": 0.034872159999963515,
+          "finetune_s": 0.12250629600021057,
+          "gpu_precompute_s": 0.2811269790000779,
+          "transfer_s": 0.07993828100006795,
+          "gpu_peak_allocated_bytes": 184941056,
+          "gpu_peak_reserved_bytes": 207618048
+        },
+        "search_s": 0.44611114300005283,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.8094828409999764,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 184941056,
+        "gpu_peak_reserved_bytes": 207618048
+      },
+      {
+        "iteration": 1,
+        "wall_s": 0.43393496399994547,
+        "cpu_peak_rss_bytes": 1368649728,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.029911420999951588,
+          "candidate_s": 0.24015434800014646,
+          "tdistance_s": 0.030913522000673765,
+          "finetune_s": 0.09621981900011178,
+          "gpu_precompute_s": 0.02077963700003238,
+          "transfer_s": 0.009127605000003314,
+          "gpu_peak_allocated_bytes": 184196096,
+          "gpu_peak_reserved_bytes": 207618048
+        },
+        "search_s": 0.3706940099999656,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.4024185950000856,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 184196096,
+        "gpu_peak_reserved_bytes": 207618048
+      },
+      {
+        "iteration": 2,
+        "wall_s": 0.49702735799996844,
+        "cpu_peak_rss_bytes": 1386737664,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.06191390000003594,
+          "candidate_s": 0.2592281639999783,
+          "tdistance_s": 0.031449782999857234,
+          "finetune_s": 0.10978394300002492,
+          "gpu_precompute_s": 0.01986656999997649,
+          "transfer_s": 0.04204182600005879,
+          "gpu_peak_allocated_bytes": 184196096,
+          "gpu_peak_reserved_bytes": 207618048
+        },
+        "search_s": 0.40400021300001754,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.46833400899993194,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 184196096,
+        "gpu_peak_reserved_bytes": 207618048
+      },
+      {
+        "iteration": 3,
+        "wall_s": 0.481645675999971,
+        "cpu_peak_rss_bytes": 1404694528,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.06363169700000526,
+          "candidate_s": 0.2483655250001675,
+          "tdistance_s": 0.03133574900016356,
+          "finetune_s": 0.10377407600003608,
+          "gpu_precompute_s": 0.021761657999945783,
+          "transfer_s": 0.041866045000006125,
+          "gpu_peak_allocated_bytes": 184196096,
+          "gpu_peak_reserved_bytes": 207618048
+        },
+        "search_s": 0.3868392639999456,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.4523067129999845,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 184196096,
+        "gpu_peak_reserved_bytes": 207618048
+      }
+    ]
+  },
+  {
+    "workload": "Large",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 5.5067062021407764e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "triton-cuda",
+    "precision": "float64",
+    "shape": [
+      1500,
+      64
+    ],
+    "algorithm": {
+      "kmax": 40,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 0.6265180900001042,
+    "steady_median_s": 0.5007037540000283,
+    "fits_per_minute": 119.83133643530982,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 0.6265180900001042,
+        "cpu_peak_rss_bytes": 1422782464,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.18255400800001098,
+          "candidate_s": 0.26327159699985714,
+          "tdistance_s": 0.03205570100033128,
+          "finetune_s": 0.11072714700003417,
+          "gpu_precompute_s": 0.16601225500005512,
+          "transfer_s": 0.01653514399993128,
+          "gpu_peak_allocated_bytes": 146626048,
+          "gpu_peak_reserved_bytes": 207618048
+        },
+        "search_s": 0.40917447799995443,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.5974728349999623,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 146626048,
+        "gpu_peak_reserved_bytes": 207618048
+      },
+      {
+        "iteration": 1,
+        "wall_s": 0.5007037540000283,
+        "cpu_peak_rss_bytes": 1422782464,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.07038771700001689,
+          "candidate_s": 0.2531392460001598,
+          "tdistance_s": 0.03172218999998222,
+          "finetune_s": 0.11014410500001759,
+          "gpu_precompute_s": 0.05741448399999172,
+          "transfer_s": 0.012968456999942646,
+          "gpu_peak_allocated_bytes": 146626048,
+          "gpu_peak_reserved_bytes": 207618048
+        },
+        "search_s": 0.39804599699994014,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.4704701400000886,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 146626048,
+        "gpu_peak_reserved_bytes": 207618048
+      },
+      {
+        "iteration": 2,
+        "wall_s": 0.4962950939999473,
+        "cpu_peak_rss_bytes": 1422782464,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.06862966100004542,
+          "candidate_s": 0.26021621600011713,
+          "tdistance_s": 0.031721736999770656,
+          "finetune_s": 0.10234779200027333,
+          "gpu_precompute_s": 0.05728452500000003,
+          "transfer_s": 0.01133961100003944,
+          "gpu_peak_allocated_bytes": 146626048,
+          "gpu_peak_reserved_bytes": 207618048
+        },
+        "search_s": 0.3973809080000592,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.46864110399997116,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 146626048,
+        "gpu_peak_reserved_bytes": 207618048
+      },
+      {
+        "iteration": 3,
+        "wall_s": 0.5153351200000316,
+        "cpu_peak_rss_bytes": 1422782464,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.06814347600004567,
+          "candidate_s": 0.2499316959998623,
+          "tdistance_s": 0.032574942000337614,
+          "finetune_s": 0.1043470559995967,
+          "gpu_precompute_s": 0.05854103000001487,
+          "transfer_s": 0.009598169000014423,
+          "gpu_peak_allocated_bytes": 146626048,
+          "gpu_peak_reserved_bytes": 207618048
+        },
+        "search_s": 0.39033641499997884,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.46063257699995575,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 146626048,
+        "gpu_peak_reserved_bytes": 207618048
+      }
+    ]
+  },
+  {
+    "workload": "XL",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 0.0,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "cpu-fast",
+    "precision": "float64",
+    "shape": [
+      2100,
+      64
+    ],
+    "algorithm": {
+      "kmax": 50,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 4.244799218000026,
+    "steady_median_s": 4.14477104599996,
+    "fits_per_minute": 14.476071014321736,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 4.244799218000026,
+        "cpu_peak_rss_bytes": 1545142272,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 2.4155836899999485,
+          "candidate_s": 1.5825064509998583,
+          "tdistance_s": 0.04818814799989468,
+          "finetune_s": 0.1585650770000484
+        },
+        "search_s": 1.7924162240000214,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 4.209659077999959
+      },
+      {
+        "iteration": 1,
+        "wall_s": 4.006882588000053,
+        "cpu_peak_rss_bytes": 1544790016,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 2.1567908939999825,
+          "candidate_s": 1.5950156780000952,
+          "tdistance_s": 0.05125013000031231,
+          "finetune_s": 0.1670866100001831
+        },
+        "search_s": 1.8169926860000487,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 3.975282567000022
+      },
+      {
+        "iteration": 2,
+        "wall_s": 4.14477104599996,
+        "cpu_peak_rss_bytes": 1545195520,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 2.3098923810000542,
+          "candidate_s": 1.5749295369996617,
+          "tdistance_s": 0.05003409300002204,
+          "finetune_s": 0.1706764949999524
+        },
+        "search_s": 1.7990978450000057,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 4.111132209000061
+      },
+      {
+        "iteration": 3,
+        "wall_s": 4.34142468899995,
+        "cpu_peak_rss_bytes": 1544441856,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 2.4170297729999675,
+          "candidate_s": 1.6647532670003784,
+          "tdistance_s": 0.05213064399981704,
+          "finetune_s": 0.1712303299997302
+        },
+        "search_s": 1.892503212000065,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 4.311719308999955
+      }
+    ]
+  },
+  {
+    "workload": "XL",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 7.283063041541027e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "torch-cuda",
+    "precision": "float64",
+    "shape": [
+      2100,
+      64
+    ],
+    "algorithm": {
+      "kmax": 50,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 2.4794791250000117,
+    "steady_median_s": 2.2566931929999328,
+    "fits_per_minute": 26.58757521231278,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 2.4794791250000117,
+        "cpu_peak_rss_bytes": 1475072000,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.5886165149998988,
+          "candidate_s": 1.6169948160001013,
+          "tdistance_s": 0.05413483700033339,
+          "finetune_s": 0.16682452499981082,
+          "gpu_precompute_s": 0.44201290599994536,
+          "transfer_s": 0.1465993309999476,
+          "gpu_peak_allocated_bytes": 342976000,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 1.8407319479999842,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.4312548970000307,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 342976000,
+        "gpu_peak_reserved_bytes": 528482304
+      },
+      {
+        "iteration": 1,
+        "wall_s": 2.069809001000067,
+        "cpu_peak_rss_bytes": 1474949120,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.1912446540000019,
+          "candidate_s": 1.606868678000069,
+          "tdistance_s": 0.05015787699971952,
+          "finetune_s": 0.1716566459998603,
+          "gpu_precompute_s": 0.08997070800000984,
+          "transfer_s": 0.10126812800001517,
+          "gpu_peak_allocated_bytes": 342976000,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 1.831846359999986,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.0260037829999646,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 342976000,
+        "gpu_peak_reserved_bytes": 528482304
+      },
+      {
+        "iteration": 2,
+        "wall_s": 2.2799157980000473,
+        "cpu_peak_rss_bytes": 1475063808,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.3926117539999723,
+          "candidate_s": 1.5948529380002583,
+          "tdistance_s": 0.05394875399974808,
+          "finetune_s": 0.17555390099994383,
+          "gpu_precompute_s": 0.21458066000002418,
+          "transfer_s": 0.17802561299993158,
+          "gpu_peak_allocated_bytes": 342976000,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 1.8276306019999993,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.222972401999982,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 342976000,
+        "gpu_peak_reserved_bytes": 528482304
+      },
+      {
+        "iteration": 3,
+        "wall_s": 2.2566931929999328,
+        "cpu_peak_rss_bytes": 1455632384,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.3021321479999415,
+          "candidate_s": 1.6610669510000662,
+          "tdistance_s": 0.056025485999839475,
+          "finetune_s": 0.17789206400016155,
+          "gpu_precompute_s": 0.1339082550000512,
+          "transfer_s": 0.16821920399991086,
+          "gpu_peak_allocated_bytes": 342976000,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 1.8983985419999954,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.203463886999998,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 342976000,
+        "gpu_peak_reserved_bytes": 528482304
+      }
+    ]
+  },
+  {
+    "workload": "XL",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 7.283063041541027e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "triton-cuda",
+    "precision": "float64",
+    "shape": [
+      2100,
+      64
+    ],
+    "algorithm": {
+      "kmax": 50,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 2.8573205989999906,
+    "steady_median_s": 2.313433845000077,
+    "fits_per_minute": 25.93547255724445,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 2.8573205989999906,
+        "cpu_peak_rss_bytes": 1455751168,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.9003448789999311,
+          "candidate_s": 1.6641371089999666,
+          "tdistance_s": 0.05435106099980658,
+          "finetune_s": 0.1755764370000179,
+          "gpu_precompute_s": 0.6820912850000695,
+          "transfer_s": 0.21824833000005128,
+          "gpu_peak_allocated_bytes": 269496320,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 1.8974254569999403,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.8005693310000197,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 269496320,
+        "gpu_peak_reserved_bytes": 528482304
+      },
+      {
+        "iteration": 1,
+        "wall_s": 2.313433845000077,
+        "cpu_peak_rss_bytes": 1455652864,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.43348126399996545,
+          "candidate_s": 1.5856211669998856,
+          "tdistance_s": 0.051296683999908055,
+          "finetune_s": 0.18170905500016943,
+          "gpu_precompute_s": 0.2945483080000031,
+          "transfer_s": 0.1389271699999881,
+          "gpu_peak_allocated_bytes": 269496320,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 1.8221017969999593,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.257572130000085,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 269496320,
+        "gpu_peak_reserved_bytes": 528482304
+      },
+      {
+        "iteration": 2,
+        "wall_s": 2.1228721059999316,
+        "cpu_peak_rss_bytes": 1455652864,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.2212283290000414,
+          "candidate_s": 1.5996855259998028,
+          "tdistance_s": 0.054525604000218664,
+          "finetune_s": 0.18182205700020404,
+          "gpu_precompute_s": 0.09809874300003685,
+          "transfer_s": 0.12312369300002501,
+          "gpu_peak_allocated_bytes": 269496320,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 1.8390575839999883,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.0630228090000173,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 269496320,
+        "gpu_peak_reserved_bytes": 528482304
+      },
+      {
+        "iteration": 3,
+        "wall_s": 2.398575433000019,
+        "cpu_peak_rss_bytes": 1455652864,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.5283651879999525,
+          "candidate_s": 1.583249123999849,
+          "tdistance_s": 0.05163788999982444,
+          "finetune_s": 0.1763070129999278,
+          "gpu_precompute_s": 0.39377002700007324,
+          "transfer_s": 0.13458952799999224,
+          "gpu_peak_allocated_bytes": 269496320,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 1.8144097519999605,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.3451597450000463,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 269496320,
+        "gpu_peak_reserved_bytes": 528482304
+      }
+    ]
+  },
+  {
+    "workload": "BBBD0",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 0.0,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "cpu-fast",
+    "precision": "float64",
+    "shape": [
+      1336,
+      64
+    ],
+    "algorithm": {
+      "kmax": 131,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 5
+    },
+    "first_call_s": 3.960026760000005,
+    "steady_median_s": 4.106644690000053,
+    "fits_per_minute": 14.610467797738602,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 3.960026760000005,
+        "cpu_peak_rss_bytes": 1392889856,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.035897056000067,
+          "candidate_s": 1.1473860139996077,
+          "tdistance_s": 0.3821953729989218,
+          "finetune_s": 1.3552313249998633
+        },
+        "search_s": 2.8887590540000474,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 3.9254119800000353
+      },
+      {
+        "iteration": 1,
+        "wall_s": 4.106644690000053,
+        "cpu_peak_rss_bytes": 1392902144,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.0720498949999637,
+          "candidate_s": 1.2070478199998433,
+          "tdistance_s": 0.3832061719995181,
+          "finetune_s": 1.4061269850004692
+        },
+        "search_s": 3.000755787999992,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 4.073941647999959
+      },
+      {
+        "iteration": 2,
+        "wall_s": 4.134220056999993,
+        "cpu_peak_rss_bytes": 1393348608,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.0869241550000197,
+          "candidate_s": 1.1875491820002253,
+          "tdistance_s": 0.40021016799994413,
+          "finetune_s": 1.4177403959996582
+        },
+        "search_s": 3.0097252659999185,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 4.097719282999947
+      },
+      {
+        "iteration": 3,
+        "wall_s": 3.9505172750000384,
+        "cpu_peak_rss_bytes": 1392979968,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.9781127279999282,
+          "candidate_s": 1.1891113340003585,
+          "tdistance_s": 0.3864958730006265,
+          "finetune_s": 1.3579759389994024
+        },
+        "search_s": 2.93870222999999,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 3.918249600999957
+      }
+    ]
+  },
+  {
+    "workload": "BBBD0",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 2.433608869978343e-13,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "torch-cuda",
+    "precision": "float64",
+    "shape": [
+      1336,
+      64
+    ],
+    "algorithm": {
+      "kmax": 131,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 5
+    },
+    "first_call_s": 3.36560199500002,
+    "steady_median_s": 3.124899740999922,
+    "fits_per_minute": 19.20061601105989,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 3.36560199500002,
+        "cpu_peak_rss_bytes": 1350483968,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.4544657380000672,
+          "candidate_s": 1.1942354439996734,
+          "tdistance_s": 0.3906876070001317,
+          "finetune_s": 1.289203520000342,
+          "gpu_precompute_s": 0.3476180000000113,
+          "transfer_s": 0.10684144100002868,
+          "gpu_peak_allocated_bytes": 145429504,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 2.878643562000093,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 3.3346716429999788,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 145429504,
+        "gpu_peak_reserved_bytes": 528482304
+      },
+      {
+        "iteration": 1,
+        "wall_s": 3.124899740999922,
+        "cpu_peak_rss_bytes": 1350483968,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.12325687899999593,
+          "candidate_s": 1.1886316739999074,
+          "tdistance_s": 0.39921550600092814,
+          "finetune_s": 1.3773128419995828,
+          "gpu_precompute_s": 0.10001492000003509,
+          "transfer_s": 0.02323592400000507,
+          "gpu_peak_allocated_bytes": 145429504,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 2.9703160929999513,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 3.0963408570000865,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 145429504,
+        "gpu_peak_reserved_bytes": 528482304
+      },
+      {
+        "iteration": 2,
+        "wall_s": 3.449930694000045,
+        "cpu_peak_rss_bytes": 1364770816,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.43867534200001046,
+          "candidate_s": 1.1766686519999894,
+          "tdistance_s": 0.382359313999018,
+          "finetune_s": 1.4142940000002682,
+          "gpu_precompute_s": 0.36142972700008613,
+          "transfer_s": 0.07723617199997079,
+          "gpu_peak_allocated_bytes": 145429504,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 2.9789065429999937,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 3.4189607810000098,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 145429504,
+        "gpu_peak_reserved_bytes": 528482304
+      },
+      {
+        "iteration": 3,
+        "wall_s": 3.1113219159999517,
+        "cpu_peak_rss_bytes": 1379188736,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.1600877319999654,
+          "candidate_s": 1.1976561909997372,
+          "tdistance_s": 0.3908041420012296,
+          "finetune_s": 1.3247314480000796,
+          "gpu_precompute_s": 0.11326959800010172,
+          "transfer_s": 0.04681278199996086,
+          "gpu_peak_allocated_bytes": 145429504,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 2.9174672500000725,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 3.0791184109999676,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 145429504,
+        "gpu_peak_reserved_bytes": 528482304
+      }
+    ]
+  },
+  {
+    "workload": "BBBD0",
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 2.433608869978343e-13,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "triton-cuda",
+    "precision": "float64",
+    "shape": [
+      1336,
+      64
+    ],
+    "algorithm": {
+      "kmax": 131,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 5
+    },
+    "first_call_s": 3.60490280099998,
+    "steady_median_s": 3.3390599240000256,
+    "fits_per_minute": 17.969129445308972,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 3.60490280099998,
+        "cpu_peak_rss_bytes": 1408008192,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.6803722890000472,
+          "candidate_s": 1.1651462770000762,
+          "tdistance_s": 0.3873732889999246,
+          "finetune_s": 1.3378033389994926,
+          "gpu_precompute_s": 0.6458948340000461,
+          "transfer_s": 0.03447219000008772,
+          "gpu_peak_allocated_bytes": 115453952,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 2.8943088059999127,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 3.576634788000092,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 115453952,
+        "gpu_peak_reserved_bytes": 528482304
+      },
+      {
+        "iteration": 1,
+        "wall_s": 3.3390599240000256,
+        "cpu_peak_rss_bytes": 1422295040,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.344858811999984,
+          "candidate_s": 1.1974996060009744,
+          "tdistance_s": 0.3895523469981299,
+          "finetune_s": 1.3711790010008826,
+          "gpu_precompute_s": 0.30212921200006804,
+          "transfer_s": 0.04272365199994965,
+          "gpu_peak_allocated_bytes": 115453952,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 2.9623632279999583,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 3.3088335310000048,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 115453952,
+        "gpu_peak_reserved_bytes": 528482304
+      },
+      {
+        "iteration": 2,
+        "wall_s": 3.2766524620000155,
+        "cpu_peak_rss_bytes": 1436581888,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.25438505099998565,
+          "candidate_s": 1.1912533929987603,
+          "tdistance_s": 0.3962517340002023,
+          "finetune_s": 1.3983454210000446,
+          "gpu_precompute_s": 0.21327253300000848,
+          "transfer_s": 0.04110738400004266,
+          "gpu_peak_allocated_bytes": 115453952,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 2.990054588000021,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 3.246070777,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 115453952,
+        "gpu_peak_reserved_bytes": 528482304
+      },
+      {
+        "iteration": 3,
+        "wall_s": 3.3419213759999593,
+        "cpu_peak_rss_bytes": 1450868736,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.3157072970000172,
+          "candidate_s": 1.2081390260002536,
+          "tdistance_s": 0.39377783999941585,
+          "finetune_s": 1.3879720610001414,
+          "gpu_precompute_s": 0.27046651900002416,
+          "transfer_s": 0.045235328000103436,
+          "gpu_peak_allocated_bytes": 115453952,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 2.994493981000005,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 3.31237824599998,
+        "batch_size": 1,
+        "batch_index": 0,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 115453952,
+        "gpu_peak_reserved_bytes": 528482304
+      }
+    ]
+  }
+]

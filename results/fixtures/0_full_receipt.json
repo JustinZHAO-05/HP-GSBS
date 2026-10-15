@@ -1,0 +1,29 @@
+{
+  "id": "0_full",
+  "shape": [
+    1336,
+    64
+  ],
+  "backend": "reference",
+  "precision": "float64",
+  "input_shape": [
+    1336,
+    64
+  ],
+  "elapsed_s": 4252.562945800004,
+  "status": "success",
+  "algorithm": {
+    "kmax": 131,
+    "statewise_detection": true,
+    "finetune": 1,
+    "finetune_order": true,
+    "blocksize": 50,
+    "dmin": 5
+  },
+  "upstream": {
+    "version": "0.0.6",
+    "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+  },
+  "compatibility": "official-unmodified",
+  "development_crop": false
+}

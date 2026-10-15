@@ -1,0 +1,46 @@
+[
+  {
+    "id": "0",
+    "shape": [
+      1336,
+      64
+    ],
+    "elapsed_s": 8.577494700002717,
+    "bounds_equal": true,
+    "max_t_error": 2.433608869978343e-13,
+    "caveat": "Historical cache comparison; no historical per-round candidate trace"
+  },
+  {
+    "id": "1",
+    "shape": [
+      1857,
+      32
+    ],
+    "elapsed_s": 7.024041100004979,
+    "bounds_equal": true,
+    "max_t_error": 3.019806626980426e-13,
+    "caveat": "Historical cache comparison; no historical per-round candidate trace"
+  },
+  {
+    "id": "2",
+    "shape": [
+      1754,
+      64
+    ],
+    "elapsed_s": 10.806365500000538,
+    "bounds_equal": true,
+    "max_t_error": 7.460698725481052e-13,
+    "caveat": "Historical cache comparison; no historical per-round candidate trace"
+  },
+  {
+    "id": "3",
+    "shape": [
+      1374,
+      64
+    ],
+    "elapsed_s": 6.790628099995956,
+    "bounds_equal": true,
+    "max_t_error": 1.3500311979441904e-13,
+    "caveat": "Historical cache comparison; no historical per-round candidate trace"
+  }
+]

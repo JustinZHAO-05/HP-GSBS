@@ -1,0 +1,162 @@
+[
+  {
+    "T": 450,
+    "backend": "torch-cuda",
+    "iteration": 0,
+    "precompute_s": 0.8298119990000146,
+    "gpu_precompute_s": 0.8110561359999906,
+    "transfer_s": 0.01874870999995437,
+    "gpu_peak_allocated_bytes": 25200640,
+    "gpu_peak_reserved_bytes": 46137344
+  },
+  {
+    "T": 450,
+    "backend": "torch-cuda",
+    "iteration": 1,
+    "precompute_s": 0.02910369599999285,
+    "gpu_precompute_s": 0.01383379399999285,
+    "transfer_s": 0.015264311000009911,
+    "gpu_peak_allocated_bytes": 25200640,
+    "gpu_peak_reserved_bytes": 46137344
+  },
+  {
+    "T": 450,
+    "backend": "torch-cuda",
+    "iteration": 2,
+    "precompute_s": 0.029834458999971503,
+    "gpu_precompute_s": 0.013413535999973192,
+    "transfer_s": 0.016415680999955384,
+    "gpu_peak_allocated_bytes": 25200640,
+    "gpu_peak_reserved_bytes": 46137344
+  },
+  {
+    "T": 450,
+    "backend": "torch-cuda",
+    "iteration": 3,
+    "precompute_s": 0.02261281300002338,
+    "gpu_precompute_s": 0.010860924999974486,
+    "transfer_s": 0.011745309999980691,
+    "gpu_peak_allocated_bytes": 25200640,
+    "gpu_peak_reserved_bytes": 46137344
+  },
+  {
+    "T": 450,
+    "backend": "triton-cuda",
+    "iteration": 0,
+    "precompute_s": 1.1445013730000255,
+    "gpu_precompute_s": 1.1409205770000312,
+    "transfer_s": 0.0035767470000109824,
+    "gpu_peak_allocated_bytes": 25200640,
+    "gpu_peak_reserved_bytes": 46137344
+  },
+  {
+    "T": 450,
+    "backend": "triton-cuda",
+    "iteration": 1,
+    "precompute_s": 0.01099510200003806,
+    "gpu_precompute_s": 0.007137102000001505,
+    "transfer_s": 0.003853113999980451,
+    "gpu_peak_allocated_bytes": 25200640,
+    "gpu_peak_reserved_bytes": 46137344
+  },
+  {
+    "T": 450,
+    "backend": "triton-cuda",
+    "iteration": 2,
+    "precompute_s": 0.009671060000016496,
+    "gpu_precompute_s": 0.007407018999970205,
+    "transfer_s": 0.0022573869999860108,
+    "gpu_peak_allocated_bytes": 25200640,
+    "gpu_peak_reserved_bytes": 46137344
+  },
+  {
+    "T": 450,
+    "backend": "triton-cuda",
+    "iteration": 3,
+    "precompute_s": 0.008030953000002228,
+    "gpu_precompute_s": 0.005775062999987313,
+    "transfer_s": 0.0022526540000171735,
+    "gpu_peak_allocated_bytes": 25200640,
+    "gpu_peak_reserved_bytes": 46137344
+  },
+  {
+    "T": 1500,
+    "backend": "torch-cuda",
+    "iteration": 0,
+    "precompute_s": 0.17639649699998472,
+    "gpu_precompute_s": 0.04394246399999702,
+    "transfer_s": 0.1324464890000172,
+    "gpu_peak_allocated_bytes": 185944064,
+    "gpu_peak_reserved_bytes": 203423744
+  },
+  {
+    "T": 1500,
+    "backend": "torch-cuda",
+    "iteration": 1,
+    "precompute_s": 0.1660365299999853,
+    "gpu_precompute_s": 0.019936385999983486,
+    "transfer_s": 0.14609221000000616,
+    "gpu_peak_allocated_bytes": 185944064,
+    "gpu_peak_reserved_bytes": 203423744
+  },
+  {
+    "T": 1500,
+    "backend": "torch-cuda",
+    "iteration": 2,
+    "precompute_s": 0.03021184100003893,
+    "gpu_precompute_s": 0.01975234100001444,
+    "transfer_s": 0.010450308000031328,
+    "gpu_peak_allocated_bytes": 185944064,
+    "gpu_peak_reserved_bytes": 203423744
+  },
+  {
+    "T": 1500,
+    "backend": "torch-cuda",
+    "iteration": 3,
+    "precompute_s": 0.07455287499999486,
+    "gpu_precompute_s": 0.019617857000014283,
+    "transfer_s": 0.054927625999994234,
+    "gpu_peak_allocated_bytes": 185944064,
+    "gpu_peak_reserved_bytes": 203423744
+  },
+  {
+    "T": 1500,
+    "backend": "triton-cuda",
+    "iteration": 0,
+    "precompute_s": 0.3731660689999785,
+    "gpu_precompute_s": 0.3619280089999961,
+    "transfer_s": 0.011231221999992158,
+    "gpu_peak_allocated_bytes": 185944064,
+    "gpu_peak_reserved_bytes": 203423744
+  },
+  {
+    "T": 1500,
+    "backend": "triton-cuda",
+    "iteration": 1,
+    "precompute_s": 0.11956375099998695,
+    "gpu_precompute_s": 0.05690533300003153,
+    "transfer_s": 0.06264963700004955,
+    "gpu_peak_allocated_bytes": 185944064,
+    "gpu_peak_reserved_bytes": 203423744
+  },
+  {
+    "T": 1500,
+    "backend": "triton-cuda",
+    "iteration": 2,
+    "precompute_s": 0.05937469200000578,
+    "gpu_precompute_s": 0.04729902999997648,
+    "transfer_s": 0.01206657699998459,
+    "gpu_peak_allocated_bytes": 185944064,
+    "gpu_peak_reserved_bytes": 203423744
+  },
+  {
+    "T": 1500,
+    "backend": "triton-cuda",
+    "iteration": 3,
+    "precompute_s": 0.11575114900000472,
+    "gpu_precompute_s": 0.048307981999982985,
+    "transfer_s": 0.06743345299997827,
+    "gpu_peak_allocated_bytes": 185944064,
+    "gpu_peak_reserved_bytes": 203423744
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "mode": "fp64",
+    "n": 2048,
+    "median_s": 0.09299018000001524,
+    "measured_tflops": 0.18474928410717328,
+    "tf32": false
+  },
+  {
+    "mode": "fp32",
+    "n": 2048,
+    "median_s": 0.0022602329999870108,
+    "measured_tflops": 7.600928392824426,
+    "tf32": false
+  },
+  {
+    "mode": "tf32_experimental",
+    "n": 2048,
+    "median_s": 0.0016629809999813006,
+    "measured_tflops": 10.330766968590249,
+    "tf32": true
+  }
+]
