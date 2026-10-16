@@ -45,6 +45,28 @@ See [CHANGELOG](CHANGELOG.md), [release notes](docs/release_notes_v0.2.0.md) and
 
 ## Measured performance
 
+### v0.2.0 versus official GSBS
+
+![Official GSBS and published v0.2.0 CPU, PyTorch and Triton complete-fit times and speedups](docs/assets/performance-official-v0.2.0.png)
+
+[SVG](docs/assets/performance-official-v0.2.0.svg) · [Unrounded data](docs/assets/performance-official-v0.2.0.json) · [New release-wheel receipts](results/releases/v0.2.0/official_comparison.json) · [Protocol and reproduction](docs/v020_official_comparison.md)
+
+**Latest published v0.2.0 wheel (`b86b409`) versus unmodified official `statesegmentation.GSBS` 0.0.6.** Ryzen 7 7840H / RTX 4050 Laptop 6 GB / WSL2; FP64, TF32 off, one BLAS/Numba thread. The v0.2.0 times were measured after publication. Official times reuse the preserved baseline on the same hardware/software environment and scientific parameters: **this is a cross-session comparison, not a newly paired run**. Medium/Large/XL/EEG input hashes match; Small reconstructs the original seed/shape because its historical receipt has no input hash.
+
+<!-- OFFICIAL_V020_TABLE_START -->
+| Workload · T × P · Kmax | Official GSBS (s) | v0.2 CPU (s; speedup) | v0.2 PyTorch (s; speedup) | v0.2 Triton (s; speedup) |
+|---|---:|---:|---:|---:|
+| Small · 450×16 · 20 | 48.035 | 0.103; **466.7×** | 0.075; **636.4×** | 0.057; **846.8×** |
+| Medium · 900×32 · 30 | 349.946 | 0.317; **1,104.6×** | 0.098; **3,555.7×** | 0.098; **3,576.8×** |
+| Large · 1500×64 · 40 | 2,213.493 | 0.868; **2,550.3×** | 0.172; **12,902.8×** | 0.213; **10,376.8×** |
+| XL · 2100×64 · 50 | 5,011.254 | 1.952; **2,567.3×** | 0.363; **13,816.5×** | 0.456; **10,988.0×** |
+| BBBD0 · 1336×64 · 131 | 6,115.379 | 1.610; **3,798.1×** | 0.853; **7,165.3×** | 0.838; **7,298.6×** |
+<!-- OFFICIAL_V020_TABLE_END -->
+
+Synthetic cells are medians of **3 timed fits after 1 warmup**; the figure shows observed min–max. **BBBD0 is one complete EEG recording and one timed fit per backend**, with no workload-specific warmup or variability estimate. Ratios use unrounded official/backend times. All 51 new warmup/timed fits passed full-output comparison with official results (fresh Small reference; saved official results for the other four workloads). These timing fits do not collect candidate/move traces. Cross-session clock/load variation and a single laptop limit generalization.
+
+### v0.1.0 versus v0.2 implementation
+
 ![v0.1 to v0.2 median fit time, observed repeat ranges and workload-specific speedup for CPU, PyTorch and Triton](docs/assets/performance-v0.2.0.png)
 
 [SVG](docs/assets/performance-v0.2.0.svg) · [Unrounded derived data](docs/assets/performance-v0.2.0.json) · [Plot script](scripts/plot_v02_performance.py) · [Original receipts](results/v02/merge_9baff92/revisions/trials.json)

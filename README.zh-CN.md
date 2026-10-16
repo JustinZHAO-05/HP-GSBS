@@ -45,6 +45,28 @@ GPU 路线是 **GPU 预计算 + CPU 顺序搜索的混合架构**，并非完整
 
 ## 性能实测
 
+### 最新 v0.2.0 与 official GSBS 对比
+
+![official GSBS 与正式 v0.2.0 的 CPU、PyTorch、Triton 完整拟合耗时和加速比](docs/assets/performance-official-v0.2.0.png)
+
+[SVG](docs/assets/performance-official-v0.2.0.svg) · [未舍入数据](docs/assets/performance-official-v0.2.0.json) · [正式 wheel 重测回执](results/releases/v0.2.0/official_comparison.json) · [测量口径与复现](docs/v020_official_comparison.md)
+
+**最新正式 v0.2.0 wheel（`b86b409`）对比未修改的官方 `statesegmentation.GSBS` 0.0.6。** Ryzen 7 7840H / RTX 4050 Laptop 6 GB / WSL2；FP64、TF32 off、BLAS/Numba 单线程。v0.2.0 为发布后重新实测；official 耗时复用同硬件、软件环境及科学参数下保留的官方基线，**属于跨会话比较，不是本轮重新配对跑完官方基线**。Medium/Large/XL/EEG 输入 hash 已匹配；Small 按原 seed/shape 重建，历史回执缺少输入 hash。
+
+<!-- OFFICIAL_V020_TABLE_START -->
+| Workload · T × P · Kmax | Official GSBS (s) | v0.2 CPU (s; speedup) | v0.2 PyTorch (s; speedup) | v0.2 Triton (s; speedup) |
+|---|---:|---:|---:|---:|
+| Small · 450×16 · 20 | 48.035 | 0.103; **466.7×** | 0.075; **636.4×** | 0.057; **846.8×** |
+| Medium · 900×32 · 30 | 349.946 | 0.317; **1,104.6×** | 0.098; **3,555.7×** | 0.098; **3,576.8×** |
+| Large · 1500×64 · 40 | 2,213.493 | 0.868; **2,550.3×** | 0.172; **12,902.8×** | 0.213; **10,376.8×** |
+| XL · 2100×64 · 50 | 5,011.254 | 1.952; **2,567.3×** | 0.363; **13,816.5×** | 0.456; **10,988.0×** |
+| BBBD0 · 1336×64 · 131 | 6,115.379 | 1.610; **3,798.1×** | 0.853; **7,165.3×** | 0.838; **7,298.6×** |
+<!-- OFFICIAL_V020_TABLE_END -->
+
+合成数据为 **1 次预热后 3 次计时的中位数**，图中误差线是实际 min–max。**BBBD0 为同一条完整 EEG，每个后端仅计时一次**，无该负载的独立预热或变异估计。倍率由未舍入的官方耗时除以后端耗时得到。新增 51 次预热／计时拟合均通过官方完整输出对照（Small 新跑官方验证，其余四类使用保存的官方结果）；计时拟合不采集候选／逐移动 trace。跨会话频率及负载波动、单机测量均限制外推。
+
+### v0.1.0 与 v0.2 实现的版本间对比
+
 ![v0.1 到 v0.2 的 CPU、PyTorch、Triton 完整拟合耗时、实际重复范围与各负载加速比](docs/assets/performance-v0.2.0.png)
 
 [SVG](docs/assets/performance-v0.2.0.svg) · [未舍入汇总](docs/assets/performance-v0.2.0.json) · [绘图脚本](scripts/plot_v02_performance.py) · [原始 receipts](results/v02/merge_9baff92/revisions/trials.json)

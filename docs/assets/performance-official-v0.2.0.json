@@ -1,0 +1,309 @@
+{
+  "comparison": "historical official / newly measured v0.2.0; cross-session, not paired",
+  "release_commit": "b86b409169aa173d4a361d8cbcc633add1bfacf6",
+  "wheel_sha256": "43f1819b7d8c31adea736345210550b0a5aae4a247e77e363c6650b1b5db749b",
+  "official_receipt_sha256": "3937e88f469783b6eee49b2bf9f40f9d045a3c4758b3942718e95188291f189b",
+  "release_receipt_sha256": "c1ea712ac0914cbb95a46bf9a3a2d8739dba13f2408e939a87cc6906587d54ab",
+  "cells": [
+    {
+      "workload": "Small",
+      "backend": "reference",
+      "shape": [
+        450,
+        16
+      ],
+      "kmax": 20,
+      "seconds": 48.03541359400003,
+      "min_s": 46.622490466000045,
+      "max_s": 48.307682004000014,
+      "timed_fits": 3,
+      "speedup": 1.0,
+      "source": "historical official baseline"
+    },
+    {
+      "workload": "Small",
+      "backend": "cpu-fast",
+      "shape": [
+        450,
+        16
+      ],
+      "kmax": 20,
+      "seconds": 0.10291691300000139,
+      "min_s": 0.10105805400000634,
+      "max_s": 0.11969727899999327,
+      "timed_fits": 3,
+      "speedup": 466.7397436804132,
+      "source": "published v0.2.0 wheel remeasurement"
+    },
+    {
+      "workload": "Small",
+      "backend": "torch-cuda",
+      "shape": [
+        450,
+        16
+      ],
+      "kmax": 20,
+      "seconds": 0.07548365499999932,
+      "min_s": 0.06067291000000807,
+      "max_s": 0.09483776999999805,
+      "timed_fits": 3,
+      "speedup": 636.3684110686011,
+      "source": "published v0.2.0 wheel remeasurement"
+    },
+    {
+      "workload": "Small",
+      "backend": "triton-cuda",
+      "shape": [
+        450,
+        16
+      ],
+      "kmax": 20,
+      "seconds": 0.05672792699999718,
+      "min_s": 0.05298705699999573,
+      "max_s": 0.05680034600000283,
+      "timed_fits": 3,
+      "speedup": 846.7683579201197,
+      "source": "published v0.2.0 wheel remeasurement"
+    },
+    {
+      "workload": "Medium",
+      "backend": "reference",
+      "shape": [
+        900,
+        32
+      ],
+      "kmax": 30,
+      "seconds": 349.94625700800003,
+      "min_s": 346.57536119300005,
+      "max_s": 363.74508401599996,
+      "timed_fits": 3,
+      "speedup": 1.0,
+      "source": "historical official baseline"
+    },
+    {
+      "workload": "Medium",
+      "backend": "cpu-fast",
+      "shape": [
+        900,
+        32
+      ],
+      "kmax": 30,
+      "seconds": 0.3167980989999961,
+      "min_s": 0.2925706529999985,
+      "max_s": 0.34011868999999706,
+      "timed_fits": 3,
+      "speedup": 1104.6349650223258,
+      "source": "published v0.2.0 wheel remeasurement"
+    },
+    {
+      "workload": "Medium",
+      "backend": "torch-cuda",
+      "shape": [
+        900,
+        32
+      ],
+      "kmax": 30,
+      "seconds": 0.09841863200000489,
+      "min_s": 0.08935262299999636,
+      "max_s": 0.16214431299999887,
+      "timed_fits": 3,
+      "speedup": 3555.691131817222,
+      "source": "published v0.2.0 wheel remeasurement"
+    },
+    {
+      "workload": "Medium",
+      "backend": "triton-cuda",
+      "shape": [
+        900,
+        32
+      ],
+      "kmax": 30,
+      "seconds": 0.09783707799999775,
+      "min_s": 0.0975207639999951,
+      "max_s": 0.1311707119999994,
+      "timed_fits": 3,
+      "speedup": 3576.8265381761307,
+      "source": "published v0.2.0 wheel remeasurement"
+    },
+    {
+      "workload": "Large",
+      "backend": "reference",
+      "shape": [
+        1500,
+        64
+      ],
+      "kmax": 40,
+      "seconds": 2213.493398001,
+      "min_s": 2111.987987836,
+      "max_s": 2233.266202226,
+      "timed_fits": 3,
+      "speedup": 1.0,
+      "source": "historical official baseline"
+    },
+    {
+      "workload": "Large",
+      "backend": "cpu-fast",
+      "shape": [
+        1500,
+        64
+      ],
+      "kmax": 40,
+      "seconds": 0.8679228670000043,
+      "min_s": 0.8558044930000079,
+      "max_s": 0.9204940319999935,
+      "timed_fits": 3,
+      "speedup": 2550.334231487634,
+      "source": "published v0.2.0 wheel remeasurement"
+    },
+    {
+      "workload": "Large",
+      "backend": "torch-cuda",
+      "shape": [
+        1500,
+        64
+      ],
+      "kmax": 40,
+      "seconds": 0.1715514899999988,
+      "min_s": 0.1437667839999932,
+      "max_s": 0.18078092199999674,
+      "timed_fits": 3,
+      "speedup": 12902.793196380955,
+      "source": "published v0.2.0 wheel remeasurement"
+    },
+    {
+      "workload": "Large",
+      "backend": "triton-cuda",
+      "shape": [
+        1500,
+        64
+      ],
+      "kmax": 40,
+      "seconds": 0.21331203700000856,
+      "min_s": 0.20032450299999027,
+      "max_s": 0.3038016790000029,
+      "timed_fits": 3,
+      "speedup": 10376.786182023621,
+      "source": "published v0.2.0 wheel remeasurement"
+    },
+    {
+      "workload": "XL",
+      "backend": "reference",
+      "shape": [
+        2100,
+        64
+      ],
+      "kmax": 50,
+      "seconds": 5011.254189807001,
+      "min_s": 4924.70927537,
+      "max_s": 5848.187411749997,
+      "timed_fits": 3,
+      "speedup": 1.0,
+      "source": "historical official baseline"
+    },
+    {
+      "workload": "XL",
+      "backend": "cpu-fast",
+      "shape": [
+        2100,
+        64
+      ],
+      "kmax": 50,
+      "seconds": 1.9519382649999955,
+      "min_s": 1.8097872950000067,
+      "max_s": 1.9912124549999959,
+      "timed_fits": 3,
+      "speedup": 2567.3220714319123,
+      "source": "published v0.2.0 wheel remeasurement"
+    },
+    {
+      "workload": "XL",
+      "backend": "torch-cuda",
+      "shape": [
+        2100,
+        64
+      ],
+      "kmax": 50,
+      "seconds": 0.3627016519999984,
+      "min_s": 0.3218157090000062,
+      "max_s": 0.5145574299999964,
+      "timed_fits": 3,
+      "speedup": 13816.463647667708,
+      "source": "published v0.2.0 wheel remeasurement"
+    },
+    {
+      "workload": "XL",
+      "backend": "triton-cuda",
+      "shape": [
+        2100,
+        64
+      ],
+      "kmax": 50,
+      "seconds": 0.45606624500000237,
+      "min_s": 0.3137830419999972,
+      "max_s": 0.5616465640000001,
+      "timed_fits": 3,
+      "speedup": 10987.996249989901,
+      "source": "published v0.2.0 wheel remeasurement"
+    },
+    {
+      "workload": "BBBD0",
+      "backend": "reference",
+      "shape": [
+        1336,
+        64
+      ],
+      "kmax": 131,
+      "seconds": 6115.378976057,
+      "min_s": 6115.378976057,
+      "max_s": 6115.378976057,
+      "timed_fits": 1,
+      "speedup": 1.0,
+      "source": "historical official baseline"
+    },
+    {
+      "workload": "BBBD0",
+      "backend": "cpu-fast",
+      "shape": [
+        1336,
+        64
+      ],
+      "kmax": 131,
+      "seconds": 1.610130175000009,
+      "min_s": 1.610130175000009,
+      "max_s": 1.610130175000009,
+      "timed_fits": 1,
+      "speedup": 3798.06494593331,
+      "source": "published v0.2.0 wheel remeasurement"
+    },
+    {
+      "workload": "BBBD0",
+      "backend": "torch-cuda",
+      "shape": [
+        1336,
+        64
+      ],
+      "kmax": 131,
+      "seconds": 0.8534690930000011,
+      "min_s": 0.8534690930000011,
+      "max_s": 0.8534690930000011,
+      "timed_fits": 1,
+      "speedup": 7165.31978277155,
+      "source": "published v0.2.0 wheel remeasurement"
+    },
+    {
+      "workload": "BBBD0",
+      "backend": "triton-cuda",
+      "shape": [
+        1336,
+        64
+      ],
+      "kmax": 131,
+      "seconds": 0.8378832619999912,
+      "min_s": 0.8378832619999912,
+      "max_s": 0.8378832619999912,
+      "timed_fits": 1,
+      "speedup": 7298.605012659943,
+      "source": "published v0.2.0 wheel remeasurement"
+    }
+  ]
+}

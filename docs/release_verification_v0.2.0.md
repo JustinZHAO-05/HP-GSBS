@@ -46,3 +46,7 @@ The [machine-readable receipt](../results/releases/v0.2.0/post_release.json), re
 [Zenodo v0.2.0](https://doi.org/10.5281/zenodo.23422148) was created automatically by the existing integration. Its GitHub related identifier points to v0.2.0. The downloaded archive matches the recorded MD5; pyproject, CFF, package version, scheduler and README bytes match the tag. The DOI is added only to subsequent main metadata and release notes; the original tag/package CFF remains valid without that later DOI.
 
 No PyPI upload, private EEG publication or research-data/parameter change occurred. Raw-prefix/Feature-Moments TD/selective resident candidates/FP32 remain experimental; incremental TD and GPU no-Q/fixed-partition moments remain research-only. Full long-N double/finetuning trajectories, broader incremental validation, GPU-resident control and seven-network source-space validation remain research work. Hardware-specific performance ratios are historical measurements, not universal guarantees or new release-commit benchmarks.
+
+## README official-baseline follow-up
+
+After the initial release audit, the published wheel was [remeasured against retained official baseline timings](v020_official_comparison.md) to restore the primary homepage comparison. All 51 new warmup/timed fits passed official-output checks. This new measurement has its own receipt and cross-session protocol; the historical 9baff92 version-comparison matrix remains unchanged. No library, tag or wheel/sdist was changed.

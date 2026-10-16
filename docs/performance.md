@@ -1,6 +1,14 @@
 # v0.2 performance and measurement contracts
 
-The primary comparison is the actual three-source interleaved experiment in [trials.json](../results/v02/merge_9baff92/revisions/trials.json). The measured current implementation is **9baff923**, compared with actual v0.1.0 and pre-review v0.2 source. The scheduler snapshot 7da2611 and stable version metadata were not rebenchmarked.
+The homepage first shows [published v0.2.0 versus official GSBS](v020_official_comparison.md): new release-wheel timings compared with the retained official baseline, with cross-session and single-EEG-measurement limitations explicit. The release wheel was remeasured after publication; all 51 warmup/timed fits passed official-output comparisons. This does not replace or alter the historical interleaved experiment below.
+
+![Published v0.2.0 versus official GSBS](assets/performance-official-v0.2.0.png)
+
+[Official comparison table](v020_official_table.md) · [SVG](assets/performance-official-v0.2.0.svg) · [new receipts](../results/releases/v0.2.0/official_comparison.json).
+
+## Retained v0.1.0 versus v0.2 comparison
+
+The retained version-to-version comparison is the actual three-source interleaved experiment in [trials.json](../results/v02/merge_9baff92/revisions/trials.json). Its measured implementation is **9baff923**, compared with actual v0.1.0 and pre-review v0.2 source. That historical matrix did not rebenchmark scheduler snapshot 7da2611 or stable version metadata.
 
 Hardware: Ryzen 7 7840H, RTX 4050 Laptop 6 GB, WSL2 Ubuntu 22.04; FP64, TF32 off, single BLAS/Numba threads, CUDA synchronization. Each workload/backend/source has two warmups and three timed fits. Fit wall excludes output validation/serialization. Same input and scientific configuration within each workload; sources rotate order. All 225 fits passed output checks. Three repeats on one laptop are not cross-machine evidence or confidence intervals.
 
@@ -19,6 +27,6 @@ Reproduce the figure without fitting: `python -m pip install matplotlib`, then `
 
 ## Historical evidence
 
-[v0.1 official-GSBS baseline](performance_v0.1.md) and its [original figure](assets/performance-comparison.png) retain their original protocol. [Early v0.2 report](v02_results_CN.md) is explicitly historical (5478fd6/9309874), including slower/failed cases. The primary v0.2 page uses the corrected 9baff92 receipts rather than updating historical values in place.
+[v0.1 official-GSBS baseline](performance_v0.1.md) and its [original figure](assets/performance-comparison.png) retain their original protocol. [Early v0.2 report](v02_results_CN.md) is explicitly historical (5478fd6/9309874), including slower/failed cases. The retained version-to-version plot uses the corrected 9baff92 receipts rather than updating historical values in place.
 
 Historical verification uses [fixed source commits](v02_migration.md#evidence-snapshots); old manifests are never retargeted to later docs/version commits. The [release verification](release_verification_v0.2.0.md) records later identities and package checks separately.
