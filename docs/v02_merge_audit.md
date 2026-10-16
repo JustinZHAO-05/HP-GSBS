@@ -26,6 +26,7 @@ reference 为未修改 statesegmentation 0.0.6。所有处置以最终证据 man
 |C18|API/metadata/docs；release；blocker|确认：experimental FP64 仍有笼统 validated 标签|maturity 明确；incremental API 由性能门槛决定；没有通用 auto|见最终处置与证据|
 |C19|candidate_chunks 编译原型；correctness；blocker（已弃用）|确认：Windows fatal 0xc0000374；具体 Numba 内存所有权根因未证实|不发布 compiled generator；改 resumable fixed-buffer fill，17 个定向测试及 fresh-process 回归通过|research_failures.json；最终 source 重验|
 |C20|CPU/prefix/window/resident runner；correctness；blocker|确认：n=2 single / all scored below -1 时，只有一个真实未评分 slot，虚拟 sentinel 错占 runner；winner 不变|按真实未评分 slot 数归约；GPU 记录 scored maximum，排除重复虚拟 sentinel；n=1 矩阵 runner=-Inf|新增 56 CPU + 8 CUDA 小域回归；定向 CPU 153 / CUDA 26 passed；最终源码重验|
+|C21|公开 scanner/sanitizer；release；high|确认：drive 正则误认 https 的 s:/；旧占位符破坏 XML 文本|增加词边界；改用 XML 安全占位符；URI/路径/真实 JUnit 解析检查|交付工具提交；delivery_tool_changes.json；关闭|
 
 计算预算均为执行策略；不足时明确失败，绝不换 K、删候选或跳过 double。
 同步 fit 对输入作只读快照，cache 不再依赖调用者在拟合期间不修改原数组。
@@ -58,9 +59,8 @@ reference 为未修改 statesegmentation 0.0.6。所有处置以最终证据 man
 |C18|13cdac6/deea9f8 + docs|version/maturity test；v02_api_scope|关闭：默认stable；lowmemory/resident/FP32 opt-in；incremental/GPU原型research-only|
 |C19|deea9f8|research_failures；fresh-process regression|关闭：未发布崩溃的compiled-generator原型，固定buffer实现经过Windows/Linux重验|
 |C20|9baff92|153 CPU/26 CUDA定向；349 WSL全suite|关闭：真实未评分slot计数；n=1 runner=-Inf，单unscored域不复制sentinel|
+|C21|b3536cf|URI/Windows 路径定向检查；两平台实际 JUnit 解析；security_scan|关闭：公开复制工具修正，原件重新生成；数值及测量快照不改|
 
 完整科学/性能结论、CI与最终交付HEAD见 v02_merge_readiness.md 和 PR #1 描述。未执行 merge 或 release。
-
-|C21|公开 scanner/sanitizer；release；high|确认：无边界的 drive 正则把 https 的 s:/ 误当盘符；非数值计算问题|加入词边界限制，URI/Windows 路径定向检查；从已归档原件重新脱敏；公开扫描零发现|本交付证据工具 commit；delivery_tool_changes.json；关闭|
 
 C21 仅更改 benchmarks/v02_evidence.py 的公开复制处理和 scripts/compact_public_evidence.py；库、tests 和实际计时实现仍与9baff92完全一致。旧测量 hash 与最终工具 hash 分别保留，不冒充重跑。
