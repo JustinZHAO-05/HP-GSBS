@@ -34,12 +34,13 @@ def conditioning_reason(x, dtype="float64"):
 
 
 class IntervalScores:
-    def __init__(self, x, strategy="full", tile_size=128, dtype="float64"):
+    def __init__(self, x, strategy="full", tile_size=128, dtype="float64", z=None):
         self.x = np.asarray(x, dtype=dtype)
-        self.z = zscore(self.x)
+        self.z = zscore(self.x) if z is None else np.asarray(z,dtype=dtype)
+        if self.z.shape != self.x.shape: raise ValueError("Z must have the same shape as X")
         self.T, self.P = x.shape
         centered = self.x - self.x.mean(1, keepdims=True)
-        self.A = np.vstack((np.zeros((1, self.P)), centered.cumsum(0))).astype(dtype)
+        self.A = np.vstack((np.zeros((1, self.P)), (self.x if strategy=="streaming" else centered).cumsum(0))).astype(dtype)
         self.B = np.vstack((np.zeros((1, self.P)), self.z.cumsum(0))).astype(dtype)
         self.Q = None
         self.strategy = strategy
@@ -55,6 +56,7 @@ class IntervalScores:
 
     def _direct(self, a, b):
         da, db = self.A[b] - self.A[a], self.B[b] - self.B[a]
+        if self.strategy == "streaming": da = da-da.mean(axis=-1,keepdims=True)
         norm = np.linalg.norm(da, axis=-1)
         with np.errstate(divide="ignore", invalid="ignore"):
             out = np.sum(da * db, axis=-1) / (self.T * np.sqrt(self.P - 1) * norm)

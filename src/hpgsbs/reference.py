@@ -20,14 +20,25 @@ def fit_reference(x, config, y=None):
     trace, state = [], {}
     source, line0 = inspect.getsourcelines(GSBS.fit)
     lines = {line0+i: s.strip() for i,s in enumerate(source)}
+    fine_source, fine0 = inspect.getsourcelines(GSBS._finetune)
+    fine_lines = {fine0+i:s.strip() for i,s in enumerate(fine_source)}
 
     def observer(frame, event, arg):
+        if frame.f_code is GSBS._finetune.__code__:
+            if event == "line" and fine_lines.get(frame.f_lineno) == "finebounds[argmax] = state_id":
+                v = frame.f_locals
+                opts = v["boundopt"]
+                state.setdefault("finetune_moves",[]).append(dict(deleted=int(v["ind"]),
+                    window=[int(opts[0]),int(opts[-1])+1], winner=int(v["argmax"]),
+                    birth=int(v["state_id"]),after_delete=v["finebounds"].tolist()))
+            return observer
         if frame.f_code is not GSBS.fit.__code__:
             return None
         if event == "line":
             line, v = lines.get(frame.f_lineno, ""), frame.f_locals
             if line == "states = self._states(self._deltas)":
                 state["before"] = model._bounds.tolist()
+                state["finetune_moves"] = []
             if line.startswith("if self.finetune !="):
                 state["pre_finetune"] = model._bounds.tolist()
             if line == "k = k + increment":
@@ -37,7 +48,8 @@ def fit_reference(x, config, y=None):
                     single=int(v["argmax"]), double=list(map(int,double)) if double else None,
                     single_score=float(v["wdists"].max()), double_score=float(ws.max()) if double else None,
                     single_t=float(v["tdist"]), double_t=float(v["tdist_s"]) if double else None,
-                    increment=int(v["increment"]), pre_finetune=state["pre_finetune"], after=model._bounds.tolist()))
+                    increment=int(v["increment"]), pre_finetune=state["pre_finetune"],
+                    finetune_moves=state["finetune_moves"],after=model._bounds.tolist()))
         return observer
 
     start = perf_counter()

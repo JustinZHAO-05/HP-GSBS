@@ -18,7 +18,9 @@ def compare(reference, candidate, atol=1e-8, rtol=1e-8):
     report["first_numerical_divergence"]=None
     if report["trace_compared"]:
         for a,b in zip(reference.trace,candidate.trace):
-            for key in ("k","before","single","double","increment","pre_finetune","after"):
+            keys = ["k","before","single","double","increment","pre_finetune","after"]
+            if "finetune_moves" in a and "finetune_moves" in b: keys.append("finetune_moves")
+            for key in keys:
                 if a[key]!=b[key]:
                     report["first_divergence"]={"k":a["k"],"field":key,"reference":a[key],"candidate":b[key]}
                     break

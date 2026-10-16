@@ -27,6 +27,8 @@ def prefix2_gpu(torch,x):
 
 def precompute(xs, configs, ys=None, backend="torch-cuda"):
     torch=require_cuda()
+    if any(c.td_backend!="prefix2d" for c in configs):
+        raise ValueError("CUDA precompute currently supports td_backend='prefix2d' only")
     dtype=torch.float64 if configs[0].dtype=="float64" else torch.float32
     if any(c.q_strategy!="full" for c in configs):
         raise ValueError("CUDA currently requires q_strategy='full'; CPU supports lazy interval scores")

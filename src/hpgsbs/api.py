@@ -17,6 +17,9 @@ def fit(x, config, backend="cpu-fast", *, y=None):
         reason=conditioning_reason(x,config.dtype)
         if y is not None: reason=reason or conditioning_reason(y,config.dtype)
         if reason and backend!="reference":
+            if config.td_backend == "feature-moments":
+                raise FloatingPointError("Low-memory mode cannot certify ill-conditioned rows: "+reason+
+                                         "; dense reference fallback is disabled")
             from .reference import fit_reference
             result=fit_reference(x,replace(config,dtype="float64"),y)
             result.metadata.update(requested_backend=backend,requested_precision=config.dtype,fallback_reason=reason)
