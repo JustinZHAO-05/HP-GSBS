@@ -28,6 +28,7 @@ def fit(x, config, backend="cpu-fast", *, y=None, progress=None, cancel=None):
         estimate=(10*(T+1)**2*8 if config.q_strategy=="full" else 0)
         estimate += 10*T*T*8 if config.td_backend=="prefix2d" else (4*T*Py+4*Py*Py)*8
         estimate += (8*T*P+config.candidate_chunk_size*16*P)*8
+        estimate += (config.kmax+2)*T*8
         if estimate>config.max_workspace_bytes:
             raise ResourceBudgetExceeded("Precompute exceeds workspace budget",dict(estimated_bytes=estimate,budget=config.max_workspace_bytes))
     with threadpool_limits(limits=config.blas_threads):

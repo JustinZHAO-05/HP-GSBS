@@ -68,7 +68,7 @@ class CandidateSearch:
             # HostQ owns matching immutable copies from one precompute.
             return candidate_summary(self.q.device_Q,self.q.Q,*args,validate_host=False)
         return (stream_q(self.q.Q,*args) if self.q.Q is not None else
-                stream_prefix(self.q,*args,self.chunk_size,self.checkpoint))
+                stream_prefix(self.q,*args,self.chunk_size,self.checkpoint if self.progress is not None or self.cancel is not None else None))
 
     def window(self, bounds, lo, hi):
         if self.backend in ("streaming","triton-resident") and self.q.Q is not None:
@@ -216,6 +216,8 @@ class CandidateSearch:
                         means[i:j] = xt[i:j].mean(0); means[j:b] = xt[j:b].mean(0)
                     else: means[i:b] = xt[i:b].mean(0)
                     exact[i,j] = xt.shape[1]*(GSBS._zscore(means)*zt).mean()/(xt.shape[1]-1)
+                if np.all(exact.ravel()[near]==-1):
+                    return (None if double else start),-1.0
                 scores = exact
         idx = np.unravel_index(scores.argmax(),scores.shape)
         return ((idx[0]+start,idx[1]+start) if double else idx[0]+start), float(scores[idx])

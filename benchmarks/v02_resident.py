@@ -36,7 +36,7 @@ def main():
                             torch.cuda.synchronize(); torch.cuda.reset_peak_memory_stats()
                             start=perf_counter()
                             if method=="numba": stream_q(q,*args)
-                            else: candidate_summary(device_q,q,*args)
+                            else: candidate_summary(device_q,q,*args,validate_host=False)
                             torch.cuda.synchronize()
                             samples.append(perf_counter()-start)
                         times[method]=dict(samples_s=samples,median_s=float(np.median(samples[1:])))

@@ -1,3 +1,5 @@
+> 历史报告：对应修复前 source 5478fd6 / public commit 9309874。当前 0.2.0.dev0 验收见 v02_merge_readiness.md；本页数字不冒充本轮结果。
+
 # v0.2 科学一致性与性能报告
 
 日期：2026-10-16（北京时间）。本分支可独立审核；未合并 main，未改写 v0.1.0。
@@ -43,13 +45,13 @@ before 为保留的 v0.1 `full_scores` + 原物化 reducer，禁用新增局部�
 
 120 次（含 warmup）完整输出对照全部通过；比 all_bounds、完整 tdists、K、patterns、strengths。计时不采集候选 trace，逐轮科学验证另列。Small/Medium/Large/XL 为 seed=20261016 的合成输入，T/P/K 分别 450/16/20、900/32/30、1500/64/40、2100/64/50；BBBD0 是 1336×64、Kmax=131、dmin=5，其余 workload dmin=1。均保留 statewise=True、finetune=1、blocksize=50。
 
-原始 [交错 trials](../results/v02/accepted/paired/trials.json) 保存各次时间、完整阶段计时、RSS/VRAM 和验证。[修改前 Windows](../results/v02/baseline_windows/latency.json)、[修改前 WSL](../results/v02/baseline_wsl_run1/latency.json) 与早期 streaming 测量保留；它们部分与其他验证并行，故不作为最终加速比。RSS 为 5 ms 采样进程总量，配对进程保留 allocator 高水位，不能据此声称每种模式的净节省。VRAM 在每次调用前同步并重置峰值。
+原始 [交错 trials](https://github.com/JustinZHAO-05/HP-GSBS/blob/9309874678ae4e861711fd3bc4b96e332b5bd8ae/results/v02/accepted/paired/trials.json) 保存各次时间、完整阶段计时、RSS/VRAM 和验证。[修改前 Windows](https://github.com/JustinZHAO-05/HP-GSBS/blob/9309874678ae4e861711fd3bc4b96e332b5bd8ae/results/v02/baseline_windows/latency.json)、[修改前 WSL](https://github.com/JustinZHAO-05/HP-GSBS/blob/9309874678ae4e861711fd3bc4b96e332b5bd8ae/results/v02/baseline_wsl_run1/latency.json) 与早期 streaming 测量保留；它们部分与其他验证并行，故不作为最终加速比。RSS 为 5 ms 采样进程总量，配对进程保留 allocator 高水位，不能据此声称每种模式的净节省。VRAM 在每次调用前同步并重置峰值。
 
 ## 科学验证与数据边界
 
 Windows CPU-only：197 passed、3 skipped；WSL 含真实 CUDA/Triton：245 passed、1 skipped。完整测试输出和 JUnit 见 results/v02 下 accepted_tests 命名文件。测试数是参数化用例数，不是生物学样本数。4 条真实 EEG 在 Full-Q 与 raw-prefix/moments 路线逐轮通过，低内存最大 TD 误差约 7.86e-13；完整 all_bounds、单/双 winner、单双 TD、接受选择和微调最终边界相同。完整记录 0 直接对现有 official-full trace；1–3 对已通过官方/历史核验的 v0.1 缓存，本次没有重新运行其数小时官方完整 fit。4 条 dev96 则新跑未改动的官方程序并逐次比较每个微调删除/窗口/winner/birth。旧完整缓存缺少逐移动字段，不能冒称补齐了该证据。
 
-[真实记录结果](../results/v02/real_accepted/validation.json) 仅含 hash、参数和比较结果，不含原始 EEG。私有文件通过 HPGSBS_FIXTURES 原位读取，未复制或上传。Fraction oracle 另外验证给定 binary64 U 的精确六矩与 dmin 分类；它不是 native BLAS运算轨迹证明。NaN/sentinel/tie、重复和跨行 stateopt、chunk 1/7/64、finetune -1/1/2、独立 y 和极大 dmin 均有独立测试。near-degenerate 低内存 TD 明确拒绝，而不是强制零方差。
+[真实记录结果](https://github.com/JustinZHAO-05/HP-GSBS/blob/9309874678ae4e861711fd3bc4b96e332b5bd8ae/results/v02/real_accepted/validation.json) 仅含 hash、参数和比较结果，不含原始 EEG。私有文件通过 HPGSBS_FIXTURES 原位读取，未复制或上传。Fraction oracle 另外验证给定 binary64 U 的精确六矩与 dmin 分类；它不是 native BLAS运算轨迹证明。NaN/sentinel/tie、重复和跨行 stateopt、chunk 1/7/64、finetune -1/1/2、独立 y 和极大 dmin 均有独立测试。near-degenerate 低内存 TD 明确拒绝，而不是强制零方差。
 
 ## Long-N
 
@@ -62,7 +64,7 @@ Windows CPU-only：197 passed、3 skipped；WSL 含真实 CUDA/Triton：245 pass
 |20000×32|0.4633|247.8|16|8.88e-16|
 |50000×64|1.6693|418.9|15|1.15e-14|
 
-50,000×64 的一张 FP64 T² 数组理论为 20 GB；本次未尝试该规模的 dense baseline。selected K=15 与最终 K=16 均单独用 bounded tiled two-pass TD 核验，未只检查最终划分。这些 oracle 支持固定划分 TD，不认证长 N 每个候选的完整官方轨迹；没有同规模官方加速比。[原始 long-N 记录](../results/v02/accepted/long/validation.json)。
+50,000×64 的一张 FP64 T² 数组理论为 20 GB；本次未尝试该规模的 dense baseline。selected K=15 与最终 K=16 均单独用 bounded tiled two-pass TD 核验，未只检查最终划分。这些 oracle 支持固定划分 TD，不认证长 N 每个候选的完整官方轨迹；没有同规模官方加速比。[原始 long-N 记录](https://github.com/JustinZHAO-05/HP-GSBS/blob/9309874678ae4e861711fd3bc4b96e332b5bd8ae/results/v02/accepted/long/validation.json)。
 
 ## GPU 常驻候选与集成范围
 

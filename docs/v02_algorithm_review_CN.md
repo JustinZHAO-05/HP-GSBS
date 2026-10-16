@@ -1,3 +1,5 @@
+> 历史报告：对应修复前 source 5478fd6 / public commit 9309874。当前 0.2.0.dev0 验收见 v02_merge_readiness.md；本页数字不冒充本轮结果。
+
 # v0.2 算法审查与接入边界
 
 本分支从 2026-10-16 获取的 `origin/main=f85ea0b` 开始，保留 v0.1.0

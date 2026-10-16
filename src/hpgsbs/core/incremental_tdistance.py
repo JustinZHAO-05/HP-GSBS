@@ -26,8 +26,11 @@ class IncrementalTDistance(FeatureMomentsTDistance):
         for gap in range(1,min(self.dmin,d-a)):
             lo,hi = (a,b-gap) if kind==0 else (max(a,c-gap),min(b,d-gap))
             if hi<=lo: continue
-            u,v = self.u[lo:hi],self.u[lo+gap:hi+gap]
-            r=np.einsum("ij,ij->i",u,v)/self.h
+            r=self.shortbands.get(gap)
+            if r is None:
+                u,v = self.u[lo:hi],self.u[lo+gap:hi+gap]
+                r=np.einsum("ij,ij->i",u,v)/self.h
+            else:r=r[lo:hi]
             value -= [len(r),r.sum(),r@r]
         return value
 

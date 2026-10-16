@@ -38,7 +38,7 @@ def main():
                     if name=="low-memory" and backend!="cpu-fast": continue
                     print("START",index,name,backend,flush=True)
                     start=perf_counter(); candidate=fit(full.x,c,backend)
-                    report=compare(cached,candidate)
+                    report=compare(cached,candidate,level="full-search-trace")
                     rows.append(dict(record=index,mode=name,backend=backend,wall_s=perf_counter()-start,
                         source="official-full" if index==0 else "v0.1-full-validated-against-official-history",
                         input_sha256=hashlib.sha256(full.x.tobytes()).hexdigest(),config=asdict(c),
@@ -50,7 +50,7 @@ def main():
             # Fresh unchanged official code also records every refinement move.
             official=fit(dev.x,c,"reference")
             for name,config in [("full",c),("low-memory",replace(c,q_strategy="streaming",td_backend="feature-moments"))]:
-                report=compare(official,fit(dev.x,config))
+                report=compare(official,fit(dev.x,config),level="finetune-move-trace")
                 rows.append(dict(record=index,mode=name,scope="fresh-official-dev96-every-move",report=report))
                 save()
                 if not report["passed"]: raise AssertionError(report)
@@ -63,7 +63,7 @@ def main():
             measured=benchmark(x,c,"cpu-fast",repeats=3)
             r=fit(x,c)
             # Audit both selected and final partitions; no full native long fit.
-            td=FeatureMomentsTDistance(x,1,tile_size=128)
+            td=FeatureMomentsTDistance(x,1,tile_size=128,max_pair_evaluations=200_000_000)
             checks=[]
             with threadpool_limits(limits=1):
                 for k in sorted(set([int(r.nstates),16])):

@@ -1,3 +1,5 @@
+> Development version **0.2.0.dev0**. v0.1.0 remains an unchanged release/tag. See [merge audit](docs/v02_merge_audit.md) and [readiness](docs/v02_merge_readiness.md).
+
 <div align="center">
 
 ![HP-GSBS：多通道神经信号经过三条计算路线，得到一致的时间状态边界](docs/assets/hpgsbs-hero.png)

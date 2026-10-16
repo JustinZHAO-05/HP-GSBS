@@ -1,3 +1,5 @@
+> Development version **0.2.0.dev0**. v0.1.0 remains an unchanged release/tag. See [merge audit](docs/v02_merge_audit.md) and [readiness](docs/v02_merge_readiness.md).
+
 <div align="center">
 
 ![HP-GSBS: neural signals passing through three computational routes into aligned temporal states](docs/assets/hpgsbs-hero.png)

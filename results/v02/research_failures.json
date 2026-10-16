@@ -1,0 +1,10 @@
+{
+  "experiment": "Numba compiled generator yielding mutable candidate buffers",
+  "status": "rejected before source acceptance",
+  "platform": "Windows, Python 3.11, Numba 0.68",
+  "observed_failure": "fatal exception 0xc0000374 in test_prefix_chunks_scores",
+  "root_cause_scope": "heap corruption observed; exact Numba ownership defect not established",
+  "replacement": "ordinary Python generator wrapping cached resumable fixed-buffer fill; no compiled generator dependency",
+  "targeted_regression": "17 passed, including fresh-process cache test",
+  "pilot_timing_scope": "tmp/research_probe ran before final chunk/short-band changes and overlapped preflight tests; excluded from accepted performance"
+}

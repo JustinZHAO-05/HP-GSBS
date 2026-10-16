@@ -111,16 +111,45 @@ def stream_q(q, edges, start, end, allowed, opt, double, T):
     return flat, best, np.nan if np.isnan(best) else runner, nonfinite, changed, count
 
 
+@njit(cache=True)
+def fill_candidates(edges,start,allowed,first,second,restricted,double,buffer,state):
+    """Resumable fill; no compiled generators or per-row Python transitions."""
+    s,i,j=state
+    count=0
+    while s<len(edges)-1:
+        a,b=edges[s],edges[s+1]
+        if i>=b:
+            s+=1
+            if s<len(edges)-1:
+                i=edges[s]+1;j=i+1 if double else i
+            continue
+        if not allowed[i-start] or (double and restricted and first[i]+second[0]<1):
+            i+=1;j=i+1 if double else i
+            continue
+        if double:
+            if j>=b:
+                i+=1;j=i+1
+                continue
+            if not restricted or first[i]+second[j]>=2:
+                buffer[count,0]=a;buffer[count,1]=i;buffer[count,2]=j;buffer[count,3]=b
+                count+=1
+            j+=1
+        else:
+            buffer[count,0]=a;buffer[count,1]=i;buffer[count,2]=i;buffer[count,3]=b
+            count+=1;i+=1;j=i
+        if count==len(buffer):break
+    state[0]=s;state[1]=i;state[2]=j
+    return count
+
+
 def candidate_chunks(edges, start, allowed, opt, double, chunk_size):
-    buffer = np.empty((chunk_size, 4), dtype=np.int64)
-    count = 0
-    for row in candidates(edges, start, allowed, opt, double):
-        buffer[count] = row
-        count += 1
-        if count == chunk_size:
-            yield buffer
-            count = 0
-    if count:
+    buffer=np.empty((chunk_size,4),dtype=np.int64)
+    first,second=gate_counts(opt,edges[-1])
+    i=edges[0]+1
+    state=np.array([0,i,i+1 if double else i],dtype=np.int64)
+    while True:
+        count=fill_candidates(edges,start,allowed,first,second,opt.shape[1]==2,double,buffer,state)
+        if not count:break
         yield buffer[:count]
 
 

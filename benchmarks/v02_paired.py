@@ -18,6 +18,7 @@ def main():
     p=argparse.ArgumentParser()
     p.add_argument("--fixtures",required=True); p.add_argument("--output",required=True)
     p.add_argument("--backends",nargs="+",default=["cpu-fast","torch-cuda","triton-cuda"])
+    p.add_argument("--modes",nargs="+",default=["materialized","streaming"])
     a=p.parse_args(); out=Path(a.output)
     if out.exists(): raise FileExistsError(out)
     out.mkdir(parents=True); rows=[]
@@ -32,7 +33,7 @@ def main():
         for backend in a.backends:
             expected=fit(x,replace(c,candidate_backend="materialized"),backend)
             for iteration in range(4):
-                for mode in (["materialized","streaming"] if iteration%2==0 else ["streaming","materialized"]):
+                for mode in (a.modes if iteration%2==0 else a.modes[::-1]):
                     config=replace(c,candidate_backend=mode)
                     # benchmark(repeats=1) would add an unwanted warmup each pair.
                     import psutil,threading

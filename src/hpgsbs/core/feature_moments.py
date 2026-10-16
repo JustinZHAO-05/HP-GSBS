@@ -18,10 +18,22 @@ class FeatureMomentsTDistance:
         self.fallback_reasons = {}
         self.last_diagnostics = {}
         self.max_pair_evaluations=max_pair_evaluations
+        self.norms=np.einsum("ij,ij->i",self.u,self.u)
+        self.shortbands={}
+        # Input-only correlations can be reused across partitions, but never
+        # retain an unbounded dmin x N band (large dmin still streams).
+        gaps=min(dmin,len(x))-1
+        band_pairs=gaps*len(x)-gaps*(gaps+1)//2
+        if band_pairs>max_pair_evaluations:
+            from .budgets import ResourceBudgetExceeded
+            raise ResourceBudgetExceeded("Short-band correction exceeds pair budget",dict(estimated_pairs=band_pairs))
+        if gaps*len(x)<=1_000_000:
+            self.shortbands={gap:np.einsum("ij,ij->i",self.u[:-gap],self.u[gap:])/self.h
+                             for gap in range(1,gaps+1)}
 
     def moment(self,a,b):
         u = self.u[a:b]
-        norms = np.einsum("ij,ij->i",u,u)
+        norms = self.norms[a:b]
         return b-a, u.sum(0), u.T@u, norms.sum(), norms@norms
 
     def within(self,m):
@@ -45,7 +57,8 @@ class FeatureMomentsTDistance:
         labels = np.cumsum(np.asarray(bounds)>0)
         for gap in range(1,min(self.dmin,len(bounds))):
             # O(NP) temporary, independent of dmin, N² and candidate count.
-            r = np.einsum("ij,ij->i",self.u[:-gap],self.u[gap:])/self.h
+            r = self.shortbands.get(gap)
+            if r is None:r=np.einsum("ij,ij->i",self.u[:-gap],self.u[gap:])/self.h
             diff = labels[gap:]-labels[:-gap]
             for target,kind in ((w,0),(a,1)):
                 vals = r[diff==kind]

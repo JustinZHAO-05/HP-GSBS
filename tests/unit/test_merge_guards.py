@@ -10,12 +10,13 @@ from hpgsbs.core.streaming_candidates import candidate_count,stream_q,stream_win
 from hpgsbs.core.budgets import ResourceBudgetExceeded,SearchCancelled
 
 
-def test_exact_minus_one_after_near_tie_returns_none():
+@pytest.mark.parametrize('backend',['streaming','materialized'])
+def test_exact_minus_one_after_near_tie_returns_none(backend):
     x=np.tile([-1.,0.,1.],(6,1))
     q=IntervalScores(x,z=-GSBS._zscore(x)); q.Q[:]=0
-    search=CandidateSearch(x,q)
+    search=CandidateSearch(x,q,backend=backend)
     assert search.best(np.zeros(6,bool),double=True)==(None,-1.)
-    assert search.last_diagnostics['fallback_evaluated']==10
+    if backend=='streaming':assert search.last_diagnostics['fallback_evaluated']==10
 
 
 @pytest.mark.parametrize('cause',['work','workspace','candidates','cancel'])
@@ -123,3 +124,42 @@ def test_transactional_incremental_full_fit():
         snapshot=td.moments,td.regions,td.totals,td.updates
         td(np.zeros(len(x),bool))
         assert all(a is b for a,b in zip(snapshot[:3],(td.moments,td.regions,td.totals)))
+
+
+def test_version_and_maturity():
+    from pathlib import Path
+    from hpgsbs import __version__
+    assert __version__=='0.2.0.dev0'
+    assert 'version = "'+__version__+'"' in Path('pyproject.toml').read_text()
+    assert 'version: "'+__version__+'"' in Path('CITATION.cff').read_text()
+    assert GSBSConfig(8).maturity=='stable'
+    assert GSBSConfig(8,dtype='float32').maturity=='experimental'
+    assert GSBSConfig(8,td_backend='feature-moments').maturity=='experimental'
+    with pytest.raises(ValueError):GSBSConfig(8,td_backend='incremental-moments')
+
+
+def test_td_fallback_pair_budget():
+    from hpgsbs.core.feature_moments import FeatureMomentsTDistance
+    x=np.random.default_rng(3).normal(size=(90,8));b=np.zeros(90,bool);b[45]=True
+    td=FeatureMomentsTDistance(x,max_pair_evaluations=1)
+    with pytest.raises(ResourceBudgetExceeded):td.exact(b)
+
+
+def test_cpu_gpu_unsupported_combinations_fail_early():
+    from hpgsbs import fit_many
+    x=np.random.default_rng(1).normal(size=(18,4))
+    c=GSBSConfig(6,q_strategy='streaming')
+    with pytest.raises(ValueError,match='CUDA requires'):fit(x,c,'torch-cuda')
+    with pytest.raises(ValueError,match='CUDA batches'):fit_many([x],c,'torch-cuda')
+
+
+def test_incremental_long_reversals_and_error_rollback():
+    from hpgsbs.core.incremental_tdistance import IncrementalTDistance
+    from hpgsbs.core.feature_moments import FeatureMomentsTDistance
+    rng=np.random.default_rng(17);x=rng.normal(size=(110,9))
+    td=IncrementalTDistance(x,8);direct=FeatureMomentsTDistance(x,8)
+    for iteration in range(160):
+        b=np.zeros(110,bool);b[rng.choice(np.arange(1,110),size=10,replace=False)]=True
+        actual=td(b);np.testing.assert_allclose(actual,direct(b),atol=1e-10,rtol=1e-10,equal_nan=True)
+        td.commit(b)
+        assert len(td.moments)==11 and len(td.regions)==21

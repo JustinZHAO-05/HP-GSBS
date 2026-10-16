@@ -15,7 +15,7 @@ def main():
         x=np.random.default_rng(20261016).normal(size=(5000,8))
         extra=(dict(candidate_backend="materialized") if a.child=="materialized" else
                dict(q_strategy="streaming",td_backend="feature-moments"))
-        c=GSBSConfig(16,statewise_detection=False,finetune=0,blocksize=0,**extra)
+        c=GSBSConfig(16,statewise_detection=False,finetune=0,blocksize=0,max_workspace_bytes=6*1024**3,**extra)
         measured=benchmark(x,c,"cpu-fast",repeats=3); r=fit(x,c)
         print(json.dumps(dict(mode=a.child,all_bounds_sha256=hashlib.sha256(r.all_bounds.tobytes()).hexdigest(),
             tdists=r.tdists.tolist(),nstates=int(r.nstates),**measured)))

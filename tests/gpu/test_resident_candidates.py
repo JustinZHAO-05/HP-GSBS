@@ -38,6 +38,29 @@ def test_multiple_grid_stride_tiles():
     assert cpu[3:]==gpu[3:]
 
 
+@pytest.mark.parametrize('kind',['multiple-nan','infinity','near-tie','exact-tie'])
+def test_cross_program_complete_summary(kind):
+    pytest.importorskip('triton')
+    from hpgsbs.backends.resident_candidates import candidate_summary
+    q=np.zeros((701,701));e=np.array([0,700]);allowed=np.ones(700,bool);opt=np.empty((0,0),np.int64)
+    if kind=='multiple-nan':q[2,30]=np.nan;q[500,600]=np.nan
+    if kind=='infinity':q[20,300]=np.inf;q[500,600]=-np.inf
+    if kind=='near-tie':q[2,300]=1;q[400,600]=1+1e-12
+    cpu=stream_q(q,e,0,700,allowed,opt,True,700)
+    gpu=candidate_summary(torch.tensor(q,device='cuda'),q,e,0,700,allowed,opt,True,700)
+    np.testing.assert_equal(cpu,gpu)
+
+
+def test_host_device_mismatch_and_invalid_metadata():
+    pytest.importorskip('triton')
+    from hpgsbs.backends.resident_candidates import candidate_summary
+    q=np.zeros((11,11));device=torch.tensor(q,device='cuda');q[1,2]=1
+    args=(np.array([0,10]),0,10,np.ones(10,bool),np.empty((0,0),np.int64),True,10)
+    with pytest.raises(ValueError,match='Host/device'):candidate_summary(device,q,*args)
+    with pytest.raises(ValueError,match='metadata'):
+        candidate_summary(device,q,np.array([0,11]),0,11,np.ones(11,bool),args[4],True,11)
+
+
 @pytest.mark.parametrize("backend",["torch-cuda","triton-cuda"])
 def test_resident_complete_fit_trace(backend):
     pytest.importorskip("triton")

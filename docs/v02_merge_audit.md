@@ -24,6 +24,7 @@ reference 为未修改 statesegmentation 0.0.6。所有处置以最终证据 man
 |C16|validation.compare；validation；blocker|确认：缺 trace 仍能 passed|显式 output/full-search/move/numeric 级别；缺字段 fail；报告 compared/skipped|test_merge_guards 已通过；待最终验收|
 |C17|config/api/batch；memory/integration；high|确认：无统一资源拒绝，组合验证分散|早期兼容性检查，保守 precompute 估算；GPU buckets 纳入 scorer/TD/thread/budget|待最终验收|
 |C18|API/metadata/docs；release；blocker|确认：experimental FP64 仍有笼统 validated 标签|maturity 明确；incremental API 由性能门槛决定；没有通用 auto|待最终 readiness|
+|C19|candidate_chunks 编译原型；correctness；blocker（已弃用）|确认：Windows fatal 0xc0000374；具体 Numba 内存所有权根因未证实|不发布 compiled generator；改 resumable fixed-buffer fill，17 个定向测试及 fresh-process 回归通过|research_failures.json；最终 source 重验|
 
 计算预算均为执行策略；不足时明确失败，绝不换 K、删候选或跳过 double。
 同步 fit 对输入作只读快照，cache 不再依赖调用者在拟合期间不修改原数组。
