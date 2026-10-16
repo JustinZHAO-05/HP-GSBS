@@ -25,27 +25,37 @@ GSBS 将 **时间点 × 特征** 矩阵划分为连续状态，每个状态内�
 | 路线 | 核心实现 | 本机适用场景 |
 |---|---|---|
 | **CPU FastGSBS** · `cpu-fast` | NumPy/BLAS + Numba + 记录间多进程 | 通用运行、大量短记录 |
-| **TensorGSBS** · `torch-cuda` | PyTorch CUDA 批量预计算 + CPU 顺序控制 | 较长单条记录 |
-| **TurboGSBS** · `triton-cuda` | 实际执行的 Triton 区间评分 kernel + 共同控制器 | 短记录低延迟，需按任务实测 |
+| **TensorGSBS** · `torch-cuda` | PyTorch CUDA 批量预计算 + CPU 顺序控制 | 无需 Triton 的 NVIDIA GPU 拟合 |
+| **TurboGSBS** · `triton-cuda` | 实际执行的 Triton 区间评分 kernel + 共同控制器 | 多种规模低延迟，需按任务实测 |
 | **官方对照** · `reference` | 直接调用未经修改的 `statesegmentation.GSBS` | 基准与逐轮验证 |
 
 GPU 路线目前是**混合实现**：Q、相关矩阵与统计前缀在 GPU 预计算；有顺序依赖的搜索和微调在 CPU 执行。并未宣称完整控制流已经常驻 GPU，也不假定 Triton 总比 PyTorch 快。
 
 ## 性能实测
 
-在相同输入、参数与 FP64 下，**Small 合成负载最高实测约 489 倍加速**。该数字只属于下述工作负载，不能直接推广为所有 EEG 或源空间任务的加速倍数。
+**五类负载均已补齐原版 FP64 实测基线。** 下表每个加速比使用同一输入、参数、环境和精度；不同负载的加速幅度分别报告，不将 Small 倍率外推。
 
-测试机器：Ryzen 7 7840H，RTX 4050 Laptop 6 GB，WSL2 Ubuntu 22.04；PyTorch 2.11.0+cu128、Triton 3.6.0。表中为 **3 次预热运行中位数**，CUDA 已同步，CPU 单进程/单 BLAS 线程。全部开启 statewise detection、`finetune=1`、strength-order、`blocksize=50`，精度 FP64，关闭 TF32。
+测试机器：Ryzen 7 7840H，RTX 4050 Laptop 6 GB，WSL2 Ubuntu 22.04；PyTorch 2.11.0+cu128、Triton 3.6.0。合成负载为 **预热后三次运行中位数**；BBBD0 为 **单次实测，无重复**，CUDA 已同步，CPU 单进程/单 BLAS 线程。全部开启 statewise detection、`finetune=1`、strength-order、`blocksize=50`，精度 FP64，关闭 TF32。
 
-| 工作负载 | T × P | Kmax | 官方 GSBS | CPU | PyTorch | Triton |
-|---|---:|---:|---:|---:|---:|---:|
-| Small · 合成 | 450 × 16 | 20 | 48.035 s | 0.169 s | 0.110 s | **0.098 s** |
-| Medium · 合成 | 900 × 32 | 30 | — | 0.510 s | **0.245 s** | 0.300 s |
-| Large · 合成 | 1500 × 64 | 40 | — | 1.604 s | **0.482 s** | 0.501 s |
-| XL · 合成 | 2100 × 64 | 50 | — | 4.145 s | **2.257 s** | 2.313 s |
-| BBBD0 · 完整真实 EEG | 1336 × 64 | 131 | — | 4.107 s | **3.125 s** | 3.339 s |
+| 工作负载 | T × P | Kmax | 官方 GSBS | CPU FastGSBS | TensorGSBS | TurboGSBS |
+|---|---|---|---|---|---|---|
+| Small · 合成 | 450 × 16 | 20 | 48.035 s | 0.169 s | 0.110 s | 0.098 s |
+| Medium · 合成 | 900 × 32 | 30 | 349.946 s | 0.455 s | 0.276 s | 0.328 s |
+| Large · 合成 | 1500 × 64 | 40 | 2213.493 s | 1.659 s | 0.673 s | 0.515 s |
+| XL · 合成 | 2100 × 64 | 50 | 5011.254 s | 3.778 s | 2.314 s | 2.229 s |
+| BBBD0 · 真实 EEG（单次） | 1336 × 64 | 131 | 6115.379 s | 4.489 s | 3.738 s | 3.421 s |
 
-Small 相对官方的加速为 **CPU 285× / PyTorch 438× / Triton 489×**，以未四舍五入数据计算。合成负载 `dmin=1`；真实 BBBD0 继承原配置 `dmin=5`。横线代表没有可公平比较的同环境预热官方测试。另有完整 Windows 官方 trace 验证，其耗时不混入本表加速比。
+相对官方 GSBS 的加速倍数：
+
+| 工作负载 | CPU | PyTorch | Triton |
+|---|---|---|---|
+| Small | 285.0× | 438.4× | 489.1× |
+| Medium | 768.5× | 1265.7× | 1066.6× |
+| Large | 1334.1× | 3287.4× | 4300.9× |
+| XL | 1326.5× | 2165.6× | 2248.1× |
+| BBBD0 | 1362.3× | 1636.2× | 1787.4× |
+
+Small 保留 v0.1.0 的原始同环境测量。Medium、Large、XL 在同一 WSL 进程重新成对测量：一轮预热后，三轮依次运行原版/CPU/PyTorch/Triton，报告三次中位数。BBBD0 按用户要求每个后端仅运行一次，倍率来自单次实测，不能估计重复波动；原始日志中的 warmup 标签对应这一保留的单次运行。合成负载 dmin=1，真实 EEG dmin=5；计时关闭 trace，排除保存与一致性核对，未并发运行其他 GSBS 拟合。此前带 trace 的 Windows 全记录用时不参与倍率计算。
 
 **32 条 Small 独立记录的吞吐：**CPU 8 workers 为 1.006 s、约 **1,908 fits/min**；PyTorch B=32 为 1.684 s、1,140 fits/min；Triton B=32 为 1.909 s、1,006 fits/min。大量短任务在本机由 CPU 多进程胜出。
 
@@ -59,6 +69,7 @@ Small 相对官方的加速为 **CPU 285× / PyTorch 438× / Triton 489×**，�
 
 | 证据 | 结果 |
 |---|---|
+| 本次配对基线：3 个合成输入 + 1 个 EEG 输入，共 52 次保存的拟合 | 每个 K 的边界及最终 K 一致；相对 CPU 最大 t-distance 误差 **2.44×10⁻¹³**，patterns/strengths 通过；计时拟合不采集候选 trace。 |
 | 原始 Windows 本机回归 | 103 通过，1 个 GPU 模块跳过 |
 | 原始 WSL 含 CUDA/Triton 回归 | 134 通过 |
 | 4 条完整 EEG，覆盖 full64/frontal32、两个 session、四个视频 | CPU 每个 K 的 `all_bounds` 与历史官方一致，最大 t 误差 **7.46×10⁻¹³** |
@@ -193,3 +204,6 @@ python benchmarks/batch_throughput.py --backend cpu-fast --workers 4 --batch-siz
 - [软件引用元数据](CITATION.cff)。
 
 代码采用 [MIT License](LICENSE)，上游署名保留于 [NOTICE](NOTICE)。宣传图由 AI 生成，仅为概念艺术，不是科学测量图；[生成说明](docs/assets/README.md)。
+
+
+补测复现：`python benchmarks/complete_reference.py --workloads Medium Large XL --output paired_results.json`。完整三重复可能持续数小时；加入 BBBD0 需要未公开的原始冻结输入，并添加 `--single-pass BBBD0` 复现本次单次协议。每次拟合后的结果会即时写入对应 `_trials.json`，不会根据部分结果自动填表。

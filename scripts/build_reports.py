@@ -1,5 +1,6 @@
 """Rebuild concise reports from measured JSON/XML; never invent missing receipts."""
 import json
+import re
 from pathlib import Path
 import xml.etree.ElementTree as ET
 import numpy as np
@@ -26,18 +27,31 @@ def table(headers,rows):
     return '\n'.join(['| '+' | '.join(headers)+' |','|'+'|'.join(['---']*len(headers))+'|']+['| '+' | '.join(map(str,r))+' |' for r in rows])
 
 
+def wall(row):
+    return row.get('single_fit_s', row.get('steady_median_s'))
+
+
+def measured(row):
+    return row['trials'] if 'single_fit_s' in row else row['trials'][1:]
+
+
 def main():
     latency=read("delivery_latency.json",[])
+    paired = read('completed_reference_latency_trials.json', {}).get('completed_at')
+    protocol = ('Small 保留 v0.1.0 初始测量；Medium/Large/XL 在同一 WSL 进程配对重测，预热后三次计时取中位数。'
+                'BBBD0 按用户要求每后端单次计时，无重复波动估计。各负载内输入、参数、FP64 相同，CUDA 同步；'
+                '新测量无并发 GSBS 拟合，保存和验证不计入 wall time。RSS 是包含进程缓存的采样峰值。'
+                '原始数据及协议修订见 completed_reference_latency_trials.json。')
     pairs={(r['workload'],r['backend']):r for r in latency}
     lrows=[]
     for r in latency:
         samecpu=pairs.get((r['workload'],'cpu-fast'))
         sameref=pairs.get((r['workload'],'reference'))
-        trials=r['trials'][1:]
+        trials=measured(r)
         lrows.append([r['workload'],r['backend'],f"{r['shape'][0]}×{r['shape'][1]}",r['algorithm']['kmax'],
-            f"{r['first_call_s']:.4f}",f"{r['steady_median_s']:.4f}",f"{r['fits_per_minute']:.1f}",
-            f"{sameref['steady_median_s']/r['steady_median_s']:.1f}×" if sameref else '未重测',
-            f"{samecpu['steady_median_s']/r['steady_median_s']:.2f}×" if samecpu else '—',
+            f"{r['first_call_s']:.4f}",f"{wall(r):.4f}",f"{r['fits_per_minute']:.1f}",
+            f"{wall(sameref)/wall(r):.1f}×" if sameref else '未重测',
+            f"{wall(samecpu)/wall(r):.2f}×" if samecpu else '—',
             f"{max(t['cpu_peak_rss_bytes'] for t in trials)/2**20:.1f}",
             f"{max(t.get('gpu_peak_allocated_bytes',0) for t in trials)/2**20:.1f}",
             f"{max(t.get('gpu_peak_reserved_bytes',0) for t in trials)/2**20:.1f}"])
@@ -45,13 +59,13 @@ def main():
     for name in ('torch','triton','cpu1','cpu2','cpu4','cpu8'):
         rows=read('batch_'+name+'.json',[])
         for b in sorted({r['batch_size'] for r in rows}):
-            subset=[r for r in rows if r['batch_size']==b]; wall=float(np.median([r['wall_s'] for r in subset]))
-            b_rows.append([subset[0]['backend'],subset[0]['workers'],b,f'{wall:.4f}',f'{60*b/wall:.1f}',
+            subset=[r for r in rows if r['batch_size']==b]; batch_wall=float(np.median([r['wall_s'] for r in subset]))
+            b_rows.append([subset[0]['backend'],subset[0]['workers'],b,f'{batch_wall:.4f}',f'{60*b/batch_wall:.1f}',
                            f"{max(r.get('gpu_peak_allocated_bytes') or 0 for r in subset)/2**20:.1f}",
                            f"{max(r.get('gpu_peak_reserved_bytes') or 0 for r in subset)/2**20:.1f}",all(r['bounds_equal'] for r in subset)])
     cold=read('cold_start.json',[])
     stage_rows=[]
-    for r in latency:
+    for r in read('delivery_latency_v010.json', latency):
         if r['workload']!='BBBD0': continue
         stage_rows.append([r['backend']]+[f"{np.median([t.get('timings',{}).get(key,0) for t in r['trials'][1:]]):.4f}" for key in ('precompute_s','candidate_s','tdistance_s','finetune_s','transfer_s')])
     performance=f"""# 性能实测
@@ -96,6 +110,9 @@ Triton Q 从每 interval 一个 program 改为每 program 16 对，前后见 q_b
         mem=read('reference_full_peak_memory.json',{})
         performance += f"\n完整官方 BBBD0 新跑：Windows、T=1336/P=64/Kmax=131/dmin=5，启用只读逐轮 trace，wall={baseline['elapsed_s']:.3f} s；Windows 进程 lifetime peak working set={mem.get('os_lifetime_peak_working_set_bytes',0)/2**20:.1f} MiB。此单次带 trace 验证不是 WSL 预热基准，不用于表中跨后端加速倍数。[reference receipt](../results/fixtures/0_full_receipt.json) / [内存记录](../results/benchmarks/reference_full_peak_memory.json)。\n"
     performance += '\n原始证据：[单条基准](../results/benchmarks/delivery_latency.json)、[GPU 批量](../results/benchmarks/batch_torch.json)、[Triton 批量](../results/benchmarks/batch_triton.json)、[CPU 8 workers](../results/benchmarks/batch_cpu8.json)、[冷启动](../results/benchmarks/cold_start.json)。\n'
+    if paired:
+        performance = re.sub(r'测试依次执行；每格[^\n]*', protocol, performance)
+        performance = performance.replace('预热 s', '报告用时 s').replace('## 完整 BBBD0 时间组成', '## 初始 v0.1.0 BBBD0 时间组成（历史记录）')
     (D/'performance.md').write_text(performance,encoding='utf-8')
     saved=read('saved_validation.json',[])
     historic=read('historical_parity.json',[])
@@ -147,7 +164,7 @@ GPU 表主要以通过历史缓存对照的 CPU 全轨迹作基准；baseline �
     (D/'known_limitations.md').write_text(limitations,encoding='utf-8')
     summary=f"""# HP-GSBS 技术报告
 
-日期：2026-10-16。交付目录 `<workspace>`。源码、CLI、测试、基准与环境记录均已落盘；官方 GSBS 和 E 盘 BBBD 研究产物保持不变。
+日期：2026-10-16。交付目录 `P:\\Fast_GSBS`。源码、CLI、测试、基准与环境记录均已落盘；官方 GSBS 和 E 盘 BBBD 研究产物保持不变。
 
 ## A. 总体完成情况
 
@@ -155,7 +172,7 @@ GPU 表主要以通过历史缓存对照的 CPU 全轨迹作基准；baseline �
 |---|---|---|
 |CPU FastGSBS|完整拟合、Full/lazy Q、Numba 评分、区域 t-distance、顺序微调、y、多进程|4 条完整 EEG 历史边界路径一致；Windows/WSL 回归通过|
 |TensorGSBS|PyTorch CUDA FP64/FP32、批量 Q/R/prefix、CPU 独立控制器|B=1 与 B>1 实跑，FP64 完整真实路径一致|
-|TurboGSBS|Triton tiled Q 融合、单/双评分 kernels、统一混合拟合 API|真实 kernel 执行；短记录有端到端收益，大记录通常推荐 TensorGSBS|
+|TurboGSBS|Triton tiled Q 融合、单/双评分 kernels、统一混合拟合 API|真实 kernel 执行；GPU 后端优劣按各负载实测比较|
 |批量系统|分桶、显存估计、OOM 缩批、逐任务原子输出、失败隔离、恢复|B<=32，CPU<=8 workers；真实四任务与中断恢复测试|
 
 P0–P7 的实现与有限验证已经交付；覆盖范围及未完成项逐项记录，原文访问和源空间验证不能标成完成。{fullmsg}
@@ -172,14 +189,14 @@ Windows：{tests('tests_windows.xml')}；WSL：{tests('tests_wsl.xml')}。真实
 
 ## D. 速度与显存
 
-{table(['工作负载','官方 s','CPU s','PyTorch s','Triton s'],[[name]+[f"{pairs[(name,b)]['steady_median_s']:.4f}" if (name,b) in pairs else '未重测' for b in ('reference','cpu-fast','torch-cuda','triton-cuda')] for name in ('Small','Medium','Large','XL','BBBD0')])}
+{table(['工作负载','官方 s','CPU s','PyTorch s','Triton s'],[[name]+[f"{wall(pairs[(name,b)]):.4f}" if (name,b) in pairs else '未重测' for b in ('reference','cpu-fast','torch-cuda','triton-cuda')] for name in ('Small','Medium','Large','XL','BBBD0')])}
 
 这是相同 WSL 环境、相同输入/参数/FP64 的 3 次预热中位数；Small 的 K=20 属开发合成配置，BBBD0 为真实 K=131。完整 batch size、吞吐、cold-start、RSS、GPU allocated/reserved 和分阶段用时见 performance.md。不能将 Small 的加速倍数推广到未测官方的大输入。
 
 ## E. 本机建议
 
 - 默认科学精度 FP64。当前 FP32 结果不足以替代研究计算。
-- 短记录单次低延迟可选 triton-cuda；本机较长单记录优先 torch-cuda。没有 WSL/CUDA 时使用 cpu-fast。
+- 按延迟表逐负载比较 torch-cuda 与 triton-cuda，并结合重复波动选择。没有 WSL/CUDA 时使用 cpu-fast。
 - 数百条 Small 类型任务本机 CPU 8 workers / 每 worker 单 BLAS 线程吞吐最高；GPU 的 B=4–32 优于串行逐条，实际 batch size 按空闲显存与其他应用留量选择。不要把该短记录结论外推到所有源空间负载。
 - 病态空间近常数输入显式回退 reference；未定义 P=1/常数行明确拒绝。缺少 CUDA/Triton 时给出错误及 CPU 命令，不静默伪装 GPU。
 - 七网络任务必须使用原定义的多维 parcel/source 特征，按 recording×network 独立拟合和保存，不混合统计量。
@@ -191,6 +208,8 @@ Windows：{tests('tests_windows.xml')}；WSL：{tests('tests_wsl.xml')}。真实
 保留现有峰值 K 选择函数，使用完整 tdists/all_bounds；输出保存原时间映射与 boundary timestamps，不修改滤波、artifact、quiz、统计假设、LOSO 或网络定义。README 提供 Windows/WSL 安装和全部六个 CLI；known_limitations.md 列出尚未完成的覆盖与后续边界。
 """
     summary += '\n证据入口：[一致性报告](reference_parity.md)、[性能详表](performance.md)、[已知限制](known_limitations.md)、[运行环境](../results/benchmarks/doctor_wsl.json)、[使用说明](../README.md)。\n'
+    if paired:
+        summary = re.sub(r'这是相同 WSL 环境[^\n]*', protocol, summary)
     (D/'technical_report.md').write_text(summary,encoding='utf-8')
     print('Reports rebuilt from existing receipts; full official trace:',full)
 

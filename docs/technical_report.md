@@ -8,7 +8,7 @@
 |---|---|---|
 |CPU FastGSBS|完整拟合、Full/lazy Q、Numba 评分、区域 t-distance、顺序微调、y、多进程|4 条完整 EEG 历史边界路径一致；Windows/WSL 回归通过|
 |TensorGSBS|PyTorch CUDA FP64/FP32、批量 Q/R/prefix、CPU 独立控制器|B=1 与 B>1 实跑，FP64 完整真实路径一致|
-|TurboGSBS|Triton tiled Q 融合、单/双评分 kernels、统一混合拟合 API|真实 kernel 执行；短记录有端到端收益，大记录通常推荐 TensorGSBS|
+|TurboGSBS|Triton tiled Q 融合、单/双评分 kernels、统一混合拟合 API|真实 kernel 执行；本次 Small/Large/XL 和单次 EEG 的中位数或单次值较低，Medium 为 TensorGSBS 较低|
 |批量系统|分桶、显存估计、OOM 缩批、逐任务原子输出、失败隔离、恢复|B<=32，CPU<=8 workers；真实四任务与中断恢复测试|
 
 P0–P7 的实现与有限验证已经交付；覆盖范围及未完成项逐项记录，原文访问和源空间验证不能标成完成。新跑完整官方 reference 已保存，并完成逐轮候选/微调路径比较，详见 saved_validation.json。
@@ -28,17 +28,17 @@ Windows：103 passed / 0 failed / 1 skipped；WSL：134 passed / 0 failed / 0 sk
 | 工作负载 | 官方 s | CPU s | PyTorch s | Triton s |
 |---|---|---|---|---|
 | Small | 48.0354 | 0.1685 | 0.1096 | 0.0982 |
-| Medium | 未重测 | 0.5098 | 0.2446 | 0.2999 |
-| Large | 未重测 | 1.6042 | 0.4816 | 0.5007 |
-| XL | 未重测 | 4.1448 | 2.2567 | 2.3134 |
-| BBBD0 | 未重测 | 4.1066 | 3.1249 | 3.3391 |
+| Medium | 349.9463 | 0.4553 | 0.2765 | 0.3281 |
+| Large | 2213.4934 | 1.6591 | 0.6733 | 0.5147 |
+| XL | 5011.2542 | 3.7777 | 2.3140 | 2.2291 |
+| BBBD0 | 6115.3790 | 4.4892 | 3.7375 | 3.4214 |
 
-这是相同 WSL 环境、相同输入/参数/FP64 的 3 次预热中位数；Small 的 K=20 属开发合成配置，BBBD0 为真实 K=131。完整 batch size、吞吐、cold-start、RSS、GPU allocated/reserved 和分阶段用时见 performance.md。不能将 Small 的加速倍数推广到未测官方的大输入。
+这是相同 WSL 环境、相同输入/参数/FP64 的比较；合成负载报告预热后三次中位数，BBBD0 按用户要求报告每后端单次实测（无重复波动估计）；Small 的 K=20 属开发合成配置，BBBD0 为真实 K=131。完整 batch size、吞吐、cold-start、RSS、GPU allocated/reserved 和分阶段用时见 performance.md。四个大输入现已补齐官方与优化后端的同进程配对重测；Small 保留初始同环境结果，具体协议与倍率见 performance.md。
 
 ## E. 本机建议
 
 - 默认科学精度 FP64。当前 FP32 结果不足以替代研究计算。
-- 短记录单次低延迟可选 triton-cuda；本机较长单记录优先 torch-cuda。没有 WSL/CUDA 时使用 cpu-fast。
+- 本次延迟表中 Medium 为 torch-cuda 较快，Small/Large/XL 及单次 BBBD0 为 triton-cuda 较快。GPU 差距存在运行波动，应按自己的输入实测。没有 WSL/CUDA 时使用 cpu-fast。
 - 数百条 Small 类型任务本机 CPU 8 workers / 每 worker 单 BLAS 线程吞吐最高；GPU 的 B=4–32 优于串行逐条，实际 batch size 按空闲显存与其他应用留量选择。不要把该短记录结论外推到所有源空间负载。
 - 病态空间近常数输入显式回退 reference；未定义 P=1/常数行明确拒绝。缺少 CUDA/Triton 时给出错误及 CPU 命令，不静默伪装 GPU。
 - 七网络任务必须使用原定义的多维 parcel/source 特征，按 recording×network 独立拟合和保存，不混合统计量。

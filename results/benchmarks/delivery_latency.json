@@ -749,12 +749,48 @@
   },
   {
     "workload": "Medium",
+    "backend": "reference",
+    "precision": "float64",
+    "shape": [
+      900,
+      32
+    ],
+    "algorithm": {
+      "kmax": 30,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "compute_config": {
+      "kmax": 30,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+    "first_call_s": 335.193290329,
+    "steady_median_s": 349.94625700800003,
+    "fits_per_minute": 0.17145489856926333,
     "validation_against_cpu": {
       "bounds_equal": true,
       "nstates_equal": true,
       "first_divergence": null,
       "tdists_close": true,
-      "max_t_error": 0.0,
+      "max_t_error": 3.197442310920451e-14,
       "patterns_close": true,
       "strengths_close": true,
       "trace_compared": false,
@@ -762,6 +798,184 @@
       "first_numerical_divergence": null,
       "passed": true
     },
+    "note": "Warmup excluded. Same process and paired rounds; no fit tracing or serialization inside wall time. RSS is sampled process total. Setup/import may precede warmup; not true cold-start.",
+    "trials": [
+      {
+        "workload": "Medium",
+        "iteration": 0,
+        "wall_s": 335.193290329,
+        "cpu_peak_rss_bytes": 742862848,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "elapsed_s": 335.157229956,
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "tdistance_input": "x",
+        "y_shape": null,
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified",
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.197442310920451e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Medium",
+        "iteration": 1,
+        "wall_s": 349.94625700800003,
+        "cpu_peak_rss_bytes": 1252286464,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "elapsed_s": 349.90363063,
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "tdistance_input": "x",
+        "y_shape": null,
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified",
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.197442310920451e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Medium",
+        "iteration": 2,
+        "wall_s": 346.57536119300005,
+        "cpu_peak_rss_bytes": 1271947264,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "elapsed_s": 346.5334354030001,
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "tdistance_input": "x",
+        "y_shape": null,
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified",
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.197442310920451e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Medium",
+        "iteration": 3,
+        "wall_s": 363.74508401599996,
+        "cpu_peak_rss_bytes": 1271947264,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "elapsed_s": 363.70606109799996,
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "tdistance_input": "x",
+        "y_shape": null,
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified",
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.197442310920451e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      }
+    ]
+  },
+  {
+    "workload": "Medium",
     "backend": "cpu-fast",
     "precision": "float64",
     "shape": [
@@ -776,161 +990,34 @@
       "blocksize": 50,
       "dmin": 1
     },
-    "first_call_s": 0.6372141709999823,
-    "steady_median_s": 0.5098248019999119,
-    "fits_per_minute": 117.68748747537467,
-    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
-    "trials": [
-      {
-        "iteration": 0,
-        "wall_s": 0.6372141709999823,
-        "cpu_peak_rss_bytes": 1305849856,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          900,
-          32
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 30,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.4032165309999982,
-          "candidate_s": 0.09954011000013452,
-          "tdistance_s": 0.023497610000390523,
-          "finetune_s": 0.0728839659999494
-        },
-        "search_s": 0.19909839800004647,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.6038136560000567
-      },
-      {
-        "iteration": 1,
-        "wall_s": 0.5464469590000363,
-        "cpu_peak_rss_bytes": 1305849856,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          900,
-          32
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 30,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.35680855900000097,
-          "candidate_s": 0.07900514999994357,
-          "tdistance_s": 0.015800463999880776,
-          "finetune_s": 0.05569061300025169
-        },
-        "search_s": 0.1531792730000916,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.5111822710000524
-      },
-      {
-        "iteration": 2,
-        "wall_s": 0.5098248019999119,
-        "cpu_peak_rss_bytes": 1305849856,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          900,
-          32
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 30,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.3254450240000324,
-          "candidate_s": 0.07550079100053608,
-          "tdistance_s": 0.016173955000454043,
-          "finetune_s": 0.0544955369997524
-        },
-        "search_s": 0.1493248859999312,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.4756988840000531
-      },
-      {
-        "iteration": 3,
-        "wall_s": 0.48106134299996484,
-        "cpu_peak_rss_bytes": 1305866240,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          900,
-          32
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 30,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.31007135200002267,
-          "candidate_s": 0.0745523069998626,
-          "tdistance_s": 0.014997178000044187,
-          "finetune_s": 0.0467302300000938
-        },
-        "search_s": 0.13893041599999378,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.4497541860000638
-      }
-    ]
-  },
-  {
-    "workload": "Medium",
+    "compute_config": {
+      "kmax": 30,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+    "first_call_s": 0.4549514589999717,
+    "steady_median_s": 0.4553429469999628,
+    "fits_per_minute": 131.76881380355476,
     "validation_against_cpu": {
       "bounds_equal": true,
       "nstates_equal": true,
       "first_divergence": null,
       "tdists_close": true,
-      "max_t_error": 3.197442310920451e-14,
+      "max_t_error": 0.0,
       "patterns_close": true,
       "strengths_close": true,
       "trace_compared": false,
@@ -938,6 +1025,224 @@
       "first_numerical_divergence": null,
       "passed": true
     },
+    "note": "Warmup excluded. Same process and paired rounds; no fit tracing or serialization inside wall time. RSS is sampled process total. Setup/import may precede warmup; not true cold-start.",
+    "trials": [
+      {
+        "workload": "Medium",
+        "iteration": 0,
+        "wall_s": 0.4549514589999717,
+        "cpu_peak_rss_bytes": 773722112,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.2956428229999801,
+          "candidate_s": 0.06379820700016126,
+          "tdistance_s": 0.01582138099979602,
+          "finetune_s": 0.041702153000187536
+        },
+        "search_s": 0.12452957599998626,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 0.42083796200000734,
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 0.0,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Medium",
+        "iteration": 1,
+        "wall_s": 0.5011295999998993,
+        "cpu_peak_rss_bytes": 1252417536,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.3212112490000436,
+          "candidate_s": 0.07095204899985674,
+          "tdistance_s": 0.016356577999772526,
+          "finetune_s": 0.04895980399999189
+        },
+        "search_s": 0.1389829090001058,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 0.46077288700007557,
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 0.0,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Medium",
+        "iteration": 2,
+        "wall_s": 0.4553429469999628,
+        "cpu_peak_rss_bytes": 1271947264,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.2814947869999287,
+          "candidate_s": 0.07313751199967555,
+          "tdistance_s": 0.018289681000169367,
+          "finetune_s": 0.05059339599984014
+        },
+        "search_s": 0.144845296000085,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 0.42701373299996703,
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 0.0,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Medium",
+        "iteration": 3,
+        "wall_s": 0.45318305099999634,
+        "cpu_peak_rss_bytes": 1271947264,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.2811398779999763,
+          "candidate_s": 0.06918300399979671,
+          "tdistance_s": 0.015891917999852012,
+          "finetune_s": 0.051340225000330975
+        },
+        "search_s": 0.13956085900008475,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 0.4213172489999124,
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 0.0,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      }
+    ]
+  },
+  {
+    "workload": "Medium",
     "backend": "torch-cuda",
     "precision": "float64",
     "shape": [
@@ -952,195 +1257,28 @@
       "blocksize": 50,
       "dmin": 1
     },
-    "first_call_s": 0.271867719999932,
-    "steady_median_s": 0.24463096700003462,
-    "fits_per_minute": 245.267394949191,
-    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
-    "trials": [
-      {
-        "iteration": 0,
-        "wall_s": 0.271867719999932,
-        "cpu_peak_rss_bytes": 1287028736,
-        "backend": "torch-cuda",
-        "precision": "float64",
-        "input_shape": [
-          900,
-          32
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 30,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.07481365800003914,
-          "candidate_s": 0.08585150799979147,
-          "tdistance_s": 0.018421959000193056,
-          "finetune_s": 0.05876433899970834,
-          "gpu_precompute_s": 0.035150104999956966,
-          "transfer_s": 0.03965937499992833,
-          "gpu_peak_allocated_bytes": 69605888,
-          "gpu_peak_reserved_bytes": 88080384
-        },
-        "search_s": 0.16558625699997265,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.2418095819999735,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 69605888,
-        "gpu_peak_reserved_bytes": 88080384
-      },
-      {
-        "iteration": 1,
-        "wall_s": 0.24463096700003462,
-        "cpu_peak_rss_bytes": 1287028736,
-        "backend": "torch-cuda",
-        "precision": "float64",
-        "input_shape": [
-          900,
-          32
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 30,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.046621692000030635,
-          "candidate_s": 0.08498439699997107,
-          "tdistance_s": 0.018064408999975967,
-          "finetune_s": 0.06260005100023136,
-          "gpu_precompute_s": 0.03587323700003253,
-          "transfer_s": 0.010743406999949912,
-          "gpu_peak_allocated_bytes": 69605888,
-          "gpu_peak_reserved_bytes": 88080384
-        },
-        "search_s": 0.16924829300000965,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.2181070850000424,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 69605888,
-        "gpu_peak_reserved_bytes": 88080384
-      },
-      {
-        "iteration": 2,
-        "wall_s": 0.24653047499998593,
-        "cpu_peak_rss_bytes": 1287159808,
-        "backend": "torch-cuda",
-        "precision": "float64",
-        "input_shape": [
-          900,
-          32
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 30,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.04136845900006847,
-          "candidate_s": 0.08174294600019039,
-          "tdistance_s": 0.01821776399981445,
-          "finetune_s": 0.0673658890001434,
-          "gpu_precompute_s": 0.030756769999925382,
-          "transfer_s": 0.010606761000076403,
-          "gpu_peak_allocated_bytes": 69605888,
-          "gpu_peak_reserved_bytes": 88080384
-        },
-        "search_s": 0.17081637700005103,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.21409396300009575,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 69605888,
-        "gpu_peak_reserved_bytes": 88080384
-      },
-      {
-        "iteration": 3,
-        "wall_s": 0.23842215499996655,
-        "cpu_peak_rss_bytes": 1287159808,
-        "backend": "torch-cuda",
-        "precision": "float64",
-        "input_shape": [
-          900,
-          32
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 30,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.04333818300005987,
-          "candidate_s": 0.0803946050000377,
-          "tdistance_s": 0.0186033879997467,
-          "finetune_s": 0.062201479000350446,
-          "gpu_precompute_s": 0.03281984200009447,
-          "transfer_s": 0.01051451899991207,
-          "gpu_peak_allocated_bytes": 69605888,
-          "gpu_peak_reserved_bytes": 88080384
-        },
-        "search_s": 0.1644544789999145,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.2096299810000346,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 69605888,
-        "gpu_peak_reserved_bytes": 88080384
-      }
-    ]
-  },
-  {
-    "workload": "Medium",
+    "compute_config": {
+      "kmax": 30,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+    "first_call_s": 1.2595420339999919,
+    "steady_median_s": 0.27647961400009535,
+    "fits_per_minute": 217.0141918672503,
     "validation_against_cpu": {
       "bounds_equal": true,
       "nstates_equal": true,
@@ -1154,6 +1292,268 @@
       "first_numerical_divergence": null,
       "passed": true
     },
+    "note": "Warmup excluded. Same process and paired rounds; no fit tracing or serialization inside wall time. RSS is sampled process total. Setup/import may precede warmup; not true cold-start.",
+    "trials": [
+      {
+        "workload": "Medium",
+        "iteration": 0,
+        "wall_s": 1.2595420339999919,
+        "cpu_peak_rss_bytes": 1183473664,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.0489996489999953,
+          "candidate_s": 0.07759172500004752,
+          "tdistance_s": 0.01534911499993541,
+          "finetune_s": 0.04551195999982838,
+          "gpu_precompute_s": 0.9821131009999817,
+          "transfer_s": 0.06688201100001834,
+          "gpu_peak_allocated_bytes": 69605888,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.14145280299999285,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 1.1930597389999775,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 69605888,
+        "gpu_peak_reserved_bytes": 88080384,
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.197442310920451e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Medium",
+        "iteration": 1,
+        "wall_s": 0.27647961400009535,
+        "cpu_peak_rss_bytes": 1271947264,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.09761587699995289,
+          "candidate_s": 0.06825852500003293,
+          "tdistance_s": 0.016161278999902606,
+          "finetune_s": 0.05499730799988356,
+          "gpu_precompute_s": 0.050477524000029916,
+          "transfer_s": 0.04713321999997788,
+          "gpu_peak_allocated_bytes": 69605888,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.14216848299997764,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.2415037560000428,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 69605888,
+        "gpu_peak_reserved_bytes": 88080384,
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.197442310920451e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Medium",
+        "iteration": 2,
+        "wall_s": 0.23996863599995777,
+        "cpu_peak_rss_bytes": 1271947264,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.06995689599989419,
+          "candidate_s": 0.07004096599962395,
+          "tdistance_s": 0.015497942999672887,
+          "finetune_s": 0.05308127900002546,
+          "gpu_precompute_s": 0.04907616900004541,
+          "transfer_s": 0.02087510399974235,
+          "gpu_peak_allocated_bytes": 69605888,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.14184209099994405,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.21333658300000025,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 69605888,
+        "gpu_peak_reserved_bytes": 88080384,
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.197442310920451e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Medium",
+        "iteration": 3,
+        "wall_s": 0.2939974070000062,
+        "cpu_peak_rss_bytes": 1285054464,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.1213590719999047,
+          "candidate_s": 0.06589729099960095,
+          "tdistance_s": 0.018133428999362877,
+          "finetune_s": 0.0541725489995315,
+          "gpu_precompute_s": 0.06466288199999326,
+          "transfer_s": 0.05669063300001653,
+          "gpu_peak_allocated_bytes": 69605888,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.1417860849999215,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.2644539010000244,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 69605888,
+        "gpu_peak_reserved_bytes": 88080384,
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.197442310920451e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      }
+    ]
+  },
+  {
+    "workload": "Medium",
     "backend": "triton-cuda",
     "precision": "float64",
     "shape": [
@@ -1168,201 +1568,34 @@
       "blocksize": 50,
       "dmin": 1
     },
-    "first_call_s": 0.5559060809999892,
-    "steady_median_s": 0.29987034099997345,
-    "fits_per_minute": 200.08647670829612,
-    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
-    "trials": [
-      {
-        "iteration": 0,
-        "wall_s": 0.5559060809999892,
-        "cpu_peak_rss_bytes": 1287352320,
-        "backend": "triton-cuda",
-        "precision": "float64",
-        "input_shape": [
-          900,
-          32
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 30,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.35148276300003545,
-          "candidate_s": 0.07852900599993973,
-          "tdistance_s": 0.019911173999844323,
-          "finetune_s": 0.0701302779997377,
-          "gpu_precompute_s": 0.3404263319999927,
-          "transfer_s": 0.01105190499993114,
-          "gpu_peak_allocated_bytes": 56134144,
-          "gpu_peak_reserved_bytes": 88080384
-        },
-        "search_s": 0.17160028499995406,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.5250362340000265,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 56134144,
-        "gpu_peak_reserved_bytes": 88080384
-      },
-      {
-        "iteration": 1,
-        "wall_s": 0.3425000419999833,
-        "cpu_peak_rss_bytes": 1287352320,
-        "backend": "triton-cuda",
-        "precision": "float64",
-        "input_shape": [
-          900,
-          32
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 30,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.12338844399994287,
-          "candidate_s": 0.0951282030002858,
-          "tdistance_s": 0.020166237000012188,
-          "finetune_s": 0.06919135199984794,
-          "gpu_precompute_s": 0.1001003489999448,
-          "transfer_s": 0.023282277000021168,
-          "gpu_peak_allocated_bytes": 56134144,
-          "gpu_peak_reserved_bytes": 88080384
-        },
-        "search_s": 0.1876810649999925,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.31285202100002607,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 56134144,
-        "gpu_peak_reserved_bytes": 88080384
-      },
-      {
-        "iteration": 2,
-        "wall_s": 0.29987034099997345,
-        "cpu_peak_rss_bytes": 1287352320,
-        "backend": "triton-cuda",
-        "precision": "float64",
-        "input_shape": [
-          900,
-          32
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 30,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.07658041000001958,
-          "candidate_s": 0.08770411499995134,
-          "tdistance_s": 0.02087071199946422,
-          "finetune_s": 0.07967156900019745,
-          "gpu_precompute_s": 0.06536019999998643,
-          "transfer_s": 0.011216346000082922,
-          "gpu_peak_allocated_bytes": 56134144,
-          "gpu_peak_reserved_bytes": 88080384
-        },
-        "search_s": 0.19122803900006602,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.2694085550000409,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 56134144,
-        "gpu_peak_reserved_bytes": 88080384
-      },
-      {
-        "iteration": 3,
-        "wall_s": 0.25578544400002556,
-        "cpu_peak_rss_bytes": 1287352320,
-        "backend": "triton-cuda",
-        "precision": "float64",
-        "input_shape": [
-          900,
-          32
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 30,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.062432472999944366,
-          "candidate_s": 0.08273879500018211,
-          "tdistance_s": 0.017140150999694015,
-          "finetune_s": 0.05914288799988299,
-          "gpu_precompute_s": 0.05084427300005245,
-          "transfer_s": 0.011582967999970606,
-          "gpu_peak_allocated_bytes": 56134144,
-          "gpu_peak_reserved_bytes": 88080384
-        },
-        "search_s": 0.16217315500000495,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.2265000049999344,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 56134144,
-        "gpu_peak_reserved_bytes": 88080384
-      }
-    ]
-  },
-  {
-    "workload": "Large",
+    "compute_config": {
+      "kmax": 30,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+    "first_call_s": 1.9686922440000103,
+    "steady_median_s": 0.32809623200000715,
+    "fits_per_minute": 182.87317606256047,
     "validation_against_cpu": {
       "bounds_equal": true,
       "nstates_equal": true,
       "first_divergence": null,
       "tdists_close": true,
-      "max_t_error": 0.0,
+      "max_t_error": 3.197442310920451e-14,
       "patterns_close": true,
       "strengths_close": true,
       "trace_compared": false,
@@ -1370,6 +1603,495 @@
       "first_numerical_divergence": null,
       "passed": true
     },
+    "note": "Warmup excluded. Same process and paired rounds; no fit tracing or serialization inside wall time. RSS is sampled process total. Setup/import may precede warmup; not true cold-start.",
+    "trials": [
+      {
+        "workload": "Medium",
+        "iteration": 0,
+        "wall_s": 1.9686922440000103,
+        "cpu_peak_rss_bytes": 1251893248,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.7973988630000122,
+          "candidate_s": 0.06765123999991829,
+          "tdistance_s": 0.016010613000162266,
+          "finetune_s": 0.05549137399998472,
+          "gpu_precompute_s": 1.754580562000001,
+          "transfer_s": 0.042813559000023815,
+          "gpu_peak_allocated_bytes": 56134144,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.14240260499997248,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 1.943201519000013,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 56134144,
+        "gpu_peak_reserved_bytes": 88080384,
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.197442310920451e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Medium",
+        "iteration": 1,
+        "wall_s": 0.32809623200000715,
+        "cpu_peak_rss_bytes": 1271947264,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.12374227800000881,
+          "candidate_s": 0.08878808100007518,
+          "tdistance_s": 0.020161532999736664,
+          "finetune_s": 0.06210535299976527,
+          "gpu_precompute_s": 0.10274317599998994,
+          "transfer_s": 0.020993263000036677,
+          "gpu_peak_allocated_bytes": 56134144,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.17462916099998438,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.2996005880000894,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 56134144,
+        "gpu_peak_reserved_bytes": 88080384,
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.197442310920451e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Medium",
+        "iteration": 2,
+        "wall_s": 0.3083039020000342,
+        "cpu_peak_rss_bytes": 1271947264,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.13426534500013076,
+          "candidate_s": 0.07349047000002429,
+          "tdistance_s": 0.01824607500111597,
+          "finetune_s": 0.05288727999936782,
+          "gpu_precompute_s": 0.11414719699996567,
+          "transfer_s": 0.020113522999963607,
+          "gpu_peak_allocated_bytes": 56134144,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.1475832440000886,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.2833221549999507,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 56134144,
+        "gpu_peak_reserved_bytes": 88080384,
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.197442310920451e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Medium",
+        "iteration": 3,
+        "wall_s": 0.34289826600002016,
+        "cpu_peak_rss_bytes": 1291476992,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.15914023699997415,
+          "candidate_s": 0.08042558400006783,
+          "tdistance_s": 0.017342830998359204,
+          "finetune_s": 0.05172358800018628,
+          "gpu_precompute_s": 0.12856640399991193,
+          "transfer_s": 0.030568591000019296,
+          "gpu_peak_allocated_bytes": 56134144,
+          "gpu_peak_reserved_bytes": 88080384
+        },
+        "search_s": 0.1524093749999338,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.31281011999999464,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 56134144,
+        "gpu_peak_reserved_bytes": 88080384,
+        "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.197442310920451e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      }
+    ]
+  },
+  {
+    "workload": "Large",
+    "backend": "reference",
+    "precision": "float64",
+    "shape": [
+      1500,
+      64
+    ],
+    "algorithm": {
+      "kmax": 40,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "compute_config": {
+      "kmax": 40,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+    "first_call_s": 2249.92502694,
+    "steady_median_s": 2213.493398001,
+    "fits_per_minute": 0.027106473438857255,
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 3.108624468950438e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "note": "Warmup excluded. Same process and paired rounds; no fit tracing or serialization inside wall time. RSS is sampled process total. Setup/import may precede warmup; not true cold-start.",
+    "trials": [
+      {
+        "workload": "Large",
+        "iteration": 0,
+        "wall_s": 2249.92502694,
+        "cpu_peak_rss_bytes": 1328226304,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "elapsed_s": 2249.861559768,
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "tdistance_input": "x",
+        "y_shape": null,
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified",
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.108624468950438e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Large",
+        "iteration": 1,
+        "wall_s": 2233.266202226,
+        "cpu_peak_rss_bytes": 1364508672,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "elapsed_s": 2233.1977741809997,
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "tdistance_input": "x",
+        "y_shape": null,
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified",
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.108624468950438e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Large",
+        "iteration": 2,
+        "wall_s": 2213.493398001,
+        "cpu_peak_rss_bytes": 1364656128,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "elapsed_s": 2213.4286559460006,
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "tdistance_input": "x",
+        "y_shape": null,
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified",
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.108624468950438e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Large",
+        "iteration": 3,
+        "wall_s": 2111.987987836,
+        "cpu_peak_rss_bytes": 1382559744,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "elapsed_s": 2111.9438933230003,
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "tdistance_input": "x",
+        "y_shape": null,
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified",
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 3.108624468950438e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      }
+    ]
+  },
+  {
+    "workload": "Large",
     "backend": "cpu-fast",
     "precision": "float64",
     "shape": [
@@ -1384,161 +2106,34 @@
       "blocksize": 50,
       "dmin": 1
     },
-    "first_call_s": 1.5947068770000214,
-    "steady_median_s": 1.6042442909999863,
-    "fits_per_minute": 37.40078760860026,
-    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
-    "trials": [
-      {
-        "iteration": 0,
-        "wall_s": 1.5947068770000214,
-        "cpu_peak_rss_bytes": 1422303232,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          1500,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 40,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 1.1300509180000518,
-          "candidate_s": 0.27373657399994045,
-          "tdistance_s": 0.036117328000045745,
-          "finetune_s": 0.11527812599956633
-        },
-        "search_s": 0.4283698209999329,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 1.5593982330000244
-      },
-      {
-        "iteration": 1,
-        "wall_s": 1.6388951000000134,
-        "cpu_peak_rss_bytes": 1422409728,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          1500,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 40,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 1.1829975329999343,
-          "candidate_s": 0.260865539999827,
-          "tdistance_s": 0.0325733240002819,
-          "finetune_s": 0.12063145199999781
-        },
-        "search_s": 0.41831959000001007,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 1.6026475109999865
-      },
-      {
-        "iteration": 2,
-        "wall_s": 1.4971236799999588,
-        "cpu_peak_rss_bytes": 1422417920,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          1500,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 40,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 1.0532175250000364,
-          "candidate_s": 0.2596726139995553,
-          "tdistance_s": 0.031569086000217794,
-          "finetune_s": 0.11311932999979035
-        },
-        "search_s": 0.40759234600000127,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 1.462465007999981
-      },
-      {
-        "iteration": 3,
-        "wall_s": 1.6042442909999863,
-        "cpu_peak_rss_bytes": 1422540800,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          1500,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 40,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 1.1815668939999568,
-          "candidate_s": 0.2407561239995175,
-          "tdistance_s": 0.03105483599983927,
-          "finetune_s": 0.1113698110000314
-        },
-        "search_s": 0.38622580899993864,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 1.5687487139999803
-      }
-    ]
-  },
-  {
-    "workload": "Large",
+    "compute_config": {
+      "kmax": 40,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+    "first_call_s": 1.3988091050000548,
+    "steady_median_s": 1.65913511799954,
+    "fits_per_minute": 36.16341993432306,
     "validation_against_cpu": {
       "bounds_equal": true,
       "nstates_equal": true,
       "first_divergence": null,
       "tdists_close": true,
-      "max_t_error": 5.5067062021407764e-14,
+      "max_t_error": 0.0,
       "patterns_close": true,
       "strengths_close": true,
       "trace_compared": false,
@@ -1546,6 +2141,224 @@
       "first_numerical_divergence": null,
       "passed": true
     },
+    "note": "Warmup excluded. Same process and paired rounds; no fit tracing or serialization inside wall time. RSS is sampled process total. Setup/import may precede warmup; not true cold-start.",
+    "trials": [
+      {
+        "workload": "Large",
+        "iteration": 0,
+        "wall_s": 1.3988091050000548,
+        "cpu_peak_rss_bytes": 1418272768,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.9862070179997318,
+          "candidate_s": 0.21534795399975337,
+          "tdistance_s": 0.02881645900060903,
+          "finetune_s": 0.09434783900087496
+        },
+        "search_s": 0.3419971369999075,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 1.3302232689998164,
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 0.0,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Large",
+        "iteration": 1,
+        "wall_s": 1.6665437930005282,
+        "cpu_peak_rss_bytes": 1418543104,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.2195032939998782,
+          "candidate_s": 0.23509932500110153,
+          "tdistance_s": 0.031325048002145195,
+          "finetune_s": 0.09766423300152383
+        },
+        "search_s": 0.3679707139999664,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 1.5898147769994466,
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 0.0,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Large",
+        "iteration": 2,
+        "wall_s": 1.65913511799954,
+        "cpu_peak_rss_bytes": 1418559488,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.2184484939998583,
+          "candidate_s": 0.2262367820012514,
+          "tdistance_s": 0.030736419001186732,
+          "finetune_s": 0.09539828099423175
+        },
+        "search_s": 0.3566747300001225,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 1.5804538389993468,
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 0.0,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Large",
+        "iteration": 3,
+        "wall_s": 1.4204268499997852,
+        "cpu_peak_rss_bytes": 1436565504,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.8705364170000394,
+          "candidate_s": 0.3697579219988256,
+          "tdistance_s": 0.03325379999114375,
+          "finetune_s": 0.09609118099797342
+        },
+        "search_s": 0.5019706130005943,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 1.3742394389992114,
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 0.0,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      }
+    ]
+  },
+  {
+    "workload": "Large",
     "backend": "torch-cuda",
     "precision": "float64",
     "shape": [
@@ -1560,15 +2373,48 @@
       "blocksize": 50,
       "dmin": 1
     },
-    "first_call_s": 0.8401761239999814,
-    "steady_median_s": 0.481645675999971,
-    "fits_per_minute": 124.57290284072562,
-    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "compute_config": {
+      "kmax": 40,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+    "first_call_s": 0.7917618010001206,
+    "steady_median_s": 0.673319060000722,
+    "fits_per_minute": 89.11079986349364,
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 5.5067062021407764e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "note": "Warmup excluded. Same process and paired rounds; no fit tracing or serialization inside wall time. RSS is sampled process total. Setup/import may precede warmup; not true cold-start.",
     "trials": [
       {
+        "workload": "Large",
         "iteration": 0,
-        "wall_s": 0.8401761239999814,
-        "cpu_peak_rss_bytes": 1368649728,
+        "wall_s": 0.7917618010001206,
+        "cpu_peak_rss_bytes": 1364377600,
         "backend": "torch-cuda",
         "precision": "float64",
         "input_shape": [
@@ -1589,31 +2435,50 @@
           "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
         },
         "timings": {
-          "precompute_s": 0.3610717509999404,
-          "candidate_s": 0.28478156400001353,
-          "tdistance_s": 0.034872159999963515,
-          "finetune_s": 0.12250629600021057,
-          "gpu_precompute_s": 0.2811269790000779,
-          "transfer_s": 0.07993828100006795,
+          "precompute_s": 0.4067867640001168,
+          "candidate_s": 0.23594289699985893,
+          "tdistance_s": 0.027750851001201227,
+          "finetune_s": 0.08549688499806507,
+          "gpu_precompute_s": 0.29678005199957624,
+          "transfer_s": 0.11000128300020151,
           "gpu_peak_allocated_bytes": 184941056,
           "gpu_peak_reserved_bytes": 207618048
         },
-        "search_s": 0.44611114300005283,
+        "search_s": 0.35204343099985635,
         "candidate_fallbacks": 0,
         "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
         "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.8094828409999764,
+        "elapsed_s": 0.7617019570002412,
         "batch_size": 1,
         "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
         "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
         "tf32": false,
         "gpu_peak_allocated_bytes": 184941056,
-        "gpu_peak_reserved_bytes": 207618048
+        "gpu_peak_reserved_bytes": 207618048,
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 5.5067062021407764e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
       },
       {
+        "workload": "Large",
         "iteration": 1,
-        "wall_s": 0.43393496399994547,
-        "cpu_peak_rss_bytes": 1368649728,
+        "wall_s": 0.673319060000722,
+        "cpu_peak_rss_bytes": 1364656128,
         "backend": "torch-cuda",
         "precision": "float64",
         "input_shape": [
@@ -1634,31 +2499,50 @@
           "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
         },
         "timings": {
-          "precompute_s": 0.029911420999951588,
-          "candidate_s": 0.24015434800014646,
-          "tdistance_s": 0.030913522000673765,
-          "finetune_s": 0.09621981900011178,
-          "gpu_precompute_s": 0.02077963700003238,
-          "transfer_s": 0.009127605000003314,
+          "precompute_s": 0.2725782080005956,
+          "candidate_s": 0.22991298700344487,
+          "tdistance_s": 0.03622959300264483,
+          "finetune_s": 0.09737170900098135,
+          "gpu_precompute_s": 0.220442063999144,
+          "transfer_s": 0.05213063999963197,
           "gpu_peak_allocated_bytes": 184196096,
           "gpu_peak_reserved_bytes": 207618048
         },
-        "search_s": 0.3706940099999656,
+        "search_s": 0.36767935599982593,
         "candidate_fallbacks": 0,
         "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
         "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.4024185950000856,
+        "elapsed_s": 0.6441058139998859,
         "batch_size": 1,
         "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
         "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
         "tf32": false,
         "gpu_peak_allocated_bytes": 184196096,
-        "gpu_peak_reserved_bytes": 207618048
+        "gpu_peak_reserved_bytes": 207618048,
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 5.5067062021407764e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
       },
       {
+        "workload": "Large",
         "iteration": 2,
-        "wall_s": 0.49702735799996844,
-        "cpu_peak_rss_bytes": 1386737664,
+        "wall_s": 0.8799356139998054,
+        "cpu_peak_rss_bytes": 1382559744,
         "backend": "torch-cuda",
         "precision": "float64",
         "input_shape": [
@@ -1679,31 +2563,50 @@
           "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
         },
         "timings": {
-          "precompute_s": 0.06191390000003594,
-          "candidate_s": 0.2592281639999783,
-          "tdistance_s": 0.031449782999857234,
-          "finetune_s": 0.10978394300002492,
-          "gpu_precompute_s": 0.01986656999997649,
-          "transfer_s": 0.04204182600005879,
+          "precompute_s": 0.501549466999677,
+          "candidate_s": 0.2217606539998087,
+          "tdistance_s": 0.03366830500181095,
+          "finetune_s": 0.08828898500178184,
+          "gpu_precompute_s": 0.2744273300004352,
+          "transfer_s": 0.22711500500008697,
           "gpu_peak_allocated_bytes": 184196096,
           "gpu_peak_reserved_bytes": 207618048
         },
-        "search_s": 0.40400021300001754,
+        "search_s": 0.34660997799983306,
         "candidate_fallbacks": 0,
         "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
         "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.46833400899993194,
+        "elapsed_s": 0.8510193189995334,
         "batch_size": 1,
         "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
         "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
         "tf32": false,
         "gpu_peak_allocated_bytes": 184196096,
-        "gpu_peak_reserved_bytes": 207618048
+        "gpu_peak_reserved_bytes": 207618048,
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 5.5067062021407764e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
       },
       {
+        "workload": "Large",
         "iteration": 3,
-        "wall_s": 0.481645675999971,
-        "cpu_peak_rss_bytes": 1404694528,
+        "wall_s": 0.6554072670005553,
+        "cpu_peak_rss_bytes": 1400573952,
         "backend": "torch-cuda",
         "precision": "float64",
         "input_shape": [
@@ -1724,44 +2627,49 @@
           "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
         },
         "timings": {
-          "precompute_s": 0.06363169700000526,
-          "candidate_s": 0.2483655250001675,
-          "tdistance_s": 0.03133574900016356,
-          "finetune_s": 0.10377407600003608,
-          "gpu_precompute_s": 0.021761657999945783,
-          "transfer_s": 0.041866045000006125,
+          "precompute_s": 0.3122320200000104,
+          "candidate_s": 0.20082385600107955,
+          "tdistance_s": 0.0283657910022157,
+          "finetune_s": 0.0811057519968017,
+          "gpu_precompute_s": 0.2453497280002921,
+          "transfer_s": 0.06687523700202291,
           "gpu_peak_allocated_bytes": 184196096,
           "gpu_peak_reserved_bytes": 207618048
         },
-        "search_s": 0.3868392639999456,
+        "search_s": 0.31338213399976667,
         "candidate_fallbacks": 0,
         "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
         "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.4523067129999845,
+        "elapsed_s": 0.6279094990004523,
         "batch_size": 1,
         "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
         "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
         "tf32": false,
         "gpu_peak_allocated_bytes": 184196096,
-        "gpu_peak_reserved_bytes": 207618048
+        "gpu_peak_reserved_bytes": 207618048,
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 5.5067062021407764e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
       }
     ]
   },
   {
     "workload": "Large",
-    "validation_against_cpu": {
-      "bounds_equal": true,
-      "nstates_equal": true,
-      "first_divergence": null,
-      "tdists_close": true,
-      "max_t_error": 5.5067062021407764e-14,
-      "patterns_close": true,
-      "strengths_close": true,
-      "trace_compared": false,
-      "trace_values_close": true,
-      "first_numerical_divergence": null,
-      "passed": true
-    },
     "backend": "triton-cuda",
     "precision": "float64",
     "shape": [
@@ -1776,201 +2684,34 @@
       "blocksize": 50,
       "dmin": 1
     },
-    "first_call_s": 0.6265180900001042,
-    "steady_median_s": 0.5007037540000283,
-    "fits_per_minute": 119.83133643530982,
-    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
-    "trials": [
-      {
-        "iteration": 0,
-        "wall_s": 0.6265180900001042,
-        "cpu_peak_rss_bytes": 1422782464,
-        "backend": "triton-cuda",
-        "precision": "float64",
-        "input_shape": [
-          1500,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 40,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.18255400800001098,
-          "candidate_s": 0.26327159699985714,
-          "tdistance_s": 0.03205570100033128,
-          "finetune_s": 0.11072714700003417,
-          "gpu_precompute_s": 0.16601225500005512,
-          "transfer_s": 0.01653514399993128,
-          "gpu_peak_allocated_bytes": 146626048,
-          "gpu_peak_reserved_bytes": 207618048
-        },
-        "search_s": 0.40917447799995443,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.5974728349999623,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 146626048,
-        "gpu_peak_reserved_bytes": 207618048
-      },
-      {
-        "iteration": 1,
-        "wall_s": 0.5007037540000283,
-        "cpu_peak_rss_bytes": 1422782464,
-        "backend": "triton-cuda",
-        "precision": "float64",
-        "input_shape": [
-          1500,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 40,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.07038771700001689,
-          "candidate_s": 0.2531392460001598,
-          "tdistance_s": 0.03172218999998222,
-          "finetune_s": 0.11014410500001759,
-          "gpu_precompute_s": 0.05741448399999172,
-          "transfer_s": 0.012968456999942646,
-          "gpu_peak_allocated_bytes": 146626048,
-          "gpu_peak_reserved_bytes": 207618048
-        },
-        "search_s": 0.39804599699994014,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.4704701400000886,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 146626048,
-        "gpu_peak_reserved_bytes": 207618048
-      },
-      {
-        "iteration": 2,
-        "wall_s": 0.4962950939999473,
-        "cpu_peak_rss_bytes": 1422782464,
-        "backend": "triton-cuda",
-        "precision": "float64",
-        "input_shape": [
-          1500,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 40,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.06862966100004542,
-          "candidate_s": 0.26021621600011713,
-          "tdistance_s": 0.031721736999770656,
-          "finetune_s": 0.10234779200027333,
-          "gpu_precompute_s": 0.05728452500000003,
-          "transfer_s": 0.01133961100003944,
-          "gpu_peak_allocated_bytes": 146626048,
-          "gpu_peak_reserved_bytes": 207618048
-        },
-        "search_s": 0.3973809080000592,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.46864110399997116,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 146626048,
-        "gpu_peak_reserved_bytes": 207618048
-      },
-      {
-        "iteration": 3,
-        "wall_s": 0.5153351200000316,
-        "cpu_peak_rss_bytes": 1422782464,
-        "backend": "triton-cuda",
-        "precision": "float64",
-        "input_shape": [
-          1500,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 40,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.06814347600004567,
-          "candidate_s": 0.2499316959998623,
-          "tdistance_s": 0.032574942000337614,
-          "finetune_s": 0.1043470559995967,
-          "gpu_precompute_s": 0.05854103000001487,
-          "transfer_s": 0.009598169000014423,
-          "gpu_peak_allocated_bytes": 146626048,
-          "gpu_peak_reserved_bytes": 207618048
-        },
-        "search_s": 0.39033641499997884,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 0.46063257699995575,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 146626048,
-        "gpu_peak_reserved_bytes": 207618048
-      }
-    ]
-  },
-  {
-    "workload": "XL",
+    "compute_config": {
+      "kmax": 40,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+    "first_call_s": 0.6913161950001268,
+    "steady_median_s": 0.5146632519999912,
+    "fits_per_minute": 116.58108436310317,
     "validation_against_cpu": {
       "bounds_equal": true,
       "nstates_equal": true,
       "first_divergence": null,
       "tdists_close": true,
-      "max_t_error": 0.0,
+      "max_t_error": 5.5067062021407764e-14,
       "patterns_close": true,
       "strengths_close": true,
       "trace_compared": false,
@@ -1978,6 +2719,495 @@
       "first_numerical_divergence": null,
       "passed": true
     },
+    "note": "Warmup excluded. Same process and paired rounds; no fit tracing or serialization inside wall time. RSS is sampled process total. Setup/import may precede warmup; not true cold-start.",
+    "trials": [
+      {
+        "workload": "Large",
+        "iteration": 0,
+        "wall_s": 0.6913161950001268,
+        "cpu_peak_rss_bytes": 1364508672,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.28211663000001863,
+          "candidate_s": 0.24850940200076366,
+          "tdistance_s": 0.03157638400170981,
+          "finetune_s": 0.09539916999983689,
+          "gpu_precompute_s": 0.26629312000022765,
+          "transfer_s": 0.0158174200000758,
+          "gpu_peak_allocated_bytes": 146626048,
+          "gpu_peak_reserved_bytes": 207618048
+        },
+        "search_s": 0.37844372300014584,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.6632768760000545,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 146626048,
+        "gpu_peak_reserved_bytes": 207618048,
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 5.5067062021407764e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Large",
+        "iteration": 1,
+        "wall_s": 0.5146632519999912,
+        "cpu_peak_rss_bytes": 1364656128,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.08120573399992281,
+          "candidate_s": 0.25987908499791956,
+          "tdistance_s": 0.0326464700001452,
+          "finetune_s": 0.10411944199768186,
+          "gpu_precompute_s": 0.06581010799982323,
+          "transfer_s": 0.015389504000268062,
+          "gpu_peak_allocated_bytes": 146626048,
+          "gpu_peak_reserved_bytes": 207618048
+        },
+        "search_s": 0.4009654159999627,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.48394990599990706,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 146626048,
+        "gpu_peak_reserved_bytes": 207618048,
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 5.5067062021407764e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Large",
+        "iteration": 2,
+        "wall_s": 0.456733007999901,
+        "cpu_peak_rss_bytes": 1382559744,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.08265658399977838,
+          "candidate_s": 0.21235076200082403,
+          "tdistance_s": 0.029218059000413632,
+          "finetune_s": 0.09605180199559982,
+          "gpu_precompute_s": 0.06579819099988526,
+          "transfer_s": 0.016853356999490643,
+          "gpu_peak_allocated_bytes": 146626048,
+          "gpu_peak_reserved_bytes": 207618048
+        },
+        "search_s": 0.34101004700005433,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.4255093849997138,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 146626048,
+        "gpu_peak_reserved_bytes": 207618048,
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 5.5067062021407764e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "Large",
+        "iteration": 3,
+        "wall_s": 0.681070283999361,
+        "cpu_peak_rss_bytes": 1400573952,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.24549277900041488,
+          "candidate_s": 0.2774987950015202,
+          "tdistance_s": 0.030918757003746578,
+          "finetune_s": 0.09374139899591682,
+          "gpu_precompute_s": 0.21927335299915285,
+          "transfer_s": 0.026214563000394264,
+          "gpu_peak_allocated_bytes": 146626048,
+          "gpu_peak_reserved_bytes": 207618048
+        },
+        "search_s": 0.40533232999950997,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 0.6526611009994667,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 146626048,
+        "gpu_peak_reserved_bytes": 207618048,
+        "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 5.5067062021407764e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      }
+    ]
+  },
+  {
+    "workload": "XL",
+    "backend": "reference",
+    "precision": "float64",
+    "shape": [
+      2100,
+      64
+    ],
+    "algorithm": {
+      "kmax": 50,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "compute_config": {
+      "kmax": 50,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+    "first_call_s": 4997.773217195001,
+    "steady_median_s": 5011.254189807001,
+    "fits_per_minute": 0.011973050603188576,
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 7.638334409421077e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "note": "Warmup excluded. Same process and paired rounds; no fit tracing or serialization inside wall time. RSS is sampled process total. Setup/import may precede warmup; not true cold-start.",
+    "trials": [
+      {
+        "workload": "XL",
+        "iteration": 0,
+        "wall_s": 4997.773217195001,
+        "cpu_peak_rss_bytes": 1471528960,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "elapsed_s": 4997.737147124999,
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "tdistance_input": "x",
+        "y_shape": null,
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified",
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 7.638334409421077e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "XL",
+        "iteration": 1,
+        "wall_s": 4924.70927537,
+        "cpu_peak_rss_bytes": 1418100736,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "elapsed_s": 4924.672676294,
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "tdistance_input": "x",
+        "y_shape": null,
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified",
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 7.638334409421077e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "XL",
+        "iteration": 2,
+        "wall_s": 5011.254189807001,
+        "cpu_peak_rss_bytes": 1418158080,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "elapsed_s": 5011.215393155999,
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "tdistance_input": "x",
+        "y_shape": null,
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified",
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 7.638334409421077e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "XL",
+        "iteration": 3,
+        "wall_s": 5848.187411749997,
+        "cpu_peak_rss_bytes": 1418145792,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "elapsed_s": 5848.104720031999,
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "tdistance_input": "x",
+        "y_shape": null,
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified",
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 7.638334409421077e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      }
+    ]
+  },
+  {
+    "workload": "XL",
     "backend": "cpu-fast",
     "precision": "float64",
     "shape": [
@@ -1992,161 +3222,34 @@
       "blocksize": 50,
       "dmin": 1
     },
-    "first_call_s": 4.244799218000026,
-    "steady_median_s": 4.14477104599996,
-    "fits_per_minute": 14.476071014321736,
-    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
-    "trials": [
-      {
-        "iteration": 0,
-        "wall_s": 4.244799218000026,
-        "cpu_peak_rss_bytes": 1545142272,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          2100,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 50,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 2.4155836899999485,
-          "candidate_s": 1.5825064509998583,
-          "tdistance_s": 0.04818814799989468,
-          "finetune_s": 0.1585650770000484
-        },
-        "search_s": 1.7924162240000214,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 4.209659077999959
-      },
-      {
-        "iteration": 1,
-        "wall_s": 4.006882588000053,
-        "cpu_peak_rss_bytes": 1544790016,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          2100,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 50,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 2.1567908939999825,
-          "candidate_s": 1.5950156780000952,
-          "tdistance_s": 0.05125013000031231,
-          "finetune_s": 0.1670866100001831
-        },
-        "search_s": 1.8169926860000487,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 3.975282567000022
-      },
-      {
-        "iteration": 2,
-        "wall_s": 4.14477104599996,
-        "cpu_peak_rss_bytes": 1545195520,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          2100,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 50,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 2.3098923810000542,
-          "candidate_s": 1.5749295369996617,
-          "tdistance_s": 0.05003409300002204,
-          "finetune_s": 0.1706764949999524
-        },
-        "search_s": 1.7990978450000057,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 4.111132209000061
-      },
-      {
-        "iteration": 3,
-        "wall_s": 4.34142468899995,
-        "cpu_peak_rss_bytes": 1544441856,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          2100,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 50,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 2.4170297729999675,
-          "candidate_s": 1.6647532670003784,
-          "tdistance_s": 0.05213064399981704,
-          "finetune_s": 0.1712303299997302
-        },
-        "search_s": 1.892503212000065,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 4.311719308999955
-      }
-    ]
-  },
-  {
-    "workload": "XL",
+    "compute_config": {
+      "kmax": 50,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+    "first_call_s": 3.797134840999206,
+    "steady_median_s": 3.777710586997273,
+    "fits_per_minute": 15.882635426471676,
     "validation_against_cpu": {
       "bounds_equal": true,
       "nstates_equal": true,
       "first_divergence": null,
       "tdists_close": true,
-      "max_t_error": 7.283063041541027e-14,
+      "max_t_error": 0.0,
       "patterns_close": true,
       "strengths_close": true,
       "trace_compared": false,
@@ -2154,6 +3257,224 @@
       "first_numerical_divergence": null,
       "passed": true
     },
+    "note": "Warmup excluded. Same process and paired rounds; no fit tracing or serialization inside wall time. RSS is sampled process total. Setup/import may precede warmup; not true cold-start.",
+    "trials": [
+      {
+        "workload": "XL",
+        "iteration": 0,
+        "wall_s": 3.797134840999206,
+        "cpu_peak_rss_bytes": 1576501248,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.9864740350003558,
+          "candidate_s": 1.5748097900032008,
+          "tdistance_s": 0.04579352000837389,
+          "finetune_s": 0.13179747599861003
+        },
+        "search_s": 1.7741862689999834,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 3.7619336850002583,
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 0.0,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "XL",
+        "iteration": 1,
+        "wall_s": 3.777710586997273,
+        "cpu_peak_rss_bytes": 1558573056,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.9845169589971192,
+          "candidate_s": 1.5732105810056964,
+          "tdistance_s": 0.045764786009385716,
+          "finetune_s": 0.13313325101989903
+        },
+        "search_s": 1.755650754999806,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 3.741838491998351,
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 0.0,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "XL",
+        "iteration": 2,
+        "wall_s": 3.64581324199753,
+        "cpu_peak_rss_bytes": 1556189184,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.872292041000037,
+          "candidate_s": 1.5566544150060508,
+          "tdistance_s": 0.04532079599084682,
+          "finetune_s": 0.13007928902152344
+        },
+        "search_s": 1.7350509089992556,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 3.609597449998546,
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 0.0,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "XL",
+        "iteration": 3,
+        "wall_s": 5.56842434599821,
+        "cpu_peak_rss_bytes": 1558999040,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 2.9986011120017793,
+          "candidate_s": 2.1825627600192092,
+          "tdistance_s": 0.06305466300545959,
+          "finetune_s": 0.1942528140025388
+        },
+        "search_s": 2.44329614399976,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 5.44495171699964,
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 0.0,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      }
+    ]
+  },
+  {
+    "workload": "XL",
     "backend": "torch-cuda",
     "precision": "float64",
     "shape": [
@@ -2168,195 +3489,28 @@
       "blocksize": 50,
       "dmin": 1
     },
-    "first_call_s": 2.4794791250000117,
-    "steady_median_s": 2.2566931929999328,
-    "fits_per_minute": 26.58757521231278,
-    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
-    "trials": [
-      {
-        "iteration": 0,
-        "wall_s": 2.4794791250000117,
-        "cpu_peak_rss_bytes": 1475072000,
-        "backend": "torch-cuda",
-        "precision": "float64",
-        "input_shape": [
-          2100,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 50,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.5886165149998988,
-          "candidate_s": 1.6169948160001013,
-          "tdistance_s": 0.05413483700033339,
-          "finetune_s": 0.16682452499981082,
-          "gpu_precompute_s": 0.44201290599994536,
-          "transfer_s": 0.1465993309999476,
-          "gpu_peak_allocated_bytes": 342976000,
-          "gpu_peak_reserved_bytes": 528482304
-        },
-        "search_s": 1.8407319479999842,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 2.4312548970000307,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 342976000,
-        "gpu_peak_reserved_bytes": 528482304
-      },
-      {
-        "iteration": 1,
-        "wall_s": 2.069809001000067,
-        "cpu_peak_rss_bytes": 1474949120,
-        "backend": "torch-cuda",
-        "precision": "float64",
-        "input_shape": [
-          2100,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 50,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.1912446540000019,
-          "candidate_s": 1.606868678000069,
-          "tdistance_s": 0.05015787699971952,
-          "finetune_s": 0.1716566459998603,
-          "gpu_precompute_s": 0.08997070800000984,
-          "transfer_s": 0.10126812800001517,
-          "gpu_peak_allocated_bytes": 342976000,
-          "gpu_peak_reserved_bytes": 528482304
-        },
-        "search_s": 1.831846359999986,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 2.0260037829999646,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 342976000,
-        "gpu_peak_reserved_bytes": 528482304
-      },
-      {
-        "iteration": 2,
-        "wall_s": 2.2799157980000473,
-        "cpu_peak_rss_bytes": 1475063808,
-        "backend": "torch-cuda",
-        "precision": "float64",
-        "input_shape": [
-          2100,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 50,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.3926117539999723,
-          "candidate_s": 1.5948529380002583,
-          "tdistance_s": 0.05394875399974808,
-          "finetune_s": 0.17555390099994383,
-          "gpu_precompute_s": 0.21458066000002418,
-          "transfer_s": 0.17802561299993158,
-          "gpu_peak_allocated_bytes": 342976000,
-          "gpu_peak_reserved_bytes": 528482304
-        },
-        "search_s": 1.8276306019999993,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 2.222972401999982,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 342976000,
-        "gpu_peak_reserved_bytes": 528482304
-      },
-      {
-        "iteration": 3,
-        "wall_s": 2.2566931929999328,
-        "cpu_peak_rss_bytes": 1455632384,
-        "backend": "torch-cuda",
-        "precision": "float64",
-        "input_shape": [
-          2100,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 50,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.3021321479999415,
-          "candidate_s": 1.6610669510000662,
-          "tdistance_s": 0.056025485999839475,
-          "finetune_s": 0.17789206400016155,
-          "gpu_precompute_s": 0.1339082550000512,
-          "transfer_s": 0.16821920399991086,
-          "gpu_peak_allocated_bytes": 342976000,
-          "gpu_peak_reserved_bytes": 528482304
-        },
-        "search_s": 1.8983985419999954,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 2.203463886999998,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 342976000,
-        "gpu_peak_reserved_bytes": 528482304
-      }
-    ]
-  },
-  {
-    "workload": "XL",
+    "compute_config": {
+      "kmax": 50,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+    "first_call_s": 2.2088380650002364,
+    "steady_median_s": 2.313991111001087,
+    "fits_per_minute": 25.92922665724614,
     "validation_against_cpu": {
       "bounds_equal": true,
       "nstates_equal": true,
@@ -2370,6 +3524,268 @@
       "first_numerical_divergence": null,
       "passed": true
     },
+    "note": "Warmup excluded. Same process and paired rounds; no fit tracing or serialization inside wall time. RSS is sampled process total. Setup/import may precede warmup; not true cold-start.",
+    "trials": [
+      {
+        "workload": "XL",
+        "iteration": 0,
+        "wall_s": 2.2088380650002364,
+        "cpu_peak_rss_bytes": 1507225600,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.4841501350001636,
+          "candidate_s": 1.4798303970001143,
+          "tdistance_s": 0.04568150800150761,
+          "finetune_s": 0.13452072300424334,
+          "gpu_precompute_s": 0.3423498390002351,
+          "transfer_s": 0.14179494400013937,
+          "gpu_peak_allocated_bytes": 343004160,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 1.6634086890007893,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.150160933000734,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 343004160,
+        "gpu_peak_reserved_bytes": 528482304,
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 7.283063041541027e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "XL",
+        "iteration": 1,
+        "wall_s": 2.313991111001087,
+        "cpu_peak_rss_bytes": 1488834560,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.5964359639983741,
+          "candidate_s": 1.4600526339891076,
+          "tdistance_s": 0.04847446499479702,
+          "finetune_s": 0.14950909398612566,
+          "gpu_precompute_s": 0.43177281799944467,
+          "transfer_s": 0.16465870599859045,
+          "gpu_peak_allocated_bytes": 343004160,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 1.661829459000728,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.260580141999526,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 343004160,
+        "gpu_peak_reserved_bytes": 528482304,
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 7.283063041541027e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "XL",
+        "iteration": 2,
+        "wall_s": 2.1822013790006167,
+        "cpu_peak_rss_bytes": 1488924672,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.4739450269989902,
+          "candidate_s": 1.4689793149736943,
+          "tdistance_s": 0.04656818400326301,
+          "finetune_s": 0.1338944950075529,
+          "gpu_precompute_s": 0.2822124750018702,
+          "transfer_s": 0.19172744999741553,
+          "gpu_peak_allocated_bytes": 343004160,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 1.6524114099993312,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.1284135730020353,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 343004160,
+        "gpu_peak_reserved_bytes": 528482304,
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 7.283063041541027e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "XL",
+        "iteration": 3,
+        "wall_s": 2.704198528001143,
+        "cpu_peak_rss_bytes": 1488769024,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.4664874010013591,
+          "candidate_s": 1.9011396809946746,
+          "tdistance_s": 0.07020950600417564,
+          "finetune_s": 0.18994121901414474,
+          "gpu_precompute_s": 0.18909278299906873,
+          "transfer_s": 0.2773863469992648,
+          "gpu_peak_allocated_bytes": 343004160,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 2.1661044979991857,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.63831053299873,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 343004160,
+        "gpu_peak_reserved_bytes": 528482304,
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 7.283063041541027e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      }
+    ]
+  },
+  {
+    "workload": "XL",
     "backend": "triton-cuda",
     "precision": "float64",
     "shape": [
@@ -2384,201 +3800,34 @@
       "blocksize": 50,
       "dmin": 1
     },
-    "first_call_s": 2.8573205989999906,
-    "steady_median_s": 2.313433845000077,
-    "fits_per_minute": 25.93547255724445,
-    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
-    "trials": [
-      {
-        "iteration": 0,
-        "wall_s": 2.8573205989999906,
-        "cpu_peak_rss_bytes": 1455751168,
-        "backend": "triton-cuda",
-        "precision": "float64",
-        "input_shape": [
-          2100,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 50,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.9003448789999311,
-          "candidate_s": 1.6641371089999666,
-          "tdistance_s": 0.05435106099980658,
-          "finetune_s": 0.1755764370000179,
-          "gpu_precompute_s": 0.6820912850000695,
-          "transfer_s": 0.21824833000005128,
-          "gpu_peak_allocated_bytes": 269496320,
-          "gpu_peak_reserved_bytes": 528482304
-        },
-        "search_s": 1.8974254569999403,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 2.8005693310000197,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 269496320,
-        "gpu_peak_reserved_bytes": 528482304
-      },
-      {
-        "iteration": 1,
-        "wall_s": 2.313433845000077,
-        "cpu_peak_rss_bytes": 1455652864,
-        "backend": "triton-cuda",
-        "precision": "float64",
-        "input_shape": [
-          2100,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 50,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.43348126399996545,
-          "candidate_s": 1.5856211669998856,
-          "tdistance_s": 0.051296683999908055,
-          "finetune_s": 0.18170905500016943,
-          "gpu_precompute_s": 0.2945483080000031,
-          "transfer_s": 0.1389271699999881,
-          "gpu_peak_allocated_bytes": 269496320,
-          "gpu_peak_reserved_bytes": 528482304
-        },
-        "search_s": 1.8221017969999593,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 2.257572130000085,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 269496320,
-        "gpu_peak_reserved_bytes": 528482304
-      },
-      {
-        "iteration": 2,
-        "wall_s": 2.1228721059999316,
-        "cpu_peak_rss_bytes": 1455652864,
-        "backend": "triton-cuda",
-        "precision": "float64",
-        "input_shape": [
-          2100,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 50,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.2212283290000414,
-          "candidate_s": 1.5996855259998028,
-          "tdistance_s": 0.054525604000218664,
-          "finetune_s": 0.18182205700020404,
-          "gpu_precompute_s": 0.09809874300003685,
-          "transfer_s": 0.12312369300002501,
-          "gpu_peak_allocated_bytes": 269496320,
-          "gpu_peak_reserved_bytes": 528482304
-        },
-        "search_s": 1.8390575839999883,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 2.0630228090000173,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 269496320,
-        "gpu_peak_reserved_bytes": 528482304
-      },
-      {
-        "iteration": 3,
-        "wall_s": 2.398575433000019,
-        "cpu_peak_rss_bytes": 1455652864,
-        "backend": "triton-cuda",
-        "precision": "float64",
-        "input_shape": [
-          2100,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 50,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 1
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.5283651879999525,
-          "candidate_s": 1.583249123999849,
-          "tdistance_s": 0.05163788999982444,
-          "finetune_s": 0.1763070129999278,
-          "gpu_precompute_s": 0.39377002700007324,
-          "transfer_s": 0.13458952799999224,
-          "gpu_peak_allocated_bytes": 269496320,
-          "gpu_peak_reserved_bytes": 528482304
-        },
-        "search_s": 1.8144097519999605,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 2.3451597450000463,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 269496320,
-        "gpu_peak_reserved_bytes": 528482304
-      }
-    ]
-  },
-  {
-    "workload": "BBBD0",
+    "compute_config": {
+      "kmax": 50,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+    "first_call_s": 2.169640492000326,
+    "steady_median_s": 2.2291002630008734,
+    "fits_per_minute": 26.916689659901802,
     "validation_against_cpu": {
       "bounds_equal": true,
       "nstates_equal": true,
       "first_divergence": null,
       "tdists_close": true,
-      "max_t_error": 0.0,
+      "max_t_error": 7.283063041541027e-14,
       "patterns_close": true,
       "strengths_close": true,
       "trace_compared": false,
@@ -2586,6 +3835,367 @@
       "first_numerical_divergence": null,
       "passed": true
     },
+    "note": "Warmup excluded. Same process and paired rounds; no fit tracing or serialization inside wall time. RSS is sampled process total. Setup/import may precede warmup; not true cold-start.",
+    "trials": [
+      {
+        "workload": "XL",
+        "iteration": 0,
+        "wall_s": 2.169640492000326,
+        "cpu_peak_rss_bytes": 1488678912,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.46708403999946313,
+          "candidate_s": 1.4650985679982114,
+          "tdistance_s": 0.04642120900643931,
+          "finetune_s": 0.12893959000030009,
+          "gpu_precompute_s": 0.3353433669999504,
+          "transfer_s": 0.1317363859998295,
+          "gpu_peak_allocated_bytes": 269524480,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 1.6437888460004615,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.1128739589985344,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 269524480,
+        "gpu_peak_reserved_bytes": 528482304,
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 7.283063041541027e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "XL",
+        "iteration": 1,
+        "wall_s": 2.0038178770009836,
+        "cpu_peak_rss_bytes": 1488834560,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.2834521240001777,
+          "candidate_s": 1.4749605460019666,
+          "tdistance_s": 0.04828823599382304,
+          "finetune_s": 0.13198501099395799,
+          "gpu_precompute_s": 0.14317404000030365,
+          "transfer_s": 0.1402726359992812,
+          "gpu_peak_allocated_bytes": 269524480,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 1.6587965990001976,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 1.9452601369994227,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 269524480,
+        "gpu_peak_reserved_bytes": 528482304,
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 7.283063041541027e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "XL",
+        "iteration": 2,
+        "wall_s": 2.2291002630008734,
+        "cpu_peak_rss_bytes": 1488883712,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.43599140400328906,
+          "candidate_s": 1.5426593550073449,
+          "tdistance_s": 0.04970208300073864,
+          "finetune_s": 0.13913413300542743,
+          "gpu_precompute_s": 0.2992313210015709,
+          "transfer_s": 0.1367553290037904,
+          "gpu_peak_allocated_bytes": 269524480,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 1.7353272969994578,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.1736179969993827,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 269524480,
+        "gpu_peak_reserved_bytes": 528482304,
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 7.283063041541027e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      },
+      {
+        "workload": "XL",
+        "iteration": 3,
+        "wall_s": 2.8202583380007127,
+        "cpu_peak_rss_bytes": 1488699392,
+        "backend": "triton-cuda",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.5333749839992379,
+          "candidate_s": 1.922397023994563,
+          "tdistance_s": 0.07307115199728287,
+          "finetune_s": 0.22382233100870508,
+          "gpu_precompute_s": 0.3132758690007904,
+          "transfer_s": 0.22009363400138682,
+          "gpu_peak_allocated_bytes": 269524480,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 2.223780401996919,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 2.760359685998992,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 269524480,
+        "gpu_peak_reserved_bytes": 528482304,
+        "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 7.283063041541027e-14,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      }
+    ]
+  },
+  {
+    "workload": "BBBD0",
+    "backend": "reference",
+    "precision": "float64",
+    "shape": [
+      1336,
+      64
+    ],
+    "algorithm": {
+      "kmax": 131,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 5
+    },
+    "compute_config": {
+      "kmax": 131,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 5,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "122359ec74b5546d3a577a639b61c65a0572e3d2ef70a8b6fa612b7cb5af24b1",
+    "first_call_s": 6115.378976057,
+    "single_fit_s": 6115.378976057,
+    "measurement_kind": "single-fit",
+    "fits_per_minute": 0.009811329802275979,
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 2.433608869978343e-13,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "note": "User requested one fit per EEG backend. The originally labelled warmup is reported as this single measured fit; no separate warmup or repeat. Same already-running WSL process and FP64 configuration. Not a cold-start or a repeated median.",
+    "trials": [
+      {
+        "workload": "BBBD0",
+        "iteration": 0,
+        "wall_s": 6115.378976057,
+        "cpu_peak_rss_bytes": 1375895552,
+        "backend": "reference",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "elapsed_s": 6115.279317979999,
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "tdistance_input": "x",
+        "y_shape": null,
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "compatibility": "official-unmodified",
+        "input_sha256": "122359ec74b5546d3a577a639b61c65a0572e3d2ef70a8b6fa612b7cb5af24b1",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 2.433608869978343e-13,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      }
+    ]
+  },
+  {
+    "workload": "BBBD0",
     "backend": "cpu-fast",
     "precision": "float64",
     "shape": [
@@ -2600,161 +4210,35 @@
       "blocksize": 50,
       "dmin": 5
     },
-    "first_call_s": 3.960026760000005,
-    "steady_median_s": 4.106644690000053,
-    "fits_per_minute": 14.610467797738602,
-    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
-    "trials": [
-      {
-        "iteration": 0,
-        "wall_s": 3.960026760000005,
-        "cpu_peak_rss_bytes": 1392889856,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          1336,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 131,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 5
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 1.035897056000067,
-          "candidate_s": 1.1473860139996077,
-          "tdistance_s": 0.3821953729989218,
-          "finetune_s": 1.3552313249998633
-        },
-        "search_s": 2.8887590540000474,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 3.9254119800000353
-      },
-      {
-        "iteration": 1,
-        "wall_s": 4.106644690000053,
-        "cpu_peak_rss_bytes": 1392902144,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          1336,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 131,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 5
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 1.0720498949999637,
-          "candidate_s": 1.2070478199998433,
-          "tdistance_s": 0.3832061719995181,
-          "finetune_s": 1.4061269850004692
-        },
-        "search_s": 3.000755787999992,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 4.073941647999959
-      },
-      {
-        "iteration": 2,
-        "wall_s": 4.134220056999993,
-        "cpu_peak_rss_bytes": 1393348608,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          1336,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 131,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 5
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 1.0869241550000197,
-          "candidate_s": 1.1875491820002253,
-          "tdistance_s": 0.40021016799994413,
-          "finetune_s": 1.4177403959996582
-        },
-        "search_s": 3.0097252659999185,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 4.097719282999947
-      },
-      {
-        "iteration": 3,
-        "wall_s": 3.9505172750000384,
-        "cpu_peak_rss_bytes": 1392979968,
-        "backend": "cpu-fast",
-        "precision": "float64",
-        "input_shape": [
-          1336,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 131,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 5
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.9781127279999282,
-          "candidate_s": 1.1891113340003585,
-          "tdistance_s": 0.3864958730006265,
-          "finetune_s": 1.3579759389994024
-        },
-        "search_s": 2.93870222999999,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 3.918249600999957
-      }
-    ]
-  },
-  {
-    "workload": "BBBD0",
+    "compute_config": {
+      "kmax": 131,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 5,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "122359ec74b5546d3a577a639b61c65a0572e3d2ef70a8b6fa612b7cb5af24b1",
+    "first_call_s": 4.489167854997504,
+    "single_fit_s": 4.489167854997504,
+    "measurement_kind": "single-fit",
+    "fits_per_minute": 13.365506022058371,
     "validation_against_cpu": {
       "bounds_equal": true,
       "nstates_equal": true,
       "first_divergence": null,
       "tdists_close": true,
-      "max_t_error": 2.433608869978343e-13,
+      "max_t_error": 0.0,
       "patterns_close": true,
       "strengths_close": true,
       "trace_compared": false,
@@ -2762,6 +4246,65 @@
       "first_numerical_divergence": null,
       "passed": true
     },
+    "note": "User requested one fit per EEG backend. The originally labelled warmup is reported as this single measured fit; no separate warmup or repeat. Same already-running WSL process and FP64 configuration. Not a cold-start or a repeated median.",
+    "trials": [
+      {
+        "workload": "BBBD0",
+        "iteration": 0,
+        "wall_s": 4.489167854997504,
+        "cpu_peak_rss_bytes": 1404452864,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.567864714001189,
+          "candidate_s": 1.1040254440522403,
+          "tdistance_s": 0.3862206399717252,
+          "finetune_s": 1.297810924013902
+        },
+        "search_s": 2.7930486969999038,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 4.362536777000059,
+        "input_sha256": "122359ec74b5546d3a577a639b61c65a0572e3d2ef70a8b6fa612b7cb5af24b1",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 0.0,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      }
+    ]
+  },
+  {
+    "workload": "BBBD0",
     "backend": "torch-cuda",
     "precision": "float64",
     "shape": [
@@ -2776,195 +4319,29 @@
       "blocksize": 50,
       "dmin": 5
     },
-    "first_call_s": 3.36560199500002,
-    "steady_median_s": 3.124899740999922,
-    "fits_per_minute": 19.20061601105989,
-    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
-    "trials": [
-      {
-        "iteration": 0,
-        "wall_s": 3.36560199500002,
-        "cpu_peak_rss_bytes": 1350483968,
-        "backend": "torch-cuda",
-        "precision": "float64",
-        "input_shape": [
-          1336,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 131,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 5
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.4544657380000672,
-          "candidate_s": 1.1942354439996734,
-          "tdistance_s": 0.3906876070001317,
-          "finetune_s": 1.289203520000342,
-          "gpu_precompute_s": 0.3476180000000113,
-          "transfer_s": 0.10684144100002868,
-          "gpu_peak_allocated_bytes": 145429504,
-          "gpu_peak_reserved_bytes": 528482304
-        },
-        "search_s": 2.878643562000093,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 3.3346716429999788,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 145429504,
-        "gpu_peak_reserved_bytes": 528482304
-      },
-      {
-        "iteration": 1,
-        "wall_s": 3.124899740999922,
-        "cpu_peak_rss_bytes": 1350483968,
-        "backend": "torch-cuda",
-        "precision": "float64",
-        "input_shape": [
-          1336,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 131,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 5
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.12325687899999593,
-          "candidate_s": 1.1886316739999074,
-          "tdistance_s": 0.39921550600092814,
-          "finetune_s": 1.3773128419995828,
-          "gpu_precompute_s": 0.10001492000003509,
-          "transfer_s": 0.02323592400000507,
-          "gpu_peak_allocated_bytes": 145429504,
-          "gpu_peak_reserved_bytes": 528482304
-        },
-        "search_s": 2.9703160929999513,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 3.0963408570000865,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 145429504,
-        "gpu_peak_reserved_bytes": 528482304
-      },
-      {
-        "iteration": 2,
-        "wall_s": 3.449930694000045,
-        "cpu_peak_rss_bytes": 1364770816,
-        "backend": "torch-cuda",
-        "precision": "float64",
-        "input_shape": [
-          1336,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 131,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 5
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.43867534200001046,
-          "candidate_s": 1.1766686519999894,
-          "tdistance_s": 0.382359313999018,
-          "finetune_s": 1.4142940000002682,
-          "gpu_precompute_s": 0.36142972700008613,
-          "transfer_s": 0.07723617199997079,
-          "gpu_peak_allocated_bytes": 145429504,
-          "gpu_peak_reserved_bytes": 528482304
-        },
-        "search_s": 2.9789065429999937,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 3.4189607810000098,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 145429504,
-        "gpu_peak_reserved_bytes": 528482304
-      },
-      {
-        "iteration": 3,
-        "wall_s": 3.1113219159999517,
-        "cpu_peak_rss_bytes": 1379188736,
-        "backend": "torch-cuda",
-        "precision": "float64",
-        "input_shape": [
-          1336,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 131,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 5
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.1600877319999654,
-          "candidate_s": 1.1976561909997372,
-          "tdistance_s": 0.3908041420012296,
-          "finetune_s": 1.3247314480000796,
-          "gpu_precompute_s": 0.11326959800010172,
-          "transfer_s": 0.04681278199996086,
-          "gpu_peak_allocated_bytes": 145429504,
-          "gpu_peak_reserved_bytes": 528482304
-        },
-        "search_s": 2.9174672500000725,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 3.0791184109999676,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 145429504,
-        "gpu_peak_reserved_bytes": 528482304
-      }
-    ]
-  },
-  {
-    "workload": "BBBD0",
+    "compute_config": {
+      "kmax": 131,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 5,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "122359ec74b5546d3a577a639b61c65a0572e3d2ef70a8b6fa612b7cb5af24b1",
+    "first_call_s": 3.737528134995955,
+    "single_fit_s": 3.737528134995955,
+    "measurement_kind": "single-fit",
+    "fits_per_minute": 16.053390859642303,
     "validation_against_cpu": {
       "bounds_equal": true,
       "nstates_equal": true,
@@ -2978,6 +4355,76 @@
       "first_numerical_divergence": null,
       "passed": true
     },
+    "note": "User requested one fit per EEG backend. The originally labelled warmup is reported as this single measured fit; no separate warmup or repeat. Same already-running WSL process and FP64 configuration. Not a cold-start or a repeated median.",
+    "trials": [
+      {
+        "workload": "BBBD0",
+        "iteration": 0,
+        "wall_s": 3.737528134995955,
+        "cpu_peak_rss_bytes": 1361580032,
+        "backend": "torch-cuda",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.4283625270036282,
+          "candidate_s": 1.2880420140500064,
+          "tdistance_s": 0.42611209695314756,
+          "finetune_s": 1.552639563968114,
+          "gpu_precompute_s": 0.3540974310017191,
+          "transfer_s": 0.07425788899854524,
+          "gpu_peak_allocated_bytes": 145429504,
+          "gpu_peak_reserved_bytes": 528482304
+        },
+        "search_s": 3.271810188998643,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "elapsed_s": 3.7040144049969967,
+        "batch_size": 1,
+        "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
+        "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
+        "tf32": false,
+        "gpu_peak_allocated_bytes": 145429504,
+        "gpu_peak_reserved_bytes": 528482304,
+        "input_sha256": "122359ec74b5546d3a577a639b61c65a0572e3d2ef70a8b6fa612b7cb5af24b1",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 2.433608869978343e-13,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
+      }
+    ]
+  },
+  {
+    "workload": "BBBD0",
     "backend": "triton-cuda",
     "precision": "float64",
     "shape": [
@@ -2992,15 +4439,49 @@
       "blocksize": 50,
       "dmin": 5
     },
-    "first_call_s": 3.60490280099998,
-    "steady_median_s": 3.3390599240000256,
-    "fits_per_minute": 17.969129445308972,
-    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "compute_config": {
+      "kmax": 131,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 5,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "input_sha256": "122359ec74b5546d3a577a639b61c65a0572e3d2ef70a8b6fa612b7cb5af24b1",
+    "first_call_s": 3.421411253999395,
+    "single_fit_s": 3.421411253999395,
+    "measurement_kind": "single-fit",
+    "fits_per_minute": 17.536623207708256,
+    "validation_against_cpu": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 2.433608869978343e-13,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "note": "User requested one fit per EEG backend. The originally labelled warmup is reported as this single measured fit; no separate warmup or repeat. Same already-running WSL process and FP64 configuration. Not a cold-start or a repeated median.",
     "trials": [
       {
+        "workload": "BBBD0",
         "iteration": 0,
-        "wall_s": 3.60490280099998,
-        "cpu_peak_rss_bytes": 1408008192,
+        "wall_s": 3.421411253999395,
+        "cpu_peak_rss_bytes": 1361580032,
         "backend": "triton-cuda",
         "precision": "float64",
         "input_shape": [
@@ -3021,161 +4502,44 @@
           "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
         },
         "timings": {
-          "precompute_s": 0.6803722890000472,
-          "candidate_s": 1.1651462770000762,
-          "tdistance_s": 0.3873732889999246,
-          "finetune_s": 1.3378033389994926,
-          "gpu_precompute_s": 0.6458948340000461,
-          "transfer_s": 0.03447219000008772,
+          "precompute_s": 0.3586581070048851,
+          "candidate_s": 1.227475292980671,
+          "tdistance_s": 0.41781956905469997,
+          "finetune_s": 1.376695092956652,
+          "gpu_precompute_s": 0.3397801749961218,
+          "transfer_s": 0.01887100699968869,
           "gpu_peak_allocated_bytes": 115453952,
           "gpu_peak_reserved_bytes": 528482304
         },
-        "search_s": 2.8943088059999127,
+        "search_s": 3.026648336999642,
         "candidate_fallbacks": 0,
         "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
         "compatibility": "fp64-validated-domain",
-        "elapsed_s": 3.576634788000092,
+        "elapsed_s": 3.3877035140030785,
         "batch_size": 1,
         "batch_index": 0,
+        "tdistance_input": "x",
+        "y_shape": null,
         "execution": "batched CUDA precompute; independent sequential CPU controllers",
+        "gpu_peak_scope": "process high-water since last reset; benchmark resets per timed call",
         "tf32": false,
         "gpu_peak_allocated_bytes": 115453952,
-        "gpu_peak_reserved_bytes": 528482304
-      },
-      {
-        "iteration": 1,
-        "wall_s": 3.3390599240000256,
-        "cpu_peak_rss_bytes": 1422295040,
-        "backend": "triton-cuda",
-        "precision": "float64",
-        "input_shape": [
-          1336,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 131,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 5
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.344858811999984,
-          "candidate_s": 1.1974996060009744,
-          "tdistance_s": 0.3895523469981299,
-          "finetune_s": 1.3711790010008826,
-          "gpu_precompute_s": 0.30212921200006804,
-          "transfer_s": 0.04272365199994965,
-          "gpu_peak_allocated_bytes": 115453952,
-          "gpu_peak_reserved_bytes": 528482304
-        },
-        "search_s": 2.9623632279999583,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 3.3088335310000048,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 115453952,
-        "gpu_peak_reserved_bytes": 528482304
-      },
-      {
-        "iteration": 2,
-        "wall_s": 3.2766524620000155,
-        "cpu_peak_rss_bytes": 1436581888,
-        "backend": "triton-cuda",
-        "precision": "float64",
-        "input_shape": [
-          1336,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 131,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 5
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.25438505099998565,
-          "candidate_s": 1.1912533929987603,
-          "tdistance_s": 0.3962517340002023,
-          "finetune_s": 1.3983454210000446,
-          "gpu_precompute_s": 0.21327253300000848,
-          "transfer_s": 0.04110738400004266,
-          "gpu_peak_allocated_bytes": 115453952,
-          "gpu_peak_reserved_bytes": 528482304
-        },
-        "search_s": 2.990054588000021,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 3.246070777,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 115453952,
-        "gpu_peak_reserved_bytes": 528482304
-      },
-      {
-        "iteration": 3,
-        "wall_s": 3.3419213759999593,
-        "cpu_peak_rss_bytes": 1450868736,
-        "backend": "triton-cuda",
-        "precision": "float64",
-        "input_shape": [
-          1336,
-          64
-        ],
-        "status": "success",
-        "algorithm": {
-          "kmax": 131,
-          "statewise_detection": true,
-          "finetune": 1,
-          "finetune_order": true,
-          "blocksize": 50,
-          "dmin": 5
-        },
-        "upstream": {
-          "version": "0.0.6",
-          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
-        },
-        "timings": {
-          "precompute_s": 0.3157072970000172,
-          "candidate_s": 1.2081390260002536,
-          "tdistance_s": 0.39377783999941585,
-          "finetune_s": 1.3879720610001414,
-          "gpu_precompute_s": 0.27046651900002416,
-          "transfer_s": 0.045235328000103436,
-          "gpu_peak_allocated_bytes": 115453952,
-          "gpu_peak_reserved_bytes": 528482304
-        },
-        "search_s": 2.994493981000005,
-        "candidate_fallbacks": 0,
-        "tdistance_fallbacks": 0,
-        "compatibility": "fp64-validated-domain",
-        "elapsed_s": 3.31237824599998,
-        "batch_size": 1,
-        "batch_index": 0,
-        "execution": "batched CUDA precompute; independent sequential CPU controllers",
-        "tf32": false,
-        "gpu_peak_allocated_bytes": 115453952,
-        "gpu_peak_reserved_bytes": 528482304
+        "gpu_peak_reserved_bytes": 528482304,
+        "input_sha256": "122359ec74b5546d3a577a639b61c65a0572e3d2ef70a8b6fa612b7cb5af24b1",
+        "validation_against_cpu": {
+          "bounds_equal": true,
+          "nstates_equal": true,
+          "first_divergence": null,
+          "tdists_close": true,
+          "max_t_error": 2.433608869978343e-13,
+          "patterns_close": true,
+          "strengths_close": true,
+          "trace_compared": false,
+          "trace_values_close": true,
+          "first_numerical_divergence": null,
+          "passed": true
+        }
       }
     ]
   }

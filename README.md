@@ -26,29 +26,39 @@ You supply the already-preprocessed matrix and the original analysis parameters.
 | Route | Implementation | Best starting point |
 |---|---|---|
 | **CPU FastGSBS** · `cpu-fast` | NumPy/BLAS precomputation, Numba search, independent process workers | Portable use and many short recordings |
-| **TensorGSBS** · `torch-cuda` | Batched PyTorch CUDA precomputation + sequential CPU controller | Longer individual recordings on NVIDIA GPUs |
-| **TurboGSBS** · `triton-cuda` | Custom Triton interval-score kernel + shared controller | Short-record latency; benchmark your workload |
+| **TensorGSBS** · `torch-cuda` | Batched PyTorch CUDA precomputation + sequential CPU controller | NVIDIA GPU fitting without requiring Triton |
+| **TurboGSBS** · `triton-cuda` | Custom Triton interval-score kernel + shared controller | Latency across sizes; benchmark your workload |
 | **Official reference** · `reference` | Calls unmodified `statesegmentation.GSBS` | Baselines and decision-by-decision validation |
 
 **The GPU routes are hybrid implementations.** Q/correlation/statistics precomputation runs on CUDA; dependent greedy search and finetuning remain on CPU. Every recording keeps an independent search path. Triton is actually executed, but it is not universally the fastest backend.
 
 ## Measured performance
 
-**Up to 489× speedup in the measured Small workload**, comparing warmed FP64 implementations with the same input and algorithm parameters. This is a workload-specific result, not a general EEG speedup claim.
+**All five workloads have measured official FP64 baselines.** Each speedup compares identical inputs, parameters, environment and precision within that workload; Small ratios are not extrapolated to larger recordings.
 
 ### Single-record latency
 
-Ryzen 7 7840H · RTX 4050 Laptop 6 GB · WSL2 Ubuntu 22.04 · PyTorch 2.11.0+cu128 · Triton 3.6.0. Values are medians of **3 warm fits**, with CUDA synchronization. CPU uses one process and one BLAS thread. All rows use statewise detection, `finetune=1`, strength-ordered finetuning, `blocksize=50`, and FP64; TF32 is disabled.
+Ryzen 7 7840H · RTX 4050 Laptop 6 GB · WSL2 Ubuntu 22.04 · PyTorch 2.11.0+cu128 · Triton 3.6.0. Synthetic values are medians of **3 fits after warmup**; BBBD0 reports **one measured fit per backend, without repeats**, with CUDA synchronization. CPU uses one process and one BLAS thread. All rows use statewise detection, `finetune=1`, strength-ordered finetuning, `blocksize=50`, and FP64; TF32 is disabled.
 
 | Workload | T × P | Kmax | Official GSBS | CPU FastGSBS | TensorGSBS | TurboGSBS |
-|---|---:|---:|---:|---:|---:|---:|
-| Small · synthetic | 450 × 16 | 20 | 48.035 s | 0.169 s | 0.110 s | **0.098 s** |
-| Medium · synthetic | 900 × 32 | 30 | — | 0.510 s | **0.245 s** | 0.300 s |
-| Large · synthetic | 1500 × 64 | 40 | — | 1.604 s | **0.482 s** | 0.501 s |
-| XL · synthetic | 2100 × 64 | 50 | — | 4.145 s | **2.257 s** | 2.313 s |
-| BBBD0 · real full-channel EEG | 1336 × 64 | 131 | — | 4.107 s | **3.125 s** | 3.339 s |
+|---|---|---|---|---|---|---|
+| Small · synthetic | 450 × 16 | 20 | 48.035 s | 0.169 s | 0.110 s | 0.098 s |
+| Medium · synthetic | 900 × 32 | 30 | 349.946 s | 0.455 s | 0.276 s | 0.328 s |
+| Large · synthetic | 1500 × 64 | 40 | 2213.493 s | 1.659 s | 0.673 s | 0.515 s |
+| XL · synthetic | 2100 × 64 | 50 | 5011.254 s | 3.778 s | 2.314 s | 2.229 s |
+| BBBD0 · real EEG | 1336 × 64 | 131 | 6115.379 s | 4.489 s | 3.738 s | 3.421 s |
 
-Small speedups versus official GSBS: **285× CPU / 438× PyTorch / 489× Triton**, calculated from unrounded timings. Synthetic rows use `dmin=1`; BBBD0 inherits its actual frozen `dmin=5`. A dash means no comparable warm reference measurement was made—not zero time. The separate full-record Windows reference run included tracing and is excluded from these ratios.
+Speedup relative to official GSBS:
+
+| Workload | CPU | PyTorch | Triton |
+|---|---|---|---|
+| Small | 285.0× | 438.4× | 489.1× |
+| Medium | 768.5× | 1265.7× | 1066.6× |
+| Large | 1334.1× | 3287.4× | 4300.9× |
+| XL | 1326.5× | 2165.6× | 2248.1× |
+| BBBD0 | 1362.3× | 1636.2× | 1787.4× |
+
+Small retains its original v0.1.0 same-environment measurements. Medium, Large and XL were remeasured in one WSL process: one warmup round, then three rounds of reference/CPU/PyTorch/Triton in sequence, reporting three-fit medians. At the user's request, BBBD0 was measured once per backend in that same process: these are single-fit ratios with no repeat-variability estimate. The original log's warmup label identifies this retained single EEG run. Synthetic dmin=1; real EEG dmin=5. Tracing is disabled, saving/validation are outside timing, and no other GSBS fits run concurrently. The earlier traced Windows reference is excluded from these ratios.
 
 ### Throughput and startup are different questions
 
@@ -72,6 +82,7 @@ The controller preserves official block grouping, double-boundary candidates wit
 
 | Validation evidence | Result |
 |---|---|
+| Paired baseline completion: 52 saved fits across 3 synthetic inputs + 1 EEG input | All K boundaries and selected K match; maximum t-distance difference vs CPU **2.44×10⁻¹³**; patterns/strengths pass. Timed fits do not collect candidate traces. |
 | Original local Windows suite | 103 passed, 1 GPU-module skip |
 | Original WSL suite, including CUDA/Triton | 134 passed |
 | Four complete EEG inputs: full64/frontal32, two sessions, four videos | CPU `all_bounds` matches historical official outputs at every K; maximum t-distance error **7.46×10⁻¹³** |
@@ -252,3 +263,6 @@ HP-GSBS builds on [statesegmentation](https://github.com/lgeerligs/statesegmenta
 - Software citation metadata: [CITATION.cff](CITATION.cff).
 
 Released under the [MIT License](LICENSE); upstream attribution is preserved in [NOTICE](NOTICE). The banner is AI-generated conceptual artwork, not a scientific figure; [generation details](docs/assets/README.md).
+
+
+Reproduce the paired reference completion: `python benchmarks/complete_reference.py --workloads Medium Large XL --output paired_results.json`. Full repeats can take hours; BBBD0 additionally requires the private frozen input; add `--single-pass BBBD0` for its one-fit protocol. Every completed fit is persisted to the corresponding `_trials.json`; partial measurements are not promoted to final tables.
