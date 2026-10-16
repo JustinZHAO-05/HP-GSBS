@@ -52,7 +52,7 @@ def reduce_values(flats, values, summary):
                 runner, best, flat = best, v, flats[k]
             elif v > runner:
                 runner = v
-    return flat, best, runner, nonfinite, changed, count
+    return flat, best, np.nan if np.isnan(best) else runner, nonfinite, changed, count
 
 
 @njit(cache=True)
@@ -77,7 +77,7 @@ def stream_q(q, edges, start, end, allowed, opt, double, T):
                 runner, best, flat = best, v, f
             elif v > runner:
                 runner = v
-    return flat, best, runner, nonfinite, changed, count
+    return flat, best, np.nan if np.isnan(best) else runner, nonfinite, changed, count
 
 
 def candidate_chunks(edges, start, allowed, opt, double, chunk_size):

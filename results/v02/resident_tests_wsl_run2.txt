@@ -1,0 +1,100 @@
+.F...F.F...                                                              [100%]
+=================================== FAILURES ===================================
+____________ test_device_reducer_gates_sentinel_and_nan[None-True] _____________
+
+double = True, opt = None
+
+    @pytest.mark.parametrize("double",[False,True])
+    @pytest.mark.parametrize("opt",[None,[],[(2,5),(4,7)],[(2,5),(2,7)],[(0,0)]])
+    def test_device_reducer_gates_sentinel_and_nan(double,opt):
+        pytest.importorskip("triton")
+        from hpgsbs.backends.resident_candidates import candidate_summary
+        for kind in ("random","tie","nan","inf","below-sentinel"):
+            q=np.random.default_rng(73).normal(size=(34,34))
+            if kind=="tie": q[:]=0
+            if kind=="nan": q[2,5]=np.nan
+            if kind=="inf": q[2,5]=np.inf
+            if kind=="below-sentinel": q[:]=-100
+            e=np.array([1,12,33]); allowed=np.ones(32,dtype=bool)
+            so=np.empty((0,0),np.int64) if opt is None else np.asarray(opt,dtype=np.int64).reshape(-1,2)
+            cpu=stream_q(q,e,1,33,allowed,so,double,33)
+            gpu=candidate_summary(torch.as_tensor(q,device="cuda"),q,e,1,33,allowed,so,double,33)
+            assert cpu[0]==gpu[0]
+>           np.testing.assert_allclose(cpu[1:3],gpu[1:3],atol=1e-12,rtol=1e-12,equal_nan=True)
+E           AssertionError: 
+E           Not equal to tolerance rtol=1e-12, atol=1e-12
+E           
+E           Mismatched elements: 1 / 2 (50%)
+E           Max absolute difference among violations: 0.24448512
+E           Max relative difference among violations: 0.04971582
+E            ACTUAL: array([     nan, 5.162137])
+E            DESIRED: array([     nan, 4.917652])
+
+tests/gpu/test_resident_candidates.py:25: AssertionError
+____________ test_device_reducer_gates_sentinel_and_nan[opt2-True] _____________
+
+double = True, opt = [(2, 5), (4, 7)]
+
+    @pytest.mark.parametrize("double",[False,True])
+    @pytest.mark.parametrize("opt",[None,[],[(2,5),(4,7)],[(2,5),(2,7)],[(0,0)]])
+    def test_device_reducer_gates_sentinel_and_nan(double,opt):
+        pytest.importorskip("triton")
+        from hpgsbs.backends.resident_candidates import candidate_summary
+        for kind in ("random","tie","nan","inf","below-sentinel"):
+            q=np.random.default_rng(73).normal(size=(34,34))
+            if kind=="tie": q[:]=0
+            if kind=="nan": q[2,5]=np.nan
+            if kind=="inf": q[2,5]=np.inf
+            if kind=="below-sentinel": q[:]=-100
+            e=np.array([1,12,33]); allowed=np.ones(32,dtype=bool)
+            so=np.empty((0,0),np.int64) if opt is None else np.asarray(opt,dtype=np.int64).reshape(-1,2)
+            cpu=stream_q(q,e,1,33,allowed,so,double,33)
+            gpu=candidate_summary(torch.as_tensor(q,device="cuda"),q,e,1,33,allowed,so,double,33)
+            assert cpu[0]==gpu[0]
+>           np.testing.assert_allclose(cpu[1:3],gpu[1:3],atol=1e-12,rtol=1e-12,equal_nan=True)
+E           AssertionError: 
+E           Not equal to tolerance rtol=1e-12, atol=1e-12
+E           
+E           Mismatched elements: 1 / 2 (50%)
+E           Max absolute difference among violations: 4.08365396
+E           Max relative difference among violations: 1.3242906
+E            ACTUAL: array([nan, -1.])
+E            DESIRED: array([     nan, 3.083654])
+
+tests/gpu/test_resident_candidates.py:25: AssertionError
+____________ test_device_reducer_gates_sentinel_and_nan[opt3-True] _____________
+
+double = True, opt = [(2, 5), (2, 7)]
+
+    @pytest.mark.parametrize("double",[False,True])
+    @pytest.mark.parametrize("opt",[None,[],[(2,5),(4,7)],[(2,5),(2,7)],[(0,0)]])
+    def test_device_reducer_gates_sentinel_and_nan(double,opt):
+        pytest.importorskip("triton")
+        from hpgsbs.backends.resident_candidates import candidate_summary
+        for kind in ("random","tie","nan","inf","below-sentinel"):
+            q=np.random.default_rng(73).normal(size=(34,34))
+            if kind=="tie": q[:]=0
+            if kind=="nan": q[2,5]=np.nan
+            if kind=="inf": q[2,5]=np.inf
+            if kind=="below-sentinel": q[:]=-100
+            e=np.array([1,12,33]); allowed=np.ones(32,dtype=bool)
+            so=np.empty((0,0),np.int64) if opt is None else np.asarray(opt,dtype=np.int64).reshape(-1,2)
+            cpu=stream_q(q,e,1,33,allowed,so,double,33)
+            gpu=candidate_summary(torch.as_tensor(q,device="cuda"),q,e,1,33,allowed,so,double,33)
+            assert cpu[0]==gpu[0]
+>           np.testing.assert_allclose(cpu[1:3],gpu[1:3],atol=1e-12,rtol=1e-12,equal_nan=True)
+E           AssertionError: 
+E           Not equal to tolerance rtol=1e-12, atol=1e-12
+E           
+E           Mismatched elements: 1 / 2 (50%)
+E           Max absolute difference among violations: 0.87111058
+E           Max relative difference among violations: 0.20300749
+E            ACTUAL: array([     nan, 5.162137])
+E            DESIRED: array([     nan, 4.291027])
+
+tests/gpu/test_resident_candidates.py:25: AssertionError
+=========================== short test summary info ============================
+FAILED tests/gpu/test_resident_candidates.py::test_device_reducer_gates_sentinel_and_nan[None-True]
+FAILED tests/gpu/test_resident_candidates.py::test_device_reducer_gates_sentinel_and_nan[opt2-True]
+FAILED tests/gpu/test_resident_candidates.py::test_device_reducer_gates_sentinel_and_nan[opt3-True]
+3 failed, 8 passed in 18.51s
