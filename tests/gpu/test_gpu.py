@@ -96,3 +96,17 @@ def test_variable_manifest_resume(tmp_path):
     rows=run_manifest(tasks,out,backend="triton-cuda",batch_size=2)
     assert all(r["status"]=="success" for r in rows),rows
     assert all(r["status"]=="skipped" for r in run_manifest(tasks,out,backend="triton-cuda",batch_size=2))
+
+
+@pytest.mark.parametrize("backend",["torch-cuda","triton-cuda"])
+@pytest.mark.parametrize("reverse",[False,True])
+def test_auto_batch_mixed_resource_policies(backend,reverse):
+    from hpgsbs import fit_many
+    xs=[np.random.default_rng(80+i).normal(size=(24,5)) for i in range(6)]
+    policies=[("throughput",.9),("latency",.1),("throughput",.1)]*2
+    cs=[GSBSConfig(7,mode=m,memory_fraction=f,trace=True) for m,f in policies]
+    if reverse: xs.reverse(); cs.reverse()
+    results=fit_many(xs,cs,backend,batch_size="auto")
+    for x,c,result in zip(xs,cs,results):
+        assert compare(fit(x,c,"reference"),result)["passed"]
+        assert result.metadata["batch_size"]==(1 if c.mode=="latency" else 2)

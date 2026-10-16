@@ -81,14 +81,41 @@ def fit_many(recordings,config,backend="torch-cuda",batch_size="auto"):
     return results
 
 
+TASK_SIGNATURE_VERSION=1
+
+
+def _execution_identity(task,backend):
+    """Canonical requested policy; bump signature schema if its meaning changes."""
+    from .. import __version__
+    return dict(signature_version=TASK_SIGNATURE_VERSION,software_version=__version__,
+                config=asdict(GSBSConfig(**task["config"])),backend=backend)
+
+
 def _task_key(task,backend):
     path=Path(task["path"]).resolve(); stat=path.stat()
-    payload=dict(path=str(path),size=stat.st_size,mtime_ns=stat.st_mtime_ns,config=task["config"],backend=backend,
+    payload=dict(path=str(path),size=stat.st_size,mtime_ns=stat.st_mtime_ns,execution=_execution_identity(task,backend),
                  y=task.get("y"),times=task.get("times"))
     for name in ("y","times"):
         if task.get(name):
             st=Path(task[name]).stat(); payload[name]=(str(Path(task[name]).resolve()),st.st_size,st.st_mtime_ns)
     return hashlib.sha256(json.dumps(payload,sort_keys=True).encode()).hexdigest()
+
+
+def _validate_resume(path,key):
+    """A scientific result is reusable as an execution cache only on success."""
+    result=GSBSResult.load(path)
+    if result.metadata.get("status")!="success":
+        raise FileExistsError("Existing result is not successful; preserve it and choose a new output directory")
+    if result.metadata.get("task_key")!=key:
+        if "execution_identity" not in result.metadata:
+            raise FileExistsError("Legacy resume signature cannot verify this software/config execution; "
+                                  "load the existing result for analysis or choose a new output directory to rerun")
+        raise FileExistsError("Existing result belongs to different input/config/software; choose a new output directory")
+
+
+def _stamp_execution(result,task,backend,key):
+    result.metadata.update(task_key=key,recording_id=task["id"],
+                           execution_identity=_execution_identity(task,backend))
 
 
 def _run_task(task,output,backend,n_jobs):
@@ -99,15 +126,13 @@ def _run_task(task,output,backend,n_jobs):
             raise ValueError("Task id must be a safe filename")
         path=Path(output)/(identifier+".npz"); key=_task_key(task,backend)
         if path.exists():
-            result=GSBSResult.load(path)
-            if result.metadata.get("task_key")==key and result.metadata["status"]=="success":
-                return dict(id=identifier,status="skipped",output=str(path))
-            raise FileExistsError("Existing result belongs to different input/config; choose a new output directory")
+            _validate_resume(path,key)
+            return dict(id=identifier,status="skipped",output=str(path))
         x=np.load(task["path"],allow_pickle=False)
         y=np.load(task["y"],allow_pickle=False) if task.get("y") else None
         c=GSBSConfig(**task["config"])
         result=fit(x,replace(c,n_jobs=1),backend,y=y)
-        result.metadata.update(task_key=key,recording_id=identifier)
+        _stamp_execution(result,task,backend,key)
         result.save(path,times=np.load(task["times"]) if task.get("times") else None)
         return dict(id=identifier,status="success",output=str(path),elapsed_s=result.metadata["elapsed_s"])
     except Exception as e:
@@ -141,8 +166,7 @@ def run_manifest(manifest,output,backend="cpu-fast",n_jobs=1,batch_size="auto"):
                     raise ValueError("Unsafe task id")
                 key=_task_key(t,backend); path=out/(t["id"]+".npz")
                 if path.exists():
-                    r=GSBSResult.load(path)
-                    if r.metadata.get("task_key")!=key: raise FileExistsError("Existing output differs")
+                    _validate_resume(path,key)
                     record(dict(id=t["id"],status="skipped",output=str(path))); continue
                 if t.get("y"):
                     record(_run_task(t,out,backend,1)); continue
@@ -155,7 +179,7 @@ def run_manifest(manifest,output,backend="cpu-fast",n_jobs=1,batch_size="auto"):
         try:
             for i,r in iter_many(xs,configs,backend,batch_size):
                 t,key,path=pending[i]
-                r.metadata.update(task_key=key,recording_id=t["id"])
+                _stamp_execution(r,t,backend,key)
                 r.save(path,times=np.load(t["times"]) if t.get("times") else None)
                 done.add(i); record(dict(id=t["id"],status="success",output=str(path),elapsed_s=r.metadata["elapsed_s"]))
         except Exception as e:

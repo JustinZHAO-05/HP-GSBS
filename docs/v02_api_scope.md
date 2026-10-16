@@ -39,6 +39,20 @@ CPU raw-prefix 可用 `fit(x,c,progress=callback,cancel=predicate)`：每 chunk 
 暂不支持回调。没有单 fit checkpoint：保存未完成 controller/trace/数值状态的维护成本
 尚不合理；manifest 已完成记录支持恢复，未完成 fit 明确重新运行。
 
+Manifest 恢复使用执行签名 v1：输入及可选 Y/time-map 的路径、大小、mtime，
+HP-GSBS 软件版本、backend，以及经过 `GSBSConfig` 补全默认值的全部配置。
+省略默认值与显式填写默认值具有相同身份；软件版本或计算策略变化必须重跑。
+结果 metadata 保存 `execution_identity` 供审计；这不是仅凭科学参数复用结果的授权。
+只有签名一致且 `status="success"` 的结果可跳过，CPU/GPU 共用这一判断。
+失败、取消、缺失状态或无法验证的旧签名均返回 failed receipt，保留原文件。
+v0.1.0 和旧版 v0.2 的无版本签名不会自动迁移：可用 `GSBSResult.load` 分析历史结果，
+要确认执行了当前实现则使用新的输出目录重新运行 manifest。该签名仍依赖文件 stat，
+不是输入内容 hash；它也不承诺跨相同开发版本的任意源码修改自动失效。
+
+GPU 自动 batch 分桶同时隔离 `mode` 和 `memory_fraction`。
+`mode="latency"` 的自动 batch 为 1；throughput 使用各自分桶的显存比例规划，
+显式 batch_size 仍由调用者指定。显存比例是准入估算，OOM halving 仍保留。
+
 `compare(...,level=...)` 支持 output-only、full-search-trace、finetune-move-trace、
 numeric-stress；后三级缺有效 trace 则失败，move 级别缺任一逐移动字段也失败。
 每次移动观察 after_delete 和实际 after_insert。numeric-stress 只规定严格 trace
