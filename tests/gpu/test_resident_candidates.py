@@ -61,6 +61,18 @@ def test_host_device_mismatch_and_invalid_metadata():
         candidate_summary(device,q,np.array([0,11]),0,11,np.ones(11,bool),args[4],True,11)
 
 
+@pytest.mark.parametrize('n',[1,2,3,7])
+@pytest.mark.parametrize('double',[False,True])
+def test_one_unscored_slot_runner(n,double):
+    pytest.importorskip('triton')
+    from hpgsbs.backends.resident_candidates import candidate_summary
+    q=np.full((n+1,n+1),-100.);e=np.array([0,n]);opt=np.empty((0,0),np.int64)
+    args=e,0,n,np.ones(n,bool),opt,double,n
+    cpu=stream_q(q,*args)
+    gpu=candidate_summary(torch.tensor(q,device='cuda'),q,*args)
+    np.testing.assert_equal(cpu,gpu)
+
+
 @pytest.mark.parametrize("backend",["torch-cuda","triton-cuda"])
 def test_resident_complete_fit_trace(backend):
     pytest.importorskip("triton")

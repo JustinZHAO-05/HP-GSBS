@@ -3,6 +3,8 @@
 The unscored flat zero is always present. NaN beats every number; its first
 occurrence wins. All-minus-one is distinct from a nonempty candidate domain.
 No fastmath: score expression order matches full_scores.
+Runner is the second matrix entry by value (NaN if the winner is NaN);
+a one-entry matrix has runner=-Inf. Real unscored slots are counted once.
 """
 import numpy as np
 from numba import njit
@@ -81,7 +83,7 @@ def stream_q(q, edges, start, end, allowed, opt, double, T):
     base = 0.0
     for s in range(len(edges)-1):
         base += q[edges[s], edges[s+1]]
-    flat, best, runner = 0, -1.0, -1.0
+    flat, best, runner = 0, -1.0, -np.inf
     nonfinite, changed, count = False, False, 0
     first, second = gate_counts(opt,end)
     restricted = opt.shape[1] == 2
@@ -108,6 +110,7 @@ def stream_q(q, edges, start, end, allowed, opt, double, T):
                         runner, best, flat = best, v, f
                     elif v > runner:
                         runner = v
+    if (n*n if double else n)-count>=2:runner=max(runner,-1.0)
     return flat, best, np.nan if np.isnan(best) else runner, nonfinite, changed, count
 
 
@@ -168,11 +171,14 @@ def scored_chunks(q, edges, start, end, allowed, opt, double, T, chunk_size):
 
 
 def stream_prefix(q, edges, start, end, allowed, opt, double, T, chunk_size, progress=None):
-    summary = (0, -1.0, -1.0, False, False, 0)
+    summary = (0, -1.0, -np.inf, False, False, 0)
     for _, flats, values in scored_chunks(q, edges, start, end, allowed, opt, double, T, chunk_size):
         summary = reduce_values(flats, values, summary)
         if progress is not None: progress(int(summary[-1]))
-    return summary
+    f,b,r,nf,ch,count=summary
+    n=end-start
+    if (n*n if double else n)-count>=2:r=max(r,-1.0)
+    return f,b,np.nan if np.isnan(b) else r,nf,ch,count
 
 
 @njit(cache=True)
@@ -180,7 +186,7 @@ def stream_window(q, edges, lo, hi, T):
     """Single-cut refinement after deletion, including distant target states."""
     base = 0.0
     for s in range(len(edges)-1): base += q[edges[s],edges[s+1]]
-    flat, best, runner = 0, -1.0, -1.0
+    flat, best, runner = 0, -1.0, -np.inf
     nonfinite, changed, count = False, False, 0
     for s in range(len(edges)-1):
         a,b = edges[s],edges[s+1]
@@ -193,4 +199,5 @@ def stream_window(q, edges, lo, hi, T):
                 if np.isnan(v) or v > best:
                     runner, best, flat = best, v, i
                 elif v > runner: runner = v
+    if T-count>=2:runner=max(runner,-1.0)
     return flat, best, np.nan if np.isnan(best) else runner, nonfinite, changed, count

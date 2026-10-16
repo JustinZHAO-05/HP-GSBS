@@ -109,6 +109,23 @@ def test_window_nan_summary_and_domain():
     np.testing.assert_equal(s,t)
 
 
+@pytest.mark.parametrize('n',range(1,8))
+@pytest.mark.parametrize('double',[False,True])
+@pytest.mark.parametrize('value',[-100.,0.,np.nan,np.inf])
+def test_small_domain_runner_numpy(n,double,value):
+    from hpgsbs.core.candidate_search import full_scores
+    q=np.full((n+1,n+1),value);e=np.array([0,n]);allowed=np.ones(n,bool);opt=np.empty((0,0),np.int64)
+    args=e,0,n,allowed,opt,double,n
+    dense=full_scores(q,*args).ravel()
+    expected=np.nan if np.isnan(dense).any() else (np.sort(dense)[-2] if len(dense)>1 else -np.inf)
+    s=stream_q(q,*args)
+    assert s[0]==dense.argmax();np.testing.assert_equal(s[2],expected)
+    class Q:
+        def __call__(self,a,b):return q[a,b]
+    np.testing.assert_equal(s,stream_prefix(Q(),*args,1))
+    if not double:np.testing.assert_equal(s,stream_window(q,e,1,n,n))
+
+
 def test_fit_input_snapshot_protects_cache():
     x=np.random.default_rng(4).normal(size=(31,6)); original=x.copy()
     c=GSBSConfig(10,q_strategy='streaming',trace=True)

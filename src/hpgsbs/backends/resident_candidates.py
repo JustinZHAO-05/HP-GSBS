@@ -26,6 +26,7 @@ def _summary(Q,META,OUT,BASE,START,END,T,N:tl.constexpr,DOUBLE:tl.constexpr,
     changed=tl.full((),0,tl.int32)
     nonfinite=tl.full((),0,tl.int32)
     count=tl.full((),0,tl.int64)
+    scored_best=tl.full((),-float('inf'),tl.float64)
     base=tl.load(BASE)
     for tile in range(pid*BLOCK,total,PROGRAMS*BLOCK):
         f=(tile+lane).to(tl.int64)
@@ -58,6 +59,7 @@ def _summary(Q,META,OUT,BASE,START,END,T,N:tl.constexpr,DOUBLE:tl.constexpr,
         nonfinite=nonfinite|tl.max((valid&(isnan|(tl.abs(v)==float('inf')))).to(tl.int32),0)
         count+=tl.sum(valid.to(tl.int64),0)
         numeric=tl.where(isnan,-float('inf'),v)
+        scored_best=tl.maximum(scored_best,tl.max(tl.where(valid,numeric,-float('inf')),0))
         top=tl.max(numeric,0)
         firstflat=tl.min(tl.where((numeric==top)&(f<total),f,9223372036854775807),0)
         secondtop=tl.max(tl.where(f==firstflat,-float('inf'),numeric),0)
@@ -72,6 +74,7 @@ def _summary(Q,META,OUT,BASE,START,END,T,N:tl.constexpr,DOUBLE:tl.constexpr,
     tl.store(OUT+pid*8+4,changed.to(tl.float64))
     tl.store(OUT+pid*8+5,nonfinite.to(tl.float64))
     tl.store(OUT+pid*8+6,count.to(tl.float64))
+    tl.store(OUT+pid*8+7,scored_best)
 
 
 def candidate_summary(q,q_host,edges,start,end,allowed,opt,double,T,*,validate_host=True):
@@ -109,7 +112,11 @@ def candidate_summary(q,q_host,edges,start,end,allowed,opt,double,T,*,validate_h
     nanflat=out[:,3].min()
     hasnan=nanflat<9e18
     runner=torch.maximum(out[:,2].max(),torch.where(out[:,1]!=winning,out[:,0],-float('inf')).max())
+    count=out[:,6].sum()
+    # With just one real unscored slot, virtual per-program sentinels must
+    # not impersonate the runner when every scored value is below -1.
+    runner=torch.where((best==-1)&(((n*n if double else n)-count)==1),out[:,7].max(),runner)
     result=torch.stack([torch.where(hasnan,nanflat,winning),
-        torch.where(hasnan,float('nan'),best),torch.where(hasnan,float('nan'),runner),out[:,5].max(),out[:,4].max(),out[:,6].sum()])
+        torch.where(hasnan,float('nan'),best),torch.where(hasnan,float('nan'),runner),out[:,5].max(),out[:,4].max(),count])
     f,v,r,nonfinite,changed,count=result.cpu().numpy()
     return int(f),float(v),float(r),bool(nonfinite),bool(changed),int(count)
