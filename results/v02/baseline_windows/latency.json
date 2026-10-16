@@ -1,0 +1,1027 @@
+[
+  {
+    "workload": "Small",
+    "input_sha256": "8230ffe7e6b2e50c74fa9f742342f6330e947abb23f99561b337aacb1e7d5ee3",
+    "config": {
+      "kmax": 20,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "validation": {
+      "status": "no cached official reference"
+    },
+    "backend": "cpu-fast",
+    "precision": "float64",
+    "shape": [
+      450,
+      16
+    ],
+    "algorithm": {
+      "kmax": 20,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 4.075340299998061,
+    "steady_median_s": 0.16191819999949075,
+    "fits_per_minute": 370.5574790245241,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 4.075340299998061,
+        "cpu_peak_rss_bytes": 183451648,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.08312799999839626,
+          "candidate_s": 2.5489116000098875,
+          "tdistance_s": 0.009417699999175966,
+          "finetune_s": 0.02903349997359328
+        },
+        "search_s": 2.6138633000082336,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 2.6976100000028964
+      },
+      {
+        "iteration": 1,
+        "wall_s": 0.1623717000038596,
+        "cpu_peak_rss_bytes": 182583296,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.08424620000005234,
+          "candidate_s": 0.02761859999736771,
+          "tdistance_s": 0.009509900002740324,
+          "finetune_s": 0.025432300026295707
+        },
+        "search_s": 0.06680569998570718,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 0.15162789999158122
+      },
+      {
+        "iteration": 2,
+        "wall_s": 0.16191819999949075,
+        "cpu_peak_rss_bytes": 185294848,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.08642120000149589,
+          "candidate_s": 0.027705100015737116,
+          "tdistance_s": 0.010305800082278438,
+          "finetune_s": 0.02627470000879839
+        },
+        "search_s": 0.06808850000379607,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 0.15521589999843854
+      },
+      {
+        "iteration": 3,
+        "wall_s": 0.15933850000146776,
+        "cpu_peak_rss_bytes": 183504896,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          450,
+          16
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 20,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.08382259999052621,
+          "candidate_s": 0.027677600024617277,
+          "tdistance_s": 0.010162399979890324,
+          "finetune_s": 0.02634669998951722
+        },
+        "search_s": 0.06840960000408813,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 0.15276270000322256
+      }
+    ]
+  },
+  {
+    "workload": "Medium",
+    "input_sha256": "01b8c55683d2681b772d7468f833add4351917c450053a2de74a217a346123ea",
+    "config": {
+      "kmax": 30,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "validation": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 3.197442310920451e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "cpu-fast",
+    "precision": "float64",
+    "shape": [
+      900,
+      32
+    ],
+    "algorithm": {
+      "kmax": 30,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 0.5518224999977974,
+    "steady_median_s": 0.5659316999954171,
+    "fits_per_minute": 106.01986070136357,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 0.5518224999977974,
+        "cpu_peak_rss_bytes": 215957504,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.35067860000708606,
+          "candidate_s": 0.10872459999518469,
+          "tdistance_s": 0.021636499935993925,
+          "finetune_s": 0.057360499995411374
+        },
+        "search_s": 0.19268700000247918,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 0.5441062000027159
+      },
+      {
+        "iteration": 1,
+        "wall_s": 0.5530818999977782,
+        "cpu_peak_rss_bytes": 217817088,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.35136069999134634,
+          "candidate_s": 0.11137900003814138,
+          "tdistance_s": 0.02178560002357699,
+          "finetune_s": 0.05610140001226682
+        },
+        "search_s": 0.19343729999673087,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 0.5454099999915343
+      },
+      {
+        "iteration": 2,
+        "wall_s": 0.5659316999954171,
+        "cpu_peak_rss_bytes": 218087424,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.3627623000065796,
+          "candidate_s": 0.1107812999835005,
+          "tdistance_s": 0.02222800000163261,
+          "finetune_s": 0.05690560000948608
+        },
+        "search_s": 0.19401929999003187,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 0.5576422000012826
+      },
+      {
+        "iteration": 3,
+        "wall_s": 0.6011744999996154,
+        "cpu_peak_rss_bytes": 216199168,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          900,
+          32
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 30,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 0.37267769999743905,
+          "candidate_s": 0.1284058999735862,
+          "tdistance_s": 0.024031199995079078,
+          "finetune_s": 0.06184150000626687
+        },
+        "search_s": 0.21938710000540596,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 0.592953800005489
+      }
+    ]
+  },
+  {
+    "workload": "Large",
+    "input_sha256": "34cc152f4ab52454ad74a5e9f71b291a6b21ca95ed4761927299de76499266d8",
+    "config": {
+      "kmax": 40,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "validation": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 3.108624468950438e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "cpu-fast",
+    "precision": "float64",
+    "shape": [
+      1500,
+      64
+    ],
+    "algorithm": {
+      "kmax": 40,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 1.9013238999905298,
+    "steady_median_s": 2.0178755999950226,
+    "fits_per_minute": 29.734241298198956,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 1.9013238999905298,
+        "cpu_peak_rss_bytes": 303345664,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.2446608000027481,
+          "candidate_s": 0.4539650000515394,
+          "tdistance_s": 0.049751400016248226,
+          "finetune_s": 0.13184430000546854
+        },
+        "search_s": 0.6403949999948964,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 1.8873580000072252
+      },
+      {
+        "iteration": 1,
+        "wall_s": 1.9108459999988554,
+        "cpu_peak_rss_bytes": 298196992,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.289220499995281,
+          "candidate_s": 0.43508970001130365,
+          "tdistance_s": 0.04310629998508375,
+          "finetune_s": 0.12212100005126558
+        },
+        "search_s": 0.6045389999926556,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 1.8954871000023559
+      },
+      {
+        "iteration": 2,
+        "wall_s": 2.0471585000050254,
+        "cpu_peak_rss_bytes": 305405952,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.300946399991517,
+          "candidate_s": 0.571117100000265,
+          "tdistance_s": 0.03950060001807287,
+          "finetune_s": 0.11206610001681838
+        },
+        "search_s": 0.7265696999966167,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 2.0290247999946587
+      },
+      {
+        "iteration": 3,
+        "wall_s": 2.0178755999950226,
+        "cpu_peak_rss_bytes": 301879296,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1500,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 40,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.253477300007944,
+          "candidate_s": 0.5869328000262612,
+          "tdistance_s": 0.04373209997720551,
+          "finetune_s": 0.11118239999632351
+        },
+        "search_s": 0.746520300002885,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 2.00191750000522
+      }
+    ]
+  },
+  {
+    "workload": "XL",
+    "input_sha256": "32c2c03dc67317032d8637dd759da67f32ae72ec005ee76e662a09ad7a162852",
+    "config": {
+      "kmax": 50,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "validation": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 7.638334409421077e-14,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "cpu-fast",
+    "precision": "float64",
+    "shape": [
+      2100,
+      64
+    ],
+    "algorithm": {
+      "kmax": 50,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 1
+    },
+    "first_call_s": 3.360245900010341,
+    "steady_median_s": 3.2525609000003897,
+    "fits_per_minute": 18.447002790937077,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 3.360245900010341,
+        "cpu_peak_rss_bytes": 429625344,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 2.3868591000064043,
+          "candidate_s": 0.7501828999666031,
+          "tdistance_s": 0.05343279997759964,
+          "finetune_s": 0.13892349999514408
+        },
+        "search_s": 0.9468043999950169,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 3.3361565999948652
+      },
+      {
+        "iteration": 1,
+        "wall_s": 3.2525609000003897,
+        "cpu_peak_rss_bytes": 427872256,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 2.317919699999038,
+          "candidate_s": 0.7242492999939714,
+          "tdistance_s": 0.05033480006386526,
+          "finetune_s": 0.13481059999321587
+        },
+        "search_s": 0.9135499999974854,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 3.233916400000453
+      },
+      {
+        "iteration": 2,
+        "wall_s": 3.19984870000917,
+        "cpu_peak_rss_bytes": 431423488,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 2.2314730000070995,
+          "candidate_s": 0.7512244999961695,
+          "tdistance_s": 0.05467399998451583,
+          "finetune_s": 0.13778479998291004
+        },
+        "search_s": 0.9477638999960618,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 3.1815271000086796
+      },
+      {
+        "iteration": 3,
+        "wall_s": 3.3486713000020245,
+        "cpu_peak_rss_bytes": 422522880,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          2100,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 50,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 1
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 2.367888099994161,
+          "candidate_s": 0.7492131000035442,
+          "tdistance_s": 0.054254300019238144,
+          "finetune_s": 0.14914339999086224
+        },
+        "search_s": 0.9567596999986563,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 3.3273212000058265
+      }
+    ]
+  },
+  {
+    "workload": "BBBD0",
+    "input_sha256": "122359ec74b5546d3a577a639b61c65a0572e3d2ef70a8b6fa612b7cb5af24b1",
+    "config": {
+      "kmax": 131,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 5,
+      "dtype": "float64",
+      "q_strategy": "full",
+      "tile_size": 128,
+      "n_jobs": 1,
+      "blas_threads": 1,
+      "numba_threads": 1,
+      "memory_fraction": 0.55,
+      "trace": false,
+      "mode": "latency",
+      "tie_tolerance": 1e-11
+    },
+    "validation": {
+      "bounds_equal": true,
+      "nstates_equal": true,
+      "first_divergence": null,
+      "tdists_close": true,
+      "max_t_error": 2.433608869978343e-13,
+      "patterns_close": true,
+      "strengths_close": true,
+      "trace_compared": false,
+      "trace_values_close": true,
+      "first_numerical_divergence": null,
+      "passed": true
+    },
+    "backend": "cpu-fast",
+    "precision": "float64",
+    "shape": [
+      1336,
+      64
+    ],
+    "algorithm": {
+      "kmax": 131,
+      "statewise_detection": true,
+      "finetune": 1,
+      "finetune_order": true,
+      "blocksize": 50,
+      "dmin": 5
+    },
+    "first_call_s": 5.534025200002361,
+    "steady_median_s": 5.0898452999972505,
+    "fits_per_minute": 11.78817753066727,
+    "note": "First call includes in-process JIT/device setup; disk cache may exist. Wall excludes output serialization. RSS sampled every 5 ms, process total.",
+    "trials": [
+      {
+        "iteration": 0,
+        "wall_s": 5.534025200002361,
+        "cpu_peak_rss_bytes": 285061120,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.3701607000111835,
+          "candidate_s": 2.256304199967417,
+          "tdistance_s": 0.5050148000591435,
+          "finetune_s": 1.3813811000145506
+        },
+        "search_s": 4.14768069999991,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 5.519251200006693
+      },
+      {
+        "iteration": 1,
+        "wall_s": 5.606060400008573,
+        "cpu_peak_rss_bytes": 279261184,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.4106833999976516,
+          "candidate_s": 2.3423554000619333,
+          "tdistance_s": 0.49164189989096485,
+          "finetune_s": 1.3390886999113718
+        },
+        "search_s": 4.179139300002134,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 5.590904500000761
+      },
+      {
+        "iteration": 2,
+        "wall_s": 5.0898452999972505,
+        "cpu_peak_rss_bytes": 285491200,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.3462900000013178,
+          "candidate_s": 1.9097321000008378,
+          "tdistance_s": 0.5003693000762723,
+          "finetune_s": 1.3127351999719394
+        },
+        "search_s": 3.7272765999950934,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 5.074897300000885
+      },
+      {
+        "iteration": 3,
+        "wall_s": 4.840969600001699,
+        "cpu_peak_rss_bytes": 284884992,
+        "backend": "cpu-fast",
+        "precision": "float64",
+        "input_shape": [
+          1336,
+          64
+        ],
+        "status": "success",
+        "algorithm": {
+          "kmax": 131,
+          "statewise_detection": true,
+          "finetune": 1,
+          "finetune_order": true,
+          "blocksize": 50,
+          "dmin": 5
+        },
+        "upstream": {
+          "version": "0.0.6",
+          "source_sha256": "ac8d4dae3a2d72791f33699871f05f077f119ddd640a3904f09ed1fccb6e90de"
+        },
+        "timings": {
+          "precompute_s": 1.2829321999888634,
+          "candidate_s": 1.7576291000004858,
+          "tdistance_s": 0.48274980000860523,
+          "finetune_s": 1.2985918000922538
+        },
+        "search_s": 3.5434614999976475,
+        "candidate_fallbacks": 0,
+        "tdistance_fallbacks": 0,
+        "precision_detail": "FP64 throughout",
+        "compatibility": "fp64-validated-domain",
+        "tdistance_input": "x",
+        "y_shape": null,
+        "elapsed_s": 4.827632399988943
+      }
+    ]
+  }
+]

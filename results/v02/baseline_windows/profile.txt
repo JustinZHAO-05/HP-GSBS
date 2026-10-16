@@ -1,0 +1,53 @@
+         1861302 function calls (1860992 primitive calls) in 6.400 seconds
+
+   Ordered by: cumulative time
+   List reduced from 459 to 45 due to restriction <45>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.004    0.004    6.400    6.400 api.py:8(fit)
+        1    0.001    0.001    6.384    6.384 cpu_fast.py:66(fit_cpu)
+        1    0.016    0.016    4.844    4.844 cpu_fast.py:12(run_search)
+    12009    1.086    0.000    3.481    0.000 candidate_search.py:62(best)
+      118    0.099    0.001    2.185    0.019 finetuning.py:5(finetune)
+      119    0.121    0.001    1.966    0.017 candidate_search.py:107(blocks)
+        1    0.077    0.077    1.396    1.396 interval_scores.py:37(__init__)
+     7656    0.901    0.000    1.290    0.000 interval_scores.py:56(_direct)
+    12009    0.081    0.000    0.671    0.000 candidate_search.py:43(_scores)
+      357    0.012    0.000    0.668    0.002 tdistance.py:48(__call__)
+      357    0.210    0.001    0.642    0.002 tdistance.py:29(stats)
+    12009    0.569    0.000    0.586    0.000 candidate_search.py:6(full_scores)
+    73730    0.542    0.000    0.542    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+    48987    0.129    0.000    0.529    0.000 numeric.py:679(flatnonzero)
+    12603    0.323    0.000    0.450    0.000 _index_tricks_impl.py:343(__getitem__)
+      118    0.008    0.000    0.388    0.003 state_utils.py:5(boundary_strengths)
+    12009    0.087    0.000    0.303    0.000 _nanfunctions_impl.py:382(nanmax)
+   149883    0.285    0.000    0.285    0.000 tdistance.py:10(rectangle)
+    48987    0.040    0.000    0.250    0.000 fromnumeric.py:1993(nonzero)
+    49462    0.056    0.000    0.219    0.000 fromnumeric.py:48(_wrapfunc)
+     7893    0.108    0.000    0.205    0.000 _linalg.py:2599(norm)
+    25159    0.047    0.000    0.202    0.000 tdistance.py:33(<listcomp>)
+      118    0.040    0.000    0.197    0.002 _stats_py.py:4369(pearsonr)
+    24802    0.062    0.000    0.193    0.000 tdistance.py:35(<listcomp>)
+    12245    0.027    0.000    0.181    0.000 fromnumeric.py:2548(all)
+      118    0.014    0.000    0.169    0.001 state_utils.py:9(<listcomp>)
+    13076    0.053    0.000    0.167    0.000 fromnumeric.py:86(_wrapreduction_any_all)
+     8593    0.059    0.000    0.156    0.000 _methods.py:115(_mean)
+     8356    0.007    0.000    0.155    0.000 {method 'mean' of 'numpy.ndarray' objects}
+        1    0.027    0.027    0.142    0.142 tdistance.py:15(__init__)
+    48987    0.141    0.000    0.141    0.000 {method 'nonzero' of 'numpy.ndarray' objects}
+     7774    0.021    0.000    0.137    0.000 fromnumeric.py:2304(sum)
+    48987    0.077    0.000    0.129    0.000 fromnumeric.py:1879(ravel)
+     8128    0.030    0.000    0.121    0.000 fromnumeric.py:66(_wrapreduction)
+        3    0.008    0.003    0.105    0.035 tdistance.py:6(prefix2)
+    12010    0.098    0.000    0.098    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+    12009    0.031    0.000    0.088    0.000 {method 'any' of 'numpy.generic' objects}
+        8    0.085    0.011    0.085    0.011 {method 'cumsum' of 'numpy.ndarray' objects}
+    12011    0.013    0.000    0.082    0.000 {method 'all' of 'numpy.ndarray' objects}
+    12010    0.063    0.000    0.082    0.000 numeric.py:170(ones)
+    12011    0.011    0.000    0.069    0.000 _methods.py:64(_all)
+    12603    0.026    0.000    0.062    0.000 _index_tricks_impl.py:432(<listcomp>)
+    12009    0.013    0.000    0.057    0.000 _methods.py:55(_any)
+    52430    0.049    0.000    0.050    0.000 {built-in method numpy.array}
+    15891    0.048    0.000    0.048    0.000 {built-in method numpy.arange}
+
+

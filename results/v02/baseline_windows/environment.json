@@ -1,0 +1,23 @@
+{
+  "head": "f85ea0b7e4ef5850ac573fe2f3c6341973a4cf1a",
+  "python": "3.11.15",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "arguments": {
+    "output": "results/v02/baseline_windows",
+    "fixtures": "P:/Fast_GSBS/results/fixtures",
+    "backends": [
+      "cpu-fast"
+    ],
+    "repeats": 3,
+    "q_strategy": "full",
+    "td_backend": null,
+    "candidate_backend": null,
+    "workloads": [
+      "Small",
+      "Medium",
+      "Large",
+      "XL",
+      "BBBD0"
+    ]
+  }
+}
