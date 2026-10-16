@@ -36,3 +36,35 @@ def test_multiple_grid_stride_tiles():
     assert cpu[0]==gpu[0]
     np.testing.assert_allclose(cpu[1:3],gpu[1:3],atol=1e-12,rtol=1e-12)
     assert cpu[3:]==gpu[3:]
+
+
+@pytest.mark.parametrize("backend",["torch-cuda","triton-cuda"])
+def test_resident_complete_fit_trace(backend):
+    pytest.importorskip("triton")
+    from hpgsbs import fit,GSBSConfig
+    from hpgsbs.validation import compare
+    from dataclasses import replace
+    x=np.random.default_rng(81).normal(size=(270,8))
+    c=GSBSConfig(10,trace=True)
+    ref=fit(x,replace(c,candidate_backend="materialized"))
+    r=fit(x,replace(c,candidate_backend="triton-resident"),backend)
+    assert r.metadata["candidate_gpu_calls"]>0
+    report=compare(ref,r)
+    assert report["passed"],report
+
+
+@pytest.mark.parametrize("index",range(4))
+def test_resident_full_eeg_trace(index):
+    pytest.importorskip("triton")
+    import os
+    from pathlib import Path
+    from hpgsbs import fit,GSBSConfig,GSBSResult
+    from hpgsbs.validation import compare
+    path=Path(os.environ.get("HPGSBS_FIXTURES","results/fixtures"))/f"{index}_full_cpu.npz"
+    if not path.exists(): pytest.skip("Private full EEG fixtures unavailable")
+    ref=GSBSResult.load(path)
+    c=GSBSConfig(**ref.metadata["algorithm"],trace=True,candidate_backend="triton-resident")
+    r=fit(ref.x,c,"triton-cuda")
+    assert r.metadata["candidate_gpu_calls"]>0
+    report=compare(ref,r)
+    assert report["passed"],report

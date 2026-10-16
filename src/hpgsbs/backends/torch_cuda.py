@@ -17,7 +17,7 @@ def require_cuda():
 
 
 class HostQ:
-    def __init__(self,q): self.Q=q
+    def __init__(self,q,device_q=None): self.Q,self.device_Q=q,device_q
     def __call__(self,a,b): return self.Q[a,b]
 
 
@@ -83,7 +83,8 @@ def precompute(xs, configs, ys=None, backend="torch-cuda"):
         torch.cuda.synchronize(); transfer_s+=perf_counter()-ts
         stats=dict(precompute_s=perf_counter()-start,gpu_precompute_s=compute_s,transfer_s=transfer_s,
                    gpu_peak_allocated_bytes=torch.cuda.max_memory_allocated(),gpu_peak_reserved_bytes=torch.cuda.max_memory_reserved())
-        return [(HostQ(qh[i]),TDistance(xs[i] if ys is None else ys[i],configs[i].dmin,(nh,sh[i],qsh[i]))) for i in range(B)],stats
+        return [(HostQ(qh[i],q[i] if configs[i].candidate_backend=="triton-resident" else None),
+                 TDistance(xs[i] if ys is None else ys[i],configs[i].dmin,(nh,sh[i],qsh[i]))) for i in range(B)],stats
     finally:
         torch.set_float32_matmul_precision(old_precision)
         torch.backends.cuda.matmul.allow_tf32=old_tf32
@@ -97,7 +98,7 @@ def iter_gpu(xs,configs,ys=None,backend="torch-cuda"):
         result.model.y=None if ys is None else ys[i]
         result.metadata.update(elapsed_s=perf_counter()-start,batch_size=len(xs),batch_index=i,
             tdistance_input="x" if ys is None else "y",y_shape=None if ys is None else list(ys[i].shape),
-            execution="batched CUDA precompute; independent sequential CPU controllers",
+            execution="batched CUDA precompute; selective resident candidates; sequential CPU controller" if c.candidate_backend=="triton-resident" else "batched CUDA precompute; independent sequential CPU controllers",
             gpu_peak_scope="process high-water since last reset; benchmark resets per timed call",
             precision_detail="FP64 throughout" if c.dtype=="float64" else "FP32 CUDA Q/correlation/prefixes; FP64 CPU controller and output patterns; FP64 exact fallback",
             tf32=False, **{k:v for k,v in stats.items() if k.startswith("gpu_peak")})

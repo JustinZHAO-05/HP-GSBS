@@ -9,6 +9,8 @@ def fit(x, config, backend="cpu-fast", *, y=None):
     if backend not in ("reference","cpu-fast","torch-cuda","triton-cuda"):
         raise ValueError(f"Unknown backend {backend}")
     if isinstance(config,dict): config=GSBSConfig(**config)
+    if config.candidate_backend=="triton-resident" and backend=="cpu-fast":
+        raise ValueError("triton-resident candidates require a CUDA backend and optional Triton")
     x=validate_input(x,config.kmax)
     if y is not None:
         y=validate_input(y)

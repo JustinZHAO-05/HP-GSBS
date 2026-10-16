@@ -45,9 +45,20 @@ class CandidateSearch:
         self.last_diagnostics = {}
         self._local_cache = {}
         self.cache_hits = 0
+        self.gpu_calls = 0
+
+    def summary(self,args):
+        edges,start,end,allowed,opt,double,T=args
+        if (self.backend=="triton-resident" and double and opt.shape[1]!=2
+                and sum(max(0,int(b-a-1))*max(0,int(b-a-2))//2 for a,b in zip(edges[:-1],edges[1:]))>=20000):
+            from ..backends.resident_candidates import candidate_summary
+            self.gpu_calls += 1
+            return candidate_summary(self.q.device_Q,self.q.Q,*args)
+        return (stream_q(self.q.Q,*args) if self.q.Q is not None else
+                stream_prefix(self.q,*args,self.chunk_size))
 
     def window(self, bounds, lo, hi):
-        if self.backend == "streaming" and self.q.Q is not None:
+        if self.backend in ("streaming","triton-resident") and self.q.Q is not None:
             edges = np.concatenate(([0], np.flatnonzero(bounds), [len(bounds)]))
             flat, best, runner, nonfinite, changed, _ = stream_window(self.q.Q, edges, lo, hi, len(bounds))
             if not nonfinite and (not changed or best-runner > self.tolerance):
@@ -68,8 +79,7 @@ class CandidateSearch:
             allowed[opts-start] = True
         opt = np.empty((0,0),dtype=np.int64) if stateopt is None else np.asarray(stateopt,dtype=np.int64).reshape(-1,2)
         args = (edges, start, end, allowed, opt, double, len(self.x))
-        summary = (stream_q(self.q.Q, *args) if self.q.Q is not None else
-                   stream_prefix(self.q, *args, self.chunk_size))
+        summary = self.summary(args)
         flat, score, runner, nonfinite, changed, count = summary
         self.last_diagnostics = dict(candidates=int(count), gap=float(score-runner), nonfinite=bool(nonfinite))
         if not changed: return (None if double else start), -1.0
