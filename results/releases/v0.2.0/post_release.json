@@ -568,7 +568,7 @@
     },
     "stable_windows.log": {
       "raw_sha256": "4c3fd08d7a64f68a84393b4f74d049d510caec523073a4fe1a57e0260d6d9bad",
-      "public_sha256": "8ba323e873d890fd161b5e5c1d61a00395e07ee750fe527c5b0cf785a6619fe1"
+      "public_sha256": "37aee56d0a7eb7e5823c6834746d725e9009f2b14617fbfcd0ba4157f4a81802"
     },
     "stable_wsl.xml": {
       "raw_sha256": "463d9ef66dfd94f5688025f10258bc6e87a16e5506a9fee9e1c6b275792a3b04",
@@ -610,5 +610,6 @@
     "Raw-prefix, moments TD, resident candidates and FP32 are experimental.",
     "Incremental TD and GPU no-Q/fixed-partition moments are research-only.",
     "GPU full-resident control and seven-network source-space validation remain unfinished."
-  ]
+  ],
+  "evidence_line_endings": "Public hashes use committed LF bytes; raw hashes retain original local log bytes."
 }
