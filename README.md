@@ -84,6 +84,8 @@ The [v0.1 historical performance report](docs/performance_v0.1.md), [original PN
 
 ## Scientific consistency
 
+Published v0.2.0 (`b86b409`): **319 passed / 3 skipped on Windows; 384 passed / 1 skipped on WSL**. Public wheel/sdist installations passed CPU-only checks; the public wheel passed all 12 full frozen EEG comparisons across CPU/PyTorch/Triton. [Post-release verification](docs/release_verification_v0.2.0.md) separates these from historical measurements.
+
 | Evidence | Scope |
 |---|---|
 | Scheduler snapshot `7da2611`, Windows | **315 passed / 3 skipped** |
@@ -200,7 +202,7 @@ Spatial sample z-scores (`ddof=1`) and time-prefix sums turn each interval's mat
 
 **[Yanzhe Zhao](https://github.com/JustinZHAO-05) — Main contributor and maintainer** (Tianjin University).
 
-> Zhao, Y. (2026). *HP-GSBS: High-Performance Greedy State Boundary Search* (Version 0.2.0) [Computer software]. GitHub. https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.2.0
+> Zhao, Y. (2026). *HP-GSBS: High-Performance Greedy State Boundary Search* (Version 0.2.0) [Computer software]. Zenodo. [doi:10.5281/zenodo.23422148](https://doi.org/10.5281/zenodo.23422148)
 
 Use [CITATION.cff](CITATION.cff) and cite the original GSBS papers and [upstream implementation](https://github.com/lgeerligs/statesegmentation):
 

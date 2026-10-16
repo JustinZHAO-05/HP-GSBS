@@ -1,0 +1,102 @@
+{
+  "version": "0.2.0",
+  "installed_package": true,
+  "cpu_only_without_torch": false,
+  "python": "3.10.12",
+  "checks": [
+    {
+      "backend": "cpu-fast",
+      "strict_move_parity": true,
+      "batch_parity": true
+    },
+    {
+      "backend": "torch-cuda",
+      "strict_move_parity": true,
+      "batch_parity": true
+    },
+    {
+      "backend": "triton-cuda",
+      "strict_move_parity": true,
+      "batch_parity": true
+    }
+  ],
+  "save_load": true,
+  "manifest_resume": true,
+  "non_success_resume_refused": true,
+  "legacy": {},
+  "real": [
+    {
+      "index": 0,
+      "backend": "cpu-fast",
+      "passed": true,
+      "scope": "full frozen output/path; not newly generated official moves"
+    },
+    {
+      "index": 0,
+      "backend": "torch-cuda",
+      "passed": true,
+      "scope": "full frozen output/path; not newly generated official moves"
+    },
+    {
+      "index": 0,
+      "backend": "triton-cuda",
+      "passed": true,
+      "scope": "full frozen output/path; not newly generated official moves"
+    },
+    {
+      "index": 1,
+      "backend": "cpu-fast",
+      "passed": true,
+      "scope": "full frozen output/path; not newly generated official moves"
+    },
+    {
+      "index": 1,
+      "backend": "torch-cuda",
+      "passed": true,
+      "scope": "full frozen output/path; not newly generated official moves"
+    },
+    {
+      "index": 1,
+      "backend": "triton-cuda",
+      "passed": true,
+      "scope": "full frozen output/path; not newly generated official moves"
+    },
+    {
+      "index": 2,
+      "backend": "cpu-fast",
+      "passed": true,
+      "scope": "full frozen output/path; not newly generated official moves"
+    },
+    {
+      "index": 2,
+      "backend": "torch-cuda",
+      "passed": true,
+      "scope": "full frozen output/path; not newly generated official moves"
+    },
+    {
+      "index": 2,
+      "backend": "triton-cuda",
+      "passed": true,
+      "scope": "full frozen output/path; not newly generated official moves"
+    },
+    {
+      "index": 3,
+      "backend": "cpu-fast",
+      "passed": true,
+      "scope": "full frozen output/path; not newly generated official moves"
+    },
+    {
+      "index": 3,
+      "backend": "torch-cuda",
+      "passed": true,
+      "scope": "full frozen output/path; not newly generated official moves"
+    },
+    {
+      "index": 3,
+      "backend": "triton-cuda",
+      "passed": true,
+      "scope": "full frozen output/path; not newly generated official moves"
+    }
+  ],
+  "doctor_ok": true
+}

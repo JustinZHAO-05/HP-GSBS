@@ -2,6 +2,8 @@
 
 ## 0.2.0 — 2026-10-16 (UTC)
 
+Published as the formal [GitHub Release](https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.2.0); archived at [Zenodo](https://doi.org/10.5281/zenodo.23422148). Post-release DOI/evidence documentation on main does not move the release tag or replace built packages.
+
 ### Added
 
 - Streaming candidate reducer and bounded candidate/original-expression fallback execution.

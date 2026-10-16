@@ -39,6 +39,10 @@ For tests/examples, clone the [v0.2.0 source](https://github.com/JustinZHAO-05/H
 
 Zhao, Y. (2026). *HP-GSBS: High-Performance Greedy State Boundary Search* (Version 0.2.0) [Computer software]. GitHub. https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.2.0
 
-Original GSBS method: Geerligs et al. (2021), [NeuroImage, 118085](https://doi.org/10.1016/j.neuroimage.2021.118085); Geerligs et al. (2022), [eLife, e77430](https://doi.org/10.7554/eLife.77430). Upstream [statesegmentation](https://github.com/lgeerligs/statesegmentation) attribution is retained in NOTICE; software metadata is in [CITATION.cff](../CITATION.cff). No unverified DOI is claimed.
+Original GSBS method: Geerligs et al. (2021), [NeuroImage, 118085](https://doi.org/10.1016/j.neuroimage.2021.118085); Geerligs et al. (2022), [eLife, e77430](https://doi.org/10.7554/eLife.77430). Upstream [statesegmentation](https://github.com/lgeerligs/statesegmentation) attribution is retained in NOTICE; software metadata is in [CITATION.cff](../CITATION.cff). Zenodo automatically archived v0.2.0: [doi:10.5281/zenodo.23422148](https://doi.org/10.5281/zenodo.23422148). The archive checksum and package metadata/scheduler files were checked against the immutable tag.
 
 This release updates algorithm software only. It does not change BBBD data, preprocessing, research parameters, behavior/quiz statistics, source-network definitions or scientific conclusions. No private EEG, individual result NPZ, participant manifest or environment is included.
+
+## Publication completed
+
+Formal release: [v0.2.0](https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.2.0). Tag target: `b86b409169aa173d4a361d8cbcc633add1bfacf6`; squash merge: `2810e8deaecaacb894a36cc6248589782b6367f6`. Windows 319 passed / 3 skipped; WSL 384 passed / 1 skipped. Clean CPU-only wheel/sdist and actual installed CUDA/Triton checks passed, including 12 complete frozen EEG output/path comparisons. Published assets were downloaded, hashed, reinstalled and checked again. See [post-release verification](release_verification_v0.2.0.md) for identities, package SHA256, test scopes and limitations. The later main metadata update adds the DOI and this report without changing versioned binaries or the tag.

@@ -8,6 +8,7 @@ authors:
     affiliation: "Tianjin University"
 version: "0.2.0"
 date-released: 2026-10-16
+doi: "10.5281/zenodo.23422148"
 license: MIT
 repository-code: "https://github.com/JustinZHAO-05/HP-GSBS"
 url: "https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.2.0"

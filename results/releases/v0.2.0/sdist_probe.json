@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "installed_package": true,
+  "cpu_only_without_torch": true,
+  "python": "3.11.15",
+  "checks": [
+    {
+      "backend": "cpu-fast",
+      "strict_move_parity": true,
+      "batch_parity": true
+    }
+  ],
+  "save_load": true,
+  "manifest_resume": true,
+  "non_success_resume_refused": true,
+  "legacy": {
+    "legacy_cache": {
+      "load_and_output_parity": true,
+      "resume_refused": true,
+      "bytes_preserved": true
+    },
+    "dev_cache": {
+      "load_and_output_parity": true,
+      "resume_refused": true,
+      "bytes_preserved": true
+    }
+  },
+  "real": [],
+  "doctor_ok": true
+}

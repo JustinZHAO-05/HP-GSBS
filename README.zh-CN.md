@@ -84,6 +84,8 @@ Ryzen 7 7840H、RTX 4050 Laptop 6 GB、WSL2 Ubuntu 22.04、FP64、TF32 off。实
 
 ## 科学一致性
 
+正式 v0.2.0（`b86b409`）：**Windows 319 passed / 3 skipped；WSL 384 passed / 1 skipped**。公开 wheel/sdist 的 CPU-only 安装验证通过；公开 wheel 的 CPU/PyTorch/Triton 共 12 个完整冻结 EEG 对照通过。[发布后验收](docs/release_verification_v0.2.0.md)分别记录本次验证与历史性能测量。
+
 | 证据 | 范围 |
 |---|---|
 | `7da2611` 调度快照，Windows | **315 passed / 3 skipped** |
@@ -200,7 +202,7 @@ python -m hpgsbs compare examples/generated/fit.npz another_fit.npz
 
 **[Yanzhe Zhao](https://github.com/JustinZHAO-05) — Main contributor and maintainer**（Tianjin University，主要贡献者与维护者）。
 
-> Zhao, Y. (2026). *HP-GSBS: High-Performance Greedy State Boundary Search* (Version 0.2.0) [Computer software]. GitHub. https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.2.0
+> Zhao, Y. (2026). *HP-GSBS: High-Performance Greedy State Boundary Search* (Version 0.2.0) [Computer software]. Zenodo. [doi:10.5281/zenodo.23422148](https://doi.org/10.5281/zenodo.23422148)
 
 使用 [CITATION.cff](CITATION.cff)，并引用原始 GSBS 论文及[上游实现](https://github.com/lgeerligs/statesegmentation)：
 

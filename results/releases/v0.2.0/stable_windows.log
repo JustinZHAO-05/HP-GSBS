@@ -1,0 +1,52 @@
+......................................s................................. [ 22%]
+........................................................................ [ 45%]
+........................................................................ [ 67%]
+........................................................................ [ 90%]
+................................                                         [100%]
+============================== warnings summary ===============================
+tests/reference_parity/test_real.py::test_structured[near_tie]
+tests/unit/test_certification_edges.py::test_default_path_preserves_original_pathological_semantics[repeated]
+  <CPU_ENV>\Lib\site-packages\scipy\stats\_axis_nan_policy.py:592: RuntimeWarning: Precision loss occurred in moment calculation due to catastrophic cancellation. This occurs when the data are nearly identical. Results may be unreliable.
+    res = hypotest_fun_out(*samples, **kwds)
+
+tests/reference_parity/test_real.py::test_ill_conditioned_spatial_pattern_fallback
+tests/reference_parity/test_real.py::test_exact_cancellation_interval
+tests/unit/test_certification_edges.py::test_default_path_preserves_original_pathological_semantics[offset]
+tests/unit/test_certification_edges.py::test_default_path_preserves_original_pathological_semantics[cancellation]
+  <CPU_ENV>\Lib\site-packages\statesegmentation\gsbs.py:490: RuntimeWarning: invalid value encountered in divide
+    return (x - x.mean(1, keepdims=True)) / x.std(1, keepdims=True, ddof=1)
+
+tests/reference_parity/test_real.py::test_ill_conditioned_spatial_pattern_fallback
+tests/unit/test_certification_edges.py::test_default_path_preserves_original_pathological_semantics[offset]
+  <CPU_ENV>\Lib\site-packages\statesegmentation\gsbs.py:260: NearConstantInputWarning: An input array is nearly constant; the computed correlation coefficient may be inaccurate.
+    pcorrs[state_idx - 1] = pearsonr(xmeans[state_idx], xmeans[state_idx - 1])[0]
+
+tests/reference_parity/test_real.py::test_exact_cancellation_interval
+tests/unit/test_certification_edges.py::test_default_path_preserves_original_pathological_semantics[cancellation]
+  <CPU_ENV>\Lib\site-packages\statesegmentation\gsbs.py:260: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+    pcorrs[state_idx - 1] = pearsonr(xmeans[state_idx], xmeans[state_idx - 1])[0]
+
+tests/reference_parity/test_real.py::test_exact_cancellation_interval
+tests/unit/test_certification_edges.py::test_default_path_preserves_original_pathological_semantics[cancellation]
+  <SOURCE>\src\hpgsbs\core\state_utils.py:12: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+    strengths[delta]=1-pearsonr(patterns[1:],patterns[:-1],axis=1).statistic
+
+tests/unit/test_merge_guards.py::test_small_domain_runner_numpy[inf-False-2]
+tests/unit/test_merge_guards.py::test_small_domain_runner_numpy[inf-False-3]
+tests/unit/test_merge_guards.py::test_small_domain_runner_numpy[inf-False-4]
+tests/unit/test_merge_guards.py::test_small_domain_runner_numpy[inf-False-5]
+tests/unit/test_merge_guards.py::test_small_domain_runner_numpy[inf-False-6]
+tests/unit/test_merge_guards.py::test_small_domain_runner_numpy[inf-False-7]
+  <SOURCE>\src\hpgsbs\core\streaming_candidates.py:168: RuntimeWarning: invalid value encountered in subtract
+    values = (base-q(a,b)+q(a,i)+q(i,b))*T/(end-start)
+
+tests/unit/test_merge_guards.py::test_small_domain_runner_numpy[inf-True-3]
+tests/unit/test_merge_guards.py::test_small_domain_runner_numpy[inf-True-4]
+tests/unit/test_merge_guards.py::test_small_domain_runner_numpy[inf-True-5]
+tests/unit/test_merge_guards.py::test_small_domain_runner_numpy[inf-True-6]
+tests/unit/test_merge_guards.py::test_small_domain_runner_numpy[inf-True-7]
+  <SOURCE>\src\hpgsbs\core\streaming_candidates.py:165: RuntimeWarning: invalid value encountered in subtract
+    values = (base-q(a,b)+q(a,i)+q(i,j)+q(j,b))*T/(end-start)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+319 passed, 3 skipped, 23 warnings in 81.68s (0:01:21)
