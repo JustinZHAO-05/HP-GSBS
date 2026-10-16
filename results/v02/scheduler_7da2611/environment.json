@@ -1,0 +1,36 @@
+{
+  "windows": {
+    "python": "3.11.15",
+    "platform": "Windows",
+    "versions": {
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "numba": "0.68.0",
+      "statesegmentation": "0.0.6",
+      "pytest": "9.1.1"
+    }
+  },
+  "wsl": {
+    "python": "3.10.12",
+    "platform": "Linux",
+    "versions": {
+      "numpy": "2.2.6",
+      "scipy": "1.15.3",
+      "numba": "0.68.0",
+      "statesegmentation": "0.0.6",
+      "pytest": "9.1.1",
+      "torch": "2.11.0+cu128",
+      "triton": "3.6.0"
+    }
+  },
+  "hardware": {
+    "gpu": "NVIDIA RTX 4050 Laptop GPU",
+    "gpu_memory_gib": 6,
+    "cpu": "AMD Ryzen 7 7840H"
+  },
+  "commands": {
+    "windows": "PYTHONPATH=src; HPGSBS_FIXTURES=private frozen fixtures; python -m pytest tests -q --junitxml=tests_windows.xml",
+    "wsl": "PYTHONPATH=src HPGSBS_FIXTURES=private-frozen-fixtures python -m pytest tests -q --junitxml=tests_wsl.xml"
+  },
+  "scope": "Full correctness suites; no performance benchmark rerun; Windows and WSL suites ran concurrently"
+}

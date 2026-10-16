@@ -4,11 +4,43 @@
 
 [源码 CI（9baff92，四矩阵成功）](https://github.com/JustinZHAO-05/HP-GSBS/actions/runs/38886420614) · [源码 diff 审查入口](https://github.com/JustinZHAO-05/HP-GSBS/pull/1/files)。最终交付 HEAD 的 CI 在 PR 描述中更新。
 
-算法、tests、计时 benchmark 冻结源码：`9baff923fea285d448fb3078c82943f365369b3b`。后续交付仅修改公开证据工具、报告和证据；manifest 的 source_hashes 对应最终交付，measurement_source_hashes 保留实际测量快照。证据工具修正了 URL 被当作盘符路径的误报，不改变算法或数值。最终交付 HEAD 和其 CI 链接另记录在 PR 描述，避免文档自引用 SHA。
+原科学/性能验收的算法、tests、计时 benchmark 冻结源码：`9baff923fea285d448fb3078c82943f365369b3b`；原最终交付为 `002bf2a`。下面新增的调度修复另有源码与证据身份，旧 manifest 和历史测量未覆盖或重标。最终交付 HEAD 和其 CI 链接另记录在 PR 描述，避免文档自引用 SHA。
 
-[PR #1](https://github.com/JustinZHAO-05/HP-GSBS/pull/1) · [问题登记表](v02_merge_audit.md) · [API/预算/成熟度](v02_api_scope.md) · [最终 manifest](../results/v02/merge_9baff92/manifest.json)
+[PR #1](https://github.com/JustinZHAO-05/HP-GSBS/pull/1) · [问题登记表](v02_merge_audit.md) · [API/预算/成熟度](v02_api_scope.md) · [原性能验收 manifest](../results/v02/merge_9baff92/manifest.json)
+
+## 调度补充验收：C22–C24
+
+修复及测试源码：`7da26110e040820150412d6f47e7d1930926e26c`。
+[独立补充 manifest](../results/v02/scheduler_7da2611/manifest.json) 绑定本轮源码和两平台 JUnit；
+[源码 CI 四矩阵通过](https://github.com/JustinZHAO-05/HP-GSBS/actions/runs/38918277397)。
+证据核验工具在后续交付中增加本轮 scope 支持；库与测试仍为上述快照。
+
+|平台|passed|skipped|failure/error|
+|---|---:|---:|---:|
+|Windows|315|3|0/0|
+|WSL，实际 CUDA/Triton 和四条完整冻结 EEG|380|1|0/0|
+
+新增 27 项跨平台测试与 4 项实际 GPU 测试全部通过：24 个恢复组合覆盖四后端的旧签名、
+旧软件版本、failed、cancelled、缺失状态和成功状态；原文件逐字节及 mtime 保持。
+另覆盖配置默认值规范化、版本/计算策略失效、混合策略分桶的两种输入顺序。
+实际 Torch/Triton 各两种顺序、每组六条记录，latency batch=1，throughput 按各自比例分组，
+所有输出与未修改官方 reference 对照通过。显存比例的具体规划调用也在无 CUDA 的回归中验证。
+
+恢复策略：签名 v1 包含软件版本、完整默认配置及输入身份。旧签名返回明确 failed receipt，
+可加载作历史分析；执行当前实现需新输出目录，不自动复用或覆盖。CPU/GPU 共用 success 检查。
+相同开发版本内任意源码修改不承诺自动失效；输入仍依赖路径/size/mtime，非内容寻址。
+
+仅两个库文件变化：batch/scheduler.py、batch/bucketing.py；core、backends、config、API 与原验收完全一致，
+补充核验工具验证这一边界和历史证据文件 hash。此次重跑全量正确性测试，未重跑旧性能矩阵；
+下文耗时和加速比仍专属 9baff92 测量，不声称为 7da2611 新测量，也不外推混合配置吞吐收益。
+
+```bash
+python benchmarks/v02_verify_delivery.py --manifest results/v02/scheduler_7da2611/manifest.json
+```
 
 ## 科学与工程验收
+
+本节及后续性能表保留原 9baff92 验收记录；最新调度与全量测试以此前补充节为准。
 
 reference 为未修改 statesegmentation 0.0.6。保留原科学参数、候选 gate、严格 >、NaN、未评分 -1、双切 K/birth、顺序 refinement、完整 tdists 与自定义 K 选择。输入为原冻结 EEG，只读快照；未改预处理、BBBD 数据或统计结果。
 

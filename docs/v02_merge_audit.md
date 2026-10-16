@@ -64,3 +64,17 @@ reference 为未修改 statesegmentation 0.0.6。所有处置以最终证据 man
 完整科学/性能结论、CI与最终交付HEAD见 v02_merge_readiness.md 和 PR #1 描述。未执行 merge 或 release。
 
 C21 仅更改 benchmarks/v02_evidence.py 的公开复制处理和 scripts/compact_public_evidence.py；库、tests 和实际计时实现仍与9baff92完全一致。旧测量 hash 与最终工具 hash 分别保留，不冒充重跑。
+
+## 后续审查：C22–C24
+
+下表更新原交付之后的调度问题；不将原验收快照改写为新测量。
+
+|ID|修复 commit|问题及修复|回归与 disposition|
+|---|---|---|---|
+|C22|7da2611|旧 task key 未区分版本/解析配置；执行签名 v1 纳入软件版本、补全默认值的配置，metadata 保存 execution_identity；旧签名明确拒绝自动恢复|四后端复刻旧签名和旧版本均拒绝；默认值等价跳过；策略/版本变化失效；旧文件字节/mtime 不变。关闭；同开发版本任意源码修改及 stat 身份局限保留|
+|C23|7da2611|GPU bucket 加入 mode、memory_fraction，自动 batch 不再取混合组首条记录策略|两种输入顺序的规划回归；Torch/Triton 实际 CUDA 各两顺序、六输入输出对照及 batch 大小通过。关闭；memory_fraction 仍是准入估算|
+|C24|7da2611|CPU/GPU 共用恢复有效性检查，只有 task key 一致且 status=success 可跳过|四后端 × failed/cancelled/缺失状态全部拒绝，成功状态正常跳过；旧输出保留。关闭|
+
+本轮 Windows 315 passed/3 skipped、WSL 380 passed/1 skipped；完整冻结 EEG 和 CUDA/Triton 在 WSL 实跑。
+独立证据目录 results/v02/scheduler_7da2611，原 merge_9baff92 的 manifest/原件不改。
+最终交付仅增加核验工具、报告与证据；没有重新测量历史性能矩阵。未 merge 或 release。

@@ -19,6 +19,30 @@ def main():
             for k in counts:counts[k]+=int(suite.attrib.get(k,0))
         assert counts['tests']>0 and counts['failures']==counts['errors']==0
         checks[platform]=counts
+    if m.get('scope')=='scheduler-followup':
+        baseline=Path(m['baseline_manifest']['path'])
+        assert hashlib.sha256(baseline.read_bytes()).hexdigest()==m['baseline_manifest']['sha256']
+        previous=json.loads(baseline.read_text())
+        for name,item in previous['files'].items():
+            assert hashlib.sha256((baseline.parent/name).read_bytes()).hexdigest()==item['sha256'],name
+        changed=sorted(name for name,digest in previous['source_hashes'].items()
+                       if name.startswith('src/') and m['source_hashes'][name]!=digest)
+        assert changed==['src/hpgsbs/batch/bucketing.py','src/hpgsbs/batch/scheduler.py'],changed
+        required={'test_manifest_resume_validation':24,'test_execution_signature_defaults_version_and_policy':1,
+                  'test_gpu_auto_batch_mixed_policies':2}
+        for platform in ('windows','wsl'):
+            cases=list(ET.parse(base/f'tests_{platform}.xml').getroot().iter('testcase'))
+            expected=dict(required)
+            if platform=='wsl': expected['test_auto_batch_mixed_resource_policies']=4
+            for name,count in expected.items():
+                passed=[c for c in cases if c.attrib['name'].split('[')[0]==name
+                        and all(c.find(tag) is None for tag in ('failure','error','skipped'))]
+                assert len(passed)==count,(platform,name,len(passed))
+        assert not list(base.rglob('*.npy')) and not list(base.rglob('*.npz'))
+        print(json.dumps(dict(passed=True,scope=m['scope'],source_revision=m['source_revision'],
+                              files=len(m['files']),tests=checks,changed_library_sources=changed,
+                              historical_performance_rerun=False),indent=2))
+        return
     real=json.loads((base/'real/validation.json').read_text())
     assert len(real)>=16 and all(r['report']['passed'] for r in real)
     assert all(r['report']['moves_compared'] for r in real if r.get('scope')=='fresh-official-dev96-every-move')
