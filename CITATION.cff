@@ -6,14 +6,17 @@ authors:
   - given-names: "Yanzhe"
     family-names: "Zhao"
     affiliation: "Tianjin University"
-version: "0.2.0.dev0"
+version: "0.2.0"
+date-released: 2026-10-16
 license: MIT
 repository-code: "https://github.com/JustinZHAO-05/HP-GSBS"
-url: "https://github.com/JustinZHAO-05/HP-GSBS/tree/feat/v0.2-streaming-moments-gpu-optimization"
+url: "https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.2.0"
 abstract: >-
   HP-GSBS is a high-performance implementation of Greedy State Boundary
   Search for multivariate neural time series, with CPU, PyTorch CUDA, and
-  Triton CUDA routes. The release includes synthetic examples, tests,
+  Triton CUDA routes. This release adds streaming candidates, bounded
+  execution, versioned resume, and experimental low-memory extensions.
+  It includes synthetic examples, tests,
   benchmarks, and reports of agreement with statesegmentation 0.0.6 within
   the documented validation domain. FP64 is the scientific default; FP32
   remains experimental. Private EEG inputs are not redistributed.

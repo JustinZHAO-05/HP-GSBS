@@ -154,7 +154,7 @@ def test_transactional_incremental_full_fit():
 def test_version_and_maturity():
     from pathlib import Path
     from hpgsbs import __version__
-    assert __version__=='0.2.0.dev0'
+    assert __version__=='0.2.0'
     assert 'version = "'+__version__+'"' in Path('pyproject.toml').read_text()
     assert 'version: "'+__version__+'"' in Path('CITATION.cff').read_text()
     assert GSBSConfig(8).maturity=='stable'

@@ -69,7 +69,7 @@ def test_execution_signature_defaults_version_and_policy(tmp_path,monkeypatch):
 
 
 @pytest.mark.parametrize("backend",["cpu-fast","reference","torch-cuda","triton-cuda"])
-@pytest.mark.parametrize("cache",["legacy","old-version","failed","cancelled","missing-status","success"])
+@pytest.mark.parametrize("cache",["legacy","old-version","development-version","failed","cancelled","missing-status","success"])
 def test_manifest_resume_validation(tmp_path,monkeypatch,backend,cache):
     import hashlib
     from hpgsbs.batch import scheduler
@@ -84,10 +84,10 @@ def test_manifest_resume_validation(tmp_path,monkeypatch,backend,cache):
                      config=task["config"],backend=backend,y=None,times=None)
         result.metadata["task_key"]=hashlib.sha256(json.dumps(payload,sort_keys=True).encode()).hexdigest()
         del result.metadata["execution_identity"]
-    elif cache=="old-version":
+    elif cache in ("old-version","development-version"):
         with monkeypatch.context() as patch:
             import hpgsbs
-            patch.setattr(hpgsbs,"__version__","0.1.0")
+            patch.setattr(hpgsbs,"__version__","0.1.0" if cache=="old-version" else "0.2.0.dev0")
             scheduler._stamp_execution(result,task,backend,scheduler._task_key(task,backend))
     elif cache=="missing-status": del result.metadata["status"]
     elif cache!="success": result.metadata["status"]=cache
@@ -96,7 +96,7 @@ def test_manifest_resume_validation(tmp_path,monkeypatch,backend,cache):
     rows=run_manifest([task],out,backend=backend)
     assert rows[0]["status"]==("skipped" if cache=="success" else "failed"),rows
     if cache=="legacy": assert "Legacy resume signature" in rows[0]["error"]
-    elif cache=="old-version": assert "different input/config/software" in rows[0]["error"]
+    elif cache in ("old-version","development-version"): assert "different input/config/software" in rows[0]["error"]
     elif cache!="success": assert "not successful" in rows[0]["error"]
     assert target.read_bytes()==before and target.stat().st_mtime_ns==mtime
 

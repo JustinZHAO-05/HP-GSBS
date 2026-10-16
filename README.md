@@ -17,7 +17,6 @@ Find temporal states in neural recordings with faster computation and auditable 
 
 </div>
 
-> Release preparation: the PR package is still `0.2.0.dev0`; the separate main release commit will set `0.2.0`. Version-specific download links below become available with the formal release.
 
 ## What is it for?
 

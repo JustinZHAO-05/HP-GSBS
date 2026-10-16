@@ -16,3 +16,9 @@ The [premerge receipt and JUnit files](../results/releases/v0.2.0/premerge.json)
 - Original v0.1.0 tag target: `922a69c76ba9c39964efd3c3a7f973625ae5b1f1`.
 
 All original manifests and measurements remain immutable. New plots/tables derive from unrounded receipts. Fixed-commit source verification is documented in [migration](v02_migration.md). Release checks exercise CPU-only wheel/sdist, CLI, save/load, default FP64/reference comparison, real CUDA/Triton, frozen EEG and versioned resume; they do not rerun the historical long official performance matrix.
+
+## Squash merge and stable-version preparation
+
+PR #1 final head: `25e0eeeb41aad4ae88f5c0705becb203901f42b8`. Squash merge commit: `2810e8deaecaacb894a36cc6248589782b6367f6`. The feature branch is retained. A separate main commit changes package/CFF/version assertions to 0.2.0 and adds four explicit dev0→stable cache-refusal cases; it does not alter the fitting algorithms. CFF release date uses UTC (2026-10-16).
+
+The exact release commit/tag, package SHA256 values, installation/GPU checks and public-release status are supplied by the post-release verification asset. Release-preparation metadata does not assert completion before those checks execute.
