@@ -20,7 +20,7 @@ def gate_counts(opt, end):
     return first, second
 
 
-@njit(cache=True)
+@njit(cache=False)
 def candidates(edges, start, allowed, opt, double):
     """Yield only legal coordinates, globally ordered; no candidate ledger."""
     first, second = gate_counts(opt, edges[-1])
@@ -63,20 +63,31 @@ def stream_q(q, edges, start, end, allowed, opt, double, T):
         base += q[edges[s], edges[s+1]]
     flat, best, runner = 0, -1.0, -1.0
     nonfinite, changed, count = False, False, 0
-    for a, i, j, b in candidates(edges, start, allowed, opt, double):
-        if double:
-            v = (base-q[a,b]+q[a,i]+q[i,j]+q[j,b])*T/n
-        else:
-            v = (base-q[a,b]+q[a,i]+q[i,b])*T/n
-        count += 1
-        nonfinite = nonfinite or not np.isfinite(v)
-        changed = changed or v != -1
-        f = (i-start)*n+j-start if double else i-start
-        if not np.isnan(best):
-            if np.isnan(v) or v > best:
-                runner, best, flat = best, v, f
-            elif v > runner:
-                runner = v
+    first, second = gate_counts(opt,end)
+    restricted = opt.shape[1] == 2
+    # Fuse enumeration here: cached compiled callers of a cached Numba
+    # generator can lose its lowering registration in a fresh process. Keep
+    # the separately testable generator for bounded Python chunk consumers.
+    for s in range(len(edges)-1):
+        a,b = edges[s],edges[s+1]
+        for i in range(a+1,b):
+            if not allowed[i-start]: continue
+            if double and restricted and first[i]+second[0]<1: continue
+            for j in range(i+1 if double else i,b if double else i+1):
+                if double and restricted and first[i]+second[j]<2: continue
+                if double:
+                    v = (base-q[a,b]+q[a,i]+q[i,j]+q[j,b])*T/n
+                else:
+                    v = (base-q[a,b]+q[a,i]+q[i,b])*T/n
+                count += 1
+                nonfinite = nonfinite or not np.isfinite(v)
+                changed = changed or v != -1
+                f = (i-start)*n+j-start if double else i-start
+                if not np.isnan(best):
+                    if np.isnan(v) or v > best:
+                        runner, best, flat = best, v, f
+                    elif v > runner:
+                        runner = v
     return flat, best, np.nan if np.isnan(best) else runner, nonfinite, changed, count
 
 
