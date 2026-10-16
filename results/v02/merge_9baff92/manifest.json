@@ -367,7 +367,7 @@
       "sanitized": false
     },
     "profile/resident-torch-cuda.txt": {
-      "sha256": "519859edd32b44d2e9fd08cd7fc157d8e8653774887a2a84ec77b25e7697e4f3",
+      "sha256": "7747735c05bcbde2d266f4d0e11651ff5a6de7000181ca3906c5b687052527f4",
       "original_sha256": "519859edd32b44d2e9fd08cd7fc157d8e8653774887a2a84ec77b25e7697e4f3",
       "sanitized": false
     },
@@ -377,7 +377,7 @@
       "sanitized": false
     },
     "profile/resident-triton-cuda.txt": {
-      "sha256": "55c15f4af0c7b068cc841f136d682fa2ecc38b51007641a7a15ff7c25bab6b60",
+      "sha256": "c4ed14eb49d7732c9ff86f9f0a486b303b0cd3e6af0ce36eb3a2a51bea65b5b5",
       "original_sha256": "55c15f4af0c7b068cc841f136d682fa2ecc38b51007641a7a15ff7c25bab6b60",
       "sanitized": false
     },
@@ -392,7 +392,7 @@
       "sanitized": false
     },
     "profile/torch-cuda.txt": {
-      "sha256": "4801ff6834d29c2d84f7e724b81bc44486740e2c66941e5ff9d7966310243fca",
+      "sha256": "3b112ee4eefbb80053159c0ea617093b7f5469b60c9af236072f4cfaf4af06dc",
       "original_sha256": "4801ff6834d29c2d84f7e724b81bc44486740e2c66941e5ff9d7966310243fca",
       "sanitized": false
     },
@@ -402,7 +402,7 @@
       "sanitized": false
     },
     "profile/triton-cuda.txt": {
-      "sha256": "98a9f8430e1e34caa34522d39967080701bd926cd0e405ac541804ff7456ebe3",
+      "sha256": "5fc519899cd540d16b69707a239938342294aa745afd3a21455adb08bbcf8e37",
       "original_sha256": "98a9f8430e1e34caa34522d39967080701bd926cd0e405ac541804ff7456ebe3",
       "sanitized": false
     },
