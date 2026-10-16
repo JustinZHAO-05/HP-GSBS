@@ -20,6 +20,26 @@ def gate_counts(opt, end):
     return first, second
 
 
+@njit(cache=True)
+def candidate_count(edges, start, allowed, opt, double):
+    """Exact legal-domain size, O(T + K + gate rows), without enumeration."""
+    first, second = gate_counts(opt, edges[-1])
+    restricted = opt.shape[1] == 2
+    count = 0
+    for s in range(len(edges)-1):
+        a,b = edges[s],edges[s+1]
+        n1,n2 = 0,0
+        for i in range(b-1,a,-1):
+            if allowed[i-start]:
+                if not double: count += 1
+                elif not restricted: count += b-i-1
+                elif first[i]+second[0]>=1:
+                    count += b-i-1 if first[i]>=2 else (n1 if first[i]==1 else n2)
+            n1 += second[i]>=1
+            n2 += second[i]>=2
+    return count
+
+
 @njit(cache=False)
 def candidates(edges, start, allowed, opt, double):
     """Yield only legal coordinates, globally ordered; no candidate ledger."""
@@ -118,10 +138,11 @@ def scored_chunks(q, edges, start, end, allowed, opt, double, T, chunk_size):
         yield rows, flats, values
 
 
-def stream_prefix(q, edges, start, end, allowed, opt, double, T, chunk_size):
+def stream_prefix(q, edges, start, end, allowed, opt, double, T, chunk_size, progress=None):
     summary = (0, -1.0, -1.0, False, False, 0)
     for _, flats, values in scored_chunks(q, edges, start, end, allowed, opt, double, T, chunk_size):
         summary = reduce_values(flats, values, summary)
+        if progress is not None: progress(int(summary[-1]))
     return summary
 
 
@@ -143,4 +164,4 @@ def stream_window(q, edges, lo, hi, T):
                 if np.isnan(v) or v > best:
                     runner, best, flat = best, v, i
                 elif v > runner: runner = v
-    return flat, best, runner, nonfinite, changed, count
+    return flat, best, np.nan if np.isnan(best) else runner, nonfinite, changed, count

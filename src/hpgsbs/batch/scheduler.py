@@ -10,7 +10,7 @@ from ..config import GSBSConfig
 from ..result import GSBSResult
 from ..core.interval_scores import validate_input,conditioning_reason
 from .bucketing import buckets
-from .memory_planner import automatic_batch_size
+from .memory_planner import automatic_batch_size,estimated_bytes
 
 
 def _fit_worker(args):
@@ -24,6 +24,8 @@ def iter_many(recordings,configs,backend,batch_size="auto"):
     if backend not in ("reference","cpu-fast","torch-cuda","triton-cuda"):
         raise ValueError(f"Unknown backend {backend}")
     if len(recordings)!=len(configs): raise ValueError("One config required per recording")
+    if backend.endswith("cuda") and any(c.q_strategy!="full" or c.td_backend!="prefix2d" for c in configs):
+        raise ValueError("CUDA batches require full Q and prefix2d TD")
     if not recordings: return
     if backend in ("cpu-fast","reference"):
         xs=[validate_input(x,c.kmax) for x,c in zip(recordings,configs)]
@@ -37,7 +39,7 @@ def iter_many(recordings,configs,backend,batch_size="auto"):
         return
     from ..backends.torch_cuda import require_cuda,iter_gpu
     torch=require_cuda()
-    xs=recordings  # retain file-backed arrays; materialize only the current batch
+    xs=recordings  # retain file-backed arrays; snapshot only the current batch
     for group in buckets(xs,configs):
         x=xs[group[0]]; c=configs[group[0]]
         if batch_size=="auto":
@@ -48,7 +50,12 @@ def iter_many(recordings,configs,backend,batch_size="auto"):
         while pos<len(group):
             chunk=group[pos:pos+size]
             try:
-                validated={i:validate_input(xs[i],configs[i].kmax) for i in chunk}
+                validated={i:np.array(validate_input(xs[i],configs[i].kmax),copy=True) for i in chunk}
+                for i,xv in validated.items():
+                    xv.flags.writeable=False
+                    if estimated_bytes(*xv.shape)>configs[i].max_workspace_bytes:
+                        from ..core.budgets import ResourceBudgetExceeded
+                        raise ResourceBudgetExceeded("GPU precompute exceeds workspace budget",dict(estimated_bytes=estimated_bytes(*xv.shape)))
                 safe=[]
                 for i in chunk:
                     if conditioning_reason(validated[i],configs[i].dtype): yield i,fit(validated[i],configs[i],backend)

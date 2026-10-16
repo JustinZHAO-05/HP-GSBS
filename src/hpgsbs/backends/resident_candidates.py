@@ -74,11 +74,20 @@ def _summary(Q,META,OUT,BASE,START,END,T,N:tl.constexpr,DOUBLE:tl.constexpr,
     tl.store(OUT+pid*8+6,count.to(tl.float64))
 
 
-def candidate_summary(q,q_host,edges,start,end,allowed,opt,double,T):
+def candidate_summary(q,q_host,edges,start,end,allowed,opt,double,T,*,validate_host=True):
     """Same summary contract as stream_q; Q is already resident and FP64."""
     start,end,T=int(start),int(end),int(T)
     if q.dtype!=torch.float64 or not q.is_cuda or not q.is_contiguous():
         raise ValueError("Require contiguous resident CUDA FP64 Q")
+    edges=np.asarray(edges,dtype=np.int64); allowed=np.asarray(allowed,dtype=bool)
+    opt=np.asarray(opt,dtype=np.int64)
+    if (q.ndim!=2 or q.shape[0]!=q.shape[1] or np.shape(q_host)!=tuple(q.shape)
+        or not 0<=start<end<q.shape[0] or T<end or edges.ndim!=1
+        or len(edges)<2 or edges[0]!=start or edges[-1]!=end or np.any(np.diff(edges)<=0)
+        or allowed.shape!=(end-start,) or opt.ndim!=2 or opt.shape[1] not in (0,2)):
+        raise ValueError("Invalid resident Q/domain metadata")
+    if validate_host and not np.array_equal(q.detach().cpu().numpy(),q_host,equal_nan=True):
+        raise ValueError("Host/device Q differ")
     n=end-start
     meta=np.zeros((n,5),dtype=np.int64)
     for a,b in zip(edges[:-1],edges[1:]):

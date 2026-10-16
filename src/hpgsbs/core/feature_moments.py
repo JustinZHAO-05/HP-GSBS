@@ -9,7 +9,7 @@ from .interval_scores import zscore
 
 
 class FeatureMomentsTDistance:
-    def __init__(self, x, dmin=1, tile_size=128):
+    def __init__(self, x, dmin=1, tile_size=128, *, max_pair_evaluations=50_000_000):
         self.x, self.dmin, self.tile_size = x, dmin, tile_size
         z = zscore(x)
         self.u = z-z.mean(1,keepdims=True)
@@ -17,6 +17,7 @@ class FeatureMomentsTDistance:
         self.fallbacks = 0
         self.fallback_reasons = {}
         self.last_diagnostics = {}
+        self.max_pair_evaluations=max_pair_evaluations
 
     def moment(self,a,b):
         u = self.u[a:b]
@@ -68,6 +69,21 @@ class FeatureMomentsTDistance:
                         yield kind,r[(jj[None,:]-ii[:,None])>=self.dmin]
 
     def exact(self,bounds,reason="explicit two-pass request"):
+        from .budgets import ResourceBudgetExceeded
+        # Count eligible W/A pairs analytically before either tiled pass.
+        edges=np.r_[0,np.flatnonzero(bounds)[np.flatnonzero(bounds)>0],len(bounds)]
+        counts_est=np.zeros(2,dtype=np.int64)
+        for k,(a,b) in enumerate(zip(edges[:-1],edges[1:])):
+            n=max(0,b-a-self.dmin)
+            counts_est[0]+=n*(n+1)//2
+            if k+2<len(edges):
+                c,d=b,edges[k+2]
+                ii=np.arange(a,b)
+                counts_est[1]+=np.maximum(0,d-np.maximum(c,ii+self.dmin)).sum()
+        self.last_diagnostics=dict(method="tiled-two-pass",reason=reason,
+            estimated_pair_evaluations=int(2*counts_est.sum()),status="preflight")
+        if 2*counts_est.sum()>self.max_pair_evaluations:
+            raise ResourceBudgetExceeded("Tiled TD fallback exceeds pair budget",self.last_diagnostics)
         self.fallbacks += 1
         self.fallback_reasons[reason] = self.fallback_reasons.get(reason,0)+1
         counts = np.zeros(2,dtype=np.int64)

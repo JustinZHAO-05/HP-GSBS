@@ -15,4 +15,5 @@ def finetune(model, search, trace=None):
             trace.append(dict(deleted=int(ind),window=[int(lo),int(hi)],winner=int(pos),
                               birth=int(state_id),after_delete=bounds.tolist()))
         bounds[pos] = state_id
+        if trace is not None: trace[-1]["after_insert"]=bounds.tolist()
     return bounds

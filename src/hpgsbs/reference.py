@@ -25,12 +25,15 @@ def fit_reference(x, config, y=None):
 
     def observer(frame, event, arg):
         if frame.f_code is GSBS._finetune.__code__:
+            if event in ("line","return") and state.get("pending_move") is not None:
+                state.pop("pending_move")["after_insert"]=frame.f_locals["finebounds"].tolist()
             if event == "line" and fine_lines.get(frame.f_lineno) == "finebounds[argmax] = state_id":
                 v = frame.f_locals
                 opts = v["boundopt"]
                 state.setdefault("finetune_moves",[]).append(dict(deleted=int(v["ind"]),
                     window=[int(opts[0]),int(opts[-1])+1], winner=int(v["argmax"]),
                     birth=int(v["state_id"]),after_delete=v["finebounds"].tolist()))
+                state["pending_move"]=state["finetune_moves"][-1]
             return observer
         if frame.f_code is not GSBS.fit.__code__:
             return None

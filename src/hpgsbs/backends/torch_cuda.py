@@ -17,7 +17,9 @@ def require_cuda():
 
 
 class HostQ:
-    def __init__(self,q,device_q=None): self.Q,self.device_Q=q,device_q
+    def __init__(self,q,device_q=None):
+        self.Q,self.device_Q=q,device_q
+        self.Q.flags.writeable=False
     def __call__(self,a,b): return self.Q[a,b]
 
 
