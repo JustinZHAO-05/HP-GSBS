@@ -8,6 +8,9 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--fixtures',required=True);p.add_argument('--output',required=True)
     p.add_argument('--revision',required=True);a=p.parse_args();out=Path(a.output)
     assert (out/'source.json').exists(),'Initialize source manifest first'
+    from v02_evidence import sources
+    expected=json.loads((out/'source.json').read_text())
+    assert expected['revision']==a.revision and expected['source_hashes']==sources()
     root=str(Path('.').resolve());snapshots=[str(Path('tmp/baselines/v01').resolve()),str(Path('tmp/baselines/accepted').resolve()),root]
     jobs=[('tests',['-m','pytest','tests','-q','--tb=short',f'--junitxml={out}/tests_wsl.xml']),
         ('real',['benchmarks/v02_validate.py','--fixtures',a.fixtures,'--output',str(out/'real'),'--backends','cpu-fast','torch-cuda','triton-cuda']),
@@ -25,6 +28,7 @@ def main():
         ('profile',['benchmarks/v02_profile.py','--fixtures',a.fixtures,'--output',str(out/'profile')])]
     receipts=[]
     for name,args in jobs:
+        assert expected['source_hashes']==sources(),'Source changed during acceptance'
         start=perf_counter();print('START',name,flush=True)
         with (out/(name+'.log')).open('w') as log:
             process=subprocess.run([sys.executable,*args],stdout=log,stderr=subprocess.STDOUT)

@@ -19,6 +19,14 @@ def test_exact_minus_one_after_near_tie_returns_none(backend):
     if backend=='streaming':assert search.last_diagnostics['fallback_evaluated']==10
 
 
+def test_below_sentinel_does_not_turn_empty_rescore_into_none():
+    x=np.random.default_rng(61).normal(size=(7,3));q=IntervalScores(x)
+    q.Q[:]=-100
+    s=CandidateSearch(x,q)
+    assert s.best(np.zeros(7,bool),double=True)==((0,0),-1.)
+    assert s.last_diagnostics['fallback_evaluated']==0
+
+
 @pytest.mark.parametrize('cause',['work','workspace','candidates','cancel'])
 def test_refusal_never_produces_fit(cause):
     x=np.tile([-1.,0.,1.],(30,1))

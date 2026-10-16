@@ -146,7 +146,8 @@ class CandidateSearch:
                     any_changed |= v != -1
                     if not np.isnan(best) and (np.isnan(v) or v>best):
                         best, winner = float(v), int(f)
-            if not any_changed: return (None if double else start), -1.0
+            if not any_changed and self.last_diagnostics["fallback_evaluated"]==count:
+                return (None if double else start), -1.0
             flat, score = winner, best
         pos = (int(flat)//(end-start)+start, int(flat)%(end-start)+start) if double else int(flat)+start
         return pos, float(score)
