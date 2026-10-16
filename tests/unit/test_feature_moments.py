@@ -61,9 +61,11 @@ def test_cancellation_uses_two_pass_without_cov(monkeypatch):
     ref=TDistance(x,5).exact(bounds)
     def forbidden(*args,**kwargs): raise AssertionError("dense covariance fallback")
     monkeypatch.setattr(np,"cov",forbidden)
-    value=td(bounds)
+    with pytest.raises(FloatingPointError,match="Uncertified near-degenerate"):
+        td(bounds)
     assert td.fallbacks==1
     # Near-zero native variance is sensitive to BLAS tiling, so report rather
     # than granting generic parity; the ordinary-domain tolerance is unchanged.
-    assert np.isfinite(value) and np.isfinite(ref)
+    assert np.isfinite(ref)
     assert td.last_diagnostics["method"]=="tiled-two-pass"
+    assert td.last_diagnostics["status"]=="unresolved-near-degenerate"

@@ -1,4 +1,5 @@
 from time import perf_counter
+from dataclasses import asdict
 import numpy as np
 from statesegmentation import GSBS
 from ..core.interval_scores import IntervalScores
@@ -59,8 +60,9 @@ def run_search(x, config, q, td, *, backend="cpu-fast", timings=None):
         k+=increment
     model._argmax=model._tdists.argmax()
     return GSBSResult(model,dict(backend=backend, precision=config.dtype,input_shape=list(x.shape),
-        status="success", algorithm=config.algorithm(),upstream=provenance(), timings=times,
+        status="success", algorithm=config.algorithm(),compute_config=asdict(config),upstream=provenance(), timings=times,
         search_s=perf_counter()-start, candidate_fallbacks=search.fallbacks,tdistance_fallbacks=td.fallbacks,
+        candidate_fallback_reasons=search.fallback_reasons,
         precision_detail="FP64 throughout" if config.dtype=="float64" else "FP32 interval table; FP64 controller, output means and CPU t-distance",
         candidate_backend=config.candidate_backend,q_strategy=config.q_strategy,local_cache_hits=search.cache_hits,
         td_backend=config.td_backend,tdistance_fallback_reasons=getattr(td,"fallback_reasons",{}),

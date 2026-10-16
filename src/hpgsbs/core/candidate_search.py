@@ -40,6 +40,7 @@ class CandidateSearch:
         self.x, self.q, self.tolerance = x, scores, tolerance
         self.z = scores.z if hasattr(scores,"z") else GSBS._zscore(x)
         self.fallbacks = 0
+        self.fallback_reasons = {}
         self.backend, self.chunk_size = backend, chunk_size
         self.last_diagnostics = {}
         self._local_cache = {}
@@ -74,6 +75,8 @@ class CandidateSearch:
         if not changed: return (None if double else start), -1.0
         if nonfinite or score-runner <= self.tolerance:
             self.fallbacks += 1
+            reason = "nonfinite interval score" if nonfinite else "near-tied candidates"
+            self.fallback_reasons[reason] = self.fallback_reasons.get(reason,0)+1
             # Revisit candidates without retaining a matrix or near-tie ledger.
             # Reproduce the original means/zscore expression, including NaNs.
             xt, zt = self.x[start:end], self.z[start:end]
@@ -134,6 +137,8 @@ class CandidateSearch:
         # Re-evaluate ambiguous candidates in original summation order.
         if len(near)>1 or not np.isfinite(scores).all():
             self.fallbacks += 1
+            reason = "nonfinite interval score" if not np.isfinite(scores).all() else "near-tied candidates"
+            self.fallback_reasons[reason] = self.fallback_reasons.get(reason,0)+1
             xt,zt = self.x[start:end],self.z[start:end]
             dt = deltas[start:end]
             states = GSBS._states(dt)
@@ -177,7 +182,7 @@ class CandidateSearch:
                     # Only currently active blocks survive; no global winner is
                     # reused. Input/Q/precision are fixed for this search object.
                     key=(start,int(end),tuple(edges[(edges>start)&(edges<end)]),bool(statewise))
-                    if key in self._local_cache:
+                    if self.backend != "materialized" and key in self._local_cache:
                         one,pair=self._local_cache[key]
                         self.cache_hits += 1
                     else:

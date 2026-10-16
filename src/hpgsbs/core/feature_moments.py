@@ -89,6 +89,12 @@ class FeatureMomentsTDistance:
             counts=counts.tolist(),m2=m2.tolist())
         if not np.isfinite(means).all() or not np.isfinite(m2).all():
             raise FloatingPointError("Unresolved nonfinite tiled TD statistics; no dense fallback allowed")
+        # Tiling changes the BLAS reduction trajectory. In a nearly constant
+        # pair distribution, its roundoff can dominate native compatibility.
+        # This conservative refusal is not a claimed forward-error theorem.
+        if np.any(m2/(counts-1) <= 64*np.finfo(float).eps*np.maximum(1,means*means)):
+            self.last_diagnostics["status"]="unresolved-near-degenerate"
+            raise FloatingPointError("Uncertified near-degenerate tiled TD; no dense fallback or variance clamp allowed")
         return value
 
     def __call__(self,bounds):

@@ -1,5 +1,6 @@
 import numpy as np
 import pytest
+import os
 from hpgsbs import fit,GSBSConfig
 from hpgsbs.validation import compare
 
@@ -62,7 +63,7 @@ def test_y_and_finetune(backend,fine):
 def test_full_eeg_regression(backend,index):
     from pathlib import Path
     from hpgsbs import GSBSResult
-    p=Path(f"results/fixtures/{index}_full_cpu.npz")
+    p=Path(os.environ.get("HPGSBS_FIXTURES","results/fixtures"))/f"{index}_full_cpu.npz"
     if not p.exists(): pytest.skip("Private full EEG fixtures unavailable")
     ref=GSBSResult.load(p)
     c=GSBSConfig(**ref.metadata["algorithm"],trace=True)
