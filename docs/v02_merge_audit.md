@@ -26,7 +26,7 @@ reference 为未修改 statesegmentation 0.0.6。所有处置以最终证据 man
 |C18|API/metadata/docs；release；blocker|确认：experimental FP64 仍有笼统 validated 标签|maturity 明确；incremental API 由性能门槛决定；没有通用 auto|见最终处置与证据|
 |C19|candidate_chunks 编译原型；correctness；blocker（已弃用）|确认：Windows fatal 0xc0000374；具体 Numba 内存所有权根因未证实|不发布 compiled generator；改 resumable fixed-buffer fill，17 个定向测试及 fresh-process 回归通过|research_failures.json；最终 source 重验|
 |C20|CPU/prefix/window/resident runner；correctness；blocker|确认：n=2 single / all scored below -1 时，只有一个真实未评分 slot，虚拟 sentinel 错占 runner；winner 不变|按真实未评分 slot 数归约；GPU 记录 scored maximum，排除重复虚拟 sentinel；n=1 矩阵 runner=-Inf|新增 56 CPU + 8 CUDA 小域回归；定向 CPU 153 / CUDA 26 passed；最终源码重验|
-|C21|公开 scanner/sanitizer；release；high|确认：drive 正则误认 https 的 s:/；旧占位符破坏 XML 文本|增加词边界；改用 XML 安全占位符；URI/路径/真实 JUnit 解析检查|交付工具提交；delivery_tool_changes.json；关闭|
+|C21|公开 scanner/sanitizer；release；high|确认：drive 正则误认 HTTPS scheme 末尾为盘符；旧占位符破坏 XML 文本|增加词边界；改用 XML 安全占位符；URI/路径/真实 JUnit 解析检查|交付工具提交；delivery_tool_changes.json；关闭|
 
 计算预算均为执行策略；不足时明确失败，绝不换 K、删候选或跳过 double。
 同步 fit 对输入作只读快照，cache 不再依赖调用者在拟合期间不修改原数组。

@@ -117,5 +117,11 @@
   },
   "old_evidence_untouched": true,
   "raw_arrays_published": false,
-  "historical_performance_rerun": false
+  "historical_performance_rerun": false,
+  "public_scan": {
+    "scope": "current public text relative to origin/main; includes this manifest",
+    "text_files": 137,
+    "findings": [],
+    "private_raw_arrays_published": false
+  }
 }
