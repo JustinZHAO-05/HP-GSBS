@@ -1,5 +1,8 @@
 # 性能实测
 
+> 本页为保留的 v0.1.0 历史记录。v0.2 的同环境 A/B、Long-N 与吞吐见
+> [v0.2 实测报告](v02_results_CN.md)，不将两次测量合同混算。
+
 ## 补齐原版基线：配对重测
 
 Small 保留初始 v0.1.0 数据；其余四类在同一 WSL/Python/依赖环境、FP64、原参数下重测官方与优化后端。Medium/Large/XL 一轮预热，再做三轮 reference → CPU → PyTorch → Triton。BBBD0 按用户要求每后端仅运行一次，无独立预热或重复，不估计变异；原始日志 warmup 标签代表这一保留的单次测量。BLAS/Numba 各 1 线程，trace=False。CUDA 同步后计时，结果保存与核对在计时之外。所有拟合顺序执行；桌面应用仍可能影响硬件频率，因此公布每次原始 wall time，不将结果描述为硬件极限。

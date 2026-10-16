@@ -1,0 +1,16 @@
+START 0 full cpu-fast
+0 full cpu-fast {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 2.433608869978343e-13, 'patterns_close': True, 'strengths_close': True, 'trace_compared': True, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}
+START 0 low-memory cpu-fast
+0 low-memory cpu-fast {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 8.881784197001252e-15, 'patterns_close': True, 'strengths_close': True, 'trace_compared': True, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}
+START 1 full cpu-fast
+1 full cpu-fast {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 0.0, 'patterns_close': True, 'strengths_close': True, 'trace_compared': True, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}
+START 1 low-memory cpu-fast
+1 low-memory cpu-fast {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 3.055333763768431e-13, 'patterns_close': True, 'strengths_close': True, 'trace_compared': True, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}
+START 2 full cpu-fast
+2 full cpu-fast {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 0.0, 'patterns_close': True, 'strengths_close': True, 'trace_compared': True, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}
+START 2 low-memory cpu-fast
+2 low-memory cpu-fast {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 7.851497230149107e-13, 'patterns_close': True, 'strengths_close': True, 'trace_compared': True, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}
+START 3 full cpu-fast
+3 full cpu-fast {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 0.0, 'patterns_close': True, 'strengths_close': True, 'trace_compared': True, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}
+START 3 low-memory cpu-fast
+3 low-memory cpu-fast {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 1.3589129821411916e-13, 'patterns_close': True, 'strengths_close': True, 'trace_compared': True, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}

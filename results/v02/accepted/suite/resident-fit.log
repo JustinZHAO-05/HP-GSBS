@@ -1,0 +1,20 @@
+START Small torch-cuda
+DONE Small torch-cuda 0.09347206500001448 {'status': 'no cached official reference'}
+START Small triton-cuda
+DONE Small triton-cuda 0.0685848679999026 {'status': 'no cached official reference'}
+START Medium torch-cuda
+DONE Medium torch-cuda 0.13726942999994662 {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 6.217248937900877e-15, 'patterns_close': True, 'strengths_close': True, 'trace_compared': False, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}
+START Medium triton-cuda
+DONE Medium triton-cuda 0.11797317099990323 {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 6.217248937900877e-15, 'patterns_close': True, 'strengths_close': True, 'trace_compared': False, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}
+START Large torch-cuda
+DONE Large torch-cuda 0.20682611000006546 {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 3.907985046680551e-14, 'patterns_close': True, 'strengths_close': True, 'trace_compared': False, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}
+START Large triton-cuda
+DONE Large triton-cuda 0.29008785600001374 {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 3.907985046680551e-14, 'patterns_close': True, 'strengths_close': True, 'trace_compared': False, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}
+START XL torch-cuda
+DONE XL torch-cuda 0.41844238700002734 {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 1.4210854715202004e-14, 'patterns_close': True, 'strengths_close': True, 'trace_compared': False, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}
+START XL triton-cuda
+DONE XL triton-cuda 0.47540186300000187 {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 1.4210854715202004e-14, 'patterns_close': True, 'strengths_close': True, 'trace_compared': False, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}
+START BBBD0 torch-cuda
+DONE BBBD0 torch-cuda 1.1214981210000587 {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 9.592326932761353e-14, 'patterns_close': True, 'strengths_close': True, 'trace_compared': False, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}
+START BBBD0 triton-cuda
+DONE BBBD0 triton-cuda 1.1402957190000507 {'bounds_equal': True, 'nstates_equal': True, 'first_divergence': None, 'tdists_close': True, 'max_t_error': 9.592326932761353e-14, 'patterns_close': True, 'strengths_close': True, 'trace_compared': False, 'trace_values_close': True, 'first_numerical_divergence': None, 'passed': True}

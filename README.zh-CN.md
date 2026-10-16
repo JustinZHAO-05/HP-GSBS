@@ -4,6 +4,10 @@
 
 # HP-GSBS
 
+> v0.2 开发分支：[算法与兼容性审查](docs/v02_algorithm_review_CN.md)、
+> [科学一致性与性能报告](docs/v02_results_CN.md)。默认 FP64 科学参数保留；
+> 低内存 TD 与选择性 GPU 常驻搜索须显式启用，尚未发布新版本。
+
 **高性能 Greedy State Boundary Search**
 
 更快地寻找神经活动的时间状态，保留可审查的分段决策。

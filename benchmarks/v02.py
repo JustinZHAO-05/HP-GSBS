@@ -36,7 +36,8 @@ def main():
     fixtures = Path(a.fixtures)
     rows = []
     metadata = dict(head=a.revision or subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
-                    python=platform.python_version(), platform=platform.platform(), arguments=vars(a))
+                    python=platform.python_version(), platform=platform.platform(), arguments=vars(a),
+                    source_hashes={str(f):hashlib.sha256(f.read_bytes()).hexdigest() for f in Path("src").rglob("*.py")})
     (out / "environment.json").write_text(json.dumps(metadata, indent=2))
     for name, t, features, k in [("Small",450,16,20),("Medium",900,32,30),
                                 ("Large",1500,64,40),("XL",2100,64,50),

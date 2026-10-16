@@ -1,5 +1,8 @@
 # 一致性验收
 
+> 本页保留 v0.1.0 的证据与范围；新增路径及逐次微调验收见
+> [v0.2 实测报告](v02_results_CN.md)。
+
 - Windows：103 passed / 0 failed / 1 skipped。
 - WSL2（含真实 CUDA/Triton）：134 passed / 0 failed / 0 skipped。
 - 计数是测试用例数，不是独立生物学记录数。真实记录只有 4 条，覆盖 4 视频、2 session、full64 与 frontal32。源空间网络尚未提供合法冻结输入，不计入完成。

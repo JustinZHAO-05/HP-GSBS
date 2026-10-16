@@ -4,6 +4,11 @@
 
 # HP-GSBS
 
+> v0.2 development: [algorithm and compatibility review](docs/v02_algorithm_review_CN.md)
+> and [measured validation/performance report](docs/v02_results_CN.md).
+> Streaming candidates preserve the existing FP64 scientific configuration;
+> feature-moments TD and selective resident GPU search remain explicit experiments.
+
 **High-Performance Greedy State Boundary Search**
 
 Find temporal states in multivariate neural recordings—with faster computation and auditable decisions.

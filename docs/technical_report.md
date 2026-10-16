@@ -1,5 +1,8 @@
 # HP-GSBS 技术报告
 
+> 本页是 v0.1.0 交付报告。v0.2 分支另见[算法审查](v02_algorithm_review_CN.md)
+> 和[实测报告](v02_results_CN.md)，历史结果保留。
+
 日期：2026-10-16。交付目录 `<workspace>`。源码、CLI、测试、基准与环境记录均已落盘；官方 GSBS 和 E 盘 BBBD 研究产物保持不变。
 
 ## A. 总体完成情况

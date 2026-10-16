@@ -1,0 +1,32 @@
+{
+  "os": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "python": "3.10.12 (main, Jun 22 2026, 18:55:27) [GCC 11.4.0]",
+  "cpu_model": "AMD Ryzen 7 7840H with Radeon 780M Graphics",
+  "physical_cores": 8,
+  "logical_threads": 16,
+  "ram_bytes": 14491512832,
+  "wsl": true,
+  "packages": {
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "numba": "0.68.0",
+    "torch": "2.11.0+cu128",
+    "triton": "3.6.0",
+    "statesegmentation": "0.0.6"
+  },
+  "nvidia_smi": "name, driver_version, memory.total [MiB], compute_cap\nNVIDIA GeForce RTX 4050 Laptop GPU, 610.74, 6141 MiB, 8.9",
+  "cuda_available": true,
+  "cuda_runtime": "12.8",
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "compute_capability": [
+      8,
+      9
+    ],
+    "total_memory": 6438780928,
+    "fp64_supported": true,
+    "fp32_supported": true,
+    "tf32_supported": true,
+    "fp64_throughput": "Not inferred from dtype support; measure with benchmarks/precision_bench.py"
+  }
+}

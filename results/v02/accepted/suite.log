@@ -1,0 +1,16 @@
+START throughput
+DONE throughput
+START cold
+DONE cold
+START profile
+DONE profile
+START resident-fit
+DONE resident-fit
+START memory
+DONE memory
+START precision
+DONE precision
+START components
+DONE components
+START ablation
+DONE ablation
