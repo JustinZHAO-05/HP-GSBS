@@ -63,7 +63,10 @@ def main():
             measured=benchmark(x,c,"cpu-fast",repeats=3)
             r=fit(x,c)
             # Audit both selected and final partitions; no full native long fit.
-            td=FeatureMomentsTDistance(x,1,tile_size=128,max_pair_evaluations=200_000_000)
+            # Deliberate fixed-partition oracle budget: at T<=50k two passes
+            # contain at most T*(T-1) < 2.5e9 W/A pairs. No candidate sweep or
+            # dense array is admitted by this validation-only override.
+            td=FeatureMomentsTDistance(x,1,tile_size=128,max_pair_evaluations=3_000_000_000)
             checks=[]
             with threadpool_limits(limits=1):
                 for k in sorted(set([int(r.nstates),16])):
