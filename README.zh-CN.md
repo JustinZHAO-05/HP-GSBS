@@ -197,7 +197,28 @@ python benchmarks/batch_throughput.py --backend cpu-fast --workers 4 --batch-siz
 
 公共版本包含代码、合成示例、测试、性能与验证汇总；不包含研究矩阵、参与者文件映射、逐记录结果或虚拟环境。依赖私有数据的脚本不属于快速开始必需步骤。贡献与问题复现见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
-基于 [statesegmentation](https://github.com/lgeerligs/statesegmentation)，使用时请引用原始算法论文及本软件：
+### 主要贡献者与维护者
+
+**[Yanzhe Zhao](https://github.com/JustinZHAO-05)**（Tianjin University）是
+HP-GSBS 的**主要贡献者与维护者（main contributor and maintainer）**。
+
+### 引用与学术归属
+
+HP-GSBS 是 GSBS 的优化实现，原始 GSBS 方法及上游实现归属于其原作者。
+使用时请同时引用所用的软件版本和下列原始方法论文。
+
+> Zhao, Y. (2026). *HP-GSBS: High-Performance Greedy State Boundary Search*
+> (Version 0.1.0) [Computer software]. GitHub.
+> https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.1.0
+
+v0.1.0 对应固定源码提交
+[`922a69c76ba9c39964efd3c3a7f973625ae5b1f1`](https://github.com/JustinZHAO-05/HP-GSBS/tree/922a69c76ba9c39964efd3c3a7f973625ae5b1f1)。
+默认分支还包含发布后的文档与性能更新，复现 v0.1.0 时请使用固定版本。
+发布日期为北京时间 2026-10-16（UTC 为 2026-10-15 18:12:01）。
+软件测试与版本发布本身不代表 BBBD 研究假设已经得到验证，也不等同于同行评审论文。
+
+上游软件：[statesegmentation](https://github.com/lgeerligs/statesegmentation)，
+参考依赖固定为 `statesegmentation==0.0.6`。原始 GSBS 方法论文：
 
 - Geerligs et al. (2021), [10.1016/j.neuroimage.2021.118085](https://doi.org/10.1016/j.neuroimage.2021.118085)。
 - Geerligs et al. (2022), [10.7554/eLife.77430](https://doi.org/10.7554/eLife.77430)。

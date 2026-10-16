@@ -1,11 +1,63 @@
 cff-version: 1.2.0
-message: "If you use HP-GSBS, cite this software and the original GSBS papers listed in README.md."
+message: "Please cite HP-GSBS and the original GSBS papers."
 title: "HP-GSBS: High-Performance Greedy State Boundary Search"
 type: software
 authors:
-  - name: "HP-GSBS contributors"
-version: 0.1.0
-date-released: 2026-10-16
+  - given-names: "Yanzhe"
+    family-names: "Zhao"
+    affiliation: "Tianjin University"
+version: "0.1.0"
+date-released: "2026-10-16"
+commit: "922a69c76ba9c39964efd3c3a7f973625ae5b1f1"
 license: MIT
 repository-code: "https://github.com/JustinZHAO-05/HP-GSBS"
-url: "https://github.com/JustinZHAO-05/HP-GSBS"
+url: "https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.1.0"
+abstract: >-
+  HP-GSBS is a high-performance implementation of Greedy State Boundary
+  Search for multivariate neural time series, with CPU, PyTorch CUDA, and
+  Triton CUDA routes. The release includes synthetic examples, tests,
+  benchmarks, and reports of agreement with statesegmentation 0.0.6 within
+  the documented validation domain. FP64 is the scientific default; FP32
+  remains experimental. Private EEG inputs are not redistributed.
+keywords:
+  - neuroscience
+  - neural time series
+  - EEG
+  - event segmentation
+  - Greedy State Boundary Search
+  - scientific software
+references:
+  - type: article
+    title: "Detecting neural state transitions underlying event segmentation"
+    authors:
+      - family-names: Geerligs
+        given-names: Linda
+      - family-names: van Gerven
+        given-names: Marcel
+      - family-names: Güçlü
+        given-names: Umut
+    year: 2021
+    journal: NeuroImage
+    volume: "236"
+    start: "118085"
+    doi: "10.1016/j.neuroimage.2021.118085"
+  - type: article
+    title: "A partially nested cortical hierarchy of neural states underlies event segmentation in the human brain"
+    authors:
+      - family-names: Geerligs
+        given-names: Linda
+      - family-names: Gözükara
+        given-names: Dora
+      - family-names: Oetringer
+        given-names: Djamari
+      - family-names: Campbell
+        given-names: Karen L
+      - family-names: van Gerven
+        given-names: Marcel
+      - family-names: Güçlü
+        given-names: Umut
+    year: 2022
+    journal: eLife
+    volume: "11"
+    start: "e77430"
+    doi: "10.7554/eLife.77430"

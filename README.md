@@ -256,11 +256,47 @@ The public repository contains synthetic examples, tests, code, and benchmark/va
 
 Please include `doctor` output, parameters, precision, backend and the first divergent K/candidate when [reporting a problem](https://github.com/JustinZHAO-05/HP-GSBS/issues). Do not attach private EEG without permission. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-HP-GSBS builds on [statesegmentation](https://github.com/lgeerligs/statesegmentation). Cite the original GSBS work alongside this software:
+### Maintainer and contributors
 
-- Geerligs et al. (2021), [NeuroImage, DOI: 10.1016/j.neuroimage.2021.118085](https://doi.org/10.1016/j.neuroimage.2021.118085).
-- Geerligs et al. (2022), [eLife, DOI: 10.7554/eLife.77430](https://doi.org/10.7554/eLife.77430).
-- Software citation metadata: [CITATION.cff](CITATION.cff).
+**[Yanzhe Zhao](https://github.com/JustinZHAO-05)** (Tianjin University) is the
+**main contributor and maintainer** of HP-GSBS.
+
+### Citation and attribution
+
+HP-GSBS provides an optimized implementation of GSBS, originally introduced
+by Geerligs, van Gerven, and Güçlü (2021) and extended in Geerligs et al.
+(2022). The original method and upstream implementation remain attributed
+to their authors. HP-GSBS supplies the acceleration, interfaces, and
+validation described in this repository.
+
+Cite the **software version actually used** alongside the original method:
+
+> Zhao, Y. (2026). *HP-GSBS: High-Performance Greedy State
+> Boundary Search* (Version 0.1.0) [Computer software]. GitHub.
+> https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.1.0
+
+Machine-readable software metadata: [CITATION.cff](CITATION.cff).
+The version 0.1.0 source snapshot is commit
+[`922a69c76ba9c39964efd3c3a7f973625ae5b1f1`](https://github.com/JustinZHAO-05/HP-GSBS/tree/922a69c76ba9c39964efd3c3a7f973625ae5b1f1).
+The default branch also contains later documentation and benchmark updates;
+use the [versioned release](https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.1.0)
+when reproducing version 0.1.0. The release date is October 16, 2026 in
+Asia/Shanghai (October 15, 2026 at 18:12:01 UTC).
+
+Original GSBS method papers:
+
+- Geerligs, L., van Gerven, M., & Güçlü, U. (2021). Detecting neural state
+  transitions underlying event segmentation. *NeuroImage, 236*, 118085.
+  https://doi.org/10.1016/j.neuroimage.2021.118085
+- Geerligs, L., Gözükara, D., Oetringer, D., Campbell, K. L., van Gerven, M.,
+  & Güçlü, U. (2022). A partially nested cortical hierarchy of neural states
+  underlies event segmentation in the human brain. *eLife, 11*, e77430.
+  https://doi.org/10.7554/eLife.77430
+
+Upstream software: [statesegmentation](https://github.com/lgeerligs/statesegmentation),
+with the reference dependency pinned to `statesegmentation==0.0.6`.
+Software release and numerical agreement tests do not by themselves
+validate BBBD research hypotheses or constitute a peer-reviewed paper.
 
 Released under the [MIT License](LICENSE); upstream attribution is preserved in [NOTICE](NOTICE). The banner is AI-generated conceptual artwork, not a scientific figure; [generation details](docs/assets/README.md).
 

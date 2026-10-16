@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77.0.3"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,8 +7,10 @@ name = "hpgsbs"
 version = "0.1.0"
 description = "Auditable high-performance greedy state boundary search"
 readme = "README.md"
-license = {file = "LICENSE"}
-authors = [{name = "HP-GSBS contributors"}]
+license = "MIT"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{name = "Yanzhe Zhao"}]
+maintainers = [{name = "Yanzhe Zhao"}]
 keywords = ["neuroscience", "EEG", "GSBS", "segmentation", "CUDA", "Triton"]
 requires-python = ">=3.10"
 dependencies = ["numpy>=1.24", "scipy>=1.14", "numba>=0.59", "threadpoolctl>=3", "psutil>=5", "tqdm>=4", "statesegmentation==0.0.6"]
@@ -22,6 +24,9 @@ triton = ["triton>=3.1; sys_platform == 'linux'"]
 Homepage = "https://github.com/JustinZHAO-05/HP-GSBS"
 Repository = "https://github.com/JustinZHAO-05/HP-GSBS"
 Issues = "https://github.com/JustinZHAO-05/HP-GSBS/issues"
+Documentation = "https://github.com/JustinZHAO-05/HP-GSBS#readme"
+Releases = "https://github.com/JustinZHAO-05/HP-GSBS/releases"
+Citation = "https://github.com/JustinZHAO-05/HP-GSBS/blob/main/CITATION.cff"
 
 [project.scripts]
 hpgsbs = "hpgsbs.cli:main"
