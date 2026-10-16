@@ -36,6 +36,10 @@ You supply the already-preprocessed matrix and the original analysis parameters.
 
 **All five workloads have measured official FP64 baselines.** Each speedup compares identical inputs, parameters, environment and precision within that workload; Small ratios are not extrapolated to larger recordings.
 
+![Measured FP64 run time and speedup across Small, Medium, Large, XL and real EEG; synthetic medians with min-max ranges, EEG single measurements](docs/assets/performance-comparison.png)
+
+[Vector figure (SVG)](docs/assets/performance-comparison.svg) · [Reproduce this figure](scripts/plot_performance.py) (`python -m pip install matplotlib`, then `python scripts/plot_performance.py`). Left: logarithmic run time; right: linear speedup. Rows show timepoints × features and Kmax.
+
 ### Single-record latency
 
 Ryzen 7 7840H · RTX 4050 Laptop 6 GB · WSL2 Ubuntu 22.04 · PyTorch 2.11.0+cu128 · Triton 3.6.0. Synthetic values are medians of **3 fits after warmup**; BBBD0 reports **one measured fit per backend, without repeats**, with CUDA synchronization. CPU uses one process and one BLAS thread. All rows use statewise detection, `finetune=1`, strength-ordered finetuning, `blocksize=50`, and FP64; TF32 is disabled.

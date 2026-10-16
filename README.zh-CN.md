@@ -35,6 +35,10 @@ GPU 路线目前是**混合实现**：Q、相关矩阵与统计前缀在 GPU 预
 
 **五类负载均已补齐原版 FP64 实测基线。** 下表每个加速比使用同一输入、参数、环境和精度；不同负载的加速幅度分别报告，不将 Small 倍率外推。
 
+![FP64 运行时间与加速倍数对比：合成负载为中位数和最小至最大范围，真实 EEG 为单次测量](docs/assets/performance-comparison.png)
+
+[矢量图 SVG](docs/assets/performance-comparison.svg) · [绘图脚本](scripts/plot_performance.py)（先运行 `python -m pip install matplotlib`，再运行 `python scripts/plot_performance.py`）。左图为运行时间（对数轴），右图为加速倍数（线性轴）；每行标注时间点数 × 特征数及 Kmax。
+
 测试机器：Ryzen 7 7840H，RTX 4050 Laptop 6 GB，WSL2 Ubuntu 22.04；PyTorch 2.11.0+cu128、Triton 3.6.0。合成负载为 **预热后三次运行中位数**；BBBD0 为 **单次实测，无重复**，CUDA 已同步，CPU 单进程/单 BLAS 线程。全部开启 statewise detection、`finetune=1`、strength-order、`blocksize=50`，精度 FP64，关闭 TF32。
 
 | 工作负载 | T × P | Kmax | 官方 GSBS | CPU FastGSBS | TensorGSBS | TurboGSBS |
