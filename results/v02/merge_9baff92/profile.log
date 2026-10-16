@@ -1,0 +1,3 @@
+[system-path] UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+[W1016 18:57:37.280932437 collection.cpp:665] Warning: aten::resolve_neg (function operator())

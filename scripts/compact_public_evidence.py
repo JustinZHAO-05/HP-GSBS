@@ -61,7 +61,7 @@ def main():
     tracked=subprocess.check_output(['git','diff','--name-only','origin/main'],text=True).splitlines()
     untracked=subprocess.check_output(['git','ls-files','--others','--exclude-standard'],text=True).splitlines()
     patterns={
-        'machine_path':r'(?i)(?:[A-Z]:[\\/]|/(?:home|mnt|tmp)/)[^\s"<>]+',
+        'machine_path':r'(?i)(?:(?<![\w])[A-Z]:[\\/]|/(?:home|mnt|tmp)/)[^\s"<>]+',
         'private_identity':r'(?i)(?:wxid_[a-z0-9_]+|Users[\\/]+[0-9]{4,})',
         'credential':r'(?:gh[pousr]_[A-Za-z0-9]{25,}|sk-[A-Za-z0-9_-]{25,}|AKIA[A-Z0-9]{16}|-----BEGIN (?:RSA |OPENSSH )?PRIVATE KEY-----)'}
     findings=[];count=0

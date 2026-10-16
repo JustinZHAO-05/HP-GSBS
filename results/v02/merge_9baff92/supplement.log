@@ -1,0 +1,9 @@
+[system-path] RuntimeWarning: Precision loss occurred in moment calculation due to catastrophic cancellation. This occurs when the data are nearly identical. Results may be unreliable.
+  res = hypotest_fun_out(*samples, **kwds)
+[system-path] RuntimeWarning: invalid value encountered in divide
+  return (x - x.mean(1, keepdims=True)) / x.std(1, keepdims=True, ddof=1)
+[system-path] ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  pcorrs[state_idx - 1] = pearsonr(xmeans[state_idx], xmeans[state_idx - 1])[0]
+[system-path] ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  strengths[delta]=1-pearsonr(patterns[1:],patterns[:-1],axis=1).statistic
+16 additional strict per-move comparisons passed; 192 throughput input identities recorded

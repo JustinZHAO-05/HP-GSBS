@@ -27,6 +27,9 @@ CPU fit 对 X/Y 作只读快照；Q/Z/scorer/cache 只在一个同步 fit 内有
 
 超限抛出 `ResourceBudgetExceeded`，带 diagnostics；异常 fit 不生成 success result。
 低内存 TD 对非有限/近退化统计拒绝认证，无 dense 回退或 variance clamp。
+现有近退化检测保守到任一 W/A 组方差极小时即拒绝，包含某些另一组方差正常、
+数学上 Welch 可定义的输入。该 false refusal 明确保留为 experimental 限制；
+最终证据 numeric_false_refusal.json 给出固定反例，不能称全部重复模式均已支持。
 近并列原式回退记录 reason、gap、first_problematic_candidate、实际重评数和元素数。
 候选预算只拒绝执行，绝不剪枝、换 K 或跳过双切。官方 reference 后端保持原版行为，
 不受优化后端预算控制。

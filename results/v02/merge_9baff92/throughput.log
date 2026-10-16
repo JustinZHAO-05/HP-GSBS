@@ -1,0 +1,213 @@
+Small cpu-fast 1 32 0 6.49789348000013 True
+Small cpu-fast 1 32 1 6.717351340999812 True
+Small cpu-fast 1 32 2 6.747590123000009 True
+Small cpu-fast 1 32 3 6.669877057999884 True
+Small cpu-fast 2 32 0 2.172761846000185 True
+Small cpu-fast 2 32 1 2.1878393219999452 True
+Small cpu-fast 2 32 2 2.225132955000163 True
+Small cpu-fast 2 32 3 2.2395555779999086 True
+Small cpu-fast 4 32 0 1.7675564550002036 True
+Small cpu-fast 4 32 1 1.7602350969998497 True
+Small cpu-fast 4 32 2 1.7118400409999595 True
+Small cpu-fast 4 32 3 1.71914138000011 True
+Small cpu-fast 8 32 0 1.8789619980000225 True
+Small cpu-fast 8 32 1 1.8323955010000645 True
+Small cpu-fast 8 32 2 1.8746491929998683 True
+Small cpu-fast 8 32 3 1.9273175900000297 True
+Small torch-cuda 1 1 0 0.9051191190001191 True
+Small torch-cuda 1 1 1 0.11443972600000052 True
+Small torch-cuda 1 1 2 0.11307278399999632 True
+Small torch-cuda 1 1 3 0.11782418899997538 True
+Small torch-cuda 1 2 0 0.20468541700006426 True
+Small torch-cuda 1 2 1 0.19737764000001334 True
+Small torch-cuda 1 2 2 0.18312687599996025 True
+Small torch-cuda 1 2 3 0.19167877900008534 True
+Small torch-cuda 1 4 0 0.3560266510000929 True
+Small torch-cuda 1 4 1 0.2977757159999328 True
+Small torch-cuda 1 4 2 0.3089374140001837 True
+Small torch-cuda 1 4 3 0.32105143800004043 True
+Small torch-cuda 1 8 0 0.6253735749999123 True
+Small torch-cuda 1 8 1 0.6226352950000091 True
+Small torch-cuda 1 8 2 0.6064516920000642 True
+Small torch-cuda 1 8 3 0.6389504510000279 True
+Small torch-cuda 1 16 0 1.2046225750000303 True
+Small torch-cuda 1 16 1 1.3104665399998794 True
+Small torch-cuda 1 16 2 1.172635732000117 True
+Small torch-cuda 1 16 3 1.26536586300017 True
+Small torch-cuda 1 32 0 2.371471534999955 True
+Small torch-cuda 1 32 1 2.403954094000028 True
+Small torch-cuda 1 32 2 2.639675378999982 True
+Small torch-cuda 1 32 3 2.419638612000199 True
+Small torch-cuda 1 64 0 4.960979296999994 True
+Small torch-cuda 1 64 1 4.866908686999977 True
+Small torch-cuda 1 64 2 5.015224671999931 True
+Small torch-cuda 1 64 3 5.082587848000003 True
+Small triton-cuda 1 1 0 0.8815041640000345 True
+Small triton-cuda 1 1 1 0.12825924300000224 True
+Small triton-cuda 1 1 2 0.1211663869999029 True
+Small triton-cuda 1 1 3 0.12556877199995142 True
+Small triton-cuda 1 2 0 0.20607064799992258 True
+Small triton-cuda 1 2 1 0.22049523400005455 True
+Small triton-cuda 1 2 2 0.226235097999961 True
+Small triton-cuda 1 2 3 0.2008404140001403 True
+Small triton-cuda 1 4 0 0.4083175690000189 True
+Small triton-cuda 1 4 1 0.3792040050000196 True
+Small triton-cuda 1 4 2 0.38197487799993723 True
+Small triton-cuda 1 4 3 0.42063738599995304 True
+Small triton-cuda 1 8 0 0.8595873400001892 True
+Small triton-cuda 1 8 1 0.6856184090001989 True
+Small triton-cuda 1 8 2 0.7007557750000615 True
+Small triton-cuda 1 8 3 0.6967402549998951 True
+Small triton-cuda 1 16 0 1.3770046750000802 True
+Small triton-cuda 1 16 1 1.2732825779999075 True
+Small triton-cuda 1 16 2 1.2476256020001983 True
+Small triton-cuda 1 16 3 1.273229782999806 True
+Small triton-cuda 1 32 0 2.554672253000035 True
+Small triton-cuda 1 32 1 2.5126086319999104 True
+Small triton-cuda 1 32 2 2.637363327999992 True
+Small triton-cuda 1 32 3 2.549357692000058 True
+Small triton-cuda 1 64 0 4.939868257999933 True
+Small triton-cuda 1 64 1 4.664242954999963 True
+Small triton-cuda 1 64 2 4.975105432999953 True
+Small triton-cuda 1 64 3 4.867089714000031 True
+highK cpu-fast 1 8 0 23.679943504999983 True
+highK cpu-fast 1 8 1 23.745170101999975 True
+highK cpu-fast 1 8 2 23.30331598900011 True
+highK cpu-fast 1 8 3 22.05607334199999 True
+highK cpu-fast 2 8 0 7.1020302440001615 True
+highK cpu-fast 2 8 1 7.578784971999994 True
+highK cpu-fast 2 8 2 7.658367977999887 True
+highK cpu-fast 2 8 3 7.4467657679999775 True
+highK cpu-fast 4 8 0 5.259728446000054 True
+highK cpu-fast 4 8 1 5.394940074000033 True
+highK cpu-fast 4 8 2 5.221555879999869 True
+highK cpu-fast 4 8 3 5.257907499999874 True
+highK cpu-fast 8 8 0 6.299671177999926 True
+Process ForkProcess-94:
+Process ForkProcess-95:
+Process ForkProcess-93:
+Process ForkProcess-98:
+Process ForkProcess-97:
+Process ForkProcess-99:
+Process ForkProcess-96:
+Process ForkProcess-100:
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "[system-path]", line 314, in _bootstrap
+    self.run()
+  File "[system-path]", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "[system-path]", line 314, in _bootstrap
+    self.run()
+Traceback (most recent call last):
+  File "[system-path]", line 314, in _bootstrap
+    self.run()
+  File "[system-path]", line 314, in _bootstrap
+    self.run()
+  File "[system-path]", line 314, in _bootstrap
+    self.run()
+  File "[system-path]", line 314, in _bootstrap
+    self.run()
+  File "[system-path]", line 314, in _bootstrap
+    self.run()
+  File "[system-path]", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "[system-path]", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "[system-path]", line 314, in _bootstrap
+    self.run()
+  File "[system-path]", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "[system-path]", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "[system-path]", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "[system-path]", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "[system-path]", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "[system-path]", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "[system-path]", line 102, in get
+    with self._rlock:
+  File "[system-path]", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "[system-path]", line 102, in get
+    with self._rlock:
+  File "[system-path]", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "[system-path]", line 103, in get
+    res = self._recv_bytes()
+  File "[system-path]", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "[system-path]", line 102, in get
+    with self._rlock:
+  File "[system-path]", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "[system-path]", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "[system-path]", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "[system-path]", line 240, in _process_worker
+    call_item = call_queue.get(block=True)
+  File "[system-path]", line 95, in __enter__
+    return self._semlock.__enter__()
+  File "[system-path]", line 95, in __enter__
+    return self._semlock.__enter__()
+  File "[system-path]", line 216, in recv_bytes
+    buf = self._recv_bytes(maxlength)
+  File "[system-path]", line 95, in __enter__
+    return self._semlock.__enter__()
+  File "[system-path]", line 102, in get
+    with self._rlock:
+  File "[system-path]", line 102, in get
+    with self._rlock:
+  File "[system-path]", line 102, in get
+    with self._rlock:
+  File "[system-path]", line 102, in get
+    with self._rlock:
+  File "[system-path]", line 95, in __enter__
+    return self._semlock.__enter__()
+KeyboardInterrupt
+KeyboardInterrupt
+  File "[system-path]", line 414, in _recv_bytes
+    buf = self._recv(4)
+  File "[system-path]", line 379, in _recv
+    chunk = read(handle, remaining)
+KeyboardInterrupt
+  File "[system-path]", line 95, in __enter__
+    return self._semlock.__enter__()
+  File "[system-path]", line 95, in __enter__
+    return self._semlock.__enter__()
+KeyboardInterrupt
+  File "[system-path]", line 95, in __enter__
+    return self._semlock.__enter__()
+KeyboardInterrupt
+KeyboardInterrupt
+KeyboardInterrupt
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "[system-path]", line 78, in <module>
+    if __name__=='__main__':main()
+  File "[system-path]", line 50, in main
+    passed &= compare(expected[0 if workload=='highK' else index],result,level='output-only')['passed']
+  File "[system-path]", line 19, in compare
+    report["strengths_close"]=reference.strengths.shape==candidate.strengths.shape and bool(np.allclose(reference.strengths,candidate.strengths,atol=atol,rtol=rtol,equal_nan=True))
+  File "[system-path]", line 20, in __getattr__
+    return getattr(model, name)
+  File "[system-path]", line 277, in strengths
+    return self.get_strengths()
+  File "[system-path]", line 260, in get_strengths
+    pcorrs[state_idx - 1] = pearsonr(xmeans[state_idx], xmeans[state_idx - 1])[0]
+  File "[system-path]", line 4621, in pearsonr
+    xmean = xp.mean(x, axis=axis, keepdims=True)
+  File "[system-path]", line 3860, in mean
+    return _methods._mean(a, axis=axis, dtype=dtype,
+  File "[system-path]", line 135, in _mean
+    ret = umr_sum(arr, axis, dtype, out, keepdims, where=where)
+KeyboardInterrupt

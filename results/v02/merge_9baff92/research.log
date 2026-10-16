@@ -1,0 +1,18 @@
+small direct 0 0.4141148350000776 True
+small incremental 0 0.46147479199999 True
+small incremental 1 0.38928997000004983 True
+small direct 1 0.4202402079999956 True
+small direct 2 0.4558233670001073 True
+small incremental 2 0.43982041000003846 True
+small incremental 3 0.3942435830000477 True
+small direct 3 0.42144074999998793 True
+BBBD0 direct 0 36.271312394000006 True
+BBBD0 incremental 0 35.86607070299999 True
+BBBD0 incremental 1 36.459212398999966 True
+BBBD0 direct 1 39.801021279999986 True
+BBBD0 direct 2 36.749000936000016 True
+BBBD0 incremental 2 34.925740356000006 True
+BBBD0 incremental 3 34.93971060600006 True
+BBBD0 direct 3 36.21876468000005 True
+[system-path] RuntimeWarning: Precision loss occurred in moment calculation due to catastrophic cancellation. This occurs when the data are nearly identical. Results may be unreliable.
+  res = hypotest_fun_out(*samples, **kwds)

@@ -11,8 +11,8 @@ def sources():
 
 
 def public_text(text):
-    text=re.sub(r'[A-Za-z]:[\\/][^\s"<>]*','<local-path>',text)
-    text=re.sub(r'/(?:home|mnt|tmp|usr)/[^\s"<>]*','<system-path>',text)
+    text=re.sub(r'(?<![\w])[A-Za-z]:[\\/][^\s"<>]*','[local-path]',text)
+    text=re.sub(r'/(?:home|mnt|tmp|usr)/[^\s"<>]*','[system-path]',text)
     text=re.sub(r'hostname="[^"]*"','hostname="redacted"',text)
     return text
 
