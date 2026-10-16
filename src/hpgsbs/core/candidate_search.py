@@ -38,7 +38,7 @@ def full_scores(q, edges, start, end, allowed, opt, double, T):
 class CandidateSearch:
     def __init__(self, x, scores, tolerance=1e-11, backend="streaming", chunk_size=256):
         self.x, self.q, self.tolerance = x, scores, tolerance
-        self.z = scores.z if hasattr(scores,"z") else GSBS._zscore(x)
+        self.z = scores.z if getattr(scores,"supplied_z",False) else GSBS._zscore(x)
         self.fallbacks = 0
         self.fallback_reasons = {}
         self.backend, self.chunk_size = backend, chunk_size

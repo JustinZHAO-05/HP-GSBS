@@ -32,7 +32,7 @@ def test_multiple_grid_stride_tiles():
     q=np.random.default_rng(7).normal(size=(501,501))
     e=np.array([0,500]); allowed=np.ones(500,dtype=bool); opt=np.empty((0,0),np.int64)
     cpu=stream_q(q,e,0,500,allowed,opt,True,500)
-    gpu=candidate_summary(torch.as_tensor(q,device="cuda"),q,e,0,500,allowed,opt,True,500)
+    gpu=candidate_summary(torch.as_tensor(q,device="cuda"),q,e,np.int64(0),np.int64(500),allowed,opt,True,np.int64(500))
     assert cpu[0]==gpu[0]
     np.testing.assert_allclose(cpu[1:3],gpu[1:3],atol=1e-12,rtol=1e-12)
     assert cpu[3:]==gpu[3:]

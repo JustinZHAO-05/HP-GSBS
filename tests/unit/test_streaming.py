@@ -94,3 +94,11 @@ def test_streaming_prefix_respects_supplied_z():
     for a,b in [(0,26),(1,12),(17,18)]:
         expected=np.sum(zscore(x[a:b].mean(0,keepdims=True))*z[a:b])/(26*7)
         np.testing.assert_allclose(q(a,b),expected,atol=2e-14,rtol=2e-14)
+
+
+def test_fp32_guard_keeps_original_fp64_z():
+    from statesegmentation import GSBS
+    x=np.random.default_rng(92).normal(size=(18,5))
+    search=CandidateSearch(x,IntervalScores(x,dtype="float32"))
+    assert search.z.dtype==np.float64
+    np.testing.assert_array_equal(search.z,GSBS._zscore(x))

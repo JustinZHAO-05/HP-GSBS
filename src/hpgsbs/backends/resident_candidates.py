@@ -1,6 +1,7 @@
 """Experimental device-resident Q lookup and bounded stable reduction.
 
-Independent component only: production fit keeps the faster CPU controller.
+Explicit experimental option: fit retains its sequential CPU controller and
+uses this component only for large unrestricted double-candidate domains.
 Candidate coordinates are generated on device; only six winner diagnostics
 return to the host. At most 128 program summaries, never a dense score array.
 """
@@ -75,6 +76,7 @@ def _summary(Q,META,OUT,BASE,START,END,T,N:tl.constexpr,DOUBLE:tl.constexpr,
 
 def candidate_summary(q,q_host,edges,start,end,allowed,opt,double,T):
     """Same summary contract as stream_q; Q is already resident and FP64."""
+    start,end,T=int(start),int(end),int(T)
     if q.dtype!=torch.float64 or not q.is_cuda or not q.is_contiguous():
         raise ValueError("Require contiguous resident CUDA FP64 Q")
     n=end-start

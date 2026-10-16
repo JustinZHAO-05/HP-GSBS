@@ -36,6 +36,7 @@ def conditioning_reason(x, dtype="float64"):
 class IntervalScores:
     def __init__(self, x, strategy="full", tile_size=128, dtype="float64", z=None):
         self.x = np.asarray(x, dtype=dtype)
+        self.supplied_z = z is not None
         self.z = zscore(self.x) if z is None else np.asarray(z,dtype=dtype)
         if self.z.shape != self.x.shape: raise ValueError("Z must have the same shape as X")
         self.T, self.P = x.shape
