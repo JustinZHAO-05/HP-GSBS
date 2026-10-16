@@ -21,3 +21,9 @@ Full Q 后：单候选 O(1)，双候选 O(1)，每轮遍历候选 O(T+Σ Ls²)�
 ## 浮点与退化边界
 
 不加 epsilon，不改 ddof，不填补无效行。P=1、NaN/Inf、空间常数行明确拒绝。输入有效但某个区间均值相消成常数时，候选矩阵出现非有限数会调用官方评分重新计算。接近最大分数的候选按官方 xmeans 的运算顺序重评；这是保守的实用保护，阈值不是任意输入上的严格误差证明。测试通过的 FP64 域与普遍数学等价必须区分。FP32 始终标记 experimental，不能因最终 K 相同就视为科学等价。
+
+## v0.2 归约、局部更新与内存
+
+默认 streaming reducer 仍遍历全部合法候选并保留官方 C-order/tie/sentinel/NaN/stateopt 语义；避免的是完整双切 score matrix 的物化，而不是剪枝候选。Window-local refinement 仅访问实际微调搜索窗口，依次提交；active-block cache 只复用未改变状态的局部候选。boundary birth label 和依赖前次移动的后续微调保持。Full Q/Prefix2D 存储仍为 O(T²)。
+
+显式 raw-prefix streaming 用有界 chunk 计算区间分数；Feature-Moments TD 用特征矩及 tiled 边界修正获得 count/sum/squared-sum，不构造全 R/prefix。它仍使用无偏方差和 Welch 定义，但对近退化统计保守拒绝，不夹紧方差。工作/回退/内存预算超限抛错，不减少科学候选。其推导与原型历史见 [算法审查](v02_algorithm_review_CN.md)，当前成熟度与 false-refusal 边界见 [API scope](v02_api_scope.md)。

@@ -1,0 +1,27 @@
+........................................................................ [ 41%]
+........................................................................ [ 83%]
+.............................                                            [100%]
+=============================== warnings summary ===============================
+tests/reference_parity/test_real.py::test_structured[near_tie]
+  [system-path] RuntimeWarning: Precision loss occurred in moment calculation due to catastrophic cancellation. This occurs when the data are nearly identical. Results may be unreliable.
+    res = hypotest_fun_out(*samples, **kwds)
+
+tests/reference_parity/test_real.py::test_ill_conditioned_spatial_pattern_fallback
+tests/reference_parity/test_real.py::test_exact_cancellation_interval
+  [system-path] RuntimeWarning: invalid value encountered in divide
+    return (x - x.mean(1, keepdims=True)) / x.std(1, keepdims=True, ddof=1)
+
+tests/reference_parity/test_real.py::test_ill_conditioned_spatial_pattern_fallback
+  [system-path] NearConstantInputWarning: An input array is nearly constant; the computed correlation coefficient may be inaccurate.
+    pcorrs[state_idx - 1] = pearsonr(xmeans[state_idx], xmeans[state_idx - 1])[0]
+
+tests/reference_parity/test_real.py::test_exact_cancellation_interval
+  [system-path] ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+    pcorrs[state_idx - 1] = pearsonr(xmeans[state_idx], xmeans[state_idx - 1])[0]
+
+tests/reference_parity/test_real.py::test_exact_cancellation_interval
+  [system-path] ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+    strengths[delta]=1-pearsonr(patterns[1:],patterns[:-1],axis=1).statistic
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+173 passed, 6 warnings in 92.09s (0:01:32)

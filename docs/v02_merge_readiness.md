@@ -1,3 +1,5 @@
+> 本页是合并前科学/调度验收历史。下文未获发布授权、未合并等表述记录当时状态；本轮用户已另行授权正式发布，最新状态见 [release verification](release_verification_v0.2.0.md)。
+
 # HP-GSBS PR #1：v0.2 merge readiness
 
 结论：**Approve（在下述成熟度与验证域内建议合并）**。仅准备审查；未执行 merge、tag、release 或 PyPI 发布。

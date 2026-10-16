@@ -1,15 +1,15 @@
-# 已知限制与未完成项
+# v0.2 known limitations
 
-> 本页保留 v0.1.0 的验收范围。v0.2 分支的新增能力、数值拒绝域与未完成项见
-> [算法审查](v02_algorithm_review_CN.md)和[实测报告](v02_results_CN.md)。
-
-- 新跑完整官方 reference 已保存，并完成逐轮候选/微调路径比较，详见 saved_validation.json。
-- 2021 期刊最终全文下载端点受 403 限制；已核对官方代码、2020 原始预印本方法及 2022 方法/附录全文，未声称 2021 期刊全文阅读完成。
-- 没有合法冻结的七网络源空间输入；只测试了 sensor full64 / frontal32 及合成低维输入，不做源重建或重新定义网络。
-- GPU 是混合实现；没有 GPU 常驻逐轮控制器、persistent search、CUDA Graphs 或多 GPU。当前只实现 Full Q；CPU lazy 也仍有二次 t-distance 存储。
-- Triton 实际运行并验证了 Q 融合 kernel、单/双候选 kernel；生产使用 Q kernel，候选 kernel 仅测试/微基准，未宣称已经实现全部 A–E 优化。Triton 仅在部分短记录负载优于 PyTorch。
-- FP32 不通过严格 t-distance 容差；TF32 不开放 GSBS fit 模式。没有把 FP64 CPU 与 TF32 GPU 混为等价性能比较。
-- 分桶按完全相同 T/P，不使用 padding；尚未做数千条、多个 GPU、源空间 P 很大的生产压力测试。manifest 在 GPU 路线用 mmap 和逐批 materialization；自动显存模型是保守估算，不保证永不 OOM。
-- 恢复签名使用输入路径、大小和 mtime，加配置/backend；冻结输入不得原地改写并保留相同 stat。结果原子写、不覆盖，但未实现多调度器共享一个输出目录的分布式锁。
-- 性能数据为本机实际桌面/WSL 环境，包含后台 reference 长任务的资源竞争；三次中位数不是跨机器结论。CPU RSS 为采样进程高水位，不是单次新增内存。首次调用和真正冷启动分别保存。
-- 完成开发与算法一致性验证，不代表 BBBD 的测量有效性门、行为假设或正式论文研究完成；没有自动替换现有研究后端。
+- Default FP64 equivalence is supported within the documented synthetic and frozen EEG domain, not proven for every floating-point input. Old full EEG fixtures do not all contain fresh official per-move traces; dev96 fresh traces provide separate coverage.
+- There are no supplied frozen seven-network source-space inputs. Sensor full64/frontal32 evidence does not certify source-space reconstruction or network definitions.
+- Full Q and Prefix2D retain O(T²) memory. Streaming candidates remove the complete score matrix but do not remove Q/TD/output-history costs or quadratic candidate counts.
+- Raw-prefix/lazy Q, Feature-Moments and selective resident are experimental. Moments conservatively refuses some near-degenerate yet mathematically defined Welch cases; no variance clamp is used to force a result. Ordinary high-K EEG often runs faster with Full Q.
+- Incremental transaction/rollback/commit is a research-only controller prototype. GPU no-Q prefix and fixed-partition moments are components; no full no-Q GPU fit, GPU incremental TD, GPU sequential finetuning or full-resident controller is released.
+- Selective resident requires CUDA FP64, Full Q and Prefix2D. Its component speedup did not establish reliable complete-fit gains; it remains off by default. Triton is not universally fastest.
+- GPU FP32 TD fails strict FP64 tolerances on the validated EEG set even where boundaries agree. CPU FP32 Q with FP64 TD and GPU FP32 Q/R/prefix are different mixed-precision routes. TF32 is not a fitting mode.
+- Restricted 50k single-cut/no-finetuning fits validate selected/final fixed-partition TD, not every official long-N double-search/finetuning decision.
+- GPU buckets use exact shape and compatible compute/resource policy without padding. The memory planner is an estimate; OOM halving remains necessary. Thousands of recordings, multiple GPUs and very large source P are not production-certified; optimal backend/batch selection is not automatic.
+- Resume checks version/schema/backend/config and file stat identity plus success. It is not a content hash or arbitrary code-tree hash. No distributed lock coordinates multiple schedulers sharing an output directory. Dev0 and stable caches deliberately differ; see [migration](v02_migration.md).
+- There is no single-fit checkpoint. CPU cancellation/progress support is bounded by documented chunk/search boundaries, not every backend operation.
+- Performance is measured on the documented laptop/WSL environment; ranges are observed repeated fits, not confidence intervals. Historical v0.1 baseline and v0.2 source comparisons have different contracts.
+- Software validation/release does not validate BBBD measurement gates, behavior/memory hypotheses or a paper's conclusions, and does not automatically replace any research backend.

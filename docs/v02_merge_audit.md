@@ -1,3 +1,5 @@
+> 本页是合并前科学/调度验收历史。下文未获发布授权、未合并等表述记录当时状态；本轮用户已另行授权正式发布，最新状态见 [release verification](release_verification_v0.2.0.md)。
+
 # PR #1 v0.2 merge audit
 
 审计起点：`9309874678ae4e861711fd3bc4b96e332b5bd8ae`，远端无新增提交、review 或 comment。

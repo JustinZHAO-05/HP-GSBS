@@ -1,3 +1,13 @@
+# v0.2 scientific consistency
+
+Default FP64 preserves the original single/double search, blockwise filtering, Welch t-distance, sequential finetuning and birth labels. Reference is unmodified statesegmentation 0.0.6. The C22–C24 snapshot (7da2611) passed Windows 315/3 skipped and WSL CUDA/Triton 380/1 skipped. Four complete frozen EEG records and synthetic edge cases are covered; test counts are not participants.
+
+Original 9baff92 acceptance includes 24 real/fresh-official comparisons (16 full-record modes/backends and 8 fresh dev96 move comparisons), plus 16 structured strict-move comparisons. Full official per-move trajectories were not newly generated for all full EEG fixtures. Source-space seven-network inputs remain unavailable. GPU FP32 TD does not pass strict FP64 numerical equivalence. Strict trace levels reject missing required trace fields.
+
+See [scope and receipts](v02_merge_readiness.md), [migration](v02_migration.md), [release checks](release_verification_v0.2.0.md) and [limitations](known_limitations.md). Software parity does not validate downstream BBBD hypotheses. All older counts and measurements below describe v0.1 history only.
+
+## Historical v0.1 record
+
 # 一致性验收
 
 > 本页保留 v0.1.0 的证据与范围；新增路径及逐次微调验收见

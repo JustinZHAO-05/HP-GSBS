@@ -1,14 +1,20 @@
 """Verify explicitly selected evidence; never reinterpret historical acceptance."""
-import argparse,hashlib,json
+import argparse,hashlib,json,subprocess
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--manifest',required=True);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--manifest',required=True)
+    p.add_argument('--source-revision',help='Verify source hashes against this immutable Git commit, not the current workspace')
+    a=p.parse_args()
     manifest=Path(a.manifest);base=manifest.parent;m=json.loads(manifest.read_text())
+    revision=None
+    if a.source_revision:
+        revision=subprocess.check_output(['git','rev-parse','--verify',a.source_revision+'^{commit}'],text=True).strip()
     for name,digest in m['source_hashes'].items():
-        assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest,name
+        raw=subprocess.check_output(['git','show',revision+':'+name]) if revision else Path(name).read_bytes()
+        assert hashlib.sha256(raw).hexdigest()==digest,name
     for name,item in m['files'].items():
         assert hashlib.sha256((base/name).read_bytes()).hexdigest()==item['sha256'],name
     checks={}
@@ -39,7 +45,7 @@ def main():
                         and all(c.find(tag) is None for tag in ('failure','error','skipped'))]
                 assert len(passed)==count,(platform,name,len(passed))
         assert not list(base.rglob('*.npy')) and not list(base.rglob('*.npz'))
-        print(json.dumps(dict(passed=True,scope=m['scope'],source_revision=m['source_revision'],
+        print(json.dumps(dict(passed=True,scope=m['scope'],source_revision=m['source_revision'],verified_source_commit=revision,
                               files=len(m['files']),tests=checks,changed_library_sources=changed,
                               historical_performance_rerun=False),indent=2))
         return
@@ -61,7 +67,7 @@ def main():
         assert extra['passed'] and len(extra['throughput_coverage'])==54
         assert all(not r['validation_in_timed_scope'] for r in throughput if 'iteration' in r)
     assert not list(base.rglob('*.npy')) and not list(base.rglob('*.npz'))
-    print(json.dumps(dict(passed=True,source_revision=m['source_revision'],files=len(m['files']),
+    print(json.dumps(dict(passed=True,source_revision=m['source_revision'],verified_source_commit=revision,files=len(m['files']),
         tests=checks,real_comparisons=len(real),revision_comparisons=len(pairs),long_shapes=len(long),
         throughput_scope='fit-only' if fit_only else 'validation-inclusive',
         throughput_record_rows=len(throughput),throughput_trials=sum('iteration' in r for r in throughput),

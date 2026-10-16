@@ -1,4 +1,4 @@
-> 历史报告：对应修复前 source 5478fd6 / public commit 9309874。当前 0.2.0.dev0 验收见 v02_merge_readiness.md；本页数字不冒充本轮结果。
+> 历史报告：对应修复前 source 5478fd6 / public commit 9309874。后续科学/调度验收见 [readiness](v02_merge_readiness.md)，正式发布见 [release verification](release_verification_v0.2.0.md)；本页状态与数字仅属于当时快照。
 
 # v0.2 算法审查与接入边界
 

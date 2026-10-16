@@ -1,4 +1,4 @@
-# 0.2.0.dev0 compute policy
+# v0.2 compute policy
 
 默认科学路线为 FP64 / full Q / streaming candidates / prefix2d TD，支持
 cpu-fast、torch-cuda、triton-cuda。CUDA 为预计算加 CPU 顺序控制；并非全流程 resident。
@@ -59,5 +59,5 @@ numeric-stress；后三级缺有效 trace 则失败，move 级别缺任一逐移
 和数值比较门槛，压力数据集由 tests 提供。默认 auto 兼容旧调用，报告实际 compared
 和 skipped reason；旧 fixture 不能凭空提供逐移动证据。
 
-软件开发版本为 0.2.0.dev0；正式 v0.2.0 tag、release、PyPI 需要另获批准。
+发布准备版本为 0.2.0.dev0；正式 main 提交将升级为 0.2.0。用户已授权 GitHub Release；PyPI 不在本轮授权内。开发版和正式版执行签名不同，旧缓存保留，重新执行需新输出目录。
 v0.1.0 历史引用可从原 tag 读取。最终验收见 v02_merge_readiness.md。
