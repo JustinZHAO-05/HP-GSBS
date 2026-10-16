@@ -6,12 +6,10 @@ authors:
   - given-names: "Yanzhe"
     family-names: "Zhao"
     affiliation: "Tianjin University"
-version: "0.1.0"
-date-released: "2026-10-16"
-commit: "922a69c76ba9c39964efd3c3a7f973625ae5b1f1"
+version: "0.2.0.dev0"
 license: MIT
 repository-code: "https://github.com/JustinZHAO-05/HP-GSBS"
-url: "https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.1.0"
+url: "https://github.com/JustinZHAO-05/HP-GSBS/tree/feat/v0.2-streaming-moments-gpu-optimization"
 abstract: >-
   HP-GSBS is a high-performance implementation of Greedy State Boundary
   Search for multivariate neural time series, with CPU, PyTorch CUDA, and

@@ -1,5 +1,6 @@
 import numpy as np
 import pytest
+import os
 from hpgsbs import fit,GSBSConfig
 from hpgsbs.validation import compare
 
@@ -62,7 +63,7 @@ def test_y_and_finetune(backend,fine):
 def test_full_eeg_regression(backend,index):
     from pathlib import Path
     from hpgsbs import GSBSResult
-    p=Path(f"results/fixtures/{index}_full_cpu.npz")
+    p=Path(os.environ.get("HPGSBS_FIXTURES","results/fixtures"))/f"{index}_full_cpu.npz"
     if not p.exists(): pytest.skip("Private full EEG fixtures unavailable")
     ref=GSBSResult.load(p)
     c=GSBSConfig(**ref.metadata["algorithm"],trace=True)
@@ -95,3 +96,17 @@ def test_variable_manifest_resume(tmp_path):
     rows=run_manifest(tasks,out,backend="triton-cuda",batch_size=2)
     assert all(r["status"]=="success" for r in rows),rows
     assert all(r["status"]=="skipped" for r in run_manifest(tasks,out,backend="triton-cuda",batch_size=2))
+
+
+@pytest.mark.parametrize("backend",["torch-cuda","triton-cuda"])
+@pytest.mark.parametrize("reverse",[False,True])
+def test_auto_batch_mixed_resource_policies(backend,reverse):
+    from hpgsbs import fit_many
+    xs=[np.random.default_rng(80+i).normal(size=(24,5)) for i in range(6)]
+    policies=[("throughput",.9),("latency",.1),("throughput",.1)]*2
+    cs=[GSBSConfig(7,mode=m,memory_fraction=f,trace=True) for m,f in policies]
+    if reverse: xs.reverse(); cs.reverse()
+    results=fit_many(xs,cs,backend,batch_size="auto")
+    for x,c,result in zip(xs,cs,results):
+        assert compare(fit(x,c,"reference"),result)["passed"]
+        assert result.metadata["batch_size"]==(1 if c.mode=="latency" else 2)

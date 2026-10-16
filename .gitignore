@@ -16,3 +16,4 @@ publication/
 .env
 .env.*
 examples/generated/
+results/v02/**/*.prof

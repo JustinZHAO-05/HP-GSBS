@@ -1,0 +1,11 @@
+{
+  "kmax": 16,
+  "statewise_detection": false,
+  "finetune": 0,
+  "blocksize": 0,
+  "dtype": "float64",
+  "q_strategy": "streaming",
+  "candidate_backend": "streaming",
+  "candidate_chunk_size": 256,
+  "td_backend": "feature-moments"
+}

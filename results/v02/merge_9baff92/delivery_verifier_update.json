@@ -1,0 +1,6 @@
+{
+  "file": "benchmarks/v02_verify_delivery.py",
+  "measurement_hash": "f789d12eff1ce754939c8de5f9d28cd3402cba3a3c293191026306cf321548e0",
+  "delivery_hash": "2218aea06263b2a90e8df3175501c99627c6bd241efd592e971ad68ed4ed72ba",
+  "purpose": "Prefer formal fit-only throughput over retained partial consumer-validation diagnostic; no timed implementation or package algorithm changed"
+}

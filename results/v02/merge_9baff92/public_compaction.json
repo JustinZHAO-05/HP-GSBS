@@ -1,0 +1,31 @@
+{
+  "transformations": [
+    "revisions/trials.json"
+  ],
+  "archived_chrome_traces": {
+    "profile/resident-torch-cuda.json": {
+      "sha256": "47efa3b429a70b5e998af2b45571a805a16086cbd3a6bf69ae4a206de45d9e8d",
+      "original_sha256": "47efa3b429a70b5e998af2b45571a805a16086cbd3a6bf69ae4a206de45d9e8d",
+      "sanitized": false
+    },
+    "profile/resident-triton-cuda.json": {
+      "sha256": "09ea33a13930a930c97840efed20466d53eee9942b58645fda81134280cf250a",
+      "original_sha256": "09ea33a13930a930c97840efed20466d53eee9942b58645fda81134280cf250a",
+      "sanitized": false
+    },
+    "profile/torch-cuda.json": {
+      "sha256": "2ab39e999a4634de33cfcb2b9ca8b6be7c129d78dcab8a893dec85b0e436808a",
+      "original_sha256": "2ab39e999a4634de33cfcb2b9ca8b6be7c129d78dcab8a893dec85b0e436808a",
+      "sanitized": false
+    },
+    "profile/triton-cuda.json": {
+      "sha256": "32d1bab97fe76948afb46553e0e30b435d2cb21b981137c9f0908eff8194bcc1",
+      "original_sha256": "32d1bab97fe76948afb46553e0e30b435d2cb21b981137c9f0908eff8194bcc1",
+      "sanitized": false
+    }
+  },
+  "unchanged": "all scalar numerical parity/timing values",
+  "removed_public_arrays": "tdists/patterns/strengths repeated per revision trial; original hashes verified in private archive",
+  "public_replacements": "per-array hashes and maximum absolute comparison errors",
+  "private_archive_directory_name": "merge_9baff92_originals"
+}

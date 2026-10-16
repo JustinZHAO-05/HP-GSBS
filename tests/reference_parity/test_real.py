@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 import numpy as np
 import pytest
 from hpgsbs import fit, GSBSConfig, GSBSResult
@@ -7,7 +8,7 @@ from hpgsbs.validation import compare
 
 @pytest.mark.parametrize("index",range(4))
 def test_frozen_eeg_development(index):
-    path=Path(f"results/fixtures/{index}_dev96_reference.npz")
+    path=Path(os.environ.get("HPGSBS_FIXTURES","results/fixtures"))/f"{index}_dev96_reference.npz"
     if not path.exists(): pytest.skip("Run scripts/freeze_reference.py first")
     ref=GSBSResult.load(path)
     fast=fit(ref.x,GSBSConfig(**ref.metadata["algorithm"],trace=True))

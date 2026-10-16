@@ -11,3 +11,7 @@ Do not change filtering, artifact handling, feature definitions, quiz/behavior d
 Each source network is an independent task with P>=2 original parcel/source features. A single averaged source signal is not a valid GSBS spatial-pattern input. No seven-network source data were validated in this release.
 
 The local validation ran four complete records and verified resume behavior. Public examples reproduce the software workflow on synthetic inputs. Adoption in a study requires validation on its own inputs and parameters.
+
+Use FP64, full Q, streaming candidates and prefix2d as the ordinary EEG starting policy, while inheriting all original scientific parameters. The example config is illustrative, not a replacement research protocol. A backend upgrade requires study-specific validation and never automatically changes existing analyses.
+
+Manifest execution keys include software version, complete normalized config, backend and X/Y/time-map stat identities. v0.1 and dev0 results remain loadable but are not stable 0.2.0 execution caches; choose new output directories. Only matching successful outputs may be skipped. See [migration](v02_migration.md). Experimental low-memory/resident/FP32 choices must remain explicit.

@@ -1,0 +1,45 @@
+----------------------------  ------------  ------------  ------------  ------------  ------------  ------------
+                        Name    Self CPU %      Self CPU   CPU total %     CPU total  CPU time avg    # of Calls
+----------------------------  ------------  ------------  ------------  ------------  ------------  ------------
+           aten::resolve_neg           NaN       0.000us           NaN       0.000us       0.000us             4
+          aten::resolve_conj           NaN       0.000us           NaN       0.000us       0.000us             4
+                    aten::to           NaN       0.000us           NaN       0.000us       0.000us            19
+                      detach           NaN       0.000us           NaN       0.000us       0.000us             4
+                aten::detach           NaN       0.000us           NaN       0.000us       0.000us             4
+                 aten::copy_           NaN       0.000us           NaN       0.000us       0.000us            11
+         aten::empty_strided           NaN       0.000us           NaN       0.000us       0.000us             6
+              aten::_to_copy           NaN       0.000us           NaN       0.000us       0.000us             6
+            aten::as_strided           NaN       0.000us           NaN       0.000us       0.000us           128
+                 aten::slice           NaN       0.000us           NaN       0.000us       0.000us             6
+                aten::narrow           NaN       0.000us           NaN       0.000us       0.000us             6
+                 aten::fill_           NaN       0.000us           NaN       0.000us       0.000us             6
+                 aten::empty           NaN       0.000us           NaN       0.000us       0.000us            27
+       aten::constant_pad_nd           NaN       0.000us           NaN       0.000us       0.000us             3
+                   aten::pad           NaN       0.000us           NaN       0.000us       0.000us             3
+                aten::cumsum           NaN       0.000us           NaN       0.000us       0.000us             8
+                   aten::mul           NaN       0.000us           NaN       0.000us       0.000us            35
+               aten::resize_           NaN       0.000us           NaN       0.000us       0.000us            19
+                 aten::where           NaN       0.000us           NaN       0.000us       0.000us             2
+         aten::scalar_tensor           NaN       0.000us           NaN       0.000us       0.000us             1
+                  aten::triu           NaN       0.000us           NaN       0.000us       0.000us             2
+                  aten::ones           NaN       0.000us           NaN       0.000us       0.000us             1
+                   aten::div           NaN       0.000us           NaN       0.000us       0.000us            20
+                   aten::bmm           NaN       0.000us           NaN       0.000us       0.000us             3
+             aten::transpose           NaN       0.000us           NaN       0.000us       0.000us             4
+                   aten::sub           NaN       0.000us           NaN       0.000us       0.000us            38
+                  aten::mean           NaN       0.000us           NaN       0.000us       0.000us             3
+                   aten::std           NaN       0.000us           NaN       0.000us       0.000us             2
+                  aten::view           NaN       0.000us           NaN       0.000us       0.000us           112
+               aten::reshape           NaN       0.000us           NaN       0.000us       0.000us            96
+      aten::_index_put_impl_           NaN       0.000us           NaN       0.000us       0.000us            16
+            aten::index_put_           NaN       0.000us           NaN       0.000us       0.000us            16
+    aten::linalg_vector_norm           NaN       0.000us           NaN       0.000us       0.000us            16
+                   aten::sum           NaN       0.000us           NaN       0.000us       0.000us            16
+                 aten::index           NaN       0.000us           NaN       0.000us       0.000us            64
+                   aten::add           NaN       0.000us           NaN       0.000us       0.000us            18
+                aten::arange           NaN       0.000us           NaN       0.000us       0.000us            32
+                  aten::sqrt           NaN       0.000us           NaN       0.000us       0.000us             1
+             aten::unsqueeze           NaN       0.000us           NaN       0.000us       0.000us             4
+              aten::diagonal           NaN       0.000us           NaN       0.000us       0.000us             2
+----------------------------  ------------  ------------  ------------  ------------  ------------  ------------
+Self CPU time total: 0.000us

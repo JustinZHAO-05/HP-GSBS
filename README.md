@@ -4,168 +4,121 @@
 
 # HP-GSBS
 
-**High-Performance Greedy State Boundary Search**
+**High-Performance Greedy State Boundary Search · v0.2.0**
 
-Find temporal states in multivariate neural recordings—with faster computation and auditable decisions.
+Find temporal states in neural recordings with faster computation and auditable decisions.
 
 [![CPU tests](https://github.com/JustinZHAO-05/HP-GSBS/actions/workflows/tests.yml/badge.svg)](https://github.com/JustinZHAO-05/HP-GSBS/actions/workflows/tests.yml)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-22b8a8.svg)](LICENSE)
 [![Precision](https://img.shields.io/badge/Scientific_default-FP64-153c60)](#scientific-consistency)
 
-[Quick start](#quick-start) · [Performance](#measured-performance) · [How it works](#how-the-acceleration-works) · [Downloads](https://github.com/JustinZHAO-05/HP-GSBS/releases) · [简体中文](README.zh-CN.md)
+[Quick start](#quick-start) · [Performance](#measured-performance) · [Migration](docs/v02_migration.md) · [Downloads](https://github.com/JustinZHAO-05/HP-GSBS/releases) · [简体中文](README.zh-CN.md)
 
 </div>
 
+> Release preparation: the PR package is still `0.2.0.dev0`; the separate main release commit will set `0.2.0`. Version-specific download links below become available with the formal release.
+
 ## What is it for?
 
-GSBS segments a **time × features** matrix into successive states with relatively stable spatial activity patterns. HP-GSBS accelerates this search for EEG, ROI analyses, and large collections of independent recordings. It was developed against BBBD educational-video EEG inputs; the same API accepts other appropriately prepared multivariate signals.
+GSBS segments a **time × features** matrix into successive states with relatively stable spatial activity patterns. HP-GSBS implements the original GSBS scientific definition efficiently for EEG, other multivariate neural time series and collections of independent recordings. Supply already-preprocessed matrices and the algorithm parameters from your study design.
 
-You supply the already-preprocessed matrix and the original analysis parameters. HP-GSBS returns boundaries, states, the complete t-distance curve, state patterns, and boundary strengths. Your preprocessing, artifact policy, K-selection rule, and downstream statistics remain under your control.
+FP64 is the default. Single/double boundary insertion, blockwise search, t-distance decisions, sequential finetuning, boundary birth labels and special K indexing are preserved. Preprocessing, artifact policy, K selection and downstream statistics remain part of the study. The original GSBS method and upstream implementation belong to their original authors; see [attribution and citation](#attribution-and-citation).
 
-| Route | Implementation | Best starting point |
+| Route | Implementation | Use |
 |---|---|---|
-| **CPU FastGSBS** · `cpu-fast` | NumPy/BLAS precomputation, Numba search, independent process workers | Portable use and many short recordings |
-| **TensorGSBS** · `torch-cuda` | Batched PyTorch CUDA precomputation + sequential CPU controller | NVIDIA GPU fitting without requiring Triton |
-| **TurboGSBS** · `triton-cuda` | Custom Triton interval-score kernel + shared controller | Latency across sizes; benchmark your workload |
-| **Official reference** · `reference` | Calls unmodified `statesegmentation.GSBS` | Baselines and decision-by-decision validation |
+| **CPU FastGSBS** · `cpu-fast` | NumPy/BLAS interval statistics and Numba streaming search | CPU-only fitting and independent process workers |
+| **TensorGSBS** · `torch-cuda` | Batched PyTorch CUDA precomputation and the shared CPU streaming/refinement controller | NVIDIA GPU fitting with PyTorch |
+| **TurboGSBS** · `triton-cuda` | Triton interval-score kernel and the same CPU controller | An alternative GPU route; measure your workload |
+| **Official reference** · `reference` | Unmodified `statesegmentation.GSBS` 0.0.6 | Independent scientific comparisons |
 
-**The GPU routes are hybrid implementations.** Q/correlation/statistics precomputation runs on CUDA; dependent greedy search and finetuning remain on CPU. Every recording keeps an independent search path. Triton is actually executed, but it is not universally the fastest backend.
+The GPU routes are **hybrid GPU precomputation + CPU sequential search**, not fully GPU-resident GSBS. All three optimized routes benefit from the new streaming/refinement controller. Triton is not universally fastest, and each recording keeps an independent search path.
+
+## What's new in v0.2.0
+
+- **Stable default:** streaming candidate reduction avoids materializing the complete double-candidate score matrix; window-local refinement and an active-block cache reduce repeated work. Birth labels, finetuning order, original sentinel/tie/NaN/stateopt behavior and t-distance decisions remain intact.
+- **Bounded execution:** candidate, original-expression fallback, pair-evaluation and workspace budgets refuse excessive work explicitly. CPU cancellation raises `SearchCancelled`; no partial approximate fit is labeled successful.
+- **Auditability:** strict output/search/finetune-move/numeric comparison levels, expanded numerical tests, and versioned manifest execution signatures. GPU batches isolate different mode/memory policies; CPU/GPU resume both require success.
+- **Experimental opt-in:** raw-prefix bounded chunks, Feature-Moments t-distance, selective Triton resident candidate reduction and FP32. These have narrower validation domains and are not automatic replacements for the default.
+- **Research-only:** incremental TD transaction/rollback/commit, GPU no-Q prefix and GPU fixed-partition moments. These prototypes are not stable complete-fit public API backends.
+
+See [CHANGELOG](CHANGELOG.md), [release notes](docs/release_notes_v0.2.0.md) and [API scope](docs/v02_api_scope.md).
 
 ## Measured performance
 
-**All five workloads have measured official FP64 baselines.** Each speedup compares identical inputs, parameters, environment and precision within that workload; Small ratios are not extrapolated to larger recordings.
+![v0.1 to v0.2 median fit time, observed repeat ranges and workload-specific speedup for CPU, PyTorch and Triton](docs/assets/performance-v0.2.0.png)
 
-![Measured FP64 run time and speedup across Small, Medium, Large, XL and real EEG; synthetic medians with min-max ranges, EEG single measurements](docs/assets/performance-comparison.png)
+[SVG](docs/assets/performance-v0.2.0.svg) · [Unrounded derived data](docs/assets/performance-v0.2.0.json) · [Plot script](scripts/plot_v02_performance.py) · [Original receipts](results/v02/merge_9baff92/revisions/trials.json)
 
-[Vector figure (SVG)](docs/assets/performance-comparison.svg) · [Reproduce this figure](scripts/plot_performance.py) (`python -m pip install matplotlib`, then `python scripts/plot_performance.py`). Left: logarithmic run time; right: linear speedup. Rows show timepoints × features and Kmax.
+Ryzen 7 7840H · RTX 4050 Laptop 6 GB · WSL2 Ubuntu 22.04 · FP64 · TF32 off. The actual v0.1.0, pre-review v0.2 (`9309874`) and measured v0.2 (`9baff92`) source snapshots ran interleaved: **two warmups and three timed fits per workload/backend/snapshot**, controlled single BLAS/Numba threads, synchronized CUDA, and identical input/scientific settings within each workload. Validation and serialization are outside fit wall time.
 
-### Single-record latency
+The table compares v0.1.0 with `9baff92`; speedup is the ratio of unrounded medians. Ranges are three observed fit times, not confidence intervals. BBBD0 is one real recording fitted repeatedly, not three participants. The later C22–C24 scheduler fixes and formal version change **did not rerun this performance matrix**.
 
-Ryzen 7 7840H · RTX 4050 Laptop 6 GB · WSL2 Ubuntu 22.04 · PyTorch 2.11.0+cu128 · Triton 3.6.0. Synthetic values are medians of **3 fits after warmup**; BBBD0 reports **one measured fit per backend, without repeats**, with CUDA synchronization. CPU uses one process and one BLAS thread. All rows use statewise detection, `finetune=1`, strength-ordered finetuning, `blocksize=50`, and FP64; TF32 is disabled.
+<!-- V02_TABLE_START -->
+| Workload | Backend | v0.1.0 (s) | v0.2 snapshot (s) | v0.2 range (s) | Speedup |
+|---|---|---:|---:|---:|---:|
+| Small | CPU | 0.1235 | 0.1060 | 0.0918–0.1110 | 1.16× |
+| Small | PyTorch | 0.0905 | 0.0745 | 0.0713–0.0767 | 1.21× |
+| Small | Triton | 0.0850 | 0.0577 | 0.0550–0.0594 | 1.47× |
+| Medium | CPU | 0.4231 | 0.3594 | 0.3218–0.3648 | 1.18× |
+| Medium | PyTorch | 0.2027 | 0.1294 | 0.1127–0.2284 | 1.57× |
+| Medium | Triton | 0.2205 | 0.1417 | 0.1278–0.1572 | 1.56× |
+| Large | CPU | 1.2682 | 0.9342 | 0.9200–0.9438 | 1.36× |
+| Large | PyTorch | 0.4950 | 0.2209 | 0.2123–0.2647 | 2.24× |
+| Large | Triton | 0.5057 | 0.2572 | 0.2038–0.3187 | 1.97× |
+| XL | CPU | 3.9172 | 2.1516 | 2.1451–2.3305 | 1.82× |
+| XL | PyTorch | 2.1961 | 0.3596 | 0.3377–0.3660 | 6.11× |
+| XL | Triton | 2.1311 | 0.5592 | 0.4573–0.5790 | 3.81× |
+| BBBD0 | CPU | 3.0056 | 1.5711 | 1.4586–1.5922 | 1.91× |
+| BBBD0 | PyTorch | 2.3270 | 0.7896 | 0.7769–0.9666 | 2.95× |
+| BBBD0 | Triton | 2.3370 | 0.8193 | 0.7551–0.8731 | 2.85× |
 
-| Workload | T × P | Kmax | Official GSBS | CPU FastGSBS | TensorGSBS | TurboGSBS |
-|---|---|---|---|---|---|---|
-| Small · synthetic | 450 × 16 | 20 | 48.035 s | 0.169 s | 0.110 s | 0.098 s |
-| Medium · synthetic | 900 × 32 | 30 | 349.946 s | 0.455 s | 0.276 s | 0.328 s |
-| Large · synthetic | 1500 × 64 | 40 | 2213.493 s | 1.659 s | 0.673 s | 0.515 s |
-| XL · synthetic | 2100 × 64 | 50 | 5011.254 s | 3.778 s | 2.314 s | 2.229 s |
-| BBBD0 · real EEG | 1336 × 64 | 131 | 6115.379 s | 4.489 s | 3.738 s | 3.421 s |
+<!-- V02_TABLE_END -->
 
-Speedup relative to official GSBS:
+Workloads: Small 450×16/K20, Medium 900×32/K30, Large 1500×64/K40, XL 2100×64/K50, BBBD0 1336×64/K131. All use statewise detection, finetune=1, strength order and blocksize=50; synthetic dmin=1, BBBD0 dmin=5. The shared FP64 Full-Q/Prefix2D scientific configuration is unchanged. The figure shows log seconds and linear speedup with a 1× reference.
 
-| Workload | CPU | PyTorch | Triton |
-|---|---|---|---|
-| Small | 285.0× | 438.4× | 489.1× |
-| Medium | 768.5× | 1265.7× | 1066.6× |
-| Large | 1334.1× | 3287.4× | 4300.9× |
-| XL | 1326.5× | 2165.6× | 2248.1× |
-| BBBD0 | 1362.3× | 1636.2× | 1787.4× |
+The complete three-snapshot cells remain in the derived JSON. A separate focused historical CPU repeat found 1.4245 s pre-review versus 1.4496 s corrected v0.2 median; that modest overhead is not hidden or mixed into this matrix. Cold start, batching and experimental low-memory fits have separate timing scopes. The restricted 50,000×64, K16, single-cut/no-finetuning experiment took 1.4439 s median and 469.5 MiB peak RSS; this is not full long-N official double-search certification. See [performance and limits](docs/performance.md).
 
-Small retains its original v0.1.0 same-environment measurements. Medium, Large and XL were remeasured in one WSL process: one warmup round, then three rounds of reference/CPU/PyTorch/Triton in sequence, reporting three-fit medians. At the user's request, BBBD0 was measured once per backend in that same process: these are single-fit ratios with no repeat-variability estimate. The original log's warmup label identifies this retained single EEG run. Synthetic dmin=1; real EEG dmin=5. Tracing is disabled, saving/validation are outside timing, and no other GSBS fits run concurrently. The earlier traced Windows reference is excluded from these ratios.
+### Historical official GSBS baseline
 
-### Throughput and startup are different questions
-
-For **32 independent Small recordings**, measured batch medians were:
-
-| Configuration | Batch wall time | Fits/minute |
-|---|---:|---:|
-| CPU · 8 workers, 1 BLAS thread each | **1.006 s** | **1,908** |
-| PyTorch · B=32 | 1.684 s | 1,140 |
-| Triton · B=32 | 1.909 s | 1,006 |
-
-New-process, empty-JIT-cache startup for one Small fit was **3.44 s CPU / 7.96 s PyTorch / 10.55 s Triton**, including import and initialization. Warm timings should not be used to predict first-run latency. These desktop/WSL measurements included background resource contention; they are not dedicated-server results.
-
-→ [Full timing, memory, cold-start and profiler report](docs/performance.md) · [Latency receipts](results/benchmarks/delivery_latency.json) · [CPU batch receipts](results/benchmarks/batch_cpu8.json)
+The [v0.1 historical performance report](docs/performance_v0.1.md), [original PNG](docs/assets/performance-comparison.png), [SVG](docs/assets/performance-comparison.svg) and [script](scripts/plot_performance.py) remain available. Their official-GSBS speedups use a different measurement protocol: synthetic medians/ranges and a single BBBD0 fit per backend. Do not combine those thousands-fold ratios with the v0.1→v0.2 comparison above.
 
 ## Scientific consistency
 
-Acceleration is based on mathematical reuse, **without lowering Kmax, downsampling, disabling double-boundary search, or switching off finetuning**.
-
-The controller preserves official block grouping, double-boundary candidates within a single existing state, single-vs-double **t-distance** decisions, sequential finetuning and boundary numbering, sample spatial z-scores (`ddof=1`), `dmin`, and the special K indexing that can reach `kmax+1`. Optional `y` is supported: search uses `x`, while t-distance uses `y`.
-
-| Validation evidence | Result |
+| Evidence | Scope |
 |---|---|
-| Paired baseline completion: 52 saved fits across 3 synthetic inputs + 1 EEG input | All K boundaries and selected K match; maximum t-distance difference vs CPU **2.44×10⁻¹³**; patterns/strengths pass. Timed fits do not collect candidate traces. |
-| Original local Windows suite | 103 passed, 1 GPU-module skip |
-| Original WSL suite, including CUDA/Triton | 134 passed |
-| Four complete EEG inputs: full64/frontal32, two sessions, four videos | CPU `all_bounds` matches historical official outputs at every K; maximum t-distance error **7.46×10⁻¹³** |
-| Fresh unmodified official fit: 1336 × 64, Kmax=131 | All three FP64 routes match every recorded candidate decision and pre/post-finetuning boundary path; maximum t-distance error **2.44×10⁻¹³** |
-| Both GPU FP64 routes vs validated CPU traces, four full inputs | **4/4** full-path comparisons pass per backend |
-| Both GPU FP32 routes, same four inputs | Boundaries match, but **0/4** pass strict numerical tolerance per backend |
+| Scheduler snapshot `7da2611`, Windows | **315 passed / 3 skipped** |
+| Same snapshot, WSL with actual CUDA/Triton | **380 passed / 1 skipped** |
+| Four complete frozen EEG recordings | Full64/frontal32 inputs; default FP64 complete outputs agree with validated official paths |
+| Fresh official dev96 comparisons | Eight full-search/finetuning-move comparisons in the original v0.2 acceptance |
+| C22–C24 regressions | Version/default identity, legacy and non-success refusal, mixed GPU policies and input order |
 
-Tests compare candidate scores, single/double t-values, every recorded decision, all K boundaries, final K, patterns, and strengths—not just the final K. Initial numeric tolerances are `atol=rtol=1e-8`; FP32 errors of approximately `4e-5`–`3.54e-4` exceed them. **FP64 is the scientific default. FP32 is experimental.** TF32 is not exposed as a fit mode.
+These are test counts, not participant counts. [Readiness](docs/v02_merge_readiness.md) and [parity details](docs/reference_parity.md) distinguish historical scientific snapshots, the scheduler supplement and release checks. Full official per-move traces were **not newly generated for every full EEG recording**. Source-space seven-network inputs are unavailable. GPU FP32 TD differs at strict FP64 tolerances even when boundaries match; FP32 remains experimental. Strict trace levels fail if required evidence is missing.
 
-Near-tied candidates are re-evaluated in the original operation order. Ill-conditioned near-constant spatial inputs can fall back to the official reference, with the actual backend and reason recorded. P=1, nonfinite inputs, and spatially constant rows are rejected. This is evidence for the tested domain, not a proof of identical floating-point decisions for every possible input.
-
-Private EEG arrays and individual fitted outputs are not redistributed. Public CI runs the reproducible synthetic tests; private-fixture and optional fork-audit tests skip when their inputs are absent. Test counts are test cases, not participant counts. Source-network inputs have **not yet been validated**.
-
-→ [Detailed validation](docs/reference_parity.md) · [Comparison receipts](results/benchmarks/saved_validation.json) · [Known limits](docs/known_limitations.md)
+Near ties use original-expression rescoring. Ill-conditioned inputs may fall back to the official route with the reason recorded; resource/numerical guards can refuse work. This is evidence within a tested domain, not universal floating-point equivalence. Software equivalence does not validate BBBD behavior or memory hypotheses. Private EEG and individual fitted outputs are not distributed.
 
 ## Quick start
 
-### 1. Download and install
+### Install
 
-Requires **Python 3.10+**. Python 3.10/3.11 were used in the recorded validation. CPU-only installation does not install PyTorch or Triton.
-
-```bash
-git clone https://github.com/JustinZHAO-05/HP-GSBS.git
-cd HP-GSBS
-python -m venv .venv
-```
-
-Activate the environment:
+Requires **Python 3.10+**; recorded CI covers 3.10/3.11. Install the official CPU-only wheel from [v0.2.0 Release](https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.2.0):
 
 ```bash
-# Linux / WSL / macOS shell
-source .venv/bin/activate
+python -m pip install https://github.com/JustinZHAO-05/HP-GSBS/releases/download/v0.2.0/hpgsbs-0.2.0-py3-none-any.whl
+python -m hpgsbs doctor
 ```
 
-```powershell
-# Windows PowerShell; alternatively use .venv\Scripts\python.exe directly
-.venv\Scripts\Activate.ps1
-```
+Or install the [Python sdist](https://github.com/JustinZHAO-05/HP-GSBS/releases/download/v0.2.0/hpgsbs-0.2.0.tar.gz) with `python -m pip install hpgsbs-0.2.0.tar.gz`. GitHub's automatic source ZIP/tar.gz is a repository snapshot, not the Python sdist. **No PyPI publication is claimed**; do not assume `pip install hpgsbs` retrieves this project.
+
+For examples/tests, clone the repository, `git checkout v0.2.0`, create and activate a virtual environment, then:
 
 ```bash
 python -m pip install -e ".[test]"
-python -m hpgsbs doctor
-python examples/quickstart.py
+python examples/quickstart.py --output examples/generated
+python -m pytest tests -q
 ```
 
-The example generates an 80×8 synthetic recording, fits both CPU and official GSBS, verifies the full trace, and saves `examples/generated/input.npy` and `fit.npz`. It needs no private data. Outputs are protected against overwrite; choose another `--output` directory to repeat it.
-
-Prefer a download? Use **Code → Download ZIP** and run the same installation commands inside the extracted directory, or install the wheel from [Releases](https://github.com/JustinZHAO-05/HP-GSBS/releases). HP-GSBS is not currently published on PyPI; do not assume `pip install hpgsbs` installs this project.
-
-### 2. Fit your matrix
-
-```python
-import numpy as np
-from hpgsbs import GSBSConfig, fit, GSBSResult
-
-x = np.load("examples/generated/input.npy")  # [time, features], P >= 2
-config = GSBSConfig(
-    kmax=12,                  # use your study's original value
-    statewise_detection=True,
-    finetune=1,
-    finetune_order=True,
-    blocksize=50,
-    dmin=1,                   # inherit your study's value; BBBD fixtures used 5
-    dtype="float64",
-)
-result = fit(x, config, backend="cpu-fast")
-print(result.nstates, np.flatnonzero(result.deltas))
-boundaries_at_k = result.get_bounds(6)
-full_curve = result.tdists    # keep your existing K-selection rule
-result.save("my_fit.npz")   # atomic write; refuses existing paths
-restored = GSBSResult.load("my_fit.npz")
-upstream_api = restored.to_statesegmentation_compatible()
-```
-
-Outputs include `all_bounds`, `bounds`, `deltas`, `states`, `tdists`, `nstates`, `state_patterns`, and `strengths`. Metadata records backend, precision, shape, parameters, timings, and upstream provenance. `save(..., times=original_time_map)` also stores boundary timestamps. For cross-validation, call `fit(x, config, backend="cpu-fast", y=y)`.
-
-### 3. Add CUDA if needed
-
-Install the correct CUDA-enabled PyTorch wheel for your driver using the [official selector](https://pytorch.org/get-started/locally/). This is the **tested Linux/WSL environment**, not a universal driver prescription:
+CPU installation needs NumPy, SciPy, Numba, threadpoolctl, psutil, tqdm and pinned `statesegmentation==0.0.6`; it does not install Torch/Triton. Optional dependencies and constraints are in [pyproject.toml](pyproject.toml). For NVIDIA CUDA choose a compatible wheel using the [official PyTorch selector](https://pytorch.org/get-started/locally/). The measured WSL/Linux environment used:
 
 ```bash
 python -m pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/cu128
@@ -175,134 +128,84 @@ python examples/quickstart.py --backend torch-cuda --output examples/generated/t
 python examples/quickstart.py --backend triton-cuda --output examples/generated/triton
 ```
 
-Triton is optional for `torch-cuda`; use [Triton's supported installation route](https://triton-lang.org/main/getting-started/installation.html). On Windows, CPU works natively; **WSL2/Linux is the tested Triton route**. Missing CUDA/Triton produces an explicit error: choose `cpu-fast` to continue. There is no silent GPU impersonation. macOS/AMD GPU backends are not implemented.
+PyTorch CUDA does not require the Triton backend. Triton is supported here on Linux/WSL, not native Windows; see [Triton installation](https://triton-lang.org/main/getting-started/installation.html). AMD and Apple GPU backends are not implemented. Missing CUDA dependencies cause an explicit error; choose `cpu-fast` explicitly.
 
-| Dependency | Role | Requirement |
-|---|---|---|
-| NumPy / SciPy | Arrays, Pearson/Welch reference operations | `numpy>=1.24`, `scipy>=1.14` |
-| Numba | Compiled candidate loops | `numba>=0.59` |
-| threadpoolctl / psutil / tqdm | Thread limits, diagnostics, upstream support | Base install |
-| statesegmentation | Unmodified reference and compatible result API | **`==0.0.6`** |
-| PyTorch | CUDA tensor precomputation | Optional `gpu` extra; CUDA wheel required |
-| Triton | Custom GPU kernels | Optional `triton` extra on Linux; install PyTorch too |
-| pytest / joblib | Tests and optional fork-risk reproduction | Optional `test` extra |
-
-Exact benchmark environments are recorded in [env/](env/) and the [doctor receipt](results/benchmarks/doctor_wsl.json). Dependency minima are installation constraints, not a claim that every combination has been tested.
-
-## Batch fitting and CLI
-
-`fit_many` accepts one configuration or one per recording. GPU batches group exact T/P and compatible settings; every recording retains its own search path. Automatic batch sizing accounts for Q, correlation/statistics arrays, temporary storage and headroom. CUDA OOM halves the batch before retrying.
+### Fit, inspect, validate and save
 
 ```python
-from hpgsbs import GSBSConfig, fit_many
+import numpy as np
+from hpgsbs import GSBSConfig, GSBSResult, fit, fit_many
+from hpgsbs.validation import compare
+from hpgsbs.core.budgets import ResourceBudgetExceeded, SearchCancelled
 
-batch_config = GSBSConfig(kmax=12, mode="throughput", n_jobs=4, blas_threads=1)
-results = fit_many([x, x.copy()], batch_config,
-                   backend="torch-cuda", batch_size="auto")
-# Use backend="cpu-fast" for process-level parallelism.
-# Put multiprocessing calls inside if __name__ == "__main__": in a script.
+x = np.random.default_rng(42).normal(size=(40, 8))  # synthetic demo
+config = GSBSConfig(
+    kmax=8, dmin=1,  # demo only: use your study's Kmax/dmin for EEG
+    statewise_detection=True, finetune=1, finetune_order=True,
+    blocksize=50, dtype="float64", q_strategy="full",
+    candidate_backend="streaming", td_backend="prefix2d", trace=True,
+)
+try:
+    result = fit(x, config, backend="cpu-fast")
+    reference = fit(x, config, backend="reference")
+    report = compare(reference, result, level="finetune-move-trace")
+    if not report["passed"]:
+        raise RuntimeError(report)
+    bounds_at_6 = result.get_bounds(6)
+    full_tdistance_curve = result.tdists
+    result.save("my_fit.npz")  # refuses overwrite
+    restored = GSBSResult.load("my_fit.npz")
+    batch = fit_many([x, x.copy()], config, backend="cpu-fast")
+except (ResourceBudgetExceeded, SearchCancelled) as exc:
+    print("No successful fit produced:", exc)
+except FileExistsError:
+    print("Choose a new output filename; the existing result is preserved.")
 ```
 
-For disk-backed tasks, use a JSON manifest like [examples/tasks.json](examples/tasks.json). Paths are relative to the current working directory. Successful tasks are saved immediately; reruns validate and skip completed results, and failures are recorded separately.
+Use `backend="torch-cuda"` or `"triton-cuda"` with the same config when available. `fit(..., y=y)` searches X and evaluates TD on held-out Y. `save(..., times=times)` retains the original time map. Comparison levels include `output-only`, `full-search-trace`, `finetune-move-trace` and `numeric-stress`; tracing is required for strict trace levels. Save/load preserves the compatible GSBS methods and all-K outputs.
+
+Low-memory and resident modes are explicit experiments:
+
+```python
+from dataclasses import replace
+low_memory = replace(config, q_strategy="streaming", td_backend="feature-moments")
+# CPU only; often slower for ordinary high-K EEG; near-degenerate stats may refuse.
+resident = replace(config, candidate_backend="triton-resident")
+# CUDA FP64 + full Q + prefix2d only; selective candidates, not full GPU residency.
+```
+
+Use research-defined Kmax/dmin and preprocessing. These examples do not change BBBD settings. [Migration](docs/v02_migration.md) describes output compatibility and experimental limits.
+
+## Batch, resume and CLI
+
+`fit_many` supports independent recordings and per-record configs. Exact shape/compute-policy buckets also isolate `mode` and `memory_fraction`. Auto latency uses B=1; throughput plans from that bucket's fraction; explicit batch_size overrides auto planning. OOM halves the attempted batch. CPU `n_jobs` controls independent process workers; Windows process calls belong under `if __name__ == "__main__":`.
+
+Manifest tasks follow [examples/tasks.json](examples/tasks.json); paths resolve from the running directory. Results commit atomically without overwrite. Resume requires **matching versioned execution identity and status=success**: signature schema, software version, backend, normalized full config, input path/size/mtime, and optional Y/time-map identities. Failed/cancelled/missing-status or legacy results are not silently skipped.
+
+Old v0.1 results remain readable with `GSBSResult.load()`, but do not prove execution by v0.2. Use a new output directory when identity differs. **0.2.0.dev0→0.2.0 changes the execution signature**: development caches are not automatically reused as stable-version execution caches. This is provenance policy, not a numerical error. The signature is not a content/source-tree hash; stat-preserving changes and arbitrary edits within one development version are not detected.
 
 ```bash
 python -m hpgsbs fit examples/generated/input.npy --kmax 12 --output another_fit.npz
-python -m hpgsbs fit-batch examples/tasks.json --backend cpu-fast --workers 4 --output examples/generated/batch
+python -m hpgsbs fit-batch examples/tasks.json --backend cpu-fast --workers 4 --output examples/generated/batch-v020
 python -m hpgsbs validate examples/generated/input.npy --kmax 12 --backend cpu-fast
-python -m hpgsbs bench examples/generated/input.npy --kmax 12 --backend cpu-fast --repeats 3
 python -m hpgsbs compare examples/generated/fit.npz another_fit.npz
 ```
 
-`fit`, `validate`, and `bench` accept `--config`, `--dtype`, and optional `--y`; `fit` also accepts `--times`. Batch GPU controls include `--batch-size auto` or an integer. `mode="latency"` uses B=1 for automatic GPU batching; `mode="throughput"` uses the memory planner.
-
 ## How the acceleration works
 
-```mermaid
-flowchart LR
-    X[Time × features] --> S[Spatial z-scores + prefix sums]
-    S --> Q[Interval score table Q]
-    S --> R[Correlation statistics prefixes]
-    Q --> C[Blockwise single / double candidates]
-    R --> D[Welch t-distance comparison]
-    C --> D
-    D --> F[Sequential finetuning]
-    F --> O[Full boundary path + t-distance curve]
-```
+Spatial sample z-scores (`ddof=1`) and time-prefix sums turn each interval's match score into reusable sufficient statistics. Full Q gives O(1) interval lookups; a streaming reducer traverses legal single/double candidates without keeping the full score matrix. Window refinement evaluates the actual local search domain; active-block cache entries remain valid only within the synchronous fit. Prefix2D TD preserves unbiased variance, `dmin` and Welch statistics. Default storage remains O(T²); streaming candidate reduction does not make Full Q linear-memory.
 
-The expensive original step rebuilds and standardizes repeated state patterns for many possible boundaries. HP-GSBS reuses **interval sufficient statistics** instead.
+[Mathematics](docs/mathematics.md) · [Architecture](docs/architecture.md) · [Technical report](docs/technical_report.md) · [BBBD integration](docs/bbbd_integration.md) · [Limitations](docs/known_limitations.md) · [Contributing](CONTRIBUTING.md)
 
-Let `Z` be row-wise spatial z-scores with `ddof=1`, `A(t)` the prefix sum of spatially centered X, and `B(t)` the prefix sum of Z. For a nondegenerate interval `[a,b)`, its contribution to the global spatial-matching objective is:
+## Attribution and citation
 
-$$
-F(a,b)=\frac{[B(b)-B(a)]^\top[A(b)-A(a)]}{T\sqrt{P-1}\,\|A(b)-A(a)\|_2}.
-$$
+**[Yanzhe Zhao](https://github.com/JustinZHAO-05) — Main contributor and maintainer** (Tianjin University).
 
-Precompute `Q[a,b]=F(a,b)`. A single split uses `F(a,i)+F(i,b)-F(a,b)`; a double split uses `F(a,i)+F(i,j)+F(j,b)-F(a,b)`. Each candidate then costs a few table reads instead of rebuilding an O(TP) pattern matrix. **These scores locate candidates; official t-distance still chooses between single and double insertion.**
+> Zhao, Y. (2026). *HP-GSBS: High-Performance Greedy State Boundary Search* (Version 0.2.0) [Computer software]. GitHub. https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.2.0
 
-For t-distance, build count/sum/squared-sum 2D prefixes from `R=ZZᵀ/(P−1)` with the official upper-triangle `dmin` mask. Within-state and adjacent-state moments become rectangle queries, reducing a partition's statistical aggregation from O(T²) to O(K), plus O(T) to recover intervals from the boundary vector. Welch uses unbiased sample variances, with original-operation fallbacks for unstable cases.
+Use [CITATION.cff](CITATION.cff) and cite the original GSBS papers and [upstream implementation](https://github.com/lgeerligs/statesegmentation):
 
-Full Q costs O(T²) memory: roughly **32 MB (30.5 MiB) at T=2000 in FP64**, before R, prefixes and workspace. CPU offers `q_strategy="lazy"`; this saves Q storage but **does not remove quadratic t-distance storage**. GPU precomputation is tiled/batched and never requires a T×T×P tensor. Triton fuses interval scoring; standalone single/double scoring kernels are tested, but are not the production per-iteration controller.
+- Geerligs et al. (2021), [Detecting neural state transitions underlying event segmentation](https://doi.org/10.1016/j.neuroimage.2021.118085).
+- Geerligs et al. (2022), [A partially nested cortical hierarchy of neural states underlies event segmentation in the human brain](https://doi.org/10.7554/eLife.77430).
 
-→ [Mathematics](docs/mathematics.md) · [Official audit](docs/upstream_algorithm_audit.md) · [Architecture](docs/architecture.md) · [Fork review](docs/existing_implementations_review.md)
-
-## Reproduce, contribute, and cite
-
-```bash
-python -m pip install -e ".[test]"
-python -m pytest tests -q
-# Deterministic Small workload; choose new output paths for your measurements.
-python benchmarks/single_fit.py --backend cpu-fast --T 450 --P 16 --kmax 20 --output small_cpu.json
-python benchmarks/single_fit.py --backend reference --T 450 --P 16 --kmax 20 --output small_reference.json
-python benchmarks/batch_throughput.py --backend cpu-fast --workers 4 --batch-sizes 8,32 --output batch_cpu.json
-```
-
-The public repository contains synthetic examples, tests, code, and benchmark/validation summaries. Research matrices, subject-to-file manifests, fitted EEG outputs, and virtual environments stay outside the release. Private-data scripts document their prerequisites; they are not required for the quick start. Detailed development reports are currently in Chinese; this README and its [Chinese counterpart](README.zh-CN.md) describe the public workflow.
-
-Please include `doctor` output, parameters, precision, backend and the first divergent K/candidate when [reporting a problem](https://github.com/JustinZHAO-05/HP-GSBS/issues). Do not attach private EEG without permission. See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-### Maintainer and contributors
-
-**[Yanzhe Zhao](https://github.com/JustinZHAO-05)** (Tianjin University) is the
-**main contributor and maintainer** of HP-GSBS.
-
-### Citation and attribution
-
-HP-GSBS provides an optimized implementation of GSBS, originally introduced
-by Geerligs, van Gerven, and Güçlü (2021) and extended in Geerligs et al.
-(2022). The original method and upstream implementation remain attributed
-to their authors. HP-GSBS supplies the acceleration, interfaces, and
-validation described in this repository.
-
-Cite the **software version actually used** alongside the original method:
-
-> Zhao, Y. (2026). *HP-GSBS: High-Performance Greedy State
-> Boundary Search* (Version 0.1.0) [Computer software]. GitHub.
-> https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.1.0
-
-Machine-readable software metadata: [CITATION.cff](CITATION.cff).
-The version 0.1.0 source snapshot is commit
-[`922a69c76ba9c39964efd3c3a7f973625ae5b1f1`](https://github.com/JustinZHAO-05/HP-GSBS/tree/922a69c76ba9c39964efd3c3a7f973625ae5b1f1).
-The default branch also contains later documentation and benchmark updates;
-use the [versioned release](https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.1.0)
-when reproducing version 0.1.0. The release date is October 16, 2026 in
-Asia/Shanghai (October 15, 2026 at 18:12:01 UTC).
-
-Original GSBS method papers:
-
-- Geerligs, L., van Gerven, M., & Güçlü, U. (2021). Detecting neural state
-  transitions underlying event segmentation. *NeuroImage, 236*, 118085.
-  https://doi.org/10.1016/j.neuroimage.2021.118085
-- Geerligs, L., Gözükara, D., Oetringer, D., Campbell, K. L., van Gerven, M.,
-  & Güçlü, U. (2022). A partially nested cortical hierarchy of neural states
-  underlies event segmentation in the human brain. *eLife, 11*, e77430.
-  https://doi.org/10.7554/eLife.77430
-
-Upstream software: [statesegmentation](https://github.com/lgeerligs/statesegmentation),
-with the reference dependency pinned to `statesegmentation==0.0.6`.
-Software release and numerical agreement tests do not by themselves
-validate BBBD research hypotheses or constitute a peer-reviewed paper.
-
-Released under the [MIT License](LICENSE); upstream attribution is preserved in [NOTICE](NOTICE). The banner is AI-generated conceptual artwork, not a scientific figure; [generation details](docs/assets/README.md).
-
-
-Reproduce the paired reference completion: `python benchmarks/complete_reference.py --workloads Medium Large XL --output paired_results.json`. Full repeats can take hours; BBBD0 additionally requires the private frozen input; add `--single-pass BBBD0` for its one-fit protocol. Every completed fit is persisted to the corresponding `_trials.json`; partial measurements are not promoted to final tables.
+[v0.1.0](https://github.com/JustinZHAO-05/HP-GSBS/releases/tag/v0.1.0) and its fixed source `922a69c` remain intact. Code is [MIT licensed](LICENSE), with upstream attribution in [NOTICE](NOTICE). The [hero artwork](docs/assets/README.md) is AI-generated conceptual art, not a scientific measurement. Algorithm software validation and release do not establish downstream research conclusions.

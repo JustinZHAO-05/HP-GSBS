@@ -1,0 +1,4 @@
+[system-path] UserWarning: Warning: Profiler clears events at the end of each cycle.Only events from the current cycle will be reported.To keep events across cycles, set acc_events=True.
+  _warn_once(
+torch-cuda 18
+triton-cuda 18

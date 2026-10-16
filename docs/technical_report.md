@@ -1,4 +1,17 @@
+# HP-GSBS v0.2 technical report
+
+The stable default uses FP64 Full Q/Prefix2D with streaming candidates, window-local refinement and active-block caching. The controller preserves official scientific semantics; GPU backends accelerate precomputation and share sequential CPU search. Budgets bound candidate/fallback work and workspace. Manifest signatures distinguish versions and normalized compute policies, GPU buckets isolate resource settings, and all resume paths require success.
+
+Experimental raw-prefix/Feature-Moments, selective resident and FP32 remain opt-in; incremental and GPU no-Q/fixed-partition moments remain research-only. Current documentation: [architecture](architecture.md), [mathematics](mathematics.md), [performance](performance.md), [parity](reference_parity.md), [API scope](v02_api_scope.md), [release verification](release_verification_v0.2.0.md).
+
+The 9baff92 performance snapshot and 7da2611 scheduler checks are distinct. Historical records below remain unchanged, including old test counts and the separate official-GSBS baseline. They are not newly measured release results.
+
+## Historical v0.1 delivery report
+
 # HP-GSBS 技术报告
+
+> 本页是 v0.1.0 交付报告。v0.2 分支另见[算法审查](v02_algorithm_review_CN.md)
+> 和[实测报告](v02_results_CN.md)，历史结果保留。
 
 日期：2026-10-16。交付目录 `<workspace>`。源码、CLI、测试、基准与环境记录均已落盘；官方 GSBS 和 E 盘 BBBD 研究产物保持不变。
 

@@ -1,0 +1,6 @@
+cpu-fast materialized 5.391521130000001
+cpu-fast streaming 5.413914703000046
+torch-cuda materialized 10.091686413000389
+torch-cuda streaming 10.119071487000383
+triton-cuda materialized 12.977965505999691
+triton-cuda streaming 13.462162688000262
