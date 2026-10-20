@@ -11,9 +11,10 @@
 [![CPU tests](https://github.com/JustinZHAO-05/HP-GSBS/actions/workflows/tests.yml/badge.svg)](https://github.com/JustinZHAO-05/HP-GSBS/actions/workflows/tests.yml)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-22b8a8.svg)](LICENSE)
+[![arXiv](https://img.shields.io/badge/arXiv-2610.25898-b31b1b.svg)](https://arxiv.org/abs/2610.25898)
 [![Precision](https://img.shields.io/badge/Scientific_default-FP64-153c60)](#科学一致性)
 
-[快速开始](#快速开始) · [性能实测](#性能实测) · [迁移说明](docs/v02_migration.md) · [下载](https://github.com/JustinZHAO-05/HP-GSBS/releases) · [English](README.md)
+[论文](https://arxiv.org/abs/2610.25898) · [引用](#作者与引用) · [快速开始](#快速开始) · [性能实测](#性能实测) · [迁移说明](docs/v02_migration.md) · [下载](https://github.com/JustinZHAO-05/HP-GSBS/releases) · [English](README.md)
 
 </div>
 
@@ -224,9 +225,27 @@ python -m hpgsbs compare examples/generated/fit.npz another_fit.npz
 
 **[Yanzhe Zhao](https://github.com/JustinZHAO-05) — Main contributor and maintainer**（Tianjin University，主要贡献者与维护者）。
 
+如果在研究中使用 HP-GSBS，请引用介绍其加速方法与验证结果的论文：
+
+> Zhao, Y., & Ji, Y. (2026). *HP-GSBS: Accelerating greedy state boundary search with reusable interval statistics*. arXiv:2610.25898. https://arxiv.org/abs/2610.25898
+
+```bibtex
+@misc{zhao2026hpgsbs,
+  title = {{HP-GSBS}: Accelerating greedy state boundary search with reusable interval statistics},
+  author = {Yanzhe Zhao and Yongzhang Ji},
+  year = {2026},
+  eprint = {2610.25898},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.CE},
+  url = {https://arxiv.org/abs/2610.25898}
+}
+```
+
+为便于复现，也请引用实际使用的软件归档版本；v0.2.0 的软件引用为：
+
 > Zhao, Y. (2026). *HP-GSBS: High-Performance Greedy State Boundary Search* (Version 0.2.0) [Computer software]. Zenodo. [doi:10.5281/zenodo.23422148](https://doi.org/10.5281/zenodo.23422148)
 
-使用 [CITATION.cff](CITATION.cff)，并引用原始 GSBS 论文及[上游实现](https://github.com/lgeerligs/statesegmentation)：
+[CITATION.cff](CITATION.cff) 将这篇 arXiv 预印本设为 GitHub **Cite this repository** 菜单中的首选引用，同时保留软件版本 DOI。另请引用原始 GSBS 论文及[上游实现](https://github.com/lgeerligs/statesegmentation)：
 
 - Geerligs et al. (2021), [Detecting neural state transitions underlying event segmentation](https://doi.org/10.1016/j.neuroimage.2021.118085)。
 - Geerligs et al. (2022), [A partially nested cortical hierarchy of neural states underlies event segmentation in the human brain](https://doi.org/10.7554/eLife.77430)。

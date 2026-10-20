@@ -11,9 +11,10 @@ Find temporal states in neural recordings with faster computation and auditable 
 [![CPU tests](https://github.com/JustinZHAO-05/HP-GSBS/actions/workflows/tests.yml/badge.svg)](https://github.com/JustinZHAO-05/HP-GSBS/actions/workflows/tests.yml)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-22b8a8.svg)](LICENSE)
+[![arXiv](https://img.shields.io/badge/arXiv-2610.25898-b31b1b.svg)](https://arxiv.org/abs/2610.25898)
 [![Precision](https://img.shields.io/badge/Scientific_default-FP64-153c60)](#scientific-consistency)
 
-[Quick start](#quick-start) · [Performance](#measured-performance) · [Migration](docs/v02_migration.md) · [Downloads](https://github.com/JustinZHAO-05/HP-GSBS/releases) · [简体中文](README.zh-CN.md)
+[Paper](https://arxiv.org/abs/2610.25898) · [Citation](#attribution-and-citation) · [Quick start](#quick-start) · [Performance](#measured-performance) · [Migration](docs/v02_migration.md) · [Downloads](https://github.com/JustinZHAO-05/HP-GSBS/releases) · [简体中文](README.zh-CN.md)
 
 </div>
 
@@ -224,9 +225,27 @@ Spatial sample z-scores (`ddof=1`) and time-prefix sums turn each interval's mat
 
 **[Yanzhe Zhao](https://github.com/JustinZHAO-05) — Main contributor and maintainer** (Tianjin University).
 
+If you use HP-GSBS in your research, please cite the following paper describing its acceleration methods and validation:
+
+> Zhao, Y., & Ji, Y. (2026). *HP-GSBS: Accelerating greedy state boundary search with reusable interval statistics*. arXiv:2610.25898. https://arxiv.org/abs/2610.25898
+
+```bibtex
+@misc{zhao2026hpgsbs,
+  title = {{HP-GSBS}: Accelerating greedy state boundary search with reusable interval statistics},
+  author = {Yanzhe Zhao and Yongzhang Ji},
+  year = {2026},
+  eprint = {2610.25898},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.CE},
+  url = {https://arxiv.org/abs/2610.25898}
+}
+```
+
+For reproducibility, also cite the archived software version you used; the v0.2.0 software citation is:
+
 > Zhao, Y. (2026). *HP-GSBS: High-Performance Greedy State Boundary Search* (Version 0.2.0) [Computer software]. Zenodo. [doi:10.5281/zenodo.23422148](https://doi.org/10.5281/zenodo.23422148)
 
-Use [CITATION.cff](CITATION.cff) and cite the original GSBS papers and [upstream implementation](https://github.com/lgeerligs/statesegmentation):
+[CITATION.cff](CITATION.cff) makes the arXiv preprint the preferred citation in GitHub's **Cite this repository** menu and retains the software's version DOI. Please also cite the original GSBS papers and [upstream implementation](https://github.com/lgeerligs/statesegmentation):
 
 - Geerligs et al. (2021), [Detecting neural state transitions underlying event segmentation](https://doi.org/10.1016/j.neuroimage.2021.118085).
 - Geerligs et al. (2022), [A partially nested cortical hierarchy of neural states underlies event segmentation in the human brain](https://doi.org/10.7554/eLife.77430).

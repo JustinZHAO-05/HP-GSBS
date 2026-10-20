@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "Please cite HP-GSBS and the original GSBS papers."
+message: "If you use HP-GSBS, please cite the paper below, the software version you used, and the original GSBS papers."
 title: "HP-GSBS: High-Performance Greedy State Boundary Search"
 type: software
 authors:
@@ -28,6 +28,21 @@ keywords:
   - event segmentation
   - Greedy State Boundary Search
   - scientific software
+preferred-citation:
+  type: article
+  title: "HP-GSBS: Accelerating greedy state boundary search with reusable interval statistics"
+  authors:
+    - given-names: "Yanzhe"
+      family-names: "Zhao"
+      affiliation: "School of Future Technology, Tianjin University"
+    - given-names: "Yongzhang"
+      family-names: "Ji"
+      affiliation: "Faculty of Psychology, Southwest University"
+  year: 2026
+  month: 10
+  journal: "arXiv"
+  doi: "10.48550/arXiv.2610.25898"
+  url: "https://arxiv.org/abs/2610.25898"
 references:
   - type: article
     title: "Detecting neural state transitions underlying event segmentation"
