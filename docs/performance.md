@@ -30,3 +30,9 @@ Reproduce the figure without fitting: `python -m pip install matplotlib`, then `
 [v0.1 official-GSBS baseline](performance_v0.1.md) and its [original figure](assets/performance-comparison.png) retain their original protocol. [Early v0.2 report](v02_results_CN.md) is explicitly historical (5478fd6/9309874), including slower/failed cases. The retained version-to-version plot uses the corrected 9baff92 receipts rather than updating historical values in place.
 
 Historical verification uses [fixed source commits](v02_migration.md#evidence-snapshots); old manifests are never retargeted to later docs/version commits. The [release verification](release_verification_v0.2.0.md) records later identities and package checks separately.
+
+## Research-paper measurements and applications
+
+The [research reproducibility materials](https://github.com/JustinZHAO-05/HP-GSBS-SoftwareX-Reproducibility) retain a separate controlled paired benchmark: seven configurations, two seeds, 14 configuration/seed cases and 140 timed observations, with 154–1,730-fold median paired speedups. Its [unrounded observations and summaries](https://github.com/JustinZHAO-05/HP-GSBS-SoftwareX-Reproducibility/tree/main/data) and [current manuscript/Online Resource 1](https://github.com/JustinZHAO-05/HP-GSBS-SoftwareX-Reproducibility/tree/main/manuscript) specify the warm-up, repetition and synchronization protocol. The earlier cross-session and version-comparison reports above retain their original scopes and numbers.
+
+The Sherlock application records 17 HP-GSBS CPU fits totaling 213.1028 s on the documented machine. These are application timings for the group response and 16 participants. Official-comparison speedups are drawn from the controlled benchmark. Existing ablation, memory and throughput measurements retain their release-development configurations and observed timing ranges.

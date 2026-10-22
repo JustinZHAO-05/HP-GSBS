@@ -20,7 +20,7 @@ abstract: >-
   It includes synthetic examples, tests,
   benchmarks, and reports of agreement with statesegmentation 0.0.6 within
   the documented validation domain. FP64 is the scientific default; FP32
-  remains experimental. Private EEG inputs are not redistributed.
+  remains experimental. Research datasets and saved outputs are maintained in a separately versioned reproducibility repository.
 keywords:
   - neuroscience
   - neural time series

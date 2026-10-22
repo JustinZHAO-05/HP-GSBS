@@ -19,6 +19,16 @@ Find temporal states in neural recordings with faster computation and auditable 
 </div>
 
 
+## Research paper and reproducibility
+
+The research article, **HP-GSBS: Accelerating greedy state boundary search with reusable interval statistics** (Yanzhe Zhao and Yongzhang Ji), develops the computational formulation and evaluates synthetic signals, BBBD EEG and Sherlock fMRI. The current author manuscript is prepared for *Neuroinformatics*.
+
+- [Current manuscript and Online Resource 1](https://github.com/JustinZHAO-05/HP-GSBS-SoftwareX-Reproducibility/tree/main/manuscript) · [arXiv preprint](https://arxiv.org/abs/2610.25898)
+- [Independent reproducibility materials](https://github.com/JustinZHAO-05/HP-GSBS-SoftwareX-Reproducibility): six figure sources, controlled benchmark tables, four [BBBD EEG recordings](https://github.com/JustinZHAO-05/HP-GSBS-SoftwareX-Reproducibility/tree/main/data/eeg) and the [17-fit Sherlock application](https://github.com/JustinZHAO-05/HP-GSBS-SoftwareX-Reproducibility/tree/main/data/fmri).
+- [Publication and archive identities](docs/publication.md) · [Documentation index](docs/index.md)
+
+The software remains **v0.2.0**, release commit `b86b409169aa173d4a361d8cbcc633add1bfacf6`, [DOI 10.5281/zenodo.23422148](https://doi.org/10.5281/zenodo.23422148). Research materials use their own version series. The preferred paper citation remains the arXiv preprint until a journal DOI is available.
+
 ## What is it for?
 
 GSBS segments a **time × features** matrix into successive states with relatively stable spatial activity patterns. HP-GSBS implements the original GSBS scientific definition efficiently for EEG, other multivariate neural time series and collections of independent recordings. Supply already-preprocessed matrices and the algorithm parameters from your study design.
@@ -119,7 +129,7 @@ Published v0.2.0 (`b86b409`): **319 passed / 3 skipped on Windows; 384 passed / 
 
 These are test counts, not participant counts. [Readiness](docs/v02_merge_readiness.md) and [parity details](docs/reference_parity.md) distinguish historical scientific snapshots, the scheduler supplement and release checks. Full official per-move traces were **not newly generated for every full EEG recording**. Source-space seven-network inputs are unavailable. GPU FP32 TD differs at strict FP64 tolerances even when boundaries match; FP32 remains experimental. Strict trace levels fail if required evidence is missing.
 
-Near ties use original-expression rescoring. Ill-conditioned inputs may fall back to the official route with the reason recorded; resource/numerical guards can refuse work. This is evidence within a tested domain, not universal floating-point equivalence. Software equivalence does not validate BBBD behavior or memory hypotheses. Private EEG and individual fitted outputs are not distributed.
+Near ties use original-expression rescoring. Ill-conditioned inputs may fall back to the official route with the reason recorded; resource/numerical guards can refuse work. This is evidence within a tested domain, not universal floating-point equivalence. Software equivalence does not validate BBBD behavior or memory hypotheses. The four BBBD analysis matrices and saved outputs are distributed in the separate [reproducibility repository](https://github.com/JustinZHAO-05/HP-GSBS-SoftwareX-Reproducibility/tree/main/data/eeg).
 
 ## Quick start
 

@@ -19,6 +19,16 @@
 </div>
 
 
+## 研究论文与复现资料
+
+研究论文 **HP-GSBS: Accelerating greedy state boundary search with reusable interval statistics**（Yanzhe Zhao、Yongzhang Ji）介绍计算方法，并给出合成信号、BBBD EEG 与 Sherlock fMRI 验证。当前作者稿面向 *Neuroinformatics* 整理。
+
+- [当前论文与 Online Resource 1](https://github.com/JustinZHAO-05/HP-GSBS-SoftwareX-Reproducibility/tree/main/manuscript) · [arXiv 预印本](https://arxiv.org/abs/2610.25898)
+- [独立公共复现资料](https://github.com/JustinZHAO-05/HP-GSBS-SoftwareX-Reproducibility)：六张主图代码、受控 benchmark 表、[四份 BBBD EEG 输入与结果](https://github.com/JustinZHAO-05/HP-GSBS-SoftwareX-Reproducibility/tree/main/data/eeg)及 [17 次 Sherlock 完整应用结果](https://github.com/JustinZHAO-05/HP-GSBS-SoftwareX-Reproducibility/tree/main/data/fmri)。
+- [论文与归档身份](docs/publication.md) · [文档索引](docs/index.md)
+
+算法软件保持 **v0.2.0**，正式发布提交为 `b86b409169aa173d4a361d8cbcc633add1bfacf6`，[软件 DOI 为 10.5281/zenodo.23422148](https://doi.org/10.5281/zenodo.23422148)。研究资料采用独立版本号。正式期刊 DOI 公布后再更新论文首选引用；当前引用保留 arXiv 预印本。
+
 ## 项目用途
 
 GSBS 将 **时间 × 特征** 矩阵分为连续、空间活动模式相对稳定的状态。HP-GSBS 保留原始 GSBS 科学定义，面向 EEG、其他多变量神经时间序列及多个独立 recordings。输入应是已经完成研究规定预处理的矩阵，算法参数来自研究设计。
@@ -119,7 +129,7 @@ Ryzen 7 7840H、RTX 4050 Laptop 6 GB、WSL2 Ubuntu 22.04、FP64、TF32 off。实
 
 测试用例数不是参与者数。[验收报告](docs/v02_merge_readiness.md)与[一致性详表](docs/reference_parity.md)区分原科学快照、调度补充和发布检查。**并非所有 full EEG 都重新生成了完整官方逐移动轨迹**。源空间七网络尚无对应冻结输入。GPU FP32 即使边界相同，TD 仍存在严格 FP64 数值差异，故为实验性。严格 trace 验证缺证据就失败。
 
-近平局用原表达式重评；病态输入可回退官方并记录原因，资源/数值保护也可能明确拒绝。这是已验证域的证据，不是所有浮点输入的等价证明。软件等价不代表 BBBD 行为或记忆假说得到验证。不分发私有 EEG 和逐记录拟合输出。
+近平局用原表达式重评；病态输入可回退官方并记录原因，资源/数值保护也可能明确拒绝。这是已验证域的证据，不是所有浮点输入的等价证明。软件等价不代表 BBBD 行为或记忆假说得到验证。四份 BBBD 分析矩阵与保存输出已在[独立复现仓库](https://github.com/JustinZHAO-05/HP-GSBS-SoftwareX-Reproducibility/tree/main/data/eeg)公开。
 
 ## 快速开始
 
