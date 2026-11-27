@@ -1,3 +1,5 @@
+![HP-GSBS：神经信号经 CPU、PyTorch、Triton 三条计算路线得到一致状态边界](docs/assets/hpgsbs-hero.png)
+
 # HP-GSBS
 
 **用于 EEG、fMRI 等多变量时间序列的高性能贪婪状态边界搜索。**

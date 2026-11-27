@@ -1,3 +1,5 @@
+![HP-GSBS: neural signals passing through three computational routes into aligned temporal states](docs/assets/hpgsbs-hero.png)
+
 # HP-GSBS
 
 **High-Performance Greedy State Boundary Search for EEG, fMRI, and other multivariate time series.**
