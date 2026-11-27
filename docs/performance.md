@@ -16,7 +16,7 @@ Hardware: Ryzen 7 7840H, RTX 4050 Laptop 6 GB, WSL2 Ubuntu 22.04; FP64, TF32 off
 
 [Full 15-row comparison](v02_performance_table.md) · [45 unrounded source cells](assets/performance-v0.2.0.json) · [SVG](assets/performance-v0.2.0.svg).
 
-Reproduce the figure without fitting: `python -m pip install matplotlib`, then `python scripts/plot_v02_performance.py`; `--check` independently checks the serialized tables against receipt aggregation and both READMEs. Whiskers are observed min–max. BBBD0 is one recording with three timed repeats per condition, not a participant-level distribution. The retained middle snapshot permits inspection of corrections as well as gains; a separate focused CPU comparison found 1.4245/1.4496 s pre-review/corrected medians, about 1.8% overhead.
+Install Matplotlib with `python -m pip install matplotlib` and run `python scripts/plot_v02_performance.py` to rebuild the figure from saved measurements. The `--check` option compares the detailed table and data with the underlying receipts. The figure shows the ratio of unrounded medians, and the table includes observed min–max fit times. BBBD0 represents one recording with three timed repeats per condition. The retained middle snapshot documents the effect of corrections. A separate focused CPU comparison found 1.4245 s and 1.4496 s medians before and after review, respectively.
 
 ## Other measured scopes
 

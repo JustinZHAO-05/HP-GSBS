@@ -14,6 +14,8 @@ Typography: crisp, exact, large white title 'HP-GSBS' on the left, below it the 
 
 ## Measured performance figures
 
-`performance-v0.2.0.png/.svg` and the derived JSON come from `results/v02/merge_9baff92/revisions/trials.json`, rendered by `scripts/plot_v02_performance.py`. Median of three timed fits after two warmups, actual min–max, workload-specific ratio of unrounded medians. The v0.1.0 and 9baff92 snapshots were measured in the same interleaved experiment. BBBD0 is one recording with repeated fits.
+`performance-official-v0.2.0.png/.svg` shows complete-fit times from the retained official baseline and the published v0.2.0 wheel. Line segments show observed synthetic min–max. See the [measurement protocol and full results](../v020_official_comparison.md).
+
+`performance-v0.2.0.png/.svg` shows v0.1.0 median runtime divided by the v0.2 snapshot (9baff92) median runtime for each workload and backend. The snapshots were measured in the same interleaved experiment, with three timed fits after two warmups. BBBD0 is one recording with repeated fits. See the [full table and receipts](../performance.md#retained-v010-versus-v02-comparison).
 
 `performance-comparison.png/.svg` remains the historical v0.1 official-GSBS comparison, reproduced by `scripts/plot_performance.py`. Its BBBD0 result was one measurement per backend. These are separate protocols; neither figure is generated artwork.

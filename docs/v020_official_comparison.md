@@ -22,7 +22,7 @@ Medium/Large/XL/BBBD0 的输入 SHA256 与历史官方回执逐项相同，并�
 
 51 次新拟合（4 个合成负载 × 3 后端 × 4 次，加 1 个 EEG × 3 后端 × 1 次）全部通过完整 all_bounds/K、nstates、t-distance、patterns、strengths 对照。该计时实验不采集逐候选/逐移动 trace；正式版本完整科学验收见[发布后检查](release_verification_v0.2.0.md)。
 
-图中倍数是“保留的 official 秒数 ÷ 本次 v0.2.0 秒数”，直接使用未舍入值，不通过 v0.1→v0.2 的倍数相乘。不同会话、预热合同及负载的结果不能混成一个通用加速倍数；Triton 不保证总比 PyTorch 快。
+图中展示完整拟合耗时。表中的加速倍数为“保留的 official 秒数 ÷ 本次 v0.2.0 秒数”，按负载和后端分别用未舍入数值计算。相对性能随负载及测量条件而变化。
 
 ## 复现
 
